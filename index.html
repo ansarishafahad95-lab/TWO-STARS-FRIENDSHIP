@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Two Stars • One Friendship</title>
+<title>TWO STARS • ONE FRIENDSHIP</title>
 
 <style>
 *{
@@ -18,754 +18,828 @@ html{
 }
 
 body{
-  font-family:Arial,sans-serif;
   background:#020817;
-  color:#fff;
+  color:white;
+  font-family:Georgia,"Times New Roman",serif;
   overflow-x:hidden;
 }
 
-/* =========================
-   ANIMATED NIGHT SKY
-========================= */
-
-.sky{
+/* PREMIUM STAR BACKGROUND */
+#stars{
   position:fixed;
   inset:0;
-  z-index:-10;
-  background:
-    radial-gradient(circle at 50% 20%,#172554 0%,transparent 35%),
-    radial-gradient(circle at 10% 80%,#101b3d 0%,transparent 30%),
-    linear-gradient(180deg,#020617,#030b1d 55%,#020617);
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
 }
 
-.sky::before{
-  content:"";
-  position:absolute;
-  inset:-50%;
-  background-image:
-    radial-gradient(2px 2px at 10% 20%,#fff,transparent),
-    radial-gradient(1px 1px at 20% 60%,#fff,transparent),
-    radial-gradient(2px 2px at 35% 30%,#fff,transparent),
-    radial-gradient(1px 1px at 45% 80%,#fff,transparent),
-    radial-gradient(2px 2px at 60% 15%,#fff,transparent),
-    radial-gradient(1px 1px at 70% 55%,#fff,transparent),
-    radial-gradient(2px 2px at 85% 25%,#fff,transparent),
-    radial-gradient(1px 1px at 95% 75%,#fff,transparent);
-  background-size:420px 420px;
-  animation:starfield 25s linear infinite;
-  opacity:.75;
-}
-
-.sky::after{
-  content:"";
-  position:absolute;
-  inset:-50%;
-  background-image:
-    radial-gradient(1px 1px at 15% 35%,#fff,transparent),
-    radial-gradient(1px 1px at 30% 75%,#fff,transparent),
-    radial-gradient(2px 2px at 55% 45%,#fff,transparent),
-    radial-gradient(1px 1px at 80% 70%,#fff,transparent);
-  background-size:350px 350px;
-  animation:starfield2 35s linear infinite;
-  opacity:.45;
-}
-
-@keyframes starfield{
-  from{
-    transform:translate(0,0);
-  }
-  to{
-    transform:translate(100px,-120px);
-  }
-}
-
-@keyframes starfield2{
-  from{
-    transform:translate(0,0);
-  }
-  to{
-    transform:translate(-80px,100px);
-  }
-}
-
-/* =========================
-   HEADER
-========================= */
-
-header{
+/* NAVBAR */
+nav{
   position:fixed;
   top:0;
   left:0;
-  width:100%;
-  z-index:20;
-  padding:18px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  right:0;
+  height:62px;
+  z-index:10;
 
-  background:rgba(2,8,23,.65);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:0 6%;
+
+  background:rgba(2,7,20,.65);
   backdrop-filter:blur(15px);
 
-  border-bottom:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.10);
 }
 
 .logo{
-  color:#f5d58b;
-  font-size:17px;
-  letter-spacing:3px;
+  color:#f4d47d;
+  font-size:11px;
   font-weight:bold;
+  letter-spacing:4px;
 }
 
 nav a{
-  color:#fff;
+  color:#dce5f7;
   text-decoration:none;
-  margin-left:25px;
-  font-size:13px;
-  transition:.3s;
+  font-size:9px;
+  margin-left:18px;
+  letter-spacing:1px;
 }
 
-nav a:hover{
-  color:#f5d58b;
-}
-
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero{
   min-height:100vh;
+  position:relative;
+  z-index:2;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  padding:100px 15px 60px;
+}
+
+.hero-box{
+  width:min(1150px,95vw);
+
+  padding:28px;
+
+  border-radius:28px;
+
+  background:rgba(5,12,31,.55);
+
+  border:1px solid rgba(255,255,255,.13);
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.65),
+    inset 0 1px rgba(255,255,255,.08);
+
+  backdrop-filter:blur(10px);
+}
+
+.small-title{
   text-align:center;
-  padding:120px 20px 60px;
-  perspective:1200px;
-}
 
-.hero-content{
-  max-width:900px;
-  transform-style:preserve-3d;
-  animation:heroFloat 6s ease-in-out infinite;
-}
+  color:#efd27c;
 
-@keyframes heroFloat{
-  0%,100%{
-    transform:translateY(0) rotateX(0deg);
-  }
+  font-size:10px;
 
-  50%{
-    transform:translateY(-12px) rotateX(2deg);
-  }
-}
+  letter-spacing:5px;
 
-.names{
-  color:#f1d58b;
-  letter-spacing:6px;
-  font-size:15px;
-  margin-bottom:25px;
+  margin-bottom:14px;
 }
 
 h1{
-  font-family:Georgia,serif;
-  font-size:clamp(48px,9vw,100px);
-  line-height:.9;
-  letter-spacing:2px;
+  text-align:center;
+
+  font-size:clamp(38px,8vw,82px);
+
+  line-height:.95;
+
+  letter-spacing:3px;
+
+  margin-bottom:24px;
 
   text-shadow:
-    0 0 15px rgba(255,255,255,.15),
-    0 0 40px rgba(120,170,255,.15);
+    0 5px 30px rgba(255,255,255,.18),
+    0 10px 40px #000;
 }
 
-.subtitle{
-  margin:28px auto;
-  max-width:700px;
-  color:#f0d990;
-  font-size:18px;
+/* SHAYARI */
+.shayari{
+  text-align:center;
+
+  font-size:clamp(14px,2vw,19px);
+
   line-height:1.8;
+
+  color:#f4f5fa;
+
+  max-width:800px;
+
+  margin:0 auto 28px;
 }
 
-/* =========================
-   TWO 3D STARS
-========================= */
-
-.star-area{
-  height:220px;
+/* ORIGINAL PHOTO */
+.photo{
   position:relative;
-  max-width:650px;
-  margin:20px auto;
-  transform-style:preserve-3d;
+
+  width:100%;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  border:1px solid rgba(255,255,255,.18);
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.7),
+    0 0 45px rgba(80,130,255,.10);
 }
 
-.star{
+.photo img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  object-fit:contain;
+
+  /* PHOTO IS NOT CROPPED */
+}
+
+/*
+  VERY SUBTLE LIGHT AROUND THE TWO ORIGINAL
+  STAR POSITIONS — NO EXTRA STARS ARE CREATED.
+*/
+.star-glow{
   position:absolute;
-  top:55px;
 
-  font-size:90px;
-  color:#fff;
+  width:26px;
+  height:26px;
 
-  transform-style:preserve-3d;
+  border-radius:50%;
 
-  text-shadow:
-    0 0 8px #fff,
-    0 0 20px #8ec5ff,
-    0 0 45px #4da3ff,
-    0 0 80px #2878ff;
+  pointer-events:none;
 
-  animation:
-    starMove 4s ease-in-out infinite,
-    starGlow 2s ease-in-out infinite alternate;
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.20) 0%,
+    rgba(120,190,255,.08) 35%,
+    transparent 70%
+  );
+
+  animation:glow 3.5s ease-in-out infinite;
 }
 
-.star-one{
-  left:25%;
+.star1{
+  left:50.5%;
+  top:22.9%;
 }
 
-.star-two{
-  right:25%;
+.star2{
+  left:50.7%;
+  top:36.8%;
   animation-delay:1.5s;
 }
 
-@keyframes starMove{
+@keyframes glow{
   0%,100%{
-    transform:translateY(0) translateZ(0) rotate(0deg) scale(1);
+    transform:scale(.8);
+    opacity:.35;
   }
 
   50%{
-    transform:translateY(-25px) translateZ(80px) rotate(12deg) scale(1.18);
+    transform:scale(1.25);
+    opacity:.85;
   }
 }
 
-@keyframes starGlow{
-  from{
-    filter:brightness(1);
-  }
-
-  to{
-    filter:brightness(1.8);
-  }
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.btn{
-  display:inline-block;
-  padding:15px 30px;
-
-  border:1px solid #d8b866;
-  border-radius:9px;
-
-  color:#fff;
-  text-decoration:none;
-
-  background:rgba(216,184,102,.12);
-
-  transition:.35s;
-}
-
-.btn:hover{
-  transform:translateY(-5px) scale(1.04);
-  background:rgba(216,184,102,.25);
-  box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
+/* SECTIONS */
 section{
-  padding:90px 7%;
-  max-width:1150px;
-  margin:auto;
+  position:relative;
+
+  z-index:2;
+
+  padding:100px 7%;
 }
 
 .section-title{
   text-align:center;
-  font-family:Georgia,serif;
-  font-size:42px;
-  margin-bottom:45px;
+
+  font-size:34px;
+
+  margin-bottom:35px;
 }
 
-/* =========================
-   3D CARDS
-========================= */
-
 .cards{
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(210px,1fr));
+  max-width:1000px;
 
-  gap:25px;
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(210px,1fr));
+
+  gap:18px;
 }
 
 .card{
-  min-height:180px;
-  padding:30px 20px;
+  padding:28px;
 
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:20px;
+  border-radius:22px;
 
-  background:rgba(255,255,255,.055);
-  backdrop-filter:blur(14px);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22,34,67,.75),
+      rgba(5,12,29,.72)
+    );
 
-  transform-style:preserve-3d;
-  transition:.4s;
+  border:1px solid rgba(255,255,255,.10);
 
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.2);
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+
+  transition:.3s;
 }
 
 .card:hover{
-  transform:
-    perspective(900px)
-    rotateX(7deg)
-    rotateY(-7deg)
-    translateY(-10px);
-
-  border-color:#d8b866;
-
-  box-shadow:
-    0 30px 60px rgba(0,0,0,.4);
-}
-
-.icon{
-  font-size:42px;
-  margin-bottom:20px;
+  transform:translateY(-7px);
 }
 
 .card h3{
+  color:#f2d27b;
+
   margin-bottom:10px;
+
+  font-size:18px;
 }
 
 .card p{
-  color:#b9c3d4;
-}
+  font-family:Arial,sans-serif;
 
-/* =========================
-   SECRET AREA
-========================= */
+  color:#cbd5e9;
 
-.secret-box{
-  max-width:650px;
-  margin:auto;
-
-  padding:40px 25px;
-
-  text-align:center;
-
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:22px;
-
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(15px);
-
-  box-shadow:0 25px 60px rgba(0,0,0,.3);
-}
-
-.question{
-  font-size:21px;
-  color:#f4d98b;
-  margin-bottom:20px;
-  line-height:1.6;
-}
-
-.password-input{
-  width:min(100%,400px);
-
-  padding:15px 18px;
-
-  border-radius:9px;
-  border:1px solid #555;
-
-  outline:none;
-
-  background:#050b18;
-  color:#fff;
-
-  margin:15px 0;
-
-  font-size:16px;
-}
-
-.password-input:focus{
-  border-color:#d8b866;
-}
-
-.message{
-  display:none;
-
-  margin-top:25px;
-
-  padding:18px;
-
-  border-radius:12px;
-
-  background:rgba(216,184,102,.12);
-
-  color:#f5d98b;
+  font-size:13px;
 
   line-height:1.7;
 }
 
-/* =========================
-   STORY
-========================= */
+/* SECRET */
+.secret{
+  max-width:620px;
 
-.story{
-  max-width:750px;
   margin:auto;
 
   text-align:center;
 
-  color:#cbd5e1;
+  padding:38px;
 
-  font-size:18px;
+  border-radius:26px;
+
+  background:rgba(12,21,45,.78);
+
+  border:1px solid rgba(235,204,116,.22);
+
+  box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.secret h2{
+  color:#f1d37c;
+}
+
+input{
+  width:100%;
+
+  margin-top:20px;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  border:1px solid rgba(255,255,255,.15);
+
+  background:#040918;
+
+  color:white;
+
+  text-align:center;
+
+  font-size:16px;
+
+  outline:none;
+}
+
+button{
+  margin-top:13px;
+
+  padding:12px 22px;
+
+  border-radius:10px;
+
+  border:1px solid #d8bb69;
+
+  background:linear-gradient(145deg,#dfc477,#8c6822);
+
+  color:#080b12;
+
+  font-weight:bold;
+}
+
+#message{
+  min-height:24px;
+
+  margin-top:14px;
+
+  font-family:Arial,sans-serif;
+
+  font-size:12px;
+}
+
+/* STORY */
+.story{
+  max-width:850px;
+
+  margin:auto;
+
+  text-align:center;
+
+  color:#d5ddef;
+
+  font-size:16px;
+
   line-height:2;
 }
 
-.highlight{
-  color:#f5d98b;
-  font-weight:bold;
+.gold{
+  color:#efd17b;
+}
+
+/* FOOTER */
+footer{
+  position:relative;
+
+  z-index:2;
+
+  text-align:center;
+
+  padding:45px 20px 70px;
+
+  color:#8d99b4;
+
+  font-family:Arial,sans-serif;
+
+  font-size:10px;
+
   letter-spacing:2px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* MOBILE */
+@media(max-width:600px){
 
-footer{
-  text-align:center;
-  padding:45px 20px;
-
-  border-top:1px solid rgba(255,255,255,.12);
-
-  color:#999;
-
-  line-height:2;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:650px){
-
-  header{
-    padding:16px 5%;
-  }
-
-  nav{
+  nav a{
     display:none;
   }
 
-  .logo{
-    font-size:14px;
-  }
-
-  .names{
-    font-size:12px;
-    letter-spacing:4px;
+  .hero-box{
+    padding:15px;
   }
 
   h1{
-    font-size:50px;
+    font-size:42px;
   }
 
-  .subtitle{
-    font-size:16px;
-  }
-
-  .star{
-    font-size:65px;
-  }
-
-  .star-one{
-    left:12%;
-  }
-
-  .star-two{
-    right:12%;
+  .photo{
+    border-radius:16px;
   }
 
   section{
-    padding:70px 5%;
+    padding:75px 6%;
   }
 
-  .section-title{
-    font-size:34px;
-  }
-
-  .secret-box{
-    padding:30px 18px;
-  }
 }
 </style>
 </head>
 
+
 <body>
 
-<div class="sky"></div>
-
-<header>
-
-  <div class="logo">
-    ✦ TWO STARS
-  </div>
-
-  <nav>
-    <a href="#home">HOME</a>
-    <a href="#memories">MEMORIES</a>
-    <a href="#secret">SECRET</a>
-    <a href="#story">OUR STORY</a>
-  </nav>
-
-</header>
+<canvas id="stars"></canvas>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- NAVIGATION -->
 
-<main id="home">
+<nav>
 
-<section class="hero">
+<div class="logo">
+✦ TWO STARS
+</div>
 
-<div class="hero-content">
+<div>
+<a href="#home">HOME</a>
+<a href="#memories">MEMORIES</a>
+<a href="#secret">SECRET</a>
+<a href="#story">OUR STORY</a>
+</div>
 
-  <div class="names">
-    SHAFAHAD & SHAMSHAD BHAI
-  </div>
+</nav>
 
-  <h1>
-    TWO STARS<br>
-    ONE FRIENDSHIP
-  </h1>
 
-  <div class="star-area">
+<!-- HERO -->
 
-    <div class="star star-one">
-      ✦
-    </div>
+<main id="home" class="hero">
 
-    <div class="star star-two">
-      ✦
-    </div>
+<div class="hero-box">
 
-  </div>
+<div class="small-title">
+SHAFAHAD &amp; SHAMSHAD BHAI
+</div>
 
-  <p class="subtitle">
-    दो दोस्तों की दोस्ती, आसमान के दो चमकते तारों जैसी।<br>
-    दूर होकर भी, हमेशा साथ। ❤️
+<h1>
+TWO STARS<br>
+ONE FRIENDSHIP
+</h1>
+
+  <p class="section-sub">
+    कुछ यादें तस्वीरों में होती हैं,तो कुछ दिलों में हमेशा के लिए बसी रहती हैं।
   </p>
 
-  <a class="btn" href="#memories">
-    ✦ ENTER OUR MEMORIES
-  </a>
+<div class="shayari">
+
+दो सच्चे दोस्तों की दोस्ती, आसमान के दो चमकते तारों जैसी।<br>
+
+दूर होकर भी, हमेशा साथ। ❤️
+
+</div>
+
+
+<!--
+  IMPORTANT:
+  GitHub में आपकी original photo का नाम
+  EXACTLY "photo.jpg" होना चाहिए.
+-->
+
+<div class="photo">
+
+<img
+src="photo.jpg"
+alt="SHAFAHAD & SHAMSHAD BHAI"
+>
+
+<!-- ORIGINAL PHOTO के दो सितारों पर हल्का glow -->
+
+<div class="star-glow star1"></div>
+
+<div class="star-glow star2"></div>
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<!-- MEMORIES -->
+
+<section id="memories">
+
+<h2 class="section-title">
+Our Memories
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>📸 PHOTOS</h3>
+
+<p>
+हमारी खूबसूरत यादों के लिए एक खास जगह।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🎬 VIDEOS</h3>
+
+<p>
+दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📁 FILES</h3>
+
+<p>
+हमारी खास यादें और जरूरी फाइलें एक जगह।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>❤️ FRIENDSHIP</h3>
+
+<p>
+कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।
+</p>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =========================
-     MEMORIES
-========================= -->
 
-<section id="memories">
-
-  <h2 class="section-title">
-    Our Memories
-  </h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>PHOTOS</h3>
-      <p>
-        हमारी खूबसूरत तस्वीरें और यादें।
-      </p>
-    </div>
-
-
-    <div class="card">
-      <div class="icon">🎬</div>
-      <h3>VIDEOS</h3>
-      <p>
-        हमारे साथ बिताए हुए खास पल।
-      </p>
-    </div>
-
-
-    <div class="card">
-      <div class="icon">📁</div>
-      <h3>FILES</h3>
-      <p>
-        हमारी खास यादों की फाइलें।
-      </p>
-    </div>
-
-
-    <div class="card">
-      <div class="icon">❤️</div>
-      <h3>FRIENDSHIP</h3>
-      <p>
-        हमारी दोस्ती और हमारी कहानी।
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     SECRET
-========================= -->
+<!-- SECRET -->
 
 <section id="secret">
 
-  <div class="secret-box">
+<div class="secret">
 
-    <h2 class="section-title">
-      ✦ OUR SECRET ✦
-    </h2>
+<h2>
+✦ OUR SECRET ✦
+</h2>
 
-    <div class="question">
-      तो बताओ कि अब आसमान में कितने तारे? ⭐⭐
-    </div>
+<p style="margin-top:12px;color:#ccd6e9">
+एक छोटा सा सवाल…
+</p>
 
-    <p style="color:#b9c3d4;">
-      सही जवाब देकर हमारी यादों का दरवाज़ा खोलो।
-    </p>
 
-    <input
-      id="password"
-      class="password-input"
-      type="text"
-      placeholder="अपना जवाब लिखो..."
-    >
+<input
+id="answer"
+type="password"
+autocomplete="off"
+placeholder="Answer"
+>
 
-    <br>
 
-    <button
-      class="btn"
-      onclick="unlockMemories()"
-      style="cursor:pointer;"
-    >
-      UNLOCK MEMORIES ✦
-    </button>
+<button onclick="unlock()">
+UNLOCK MEMORY ✦
+</button>
 
-    <div
-      id="message"
-      class="message"
-    ></div>
 
-  </div>
+<div id="message"></div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     STORY
-========================= -->
+
+<!-- STORY -->
 
 <section id="story">
 
-  <h2 class="section-title">
-    Our Story
-  </h2>
+<h2 class="section-title">
+Our Story
+</h2>
 
-  <div class="story">
 
-    <p>
-      दोस्ती सिर्फ साथ रहने का नाम नहीं है।
-      कभी-कभी दो लोग दूर होकर भी
-      एक-दूसरे की यादों में हमेशा साथ रहते हैं।
-    </p>
+<div class="story">
 
-    <br>
+कुछ दोस्तियाँ वक्त के साथ पुरानी नहीं होतीं—
+बल्कि हर याद के साथ और खूबसूरत बनती जाती हैं।
 
-    <p class="highlight">
-      SHAFAHAD & SHAMSHAD BHAI
-    </p>
+<br><br>
 
-    <p>
-      TWO STARS • ONE FRIENDSHIP • FOREVER ⭐⭐
-    </p>
+<b class="gold">
+SHAFAHAD &amp; SHAMSHAD BHAI
+</b>
 
-  </div>
+<br><br>
+
+दो सच्चे दोस्तों की दोस्ती,
+आसमान के दो चमकते तारों जैसी।<br>
+
+दूर होकर भी, हमेशा साथ। ❤️
+
+</div>
 
 </section>
 
-</main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-  ✦ Two Stars • One Friendship ✦
+✦ TWO STARS • ONE FRIENDSHIP ✦
 
-  <br>
+<br><br>
 
-  SHAFAHAD & SHAMSHAD BHAI
+SHAFAHAD &amp; SHAMSHAD BHAI
 
 </footer>
 
 
+
 <script>
 
-/*
-   SECRET ANSWER
-
-   सही जवाब:
-   1
-   या
-   एक
+/* PASSWORD
+   कोई hint website पर नहीं दिखाया गया है.
 */
 
-function unlockMemories(){
+function unlock(){
 
-  const input =
-    document
-    .getElementById("password")
-    .value
-    .trim()
-    .toLowerCase();
+  const answer =
+  document
+  .getElementById("answer")
+  .value
+  .trim()
+  .toLowerCase();
 
   const message =
-    document
-    .getElementById("message");
+  document.getElementById("message");
 
 
   if(
-    input === "1" ||
-    input === "एक" ||
-    input === "ek"
+    answer === "1" ||
+    answer === "एक" ||
+    answer === "ek"
   ){
 
-    message.style.display = "block";
+    message.textContent =
+    "❤️ Memory unlocked!";
 
-    message.innerHTML =
-      "⭐⭐ बिल्कुल सही! ❤️<br>" +
-      "दो तारे... एक दोस्ती... हमेशा के लिए।<br><br>" +
-      "SHAFAHAD & SHAMSHAD BHAI";
+    message.style.color =
+    "#f1d27b";
+
+    document
+    .getElementById("story")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
   }else{
 
-    message.style.display = "block";
+    message.textContent =
+    "Answer is incorrect.";
 
-    message.innerHTML =
-      "⭐ जवाब सही नहीं है।<br>" +
-      "असली आसमान की तरफ फिर से देखो... ⭐⭐";
+    message.style.color =
+    "#d8dce6";
 
   }
 
 }
+
+
+document
+.getElementById("answer")
+.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key === "Enter"){
+      unlock();
+    }
+
+  }
+);
+
+
+
+/* BACKGROUND STARS */
+
+const canvas =
+document.getElementById("stars");
+
+const ctx =
+canvas.getContext("2d");
+
+let width;
+let height;
+let stars=[];
+
+
+function resize(){
+
+  width =
+  canvas.width =
+  innerWidth * devicePixelRatio;
+
+  height =
+  canvas.height =
+  innerHeight * devicePixelRatio;
+
+  canvas.style.width =
+  innerWidth+"px";
+
+  canvas.style.height =
+  innerHeight+"px";
+
+
+  stars =
+  Array.from(
+    {
+      length:
+      Math.min(
+        160,
+        Math.floor(innerWidth/7)
+      )
+    },
+    function(){
+
+      return{
+
+        x:Math.random()*width,
+
+        y:Math.random()*height,
+
+        r:
+        (Math.random()*1.4+.25)
+        *devicePixelRatio,
+
+        opacity:
+        Math.random()*.6+.2,
+
+        phase:
+        Math.random()*6.28,
+
+        speed:
+        Math.random()*.02+.004
+
+      };
+
+    }
+  );
+
+}
+
+
+function animate(time){
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+
+  stars.forEach(function(star){
+
+    star.phase += star.speed;
+
+    const opacity =
+    star.opacity *
+    (
+      .55 +
+      .45 *
+      Math.sin(
+        star.phase +
+        time*.001
+      )
+    );
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+      star.x,
+      star.y,
+      star.r,
+      0,
+      Math.PI*2
+    );
+
+
+    ctx.fillStyle =
+    "rgba(220,232,255,"+
+    opacity+
+    ")";
+
+    ctx.fill();
+
+  });
+
+
+  requestAnimationFrame(animate);
+
+}
+
+
+window.addEventListener(
+  "resize",
+  resize
+);
+
+resize();
+
+requestAnimationFrame(
+  animate
+);
 
 </script>
 
