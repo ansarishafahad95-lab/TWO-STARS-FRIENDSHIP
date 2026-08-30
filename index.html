@@ -168,14 +168,9 @@ h1{
   height:auto;
 
   object-fit:contain;
-
-  /* PHOTO IS NOT CROPPED */
 }
 
-/*
-  VERY SUBTLE LIGHT AROUND THE TWO ORIGINAL
-  STAR POSITIONS — NO EXTRA STARS ARE CREATED.
-*/
+/* ORIGINAL PHOTO STAR GLOW */
 .star-glow{
   position:absolute;
 
@@ -222,20 +217,25 @@ h1{
 /* SECTIONS */
 section{
   position:relative;
-
   z-index:2;
-
   padding:100px 7%;
 }
 
 .section-title{
   text-align:center;
-
   font-size:34px;
-
   margin-bottom:35px;
 }
 
+.section-sub{
+  text-align:center;
+  color:#aebbd3;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  margin:-15px auto 35px;
+}
+
+/* CARDS */
 .cards{
   max-width:1000px;
 
@@ -274,19 +274,14 @@ section{
 
 .card h3{
   color:#f2d27b;
-
   margin-bottom:10px;
-
   font-size:18px;
 }
 
 .card p{
   font-family:Arial,sans-serif;
-
   color:#cbd5e9;
-
   font-size:13px;
-
   line-height:1.7;
 }
 
@@ -349,6 +344,8 @@ button{
   color:#080b12;
 
   font-weight:bold;
+
+  cursor:pointer;
 }
 
 #message{
@@ -359,6 +356,147 @@ button{
   font-family:Arial,sans-serif;
 
   font-size:12px;
+}
+
+/* ============================= */
+/* SURPRISE MEMORY */
+/* ============================= */
+
+#surprise{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:100;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.82);
+
+  backdrop-filter:blur(12px);
+}
+
+.surprise-box{
+
+  width:min(850px,94vw);
+
+  max-height:90vh;
+
+  overflow-y:auto;
+
+  padding:28px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,29,58,.97),
+      rgba(3,9,25,.98)
+    );
+
+  border:1px solid rgba(240,210,120,.35);
+
+  box-shadow:
+    0 30px 120px rgba(0,0,0,.8),
+    0 0 60px rgba(100,150,255,.12);
+
+  animation:surpriseOpen .55s ease;
+}
+
+@keyframes surpriseOpen{
+
+  from{
+    opacity:0;
+    transform:scale(.82) translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+
+}
+
+.surprise-title{
+
+  color:#f2d27b;
+
+  font-size:clamp(24px,5vw,42px);
+
+  letter-spacing:2px;
+
+  margin-bottom:10px;
+}
+
+.surprise-sub{
+
+  color:#dce5f7;
+
+  font-family:Arial,sans-serif;
+
+  font-size:14px;
+
+  line-height:1.8;
+
+  margin-bottom:22px;
+}
+
+/* SURPRISE PHOTO */
+.surprise-photo{
+
+  width:100%;
+
+  border-radius:20px;
+
+  display:block;
+
+  border:1px solid rgba(255,255,255,.15);
+
+  box-shadow:0 20px 60px rgba(0,0,0,.65);
+
+  margin-bottom:20px;
+}
+
+/* SURPRISE VIDEO */
+.surprise-video{
+
+  width:100%;
+
+  max-height:450px;
+
+  border-radius:18px;
+
+  background:#000;
+
+  border:1px solid rgba(255,255,255,.15);
+
+  margin-top:10px;
+}
+
+.close-btn{
+
+  margin-top:22px;
+
+  background:transparent;
+
+  color:#efd27c;
+
+  border:1px solid rgba(239,210,124,.55);
+
+  padding:10px 24px;
+
+  border-radius:10px;
+
+  cursor:pointer;
 }
 
 /* STORY */
@@ -422,6 +560,10 @@ footer{
     padding:75px 6%;
   }
 
+  .surprise-box{
+    padding:18px;
+  }
+
 }
 </style>
 </head>
@@ -474,11 +616,7 @@ ONE FRIENDSHIP
 </div>
 
 
-<!--
-  IMPORTANT:
-  GitHub में आपकी original photo का नाम
-  EXACTLY "photo.jpg" होना चाहिए.
--->
+<!-- ORIGINAL PHOTO -->
 
 <div class="photo">
 
@@ -486,8 +624,6 @@ ONE FRIENDSHIP
 src="photo.jpg"
 alt="SHAFAHAD & SHAMSHAD BHAI"
 >
-
-<!-- ORIGINAL PHOTO के दो सितारों पर हल्का glow -->
 
 <div class="star-glow star1"></div>
 
@@ -508,12 +644,11 @@ alt="SHAFAHAD & SHAMSHAD BHAI"
 <h2 class="section-title">
 Our Memories
 </h2>
-  
-  <p class="section-sub">
-    कुछ यादें तस्वीरों में होती हैं,तो कुछ दिलों में हमेशा के लिए बसी रहती हैं।
-  </p>
 
-  
+<p class="section-sub">
+कुछ यादें तस्वीरों में होती हैं,तो कुछ दिलों ❤️ में हमेशा के लिए बसी रहती हैं।
+</p>
+
 <div class="cards">
 
 <div class="card">
@@ -646,11 +781,85 @@ SHAFAHAD &amp; SHAMSHAD BHAI
 
 
 
+<!-- ============================= -->
+<!-- SECRET SURPRISE POPUP -->
+<!-- ============================= -->
+
+<div id="surprise">
+
+<div class="surprise-box">
+
+<div class="surprise-title">
+✦ FOR SHAMSHAD BHAI ✦
+</div>
+
+<div class="surprise-sub">
+
+कुछ रिश्ते सिर्फ दोस्ती नहीं होते...<br>
+वो जिंदगी की सबसे खूबसूरत याद बन जाते हैं। ❤️
+
+</div>
+
+
+<!--
+SURPRISE PHOTO:
+अपने दूसरे surprise photo का नाम
+surprise.jpg रखकर GitHub में upload करना.
+-->
+
+<img
+class="surprise-photo"
+src="surprise.jpg"
+alt="A Special Memory"
+>
+
+
+<!--
+SURPRISE VIDEO:
+अपने video का नाम surprise.mp4 रखकर
+GitHub में upload करना.
+-->
+
+<video
+class="surprise-video"
+controls
+playsinline
+preload="metadata"
+>
+
+<source src="surprise.mp4" type="video/mp4">
+
+आपका browser video support नहीं करता।
+
+</video>
+
+
+<div class="surprise-sub" style="margin-top:22px;margin-bottom:0;">
+
+SHAFAHAD ❤️ SHAMSHAD BHAI<br>
+दो सच्चे दोस्तों की दोस्ती हमेशा ऐसी ही रहे।
+
+</div>
+
+
+<button
+class="close-btn"
+onclick="closeSurprise()"
+>
+CLOSE ✦
+</button>
+
+</div>
+
+</div>
+
+
+
 <script>
 
-/* PASSWORD
-   कोई hint website पर नहीं दिखाया गया है.
-*/
+/* ============================= */
+/* SECRET UNLOCK SYSTEM */
+/* ============================= */
 
 function unlock(){
 
@@ -665,6 +874,11 @@ function unlock(){
   document.getElementById("message");
 
 
+  /*
+    Correct answer:
+    2 / दो / do
+  */
+
   if(
     answer === "1" ||
     answer === "एक" ||
@@ -672,21 +886,36 @@ function unlock(){
   ){
 
     message.textContent =
-    "❤️ Memory unlocked i miss 💕 You shamshad bhai every time!";
+    "❤️ Memory unlocked";
 
     message.style.color =
     "#f1d27b";
 
-    document
-    .getElementById("story")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
 
-  }else{
+    /*
+      कोई scroll नहीं।
+      सीधे premium surprise popup खुलेगा।
+    */
+
+    document
+    .getElementById("surprise")
+    .style.display = "flex";
+
+
+    /*
+      Input साफ कर दिया जाता है।
+    */
+
+    document
+    .getElementById("answer")
+    .value = "";
+
+  }
+
+  else{
 
     message.textContent =
-    "Answer is incorrect Shamshad bhai.";
+    "Answer is incorrect.";
 
     message.style.color =
     "#d8dce6";
@@ -695,6 +924,19 @@ function unlock(){
 
 }
 
+
+/* CLOSE SURPRISE */
+
+function closeSurprise(){
+
+  document
+  .getElementById("surprise")
+  .style.display = "none";
+
+}
+
+
+/* ENTER KEY */
 
 document
 .getElementById("answer")
@@ -710,8 +952,9 @@ document
 );
 
 
-
+/* ============================= */
 /* BACKGROUND STARS */
+/* ============================= */
 
 const canvas =
 document.getElementById("stars");
@@ -750,6 +993,7 @@ function resize(){
         Math.floor(innerWidth/7)
       )
     },
+
     function(){
 
       return{
