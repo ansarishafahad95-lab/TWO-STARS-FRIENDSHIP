@@ -103,25 +103,17 @@ nav a{
 
 .small-title{
   text-align:center;
-
   color:#efd27c;
-
   font-size:10px;
-
   letter-spacing:5px;
-
   margin-bottom:14px;
 }
 
 h1{
   text-align:center;
-
   font-size:clamp(38px,8vw,82px);
-
   line-height:.95;
-
   letter-spacing:3px;
-
   margin-bottom:24px;
 
   text-shadow:
@@ -132,26 +124,18 @@ h1{
 /* SHAYARI */
 .shayari{
   text-align:center;
-
   font-size:clamp(14px,2vw,19px);
-
   line-height:1.8;
-
   color:#f4f5fa;
-
   max-width:800px;
-
   margin:0 auto 28px;
 }
 
 /* ORIGINAL PHOTO */
 .photo{
   position:relative;
-
   width:100%;
-
   overflow:hidden;
-
   border-radius:22px;
 
   border:1px solid rgba(255,255,255,.18);
@@ -163,10 +147,8 @@ h1{
 
 .photo img{
   display:block;
-
   width:100%;
   height:auto;
-
   object-fit:contain;
 }
 
@@ -238,7 +220,6 @@ section{
 /* CARDS */
 .cards{
   max-width:1000px;
-
   margin:auto;
 
   display:grid;
@@ -251,7 +232,6 @@ section{
 
 .card{
   padding:28px;
-
   border-radius:22px;
 
   background:
@@ -288,11 +268,8 @@ section{
 /* SECRET */
 .secret{
   max-width:620px;
-
   margin:auto;
-
   text-align:center;
-
   padding:38px;
 
   border-radius:26px;
@@ -310,9 +287,7 @@ section{
 
 input{
   width:100%;
-
   margin-top:20px;
-
   padding:14px;
 
   border-radius:12px;
@@ -320,13 +295,10 @@ input{
   border:1px solid rgba(255,255,255,.15);
 
   background:#040918;
-
   color:white;
 
   text-align:center;
-
   font-size:16px;
-
   outline:none;
 }
 
@@ -344,35 +316,30 @@ button{
   color:#080b12;
 
   font-weight:bold;
-
   cursor:pointer;
 }
 
 #message{
   min-height:24px;
-
   margin-top:14px;
 
   font-family:Arial,sans-serif;
-
   font-size:12px;
 }
 
 /* ============================= */
-/* SURPRISE MEMORY */
+/* SURPRISE MEMORY POPUP */
 /* ============================= */
 
 #surprise{
   display:none;
 
   position:fixed;
-
   inset:0;
 
   z-index:100;
 
   align-items:center;
-
   justify-content:center;
 
   padding:20px;
@@ -383,7 +350,6 @@ button{
 }
 
 .surprise-box{
-
   width:min(850px,94vw);
 
   max-height:90vh;
@@ -427,7 +393,6 @@ button{
 }
 
 .surprise-title{
-
   color:#f2d27b;
 
   font-size:clamp(24px,5vw,42px);
@@ -438,7 +403,6 @@ button{
 }
 
 .surprise-sub{
-
   color:#dce5f7;
 
   font-family:Arial,sans-serif;
@@ -452,7 +416,6 @@ button{
 
 /* SURPRISE PHOTO */
 .surprise-photo{
-
   width:100%;
 
   border-radius:20px;
@@ -466,24 +429,25 @@ button{
   margin-bottom:20px;
 }
 
-/* SURPRISE VIDEO */
+/* GOOGLE DRIVE VIDEO */
 .surprise-video{
-
   width:100%;
 
-  max-height:450px;
+  height:450px;
+
+  border:none;
 
   border-radius:18px;
 
   background:#000;
 
-  border:1px solid rgba(255,255,255,.15);
-
   margin-top:10px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.55);
 }
 
 .close-btn{
-
   margin-top:22px;
 
   background:transparent;
@@ -562,6 +526,10 @@ footer{
 
   .surprise-box{
     padding:18px;
+  }
+
+  .surprise-video{
+    height:350px;
   }
 
 }
@@ -646,7 +614,7 @@ Our Memories
 </h2>
 
 <p class="section-sub">
-कुछ यादें तस्वीरों में होती हैं, तो कुछ दिलों ❤️ में हमेशा के लिए बसी रहती हैं।
+कुछ यादें तस्वीरों में होती हैं, तो कुछ दिलों में हमेशा के लिए बसी रहती हैं।
 </p>
 
 <div class="cards">
@@ -801,11 +769,7 @@ SHAFAHAD &amp; SHAMSHAD BHAI
 </div>
 
 
-<!--
-SURPRISE PHOTO:
-अपने दूसरे surprise photo का नाम
-surprise.jpg रखकर GitHub में upload करना.
--->
+<!-- SURPRISE PHOTO -->
 
 <img
 class="surprise-photo"
@@ -814,24 +778,14 @@ alt="A Special Memory"
 >
 
 
-<!--
-SURPRISE VIDEO:
-अपने video का नाम surprise.mp4 रखकर
-GitHub में upload करना.
--->
+<!-- GOOGLE DRIVE SURPRISE VIDEO -->
 
-<video
+<iframe
 class="surprise-video"
-controls
-playsinline
-preload="metadata"
->
-
-<source src="surprise.mp4" type="video/mp4">
-
-आपका browser video support नहीं करता।
-
-</video>
+src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
 
 
 <div class="surprise-sub" style="margin-top:22px;margin-bottom:0;">
@@ -876,7 +830,7 @@ function unlock(){
 
   /*
     Correct answer:
-    2 / दो / do
+    1 / ek / एक
   */
 
   if(
@@ -901,10 +855,6 @@ function unlock(){
     .getElementById("surprise")
     .style.display = "flex";
 
-
-    /*
-      Input साफ कर दिया जाता है।
-    */
 
     document
     .getElementById("answer")
