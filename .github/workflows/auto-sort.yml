@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "uploads/**"
+      - ".github/workflows/auto-sort.yml"
+  workflow_dispatch:
 
 permissions:
   contents: write
