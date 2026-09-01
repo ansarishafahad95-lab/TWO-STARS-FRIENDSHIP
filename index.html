@@ -24,7 +24,6 @@ body{
   overflow-x:hidden;
 }
 
-/* PREMIUM STAR BACKGROUND */
 #stars{
   position:fixed;
   inset:0;
@@ -121,7 +120,6 @@ h1{
     0 10px 40px #000;
 }
 
-/* SHAYARI */
 .shayari{
   text-align:center;
   font-size:clamp(14px,2vw,19px);
@@ -131,7 +129,6 @@ h1{
   margin:0 auto 28px;
 }
 
-/* ORIGINAL PHOTO */
 .photo{
   position:relative;
   width:100%;
@@ -152,7 +149,6 @@ h1{
   object-fit:contain;
 }
 
-/* ORIGINAL PHOTO STAR GLOW */
 .star-glow{
   position:absolute;
 
@@ -217,7 +213,7 @@ section{
   margin:-15px auto 35px;
 }
 
-/* CARDS */
+/* MEMORY CARDS */
 .cards{
   max-width:1000px;
   margin:auto;
@@ -231,6 +227,7 @@ section{
 }
 
 .card{
+  display:block;
   padding:28px;
   border-radius:22px;
 
@@ -246,6 +243,9 @@ section{
   box-shadow:0 18px 50px rgba(0,0,0,.35);
 
   transition:.3s;
+
+  color:white;
+  text-decoration:none;
 }
 
 .card:hover{
@@ -263,6 +263,91 @@ section{
   color:#cbd5e9;
   font-size:13px;
   line-height:1.7;
+}
+
+/* GALLERY */
+.gallery{
+  max-width:1100px;
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fill,minmax(180px,1fr));
+
+  gap:15px;
+}
+
+.gallery-item{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:18px;
+
+  background:#050b1b;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.45);
+
+  cursor:pointer;
+}
+
+.gallery-item img,
+.gallery-item video{
+  width:100%;
+  aspect-ratio:1/1;
+
+  display:block;
+
+  object-fit:cover;
+
+  transition:.3s;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video{
+  transform:scale(1.04);
+}
+
+.file-card{
+  padding:25px;
+  text-align:center;
+
+  min-height:160px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+}
+
+.file-icon{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.file-name{
+  color:#e5e7eb;
+
+  font-family:Arial,sans-serif;
+
+  font-size:12px;
+
+  word-break:break-word;
+}
+
+.empty{
+  text-align:center;
+
+  color:#8996b1;
+
+  font-family:Arial,sans-serif;
+
+  padding:30px;
 }
 
 /* SECRET */
@@ -327,10 +412,7 @@ button{
   font-size:12px;
 }
 
-/* ============================= */
-/* SURPRISE MEMORY POPUP */
-/* ============================= */
-
+/* SURPRISE POPUP */
 #surprise{
   display:none;
 
@@ -414,7 +496,6 @@ button{
   margin-bottom:22px;
 }
 
-/* SURPRISE PHOTO */
 .surprise-photo{
   width:100%;
 
@@ -429,7 +510,6 @@ button{
   margin-bottom:20px;
 }
 
-/* GOOGLE DRIVE VIDEO */
 .surprise-video{
   width:100%;
 
@@ -461,6 +541,160 @@ button{
   border-radius:10px;
 
   cursor:pointer;
+}
+
+/* MEDIA VIEWER */
+#viewer{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:200;
+
+  background:rgba(0,0,0,.94);
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  touch-action:none;
+}
+
+.viewer-content{
+  width:min(1000px,96vw);
+
+  height:min(88vh,900px);
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  position:relative;
+}
+
+#viewerImage,
+#viewerVideo{
+  max-width:100%;
+
+  max-height:72vh;
+
+  border-radius:16px;
+
+  object-fit:contain;
+
+  box-shadow:0 20px 100px rgba(0,0,0,.8);
+}
+
+.viewer-controls{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:15px;
+}
+
+.viewer-btn{
+  margin:0;
+
+  padding:9px 13px;
+
+  border-radius:10px;
+
+  border:1px solid rgba(255,255,255,.25);
+
+  background:rgba(20,28,50,.9);
+
+  color:white;
+
+  font-size:12px;
+}
+
+.viewer-btn:hover{
+  background:rgba(50,62,90,.95);
+}
+
+.viewer-close{
+  position:absolute;
+
+  right:8px;
+
+  top:8px;
+
+  z-index:5;
+
+  margin:0;
+
+  width:42px;
+
+  height:42px;
+
+  padding:0;
+
+  border-radius:50%;
+
+  background:rgba(20,20,25,.85);
+
+  color:white;
+
+  border:1px solid rgba(255,255,255,.25);
+
+  font-size:20px;
+}
+
+.viewer-nav{
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  margin:0;
+
+  width:45px;
+
+  height:55px;
+
+  border-radius:14px;
+
+  background:rgba(10,15,30,.85);
+
+  color:white;
+
+  border:1px solid rgba(255,255,255,.2);
+
+  font-size:25px;
+
+  z-index:5;
+}
+
+#prevBtn{
+  left:5px;
+}
+
+#nextBtn{
+  right:5px;
+}
+
+#viewerCounter{
+  color:#aebbd3;
+
+  font-family:Arial,sans-serif;
+
+  font-size:11px;
+
+  margin-top:8px;
 }
 
 /* STORY */
@@ -524,6 +758,13 @@ footer{
     padding:75px 6%;
   }
 
+  .gallery{
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+  }
+
   .surprise-box{
     padding:18px;
   }
@@ -532,17 +773,26 @@ footer{
     height:350px;
   }
 
+  .viewer-content{
+    height:90vh;
+  }
+
+  #viewerImage,
+  #viewerVideo{
+    max-height:65vh;
+  }
+
+  .viewer-nav{
+    width:38px;
+    height:48px;
+  }
 }
 </style>
 </head>
 
-
 <body>
 
 <canvas id="stars"></canvas>
-
-
-<!-- NAVIGATION -->
 
 <nav>
 
@@ -558,7 +808,6 @@ footer{
 </div>
 
 </nav>
-
 
 <!-- HERO -->
 
@@ -583,13 +832,10 @@ ONE FRIENDSHIP
 
 </div>
 
-
-<!-- ORIGINAL PHOTO -->
-
 <div class="photo">
 
 <img
-src="https://ansarishafahad95-lab.github.io/TWO-STARS-FRIENDSHIP/photo.jpg"
+src="photo.jpg"
 alt="SHAFAHAD & SHAMSHAD BHAI"
 >
 
@@ -602,7 +848,6 @@ alt="SHAFAHAD & SHAMSHAD BHAI"
 </div>
 
 </main>
-
 
 
 <!-- MEMORIES -->
@@ -619,7 +864,7 @@ Our Memories
 
 <div class="cards">
 
-<a href="#photo-gallery" class="card photo-card">
+<a href="#photo-gallery" class="card">
 
 <h3>📸 PHOTOS</h3>
 
@@ -629,8 +874,7 @@ Our Memories
 
 </a>
 
-
-<div class="card">
+<a href="#video-gallery" class="card">
 
 <h3>🎬 VIDEOS</h3>
 
@@ -638,19 +882,17 @@ Our Memories
 दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।
 </p>
 
-</div>
+</a>
 
+<a href="#file-gallery" class="card">
 
-<div class="card">
-
-<h3>📁 FILES</h3>
+<h3>📄 FILES</h3>
 
 <p>
-हमारी खास यादें और जरूरी फाइलें एक जगह।
+PDF और जरूरी documents एक जगह।
 </p>
 
-</div>
-
+</a>
 
 <div class="card">
 
@@ -671,19 +913,59 @@ Our Memories
 
 <section id="photo-gallery">
 
-  <h2 class="section-title">
-    📸 Our Photo Memories
-  </h2>
+<h2 class="section-title">
+📸 Our Photo Memories
+</h2>
 
-  <p class="section-sub">
-    हमारी खूबसूरत यादें, हमेशा हमारे साथ। ❤️
-  </p>
+<p class="section-sub">
+हमारी खूबसूरत यादें, हमेशा हमारे साथ। ❤️
+</p>
 
-  <div class="gallery">
-  </div>
+<div id="photoGallery" class="gallery">
+<div class="empty">Photos loading...</div>
+</div>
 
 </section>
-  
+
+
+<!-- VIDEO GALLERY -->
+
+<section id="video-gallery">
+
+<h2 class="section-title">
+🎬 Our Video Memories
+</h2>
+
+<p class="section-sub">
+हमारे यादगार वीडियो हमेशा सुरक्षित रहें।
+</p>
+
+<div id="videoGallery" class="gallery">
+<div class="empty">Videos loading...</div>
+</div>
+
+</section>
+
+
+<!-- FILE GALLERY -->
+
+<section id="file-gallery">
+
+<h2 class="section-title">
+📄 Our Files
+</h2>
+
+<p class="section-sub">
+PDF और documents एक जगह।
+</p>
+
+<div id="fileGallery" class="gallery">
+<div class="empty">Files loading...</div>
+</div>
+
+</section>
+
+
 <!-- SECRET -->
 
 <section id="secret">
@@ -698,7 +980,6 @@ Our Memories
 एक छोटा सा सवाल, तो बताओ की अब असली आसमान में कुल कितने तारे हैं..?
 </p>
 
-
 <input
 id="answer"
 type="password"
@@ -706,18 +987,15 @@ autocomplete="off"
 placeholder="Answer"
 >
 
-
 <button onclick="unlock()">
 UNLOCK MEMORY ✦
 </button>
-
 
 <div id="message"></div>
 
 </div>
 
 </section>
-
 
 
 <!-- STORY -->
@@ -727,7 +1005,6 @@ UNLOCK MEMORY ✦
 <h2 class="section-title">
 Our Story
 </h2>
-
 
 <div class="story">
 
@@ -752,7 +1029,6 @@ SHAFAHAD &amp; SHAMSHAD BHAI
 </section>
 
 
-
 <footer>
 
 ✦ TWO STARS • ONE FRIENDSHIP ✦
@@ -764,10 +1040,7 @@ SHAFAHAD &amp; SHAMSHAD BHAI
 </footer>
 
 
-
-<!-- ============================= -->
-<!-- SECRET SURPRISE POPUP -->
-<!-- ============================= -->
+<!-- SECRET SURPRISE -->
 
 <div id="surprise">
 
@@ -784,17 +1057,11 @@ SHAFAHAD &amp; SHAMSHAD BHAI
 
 </div>
 
-
-<!-- SURPRISE PHOTO -->
-
 <img
 class="surprise-photo"
-src="https://ansarishafahad95-lab.github.io/TWO-STARS-FRIENDSHIP/surprise.jpg"
+src="surprise.jpg"
 alt="A Special Memory"
 >
-
-
-<!-- GOOGLE DRIVE SURPRISE VIDEO -->
 
 <iframe
 class="surprise-video"
@@ -803,14 +1070,12 @@ allow="autoplay; fullscreen"
 allowfullscreen>
 </iframe>
 
-
 <div class="surprise-sub" style="margin-top:22px;margin-bottom:0;">
 
 SHAFAHAD ❤️ SHAMSHAD BHAI<br>
 दो सच्चे दोस्तों की दोस्ती हमेशा ऐसी ही रहे।
 
 </div>
-
 
 <button
 class="close-btn"
@@ -824,11 +1089,1002 @@ CLOSE ✦
 </div>
 
 
+<!-- MEDIA VIEWER -->
+
+<div id="viewer">
+
+<div class="viewer-content">
+
+<button
+class="viewer-close"
+onclick="closeViewer()"
+>
+×
+</button>
+
+<button
+id="prevBtn"
+class="viewer-nav"
+onclick="previousMedia()"
+>
+‹
+</button>
+
+<button
+id="nextBtn"
+class="viewer-nav"
+onclick="nextMedia()"
+>
+›
+</button>
+
+<img
+id="viewerImage"
+style="display:none"
+alt="Memory"
+>
+
+<video
+id="viewerVideo"
+style="display:none"
+controls
+playsinline
+></video>
+
+<div class="viewer-controls">
+
+<button
+class="viewer-btn"
+onclick="zoomOut()"
+>
+− Zoom
+</button>
+
+<button
+class="viewer-btn"
+onclick="zoomIn()"
+>
++ Zoom
+</button>
+
+<button
+class="viewer-btn"
+onclick="resetZoom()"
+>
+↺ Reset
+</button>
+
+<button
+class="viewer-btn"
+onclick="downloadCurrent()"
+>
+⬇ Download
+</button>
+
+<button
+class="viewer-btn"
+onclick="shareCurrent()"
+>
+📤 Share
+</button>
+
+<button
+class="viewer-btn"
+onclick="toggleFavorite()"
+id="favoriteBtn"
+>
+♡ Favorite
+</button>
+
+</div>
+
+<div id="viewerCounter">
+</div>
+
+</div>
+
+</div>
+
 
 <script>
 
 /* ============================= */
-/* SECRET UNLOCK SYSTEM */
+/* GITHUB SETTINGS */
+/* ============================= */
+
+const GITHUB_USER =
+"ansarishafahad95-lab";
+
+const GITHUB_REPO =
+"TWO-STARS-FRIENDSHIP";
+
+const GITHUB_BRANCH =
+"main";
+
+
+/* ============================= */
+/* MEDIA SYSTEM */
+/* ============================= */
+
+let photoItems = [];
+let videoItems = [];
+let currentItems = [];
+let currentIndex = 0;
+let currentType = "";
+let zoomLevel = 1;
+
+const photoExtensions =
+["jpg","jpeg","png","gif","webp"];
+
+const videoExtensions =
+["mp4","webm","mov","m4v"];
+
+const fileExtensions =
+[
+  "pdf",
+  "doc",
+  "docx",
+  "txt",
+  "ppt",
+  "pptx",
+  "xls",
+  "xlsx"
+];
+
+
+function apiURL(path){
+
+  return
+  "https://api.github.com/repos/" +
+  GITHUB_USER + "/" +
+  GITHUB_REPO +
+  "/contents/" +
+  path +
+  "?ref=" +
+  GITHUB_BRANCH;
+
+}
+
+
+async function getFolder(path){
+
+  try{
+
+    const response =
+    await fetch(apiURL(path));
+
+    if(!response.ok){
+
+      throw new Error(
+        "GitHub folder unavailable"
+      );
+
+    }
+
+    return await response.json();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    return [];
+
+  }
+
+}
+
+
+/* ============================= */
+/* LOAD PHOTOS */
+/* ============================= */
+
+async function loadPhotos(){
+
+  const gallery =
+  document.getElementById(
+    "photoGallery"
+  );
+
+  const files =
+  await getFolder("photos");
+
+  photoItems =
+  files.filter(function(file){
+
+    if(file.type !== "file"){
+      return false;
+    }
+
+    const extension =
+    file.name
+    .split(".")
+    .pop()
+    .toLowerCase();
+
+    return photoExtensions
+    .includes(extension);
+
+  });
+
+  gallery.innerHTML = "";
+
+  if(photoItems.length === 0){
+
+    gallery.innerHTML =
+    '<div class="empty">अभी कोई photo नहीं है।</div>';
+
+    return;
+
+  }
+
+
+  photoItems.forEach(
+    function(file,index){
+
+      const item =
+      document.createElement("div");
+
+      item.className =
+      "gallery-item";
+
+      const img =
+      document.createElement("img");
+
+      img.src =
+      file.download_url;
+
+      img.alt =
+      file.name;
+
+      img.loading =
+      "lazy";
+
+      item.appendChild(img);
+
+      item.onclick =
+      function(){
+
+        openViewer(
+          photoItems,
+          index,
+          "photo"
+        );
+
+      };
+
+      gallery.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* ============================= */
+/* LOAD VIDEOS */
+/* ============================= */
+
+async function loadVideos(){
+
+  const gallery =
+  document.getElementById(
+    "videoGallery"
+  );
+
+  const files =
+  await getFolder("videos");
+
+  videoItems =
+  files.filter(function(file){
+
+    if(file.type !== "file"){
+      return false;
+    }
+
+    const extension =
+    file.name
+    .split(".")
+    .pop()
+    .toLowerCase();
+
+    return videoExtensions
+    .includes(extension);
+
+  });
+
+  gallery.innerHTML = "";
+
+  if(videoItems.length === 0){
+
+    gallery.innerHTML =
+    '<div class="empty">अभी कोई video नहीं है।</div>';
+
+    return;
+
+  }
+
+
+  videoItems.forEach(
+    function(file,index){
+
+      const item =
+      document.createElement("div");
+
+      item.className =
+      "gallery-item";
+
+      const video =
+      document.createElement("video");
+
+      video.src =
+      file.download_url;
+
+      video.muted =
+      true;
+
+      video.preload =
+      "metadata";
+
+      video.playsInline =
+      true;
+
+      item.appendChild(video);
+
+      item.onclick =
+      function(){
+
+        openViewer(
+          videoItems,
+          index,
+          "video"
+        );
+
+      };
+
+      gallery.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* ============================= */
+/* LOAD FILES */
+/* ============================= */
+
+async function loadFiles(){
+
+  const gallery =
+  document.getElementById(
+    "fileGallery"
+  );
+
+  const files =
+  await getFolder("files");
+
+  const fileItems =
+  files.filter(function(file){
+
+    if(file.type !== "file"){
+      return false;
+    }
+
+    const extension =
+    file.name
+    .split(".")
+    .pop()
+    .toLowerCase();
+
+    return fileExtensions
+    .includes(extension);
+
+  });
+
+  gallery.innerHTML = "";
+
+  if(fileItems.length === 0){
+
+    gallery.innerHTML =
+    '<div class="empty">अभी कोई PDF या document नहीं है।</div>';
+
+    return;
+
+  }
+
+
+  fileItems.forEach(
+    function(file){
+
+      const item =
+      document.createElement("a");
+
+      item.className =
+      "gallery-item file-card";
+
+      item.href =
+      file.download_url;
+
+      item.target =
+      "_blank";
+
+      item.rel =
+      "noopener";
+
+      let icon =
+      "📄";
+
+      const extension =
+      file.name
+      .split(".")
+      .pop()
+      .toLowerCase();
+
+      if(extension === "pdf"){
+        icon = "📕";
+      }
+
+      if(
+        extension === "doc" ||
+        extension === "docx"
+      ){
+        icon = "📝";
+      }
+
+      item.innerHTML =
+      '<div class="file-icon">' +
+      icon +
+      '</div>' +
+      '<div class="file-name">' +
+      escapeHTML(file.name) +
+      '</div>';
+
+      gallery.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* ============================= */
+/* VIEWER */
+/* ============================= */
+
+function openViewer(
+  items,
+  index,
+  type
+){
+
+  currentItems =
+  items;
+
+  currentIndex =
+  index;
+
+  currentType =
+  type;
+
+  zoomLevel =
+  1;
+
+  const viewer =
+  document.getElementById(
+    "viewer"
+  );
+
+  viewer.style.display =
+  "flex";
+
+  showCurrentMedia();
+
+}
+
+
+function showCurrentMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  const file =
+  currentItems[currentIndex];
+
+  const image =
+  document.getElementById(
+    "viewerImage"
+  );
+
+  const video =
+  document.getElementById(
+    "viewerVideo"
+  );
+
+  if(currentType === "photo"){
+
+    video.pause();
+
+    video.removeAttribute("src");
+
+    video.style.display =
+    "none";
+
+    image.style.display =
+    "block";
+
+    image.src =
+    file.download_url;
+
+    image.style.transform =
+    "scale(1)";
+
+  }
+
+  else{
+
+    image.style.display =
+    "none";
+
+    image.removeAttribute("src");
+
+    video.style.display =
+    "block";
+
+    video.src =
+    file.download_url;
+
+    video.load();
+
+  }
+
+  updateCounter();
+
+  updateFavoriteButton();
+
+}
+
+
+function closeViewer(){
+
+  const viewer =
+  document.getElementById(
+    "viewer"
+  );
+
+  const video =
+  document.getElementById(
+    "viewerVideo"
+  );
+
+  video.pause();
+
+  viewer.style.display =
+  "none";
+
+}
+
+
+function nextMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex =
+  (
+    currentIndex + 1
+  ) %
+  currentItems.length;
+
+  zoomLevel =
+  1;
+
+  showCurrentMedia();
+
+}
+
+
+function previousMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex =
+  (
+    currentIndex -
+    1 +
+    currentItems.length
+  ) %
+  currentItems.length;
+
+  zoomLevel =
+  1;
+
+  showCurrentMedia();
+
+}
+
+
+function updateCounter(){
+
+  document.getElementById(
+    "viewerCounter"
+  ).textContent =
+  (
+    currentIndex + 1
+  ) +
+  " / " +
+  currentItems.length +
+  " • " +
+  currentItems[currentIndex].name;
+
+}
+
+
+/* ============================= */
+/* ZOOM */
+/* ============================= */
+
+function zoomIn(){
+
+  if(currentType !== "photo"){
+    return;
+  }
+
+  zoomLevel =
+  Math.min(
+    zoomLevel + .2,
+    3
+  );
+
+  document.getElementById(
+    "viewerImage"
+  ).style.transform =
+  "scale(" +
+  zoomLevel +
+  ")";
+
+}
+
+
+function zoomOut(){
+
+  if(currentType !== "photo"){
+    return;
+  }
+
+  zoomLevel =
+  Math.max(
+    zoomLevel - .2,
+    .5
+  );
+
+  document.getElementById(
+    "viewerImage"
+  ).style.transform =
+  "scale(" +
+  zoomLevel +
+  ")";
+
+}
+
+
+function resetZoom(){
+
+  zoomLevel =
+  1;
+
+  document.getElementById(
+    "viewerImage"
+  ).style.transform =
+  "scale(1)";
+
+}
+
+
+/* ============================= */
+/* DOWNLOAD */
+/* ============================= */
+
+function downloadCurrent(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  const file =
+  currentItems[currentIndex];
+
+  const link =
+  document.createElement("a");
+
+  link.href =
+  file.download_url;
+
+  link.download =
+  file.name;
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+}
+
+
+/* ============================= */
+/* SHARE */
+/* ============================= */
+
+async function shareCurrent(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  const file =
+  currentItems[currentIndex];
+
+  const shareData = {
+
+    title:
+    file.name,
+
+    text:
+    "TWO STARS • ONE FRIENDSHIP",
+
+    url:
+    file.html_url
+
+  };
+
+
+  if(
+    navigator.share
+  ){
+
+    try{
+
+      await navigator.share(
+        shareData
+      );
+
+    }
+
+    catch(error){
+
+      console.log(
+        "Share cancelled"
+      );
+
+    }
+
+  }
+
+  else{
+
+    try{
+
+      await navigator.clipboard.writeText(
+        file.html_url
+      );
+
+      alert(
+        "Link copied!"
+      );
+
+    }
+
+    catch(error){
+
+      alert(
+        "Share is not supported."
+      );
+
+    }
+
+  }
+
+}
+
+
+/* ============================= */
+/* FAVORITE */
+/* ============================= */
+
+function favoriteKey(){
+
+  if(!currentItems.length){
+    return "";
+  }
+
+  return (
+    "favorite_" +
+    currentItems[currentIndex].path
+  );
+
+}
+
+
+function toggleFavorite(){
+
+  const key =
+  favoriteKey();
+
+  if(!key){
+    return;
+  }
+
+  if(
+    localStorage.getItem(key)
+  ){
+
+    localStorage.removeItem(key);
+
+  }
+
+  else{
+
+    localStorage.setItem(
+      key,
+      "true"
+    );
+
+  }
+
+  updateFavoriteButton();
+
+}
+
+
+function updateFavoriteButton(){
+
+  const button =
+  document.getElementById(
+    "favoriteBtn"
+  );
+
+  const key =
+  favoriteKey();
+
+  if(
+    key &&
+    localStorage.getItem(key)
+  ){
+
+    button.textContent =
+    "♥ Favorite";
+
+  }
+
+  else{
+
+    button.textContent =
+    "♡ Favorite";
+
+  }
+
+}
+
+
+/* ============================= */
+/* SWIPE */
+/* ============================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const viewer =
+document.getElementById(
+  "viewer"
+);
+
+viewer.addEventListener(
+  "touchstart",
+  function(event){
+
+    touchStartX =
+    event.changedTouches[0].screenX;
+
+  },
+  {passive:true}
+);
+
+
+viewer.addEventListener(
+  "touchend",
+  function(event){
+
+    touchEndX =
+    event.changedTouches[0].screenX;
+
+    const difference =
+    touchEndX -
+    touchStartX;
+
+    if(
+      Math.abs(difference) < 50
+    ){
+      return;
+    }
+
+    if(
+      difference < 0
+    ){
+
+      nextMedia();
+
+    }
+
+    else{
+
+      previousMedia();
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* ============================= */
+/* KEYBOARD */
+/* ============================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    const viewer =
+    document.getElementById(
+      "viewer"
+    );
+
+    if(
+      viewer.style.display !== "flex"
+    ){
+      return;
+    }
+
+    if(event.key === "ArrowRight"){
+      nextMedia();
+    }
+
+    if(event.key === "ArrowLeft"){
+      previousMedia();
+    }
+
+    if(event.key === "Escape"){
+      closeViewer();
+    }
+
+  }
+);
+
+
+/* ============================= */
+/* HTML ESCAPE */
+/* ============================= */
+
+function escapeHTML(text){
+
+  return text
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+/* ============================= */
+/* SECRET UNLOCK */
 /* ============================= */
 
 function unlock(){
@@ -841,13 +2097,10 @@ function unlock(){
   .toLowerCase();
 
   const message =
-  document.getElementById("message");
+  document.getElementById(
+    "message"
+  );
 
-
-  /*
-    Correct answer:
-    1 / ek / एक
-  */
 
   if(
     answer === "1" ||
@@ -861,16 +2114,10 @@ function unlock(){
     message.style.color =
     "#f1d27b";
 
-
-    /*
-      कोई scroll नहीं।
-      सीधे premium surprise popup खुलेगा।
-    */
-
     document
     .getElementById("surprise")
-    .style.display = "flex";
-
+    .style.display =
+    "flex";
 
     document
     .getElementById("answer")
@@ -891,18 +2138,15 @@ function unlock(){
 }
 
 
-/* CLOSE SURPRISE */
-
 function closeSurprise(){
 
   document
   .getElementById("surprise")
-  .style.display = "none";
+  .style.display =
+  "none";
 
 }
 
-
-/* ENTER KEY */
 
 document
 .getElementById("answer")
@@ -937,11 +2181,13 @@ function resize(){
 
   width =
   canvas.width =
-  innerWidth * devicePixelRatio;
+  innerWidth *
+  devicePixelRatio;
 
   height =
   canvas.height =
-  innerHeight * devicePixelRatio;
+  innerHeight *
+  devicePixelRatio;
 
   canvas.style.width =
   innerWidth+"px";
@@ -956,7 +2202,9 @@ function resize(){
       length:
       Math.min(
         160,
-        Math.floor(innerWidth/7)
+        Math.floor(
+          innerWidth/7
+        )
       )
     },
 
@@ -964,13 +2212,17 @@ function resize(){
 
       return{
 
-        x:Math.random()*width,
+        x:
+        Math.random()*width,
 
-        y:Math.random()*height,
+        y:
+        Math.random()*height,
 
         r:
-        (Math.random()*1.4+.25)
-        *devicePixelRatio,
+        (
+          Math.random()*1.4+.25
+        ) *
+        devicePixelRatio,
 
         opacity:
         Math.random()*.6+.2,
@@ -999,44 +2251,49 @@ function animate(time){
   );
 
 
-  stars.forEach(function(star){
+  stars.forEach(
+    function(star){
 
-    star.phase += star.speed;
+      star.phase +=
+      star.speed;
 
-    const opacity =
-    star.opacity *
-    (
-      .55 +
-      .45 *
-      Math.sin(
-        star.phase +
-        time*.001
-      )
-    );
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-      star.x,
-      star.y,
-      star.r,
-      0,
-      Math.PI*2
-    );
+      const opacity =
+      star.opacity *
+      (
+        .55 +
+        .45 *
+        Math.sin(
+          star.phase +
+          time*.001
+        )
+      );
 
 
-    ctx.fillStyle =
-    "rgba(220,232,255,"+
-    opacity+
-    ")";
+      ctx.beginPath();
 
-    ctx.fill();
+      ctx.arc(
+        star.x,
+        star.y,
+        star.r,
+        0,
+        Math.PI*2
+      );
 
-  });
+
+      ctx.fillStyle =
+      "rgba(220,232,255,"+
+      opacity+
+      ")";
+
+      ctx.fill();
+
+    }
+  );
 
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(
+    animate
+  );
 
 }
 
@@ -1051,6 +2308,15 @@ resize();
 requestAnimationFrame(
   animate
 );
+
+
+/* ============================= */
+/* AUTO LOAD EVERYTHING */
+/* ============================= */
+
+loadPhotos();
+loadVideos();
+loadFiles();
 
 </script>
 
