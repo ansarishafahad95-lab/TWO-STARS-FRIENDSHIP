@@ -1,0 +1,68 @@
+name: Auto Sort Uploads
+
+on:
+  push:
+    paths:
+      - "uploads/**"
+
+permissions:
+  contents: write
+
+jobs:
+  sort-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sort uploaded files
+        shell: bash
+        run: |
+          set -e
+
+          mkdir -p photos
+          mkdir -p videos
+          mkdir -p files
+
+          shopt -s nullglob nocaseglob
+
+          for file in uploads/*; do
+            [ -f "$file" ] || continue
+
+            name=$(basename "$file")
+            ext="${name##*.}"
+
+            case "$ext" in
+              jpg|jpeg|png|gif|webp|bmp|heic)
+                mv "$file" "photos/$name"
+                ;;
+
+              mp4|mov|avi|mkv|webm|m4v)
+                mv "$file" "videos/$name"
+                ;;
+
+              pdf|doc|docx|txt|xls|xlsx|ppt|pptx|zip)
+                mv "$file" "files/$name"
+                ;;
+
+              *)
+                mv "$file" "files/$name"
+                ;;
+            esac
+          done
+
+      - name: Commit sorted files
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add uploads photos videos files
+
+          if git diff --cached --quiet; then
+            echo "No files to sort."
+          else
+            git commit -m "Auto-sort uploaded files"
+            git push
+          fi
