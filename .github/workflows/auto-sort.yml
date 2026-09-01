@@ -26,6 +26,7 @@ jobs:
           mkdir -p photos
           mkdir -p videos
           mkdir -p files
+          mkdir -p uploads
 
           shopt -s nullglob nocaseglob
 
@@ -57,10 +58,12 @@ jobs:
       - name: Commit sorted files
         shell: bash
         run: |
+          set -e
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add uploads photos videos files
+          git add -A
 
           if git diff --cached --quiet; then
             echo "No files to sort."
