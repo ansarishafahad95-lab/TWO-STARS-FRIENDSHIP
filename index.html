@@ -6,659 +6,690 @@
 <title>TWO STARS • ONE FRIENDSHIP</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+html{
+  scroll-behavior:smooth
+}
+
 body{
-font-family:Georgia,"Times New Roman",serif;
-background:#030817;
-color:#fff;
-overflow-x:hidden
+  font-family:Georgia,"Times New Roman",serif;
+  background:#030817;
+  color:#fff;
+  overflow-x:hidden
 }
 
 body:before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:20;
-background:radial-gradient(
-circle at 50% 20%,
-rgba(40,90,180,.16),
-transparent 35%
-)
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
+  background:radial-gradient(
+    circle at 50% 20%,
+    rgba(40,90,180,.16),
+    transparent 35%
+  )
 }
 
 canvas{
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
-z-index:0;
-pointer-events:none
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none
 }
 
 nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-z-index:30;
-height:62px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 6%;
-background:rgba(2,7,20,.48);
-backdrop-filter:blur(16px);
-border-bottom:1px solid rgba(255,255,255,.08)
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:30;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  background:rgba(2,7,20,.48);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08)
 }
 
 .logo{
-letter-spacing:4px;
-font-size:12px;
-font-weight:bold;
-color:#f7d88b
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:bold;
+  color:#f7d88b
 }
 
 nav a{
-color:#dce4f8;
-text-decoration:none;
-font-size:10px;
-margin-left:20px;
-letter-spacing:1px
+  color:#dce4f8;
+  text-decoration:none;
+  font-size:10px;
+  margin-left:20px;
+  letter-spacing:1px
 }
 
 .hero{
-min-height:100vh;
-position:relative;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:90px 18px 60px
+  min-height:100vh;
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 18px 60px
 }
 
 .hero-card{
-width:min(1120px,94vw);
-padding:28px;
-border-radius:30px;
-background:rgba(7,14,34,.48);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:
-0 30px 100px rgba(0,0,0,.55),
-inset 0 1px rgba(255,255,255,.08);
-backdrop-filter:blur(10px)
+  width:min(1120px,94vw);
+  padding:28px;
+  border-radius:30px;
+  background:rgba(7,14,34,.48);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55),
+    inset 0 1px rgba(255,255,255,.08);
+  backdrop-filter:blur(10px)
 }
 
 .kicker{
-text-align:center;
-color:#e8c875;
-font-size:11px;
-letter-spacing:5px;
-margin-bottom:12px
+  text-align:center;
+  color:#e8c875;
+  font-size:11px;
+  letter-spacing:5px;
+  margin-bottom:12px
 }
 
 h1{
-text-align:center;
-font-size:clamp(38px,8vw,86px);
-line-height:.94;
-letter-spacing:3px;
-text-shadow:0 8px 35px #000;
-margin-bottom:25px
+  text-align:center;
+  font-size:clamp(38px,8vw,86px);
+  line-height:.94;
+  letter-spacing:3px;
+  text-shadow:0 8px 35px #000;
+  margin-bottom:25px
 }
 
 .subtitle{
-text-align:center;
-font-size:clamp(15px,2vw,20px);
-line-height:1.8;
-color:#f2f4fa;
-margin:0 auto 26px;
-max-width:700px
+  text-align:center;
+  font-size:clamp(15px,2vw,20px);
+  line-height:1.8;
+  color:#f2f4fa;
+  margin:0 auto 26px;
+  max-width:700px
 }
 
 .photo-wrap{
-position:relative;
-overflow:hidden;
-border-radius:22px;
-border:1px solid rgba(255,255,255,.18);
-box-shadow:0 25px 70px rgba(0,0,0,.65);
-background:#000
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 25px 70px rgba(0,0,0,.65);
+  background:#000
 }
 
 .photo-wrap img{
-display:block;
-width:100%;
-height:auto;
-max-height:72vh;
-object-fit:contain
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:72vh;
+  object-fit:contain
 }
 
 .badge{
-position:absolute;
-left:18px;
-bottom:18px;
-padding:10px 14px;
-border-radius:999px;
-background:rgba(0,0,0,.48);
-border:1px solid rgba(255,255,255,.15);
-font:10px Arial,sans-serif;
-letter-spacing:2px;
-color:#fff;
-backdrop-filter:blur(8px)
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(0,0,0,.48);
+  border:1px solid rgba(255,255,255,.15);
+  font:10px Arial,sans-serif;
+  letter-spacing:2px;
+  color:#fff;
+  backdrop-filter:blur(8px)
 }
 
 section{
-position:relative;
-z-index:2;
-padding:100px 7%
+  position:relative;
+  z-index:2;
+  padding:100px 7%
 }
 
 .section-title{
-text-align:center;
-font-size:34px;
-margin-bottom:34px
+  text-align:center;
+  font-size:34px;
+  margin-bottom:34px
 }
 
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-max-width:1000px;
-margin:auto
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  max-width:1000px;
+  margin:auto
 }
 
 .card{
-padding:28px;
-border-radius:22px;
-background:
-linear-gradient(
-145deg,
-rgba(20,31,63,.75),
-rgba(7,13,30,.7)
-);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 45px rgba(0,0,0,.3);
-transform:translateZ(0);
-transition:.3s
+  padding:28px;
+  border-radius:22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,31,63,.75),
+      rgba(7,13,30,.7)
+    );
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 18px 45px rgba(0,0,0,.3);
+  transform:translateZ(0);
+  transition:.3s
 }
 
 .card:hover{
-transform:translateY(-7px) scale(1.01)
+  transform:translateY(-7px) scale(1.01)
 }
 
 .card h3{
-margin-bottom:10px;
-font-size:18px;
-color:#f5d987
+  margin-bottom:10px;
+  font-size:18px;
+  color:#f5d987
 }
 
 .card p{
-font:13px/1.8 Arial,sans-serif;
-color:#cbd4e8
+  font:13px/1.8 Arial,sans-serif;
+  color:#cbd4e8
 }
 
 .secret{
-max-width:620px;
-margin:auto;
-text-align:center;
-padding:36px;
-border-radius:26px;
-background:rgba(13,22,46,.76);
-border:1px solid rgba(238,207,125,.22);
-box-shadow:0 25px 70px rgba(0,0,0,.45)
+  max-width:620px;
+  margin:auto;
+  text-align:center;
+  padding:36px;
+  border-radius:26px;
+  background:rgba(13,22,46,.76);
+  border:1px solid rgba(238,207,125,.22);
+  box-shadow:0 25px 70px rgba(0,0,0,.45)
 }
 
 input{
-width:100%;
-margin-top:18px;
-padding:14px 16px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.16);
-background:#050a18;
-color:white;
-outline:none;
-text-align:center;
-font-size:16px
+  width:100%;
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.16);
+  background:#050a18;
+  color:white;
+  outline:none;
+  text-align:center;
+  font-size:16px
 }
 
 button{
-margin-top:12px;
-padding:12px 20px;
-border:1px solid #d8bb69;
-border-radius:10px;
-background:linear-gradient(145deg,#d8bb69,#8e6b22);
-color:#080b12;
-font-weight:bold;
-cursor:pointer
+  margin-top:12px;
+  padding:12px 20px;
+  border:1px solid #d8bb69;
+  border-radius:10px;
+  background:
+    linear-gradient(145deg,#d8bb69,#8e6b22);
+  color:#080b12;
+  font-weight:bold;
+  cursor:pointer
 }
 
 #msg{
-min-height:24px;
-margin-top:14px;
-font:12px Arial,sans-serif;
-color:#dbe5ff
+  min-height:24px;
+  margin-top:14px;
+  font:12px Arial,sans-serif;
+  color:#dbe5ff
 }
 
 .story{
-max-width:850px;
-margin:auto;
-text-align:center;
-color:#d7def0;
-font-size:16px;
-line-height:2
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  color:#d7def0;
+  font-size:16px;
+  line-height:2
 }
 
 footer{
-position:relative;
-z-index:2;
-text-align:center;
-padding:45px 20px 70px;
-color:#8e9ab5;
-font:10px Arial,sans-serif;
-letter-spacing:2px
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:45px 20px 70px;
+  color:#8e9ab5;
+  font:10px Arial,sans-serif;
+  letter-spacing:2px
 }
 
 @media(max-width:600px){
-nav a{display:none}
-.hero-card{padding:15px}
-h1{font-size:42px}
-.photo-wrap{border-radius:16px}
-section{padding:70px 6%}
+  nav a{
+    display:none
+  }
+
+  .hero-card{
+    padding:15px
+  }
+
+  h1{
+    font-size:42px
+  }
+
+  .photo-wrap{
+    border-radius:16px
+  }
+
+  section{
+    padding:70px 6%
+  }
 }
 
-/* MAIN FOLDER + PRIVATE SPACE */
+
+/* =========================================================
+   MAIN FOLDER + PRIVATE SPACE
+   ========================================================= */
 
 .memory-folder{
-font-family:inherit;
-text-align:left;
-cursor:pointer;
-margin:0;
-appearance:none;
--webkit-appearance:none
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+  margin:0;
+  appearance:none;
+  -webkit-appearance:none
 }
 
 .memory-folder:focus{
-outline:2px solid rgba(239,210,124,.5);
-outline-offset:2px
+  outline:2px solid rgba(239,210,124,.5);
+  outline-offset:2px
 }
 
 #mainFolderPopup,
 #privateDashboard,
 #letterModal{
-display:none;
-position:fixed;
-inset:0;
-z-index:150;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.86);
-backdrop-filter:blur(14px)
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:150;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(14px)
 }
 
 .main-folder-box,
 .private-box{
-width:min(1050px,95vw);
-max-height:90vh;
-overflow-y:auto;
-padding:25px;
-border-radius:28px;
-background:
-linear-gradient(
-145deg,
-rgba(18,29,58,.98),
-rgba(3,9,25,.99)
-);
-border:1px solid rgba(240,210,120,.35);
-box-shadow:
-0 30px 120px rgba(0,0,0,.85),
-0 0 60px rgba(100,150,255,.12);
-animation:folderOpen .4s ease
+  width:min(1050px,95vw);
+  max-height:90vh;
+  overflow-y:auto;
+  padding:25px;
+  border-radius:28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,29,58,.98),
+      rgba(3,9,25,.99)
+    );
+  border:1px solid rgba(240,210,120,.35);
+  box-shadow:
+    0 30px 120px rgba(0,0,0,.85),
+    0 0 60px rgba(100,150,255,.12);
+  animation:folderOpen .4s ease
 }
 
 .folder-title,
 .private-title{
-text-align:center;
-color:#f2d27b;
-font-size:clamp(24px,5vw,40px);
-margin-bottom:20px
+  text-align:center;
+  color:#f2d27b;
+  font-size:clamp(24px,5vw,40px);
+  margin-bottom:20px
 }
 
 .folder-content{
-min-height:120px
+  min-height:120px
 }
 
 .folder-close,
 .private-close,
 .letter-close{
-display:block;
-margin:20px auto 0;
-background:transparent;
-color:#efd27c;
-border:1px solid rgba(239,210,124,.55);
-padding:10px 25px;
-border-radius:10px;
-cursor:pointer
+  display:block;
+  margin:20px auto 0;
+  background:transparent;
+  color:#efd27c;
+  border:1px solid rgba(239,210,124,.55);
+  padding:10px 25px;
+  border-radius:10px;
+  cursor:pointer
 }
 
 @keyframes folderOpen{
-from{
-opacity:0;
-transform:scale(.82) translateY(25px)
-}
-to{
-opacity:1;
-transform:scale(1) translateY(0)
-}
+  from{
+    opacity:0;
+    transform:scale(.82) translateY(25px)
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0)
+  }
 }
 
 .private-box{
-width:min(1100px,96vw)
+  width:min(1100px,96vw)
 }
 
 .private-head{
-text-align:center;
-margin-bottom:22px
+  text-align:center;
+  margin-bottom:22px
 }
 
 .private-head h2{
-color:#f4d47d;
-font-size:clamp(25px,5vw,44px)
+  color:#f4d47d;
+  font-size:clamp(25px,5vw,44px)
 }
 
 .private-head p{
-font-family:Arial,sans-serif;
-color:#b9c5dc;
-margin-top:8px
+  font-family:Arial,sans-serif;
+  color:#b9c5dc;
+  margin-top:8px
 }
 
 .private-grid{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(190px,1fr));
-gap:15px
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(190px,1fr));
+  gap:15px
 }
 
 .private-tile{
-padding:25px 18px;
-border-radius:20px;
-background:
-linear-gradient(
-145deg,
-rgba(35,30,75,.9),
-rgba(6,12,30,.92)
-);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 16px 45px rgba(0,0,0,.35);
-cursor:pointer;
-transition:.3s;
-text-align:center
+  padding:25px 18px;
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35,30,75,.9),
+      rgba(6,12,30,.92)
+    );
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 16px 45px rgba(0,0,0,.35);
+  cursor:pointer;
+  transition:.3s;
+  text-align:center
 }
 
 .private-tile:hover{
-transform:translateY(-5px);
-border-color:rgba(239,210,124,.45)
+  transform:translateY(-5px);
+  border-color:rgba(239,210,124,.45)
 }
 
 .private-icon{
-font-size:40px;
-margin-bottom:10px
+  font-size:40px;
+  margin-bottom:10px
 }
 
 .private-tile h3{
-color:#f1d37c;
-margin-bottom:8px
+  color:#f1d37c;
+  margin-bottom:8px
 }
 
 .private-tile p{
-font-family:Arial,sans-serif;
-color:#bdc8dc;
-font-size:12px
+  font-family:Arial,sans-serif;
+  color:#bdc8dc;
+  font-size:12px
 }
 
 .letter-wrap{
-width:min(800px,94vw);
-max-height:92vh;
-overflow:auto;
-padding:22px
+  width:min(800px,94vw);
+  max-height:92vh;
+  overflow:auto;
+  padding:22px
 }
 
 .letter-page{
-background:#f5ecd7;
-color:#382b1d;
-min-height:900px;
-padding:55px 50px;
-position:relative;
-box-shadow:0 30px 100px rgba(0,0,0,.8);
-border:10px solid #d1b46b;
-border-radius:5px;
-background-image:
-radial-gradient(
-circle at 20% 15%,
-rgba(200,160,70,.14),
-transparent 20%
-),
-radial-gradient(
-circle at 80% 85%,
-rgba(200,160,70,.12),
-transparent 22%
-)
+  background:#f5ecd7;
+  color:#382b1d;
+  min-height:900px;
+  padding:55px 50px;
+  position:relative;
+  box-shadow:0 30px 100px rgba(0,0,0,.8);
+  border:10px solid #d1b46b;
+  border-radius:5px;
+  background-image:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(200,160,70,.14),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 80% 85%,
+      rgba(200,160,70,.12),
+      transparent 22%
+    )
 }
 
 .letter-page:before{
-content:"✦  ✧  ✦  ✧  ✦";
-position:absolute;
-top:18px;
-left:0;
-right:0;
-text-align:center;
-color:#9b762e;
-font-size:20px;
-letter-spacing:8px
+  content:"✦  ✧  ✦  ✧  ✦";
+  position:absolute;
+  top:18px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#9b762e;
+  font-size:20px;
+  letter-spacing:8px
 }
 
 .letter-page:after{
-content:"✦  ✧  ✦  ✧  ✦";
-position:absolute;
-bottom:18px;
-left:0;
-right:0;
-text-align:center;
-color:#9b762e;
-font-size:20px;
-letter-spacing:8px
+  content:"✦  ✧  ✦  ✧  ✦";
+  position:absolute;
+  bottom:18px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#9b762e;
+  font-size:20px;
+  letter-spacing:8px
 }
 
 .letter-head{
-text-align:center;
-color:#87631e;
-font-size:30px;
-margin:18px 0 30px
+  text-align:center;
+  color:#87631e;
+  font-size:30px;
+  margin:18px 0 30px
 }
 
 .letter-page p{
-font-size:18px;
-line-height:2;
-margin-bottom:18px
+  font-size:18px;
+  line-height:2;
+  margin-bottom:18px
 }
 
 .letter-sign{
-text-align:right;
-font-size:20px;
-color:#74521b;
-margin-top:35px
+  text-align:right;
+  font-size:20px;
+  color:#74521b;
+  margin-top:35px
 }
 
-/* SURPRISE + MEDIA VIEWER */
+
+/* =========================================================
+   SURPRISE + MEDIA VIEWER
+   ========================================================= */
 
 #surprise{
-display:none;
-position:fixed;
-inset:0;
-z-index:180;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.84);
-backdrop-filter:blur(12px)
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:180;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.84);
+  backdrop-filter:blur(12px)
 }
 
 .surprise-box{
-width:min(850px,94vw);
-max-height:90vh;
-overflow-y:auto;
-padding:28px;
-text-align:center;
-border-radius:28px;
-background:
-linear-gradient(
-145deg,
-rgba(18,29,58,.97),
-rgba(3,9,25,.98)
-);
-border:1px solid rgba(240,210,120,.35);
-box-shadow:
-0 30px 120px rgba(0,0,0,.8),
-0 0 60px rgba(100,150,255,.12);
-animation:folderOpen .55s ease
+  width:min(850px,94vw);
+  max-height:90vh;
+  overflow-y:auto;
+  padding:28px;
+  text-align:center;
+  border-radius:28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,29,58,.97),
+      rgba(3,9,25,.98)
+    );
+  border:1px solid rgba(240,210,120,.35);
+  box-shadow:
+    0 30px 120px rgba(0,0,0,.8),
+    0 0 60px rgba(100,150,255,.12);
+  animation:folderOpen .55s ease
 }
 
 .surprise-title{
-color:#f2d27b;
-font-size:clamp(24px,5vw,42px);
-letter-spacing:2px;
-margin-bottom:10px
+  color:#f2d27b;
+  font-size:clamp(24px,5vw,42px);
+  letter-spacing:2px;
+  margin-bottom:10px
 }
 
 .surprise-sub{
-color:#dce5f7;
-font-family:Arial,sans-serif;
-font-size:14px;
-line-height:1.8;
-margin-bottom:22px
+  color:#dce5f7;
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  line-height:1.8;
+  margin-bottom:22px
 }
 
 .surprise-photo{
-width:100%;
-border-radius:20px;
-display:block;
-border:1px solid rgba(255,255,255,.15);
-box-shadow:0 20px 60px rgba(0,0,0,.65);
-margin-bottom:20px
+  width:100%;
+  border-radius:20px;
+  display:block;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 20px 60px rgba(0,0,0,.65);
+  margin-bottom:20px
 }
 
 .surprise-video{
-width:100%;
-height:450px;
-border:none;
-border-radius:18px;
-background:#000;
-margin-top:10px
+  width:100%;
+  height:450px;
+  border:none;
+  border-radius:18px;
+  background:#000;
+  margin-top:10px
 }
 
 .close-btn{
-margin-top:22px;
-background:transparent;
-color:#efd27c;
-border:1px solid rgba(239,210,124,.55);
-padding:10px 24px;
-border-radius:10px;
-cursor:pointer
+  margin-top:22px;
+  background:transparent;
+  color:#efd27c;
+  border:1px solid rgba(239,210,124,.55);
+  padding:10px 24px;
+  border-radius:10px;
+  cursor:pointer
 }
 
 #viewer{
-display:none;
-position:fixed;
-inset:0;
-z-index:250;
-background:rgba(0,0,0,.94);
-align-items:center;
-justify-content:center;
-padding:20px;
-touch-action:none
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:250;
+  background:rgba(0,0,0,.94);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  touch-action:none
 }
 
 .viewer-content{
-width:min(1000px,96vw);
-height:min(88vh,900px);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-position:relative
+  width:min(1000px,96vw);
+  height:min(88vh,900px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative
 }
 
 #viewerImage,
 #viewerVideo{
-max-width:100%;
-max-height:72vh;
-border-radius:16px;
-object-fit:contain;
-box-shadow:0 20px 100px rgba(0,0,0,.8)
+  max-width:100%;
+  max-height:72vh;
+  border-radius:16px;
+  object-fit:contain;
+  box-shadow:0 20px 100px rgba(0,0,0,.8)
 }
 
 .viewer-controls{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-margin-top:15px
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-top:15px
 }
 
 .viewer-btn{
-margin:0;
-padding:9px 13px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.25);
-background:rgba(20,28,50,.9);
-color:white;
-font-size:12px
+  margin:0;
+  padding:9px 13px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(20,28,50,.9);
+  color:white;
+  font-size:12px
 }
 
 .viewer-close{
-position:absolute;
-right:8px;
-top:8px;
-z-index:5;
-margin:0;
-width:42px;
-height:42px;
-padding:0;
-border-radius:50%;
-background:rgba(20,20,25,.85);
-color:white;
-border:1px solid rgba(255,255,255,.25);
-font-size:20px
+  position:absolute;
+  right:8px;
+  top:8px;
+  z-index:5;
+  margin:0;
+  width:42px;
+  height:42px;
+  padding:0;
+  border-radius:50%;
+  background:rgba(20,20,25,.85);
+  color:white;
+  border:1px solid rgba(255,255,255,.25);
+  font-size:20px
 }
 
 .viewer-nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-margin:0;
-width:45px;
-height:55px;
-border-radius:14px;
-background:rgba(10,15,30,.85);
-color:white;
-border:1px solid rgba(255,255,255,.2);
-font-size:25px;
-z-index:5
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  margin:0;
+  width:45px;
+  height:55px;
+  border-radius:14px;
+  background:rgba(10,15,30,.85);
+  color:white;
+  border:1px solid rgba(255,255,255,.2);
+  font-size:25px;
+  z-index:5
 }
 
 .viewer-nav#prevBtn{
-left:5px
+  left:5px
 }
 
 .viewer-nav#nextBtn{
-right:5px
+  right:5px
 }
 
 #viewerCounter{
-color:#aebbd3;
-font-family:Arial,sans-serif;
-font-size:11px;
-margin-top:8px
+  color:#aebbd3;
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  margin-top:8px
 }
 </style>
 </head>
@@ -668,992 +699,2537 @@ margin-top:8px
 <canvas id="stars"></canvas>
 
 <nav>
-<div class="logo">✦ TWO STARS</div>
-<div>
-<a href="#home">HOME</a>
-<a href="#memories">MEMORIES</a>
-<a href="#secret">SECRET</a>
-<a href="#story">OUR STORY</a>
-</div>
+  <div class="logo">✦ TWO STARS</div>
+
+  <div>
+    <a href="#home">HOME</a>
+    <a href="#memories">MEMORIES</a>
+    <a href="#secret">SECRET</a>
+    <a href="#story">OUR STORY</a>
+  </div>
 </nav>
 
 <main id="home" class="hero">
-<div class="hero-card">
 
-<div class="kicker">
-SHAFAHAD &amp; SHAMSHAD BHAI
-</div>
+  <div class="hero-card">
 
-<h1>
-TWO STARS<br>
-ONE FRIENDSHIP
-</h1>
+    <div class="kicker">
+      SHAFAHAD &amp; SHAMSHAD BHAI
+    </div>
 
-<div class="subtitle">
-दो सच्चे दोस्तों की दोस्ती,
-आसमान के दो चमकते तारों जैसी।<br>
-दूर होकर भी, हमेशा साथ। ❤️
-</div>
+    <h1>
+      TWO STARS<br>
+      ONE FRIENDSHIP
+    </h1>
 
-<div class="photo-wrap">
-  <img src="photo.jpg" alt="Our Friendship" style="width:100%;display:block">
-<div class="badge">✦ TWO STARS • ONE FRIENDSHIP ✦</div>
-</div>
-</div>
+    <div class="subtitle">
+      दो सच्चे दोस्तों की दोस्ती,
+      आसमान के दो चमकते तारों जैसी।<br>
+      दूर होकर भी, हमेशा साथ। ❤️
+    </div>
+
+    <div class="photo-wrap">
+
+      <img
+        src="photo.jpg"
+        alt="SHAFAHAD & SHAMSHAD BHAI"
+      >
+
+      <div class="badge">
+        ✦ TWO STARS • ONE FRIENDSHIP ✦
+      </div>
+
+    </div>
+
+  </div>
+
 </main>
 
+
 <section id="memories">
-<h2 class="section-title">Our Memories</h2>
 
-<div class="cards">
+  <h2 class="section-title">
+    OUR MEMORIES
+  </h2>
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('photos')">
-<h3>📸 PHOTOS</h3>
-<p>हमारी खूबसूरत यादों के लिए एक खास जगह।</p>
-</button>
+  <div class="cards">
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('videos')">
-<h3>🎬 VIDEOS</h3>
-<p>दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।</p>
-</button>
+    <button
+      class="card memory-folder"
+      onclick="openMainFolder('photos')"
+    >
+      <h3>📸 PHOTOS</h3>
+      <p>
+        हमारी यादों की तस्वीरें
+      </p>
+    </button>
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('files')">
-<h3>📄 FILES</h3>
-<p>PDF और जरूरी documents एक जगह।</p>
-</button>
+    <button
+      class="card memory-folder"
+      onclick="openMainFolder('videos')"
+    >
+      <h3>🎬 VIDEOS</h3>
+      <p>
+        हमारी यादों के वीडियो
+      </p>
+    </button>
 
-<div class="card">
-<h3>❤️ FRIENDSHIP</h3>
-<p>कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।</p>
-</div>
+    <button
+      class="card memory-folder"
+      onclick="openMainFolder('files')"
+    >
+      <h3>📄 FILES</h3>
+      <p>
+        हमारी खास files और documents
+      </p>
+    </button>
 
-</div>
+    <div class="card">
+
+      <h3>
+        ❤️ FRIENDSHIP
+      </h3>
+
+      <p>
+        कुछ रिश्ते नाम से नहीं,
+        दिल से बनते हैं।
+        हमारी दोस्ती भी उन्हीं में से एक है।
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
+
 
 <section id="secret">
 
-<div class="secret">
+  <div class="secret">
 
-<h2>✦ OUR SECRET ✦</h2>
+    <h2>
+      🔐 SECRET MEMORY
+    </h2>
 
-<p style="margin-top:12px;color:#cfd8eb">
-एक छोटा सा सवाल…
-</p>
+    <p style="
+      margin-top:14px;
+      color:#cbd4e8;
+      font-family:Arial,sans-serif;
+      line-height:1.8;
+    ">
+      एक छोटा सा सवाल,
+      तो बताओ की अब असली आसमान में
+      कुल कितने तारे हैं..?
+    </p>
 
-<input
-id="answer"
-type="password"
-autocomplete="off"
-placeholder="Answer"
->
+    <input
+      id="answer"
+      type="password"
+      autocomplete="off"
+      placeholder="Answer"
+    >
 
-<button onclick="unlock()">UNLOCK MEMORY ✦</button>
+    <button onclick="unlock()">
+      UNLOCK MEMORY ✦
+    </button>
 
-<div id="msg"></div>
+    <div id="msg"></div>
 
-</div>
+  </div>
 
 </section>
 
-<div id="mainFolderPopup">
-
-<div class="main-folder-box">
-
-<div id="mainFolderTitle" class="folder-title">
-📸 PHOTO MEMORIES
-</div>
-
-<div id="mainFolderContent" class="folder-content">
-<div class="empty">Loading...</div>
-</div>
-
-<button class="folder-close" onclick="closeMainFolder()">
-CLOSE ✦
-</button>
-
-</div>
-
-</div>
-
-<div id="privateDashboard">
-
-<div class="private-box">
-
-<div class="private-head">
-
-<h2>WELCOME, SHAMSHAD BHAI ❤️</h2>
-
-<p>
-ये हमारी private memories हैं — सिर्फ हमारे लिए।
-</p>
-
-</div>
-
-<div class="private-grid">
-
-<div class="private-tile" onclick="openPrivateMedia('photos')">
-
-<div class="private-icon">📸</div>
-
-<h3>PRIVATE PHOTOS</h3>
-
-<p>हमारी खास तस्वीरें</p>
-
-</div>
-
-<div class="private-tile" onclick="openPrivateMedia('videos')">
-
-<div class="private-icon">🎬</div>
-
-<h3>PRIVATE VIDEOS</h3>
-
-<p>हमारे खास वीडियो</p>
-
-</div>
-
-<div class="private-tile" onclick="openPrivateMedia('files')">
-
-<div class="private-icon">📁</div>
-
-<h3>PRIVATE FILES</h3>
-
-<p>जरूरी private files</p>
-
-</div>
-
-<div class="private-tile" onclick="openLetter()">
-
-<div class="private-icon">✒️</div>
-
-<h3>PREMIUM LETTER</h3>
-
-<p>हमारी दोस्ती की कुछ बातें</p>
-
-</div>
-
-</div>
-
-<button class="private-close" onclick="closePrivate()">
-CLOSE PRIVATE SPACE ✦
-</button>
-
-</div>
-
-</div>
-
-<div id="letterModal">
-
-<div class="letter-wrap">
-
-<div class="letter-page">
-
-<div class="letter-head">
-✦ SHAFAHAD &amp; SHAMSHAD BHAI ✦
-</div>
-
-<p>
-<b>मेरे प्यारे Shamshad Bhai,</b>
-</p>
-
-<p>
-कुछ रिश्ते ऐसे होते हैं जिन्हें किसी नाम की जरूरत नहीं होती।
-वक्त कितना भी बदल जाए, दूरी कितनी भी बढ़ जाए,
-सच्ची दोस्ती दिल में अपनी जगह बनाए रखती है।
-</p>
-
-<p>
-हमारी दोस्ती मेरे लिए उन दो चमकते तारों जैसी है—
-जो आसमान में दूर होकर भी एक ही कहानी का हिस्सा लगते हैं।
-</p>
-
-<p>
-जो यादें हमने साथ बनाई हैं, वो मेरे लिए हमेशा खास रहेंगी।
-हँसी हो, मुश्किल वक्त हो या बस एक छोटी सी बात—
-दोस्ती की यही छोटी-छोटी चीजें सबसे बड़ी याद बन जाती हैं।
-</p>
-
-<p>
-बस यही दुआ है कि हमारी दोस्ती हमेशा इज्जत,
-भरोसे और खुशियों के साथ बनी रहे। ❤️
-</p>
-
-<div class="letter-sign">
-हमेशा आपका दोस्त,<br>
-<b>SHAFAHAD</b>
-</div>
-
-</div>
-
-<button class="letter-close" onclick="closeLetter()">
-CLOSE LETTER ✦
-</button>
-
-</div>
-
-</div>
 
 <section id="story">
 
-<h2 class="section-title">Our Story</h2>
+  <h2 class="section-title">
+    OUR STORY
+  </h2>
 
-<div class="story">
+  <div class="story">
 
-कुछ दोस्तियाँ वक्त के साथ पुरानी नहीं होतीं—
-बल्कि हर याद के साथ और खूबसूरत बनती जाती हैं।
+    दो सच्चे दोस्तों की दोस्ती,
+    आसमान के दो चमकते तारों जैसी।
 
-<br><br>
+    <br><br>
 
-<b style="color:#f0d27f">
-SHAFAHAD &amp; SHAMSHAD BHAI
-</b>
+    रास्ते अलग हो सकते हैं,
+    दूरियाँ बढ़ सकती हैं,
+    लेकिन सच्ची दोस्ती दिलों के बीच
+    हमेशा एक रोशनी की तरह रहती है।
 
-<br>
+    <br><br>
 
-दो सच्चे दोस्तों की दोस्ती,
-आसमान के दो चमकते तारों जैसी।
+    ✦ SHAFAHAD &amp; SHAMSHAD BHAI ✦
 
-<br>
-
-दूर होकर भी, हमेशा साथ। ❤️
-
-</div>
+  </div>
 
 </section>
 
+
 <footer>
-
-✦ TWO STARS • ONE FRIENDSHIP ✦
-
-<br><br>
-
-SHAFAHAD &amp; SHAMSHAD BHAI
-
+  SHAFAHAD &amp; SHAMSHAD BHAI • TWO STARS • ONE FRIENDSHIP
 </footer>
+
+
+<!-- ======================================================
+     MAIN FOLDER POPUP
+     ====================================================== -->
+
+<div id="mainFolderPopup">
+
+  <div class="main-folder-box">
+
+    <div
+      id="mainFolderTitle"
+      class="folder-title"
+    >
+      MEMORY FOLDER
+    </div>
+
+    <div
+      id="mainFolderContent"
+      class="folder-content"
+    ></div>
+
+    <button
+      class="folder-close"
+      onclick="closeMainFolder()"
+    >
+      CLOSE
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     PRIVATE DASHBOARD
+     ====================================================== -->
+
+<div id="privateDashboard">
+
+  <div class="private-box">
+
+    <div class="private-head">
+
+      <h2>
+        🔐 PRIVATE MEMORIES
+      </h2>
+
+      <p>
+        सिर्फ हमारी खास यादों के लिए ✦
+      </p>
+
+    </div>
+
+    <div class="private-grid">
+
+      <div
+        class="private-tile"
+        onclick="openPrivateMedia('photos')"
+      >
+
+        <div class="private-icon">
+          📸
+        </div>
+
+        <h3>
+          PRIVATE PHOTOS
+        </h3>
+
+        <p>
+          private/photos/
+        </p>
+
+      </div>
+
+
+      <div
+        class="private-tile"
+        onclick="openPrivateMedia('videos')"
+      >
+
+        <div class="private-icon">
+          🎬
+        </div>
+
+        <h3>
+          PRIVATE VIDEOS
+        </h3>
+
+        <p>
+          private/videos/
+        </p>
+
+      </div>
+
+
+      <div
+        class="private-tile"
+        onclick="openPrivateMedia('files')"
+      >
+
+        <div class="private-icon">
+          📄
+        </div>
+
+        <h3>
+          PRIVATE FILES
+        </h3>
+
+        <p>
+          private/files/
+        </p>
+
+      </div>
+
+
+      <div
+        class="private-tile"
+        onclick="openLetter()"
+      >
+
+        <div class="private-icon">
+          💌
+        </div>
+
+        <h3>
+          FRIENDSHIP LETTER
+        </h3>
+
+        <p>
+          एक खास खत
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="private-close"
+      onclick="closePrivateDashboard()"
+    >
+      CLOSE PRIVATE SPACE
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     LETTER MODAL
+     ====================================================== -->
+
+<div id="letterModal">
+
+  <div class="letter-wrap">
+
+    <div class="letter-page">
+
+      <h2 class="letter-head">
+        ✦ हमारे नाम एक खत ✦
+      </h2>
+
+      <p>
+        प्यारे Shamshad Bhai,
+      </p>
+
+      <p>
+        कुछ दोस्त जिंदगी में सिर्फ दोस्त बनकर नहीं आते,
+        बल्कि भाई की तरह दिल में अपनी जगह बना लेते हैं।
+      </p>
+
+      <p>
+        हमारी दोस्ती भी मेरे लिए ऐसी ही खास है।
+        वक्त चाहे जैसा हो और दूरी चाहे जितनी हो,
+        सच्चे रिश्ते दिल से कभी दूर नहीं होते।
+      </p>
+
+      <p>
+        आसमान में चमकते उन दो तारों की तरह,
+        हमारी दोस्ती भी हमेशा अपनी रोशनी बनाए रखे।
+      </p>
+
+      <p>
+        हमेशा खुश रहना और हमेशा मुस्कुराते रहना।
+        ❤️
+      </p>
+
+      <div class="letter-sign">
+        हमेशा तुम्हारा दोस्त,<br>
+        <strong>SHAFAHAD</strong>
+      </div>
+
+    </div>
+
+    <button
+      class="letter-close"
+      onclick="closeLetter()"
+    >
+      CLOSE LETTER
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     SURPRISE
+     ====================================================== -->
 
 <div id="surprise">
 
-<div class="surprise-box">
+  <div class="surprise-box">
 
-<div class="surprise-title">
-✦ FOR SHAMSHAD BHAI ✦
-</div>
+    <div class="surprise-title">
+      ✦ FOR SHAMSHAD BHAI ✦
+    </div>
 
-<div class="surprise-sub">
+    <div class="surprise-sub">
+      एक छोटी सी surprise memory ❤️
+    </div>
 
-कुछ रिश्ते सिर्फ दोस्ती नहीं होते...<br>
-वो जिंदगी की सबसे खूबसूरत याद बन जाते हैं। ❤️
+    <img
+      class="surprise-photo"
+      src="surprise.jpg"
+      alt="Surprise"
+    >
 
-</div>
+    <iframe
+      class="surprise-video"
+      src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
+      allow="autoplay"
+      allowfullscreen
+    ></iframe>
 
-<img
-class="surprise-photo"
-src="surprise.jpg"
-alt="A Special Memory"
->
+    <button
+      class="close-btn"
+      onclick="closeSurprise()"
+    >
+      CLOSE SURPRISE
+    </button>
 
-<iframe
-class="surprise-video"
-src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
-allow="autoplay; fullscreen"
-allowfullscreen>
-</iframe>
-
-<div
-class="surprise-sub"
-style="margin-top:22px;margin-bottom:0"
->
-
-SHAFAHAD ❤️ SHAMSHAD BHAI
-
-<br>
-
-दो सच्चे दोस्तों की दोस्ती हमेशा ऐसी ही रहे।
+  </div>
 
 </div>
 
-<button class="close-btn" onclick="closeSurprise()">
-CLOSE ✦
-</button>
 
-</div>
-
-</div>
+<!-- ======================================================
+     MEDIA VIEWER
+     ====================================================== -->
 
 <div id="viewer">
 
-<div class="viewer-content">
+  <div class="viewer-content">
 
-<button
-class="viewer-close"
-onclick="closeViewer()">
-×
-</button>
+    <button
+      class="viewer-close"
+      onclick="closeViewer()"
+    >
+      ×
+    </button>
 
-<button
-id="prevBtn"
-class="viewer-nav"
-onclick="previousMedia()">
-‹
-</button>
+    <button
+      id="prevBtn"
+      class="viewer-nav"
+      onclick="prevMedia()"
+    >
+      ‹
+    </button>
 
-<button
-id="nextBtn"
-class="viewer-nav"
-onclick="nextMedia()">
-›
-</button>
+    <button
+      id="nextBtn"
+      class="viewer-nav"
+      onclick="nextMedia()"
+    >
+      ›
+    </button>
 
-<img
-id="viewerImage"
-style="display:none"
-alt="Memory"
->
+    <img
+      id="viewerImage"
+      style="display:none"
+      alt=""
+    >
 
-<video
-id="viewerVideo"
-style="display:none"
-controls
-playsinline>
-</video>
+    <video
+      id="viewerVideo"
+      style="display:none"
+      controls
+      playsinline
+    ></video>
 
-<div class="viewer-controls">
+    <div
+      id="viewerCounter"
+    ></div>
 
-<button
-class="viewer-btn"
-onclick="zoomOut()">
-− Zoom
-</button>
+    <div class="viewer-controls">
 
-<button
-class="viewer-btn"
-onclick="zoomIn()">
-+ Zoom
-</button>
+      <button
+        class="viewer-btn"
+        onclick="zoomOut()"
+      >
+        −
+      </button>
 
-<button
-class="viewer-btn"
-onclick="resetZoom()">
-↺ Reset
-</button>
+      <button
+        class="viewer-btn"
+        onclick="resetZoom()"
+      >
+        RESET
+      </button>
 
-<button
-class="viewer-btn"
-onclick="downloadCurrent()">
-⬇ Download
-</button>
+      <button
+        class="viewer-btn"
+        onclick="zoomIn()"
+      >
+        +
+      </button>
 
-<button
-class="viewer-btn"
-onclick="shareCurrent()">
-📤 Share
-</button>
+      <button
+        class="viewer-btn"
+        onclick="downloadCurrent()"
+      >
+        DOWNLOAD
+      </button>
 
-<button
-class="viewer-btn"
-onclick="toggleFavorite()"
-id="favoriteBtn">
-♡ Favorite
-</button>
+      <button
+        class="viewer-btn"
+        onclick="shareCurrent()"
+      >
+        SHARE
+      </button>
 
-</div>
+      <button
+        class="viewer-btn"
+        onclick="toggleFavorite()"
+      >
+        ⭐ FAVORITE
+      </button>
 
-<div id="viewerCounter"></div>
+    </div>
 
-</div>
+  </div>
 
 </div>
 <script>
 
-function renderMainFolder(title,items,type){
-const c=document.getElementById('mainFolderContent');
-c.innerHTML='';
-document.getElementById('mainFolderTitle').innerHTML=title;
+/* =========================================================
+   GITHUB SETTINGS
+   ========================================================= */
 
-if(!items.length){
-c.innerHTML='<div class="empty">अभी कोई item नहीं है।</div>';
-return
+const GITHUB_USER = "ansarishafahad95-lab";
+const GITHUB_REPO = "TWO-STARS-FRIENDSHIP";
+const GITHUB_BRANCH = "main";
+
+
+/* =========================================================
+   GITHUB API
+   ========================================================= */
+
+function apiURL(path){
+  return "https://api.github.com/repos/" +
+    GITHUB_USER + "/" +
+    GITHUB_REPO +
+    "/contents/" +
+    path +
+    "?ref=" +
+    GITHUB_BRANCH;
 }
 
-const g=document.createElement('div');
-g.className='gallery';
 
-items.forEach((f,i)=>{
-const d=document.createElement('div');
-d.className='gallery-item';
+async function getFolder(path){
 
-if(type==='photo'){
-const im=document.createElement('img');
-im.src=f.download_url;
-im.alt=f.name;
-im.loading='lazy';
-d.appendChild(im);
+  try{
 
-d.onclick=()=>{
-closeMainFolder();
-openViewer(items,i,'photo')
+    const response = await fetch(apiURL(path), {
+      cache:"no-store"
+    });
+
+    if(!response.ok){
+      return [];
+    }
+
+    const data = await response.json();
+
+    if(!Array.isArray(data)){
+      return [];
+    }
+
+    return data.filter(item =>
+      item.type === "file"
+    );
+
+  }catch(error){
+
+    console.error(
+      "Folder loading error:",
+      path,
+      error
+    );
+
+    return [];
+  }
 }
 
-}else if(type==='video'){
 
-const v=document.createElement('video');
-v.src=f.download_url;
-v.muted=true;
-v.preload='metadata';
-v.playsInline=true;
-d.appendChild(v);
+/* =========================================================
+   FILE EXTENSIONS
+   ========================================================= */
 
-d.onclick=()=>{
-closeMainFolder();
-openViewer(items,i,'video')
+const photoExtensions = [
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "gif",
+  "bmp",
+  "avif"
+];
+
+const videoExtensions = [
+  "mp4",
+  "webm",
+  "mov",
+  "m4v",
+  "ogg"
+];
+
+const fileExtensions = [
+  "pdf",
+  "doc",
+  "docx",
+  "txt",
+  "xls",
+  "xlsx",
+  "ppt",
+  "pptx",
+  "zip"
+];
+
+
+function ext(filename){
+
+  return filename
+    .split(".")
+    .pop()
+    .toLowerCase();
 }
 
-}else{
 
-d.className+=' file-card';
+function escapeHTML(text){
 
-d.innerHTML=
-'<div class="file-icon">📄</div>'+
-'<div class="file-name">'+
-escapeHTML(f.name)+
-'</div>';
-
-d.onclick=()=>{
-window.open(f.download_url,'_blank')
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
+
+/* =========================================================
+   MAIN PUBLIC FOLDERS
+   ========================================================= */
+
+let photoItems = [];
+let videoItems = [];
+let fileItems = [];
+
+
+async function loadPhotos(){
+
+  const files = await getFolder("photos");
+
+  photoItems = files.filter(
+    f => photoExtensions.includes(ext(f.name))
+  );
+
+  return photoItems;
 }
 
-g.appendChild(d)
 
-});
+async function loadVideos(){
 
-c.appendChild(g)
+  const files = await getFolder("videos");
 
+  videoItems = files.filter(
+    f => videoExtensions.includes(ext(f.name))
+  );
+
+  return videoItems;
 }
 
-async function openSurprise(){
-document.getElementById('surprise').style.display='flex'
+
+async function loadFiles(){
+
+  const files = await getFolder("files");
+
+  fileItems = files.filter(
+    f => fileExtensions.includes(ext(f.name))
+  );
+
+  return fileItems;
 }
 
-function closeSurprise(){
-document.getElementById('surprise').style.display='none'
+
+/* =========================================================
+   MAIN FOLDER DISPLAY
+   ========================================================= */
+
+function renderMainFolder(
+  title,
+  items,
+  type
+){
+
+  const container =
+    document.getElementById(
+      "mainFolderContent"
+    );
+
+  const titleBox =
+    document.getElementById(
+      "mainFolderTitle"
+    );
+
+  container.innerHTML = "";
+
+  titleBox.innerHTML =
+    escapeHTML(title);
+
+
+  if(!items.length){
+
+    container.innerHTML = `
+      <div class="empty"
+        style="
+          text-align:center;
+          padding:45px 15px;
+          color:#b8c4dc;
+          font-family:Arial,sans-serif;
+        ">
+        अभी कोई item नहीं है।
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const gallery =
+    document.createElement("div");
+
+  gallery.className = "gallery";
+
+
+  items.forEach((file,index)=>{
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "gallery-item";
+
+
+    if(type === "photo"){
+
+      const image =
+        document.createElement("img");
+
+      image.src =
+        file.download_url;
+
+      image.alt =
+        file.name;
+
+      image.loading =
+        "lazy";
+
+      image.onerror = function(){
+
+        this.style.display =
+          "none";
+
+        item.innerHTML += `
+          <div style="
+            padding:30px;
+            color:#b9c5dc;
+            font-family:Arial;
+            font-size:12px;
+          ">
+            Photo load नहीं हो सकी
+          </div>
+        `;
+      };
+
+
+      item.appendChild(image);
+
+
+      item.onclick = ()=>{
+
+        closeMainFolder();
+
+        openViewer(
+          items,
+          index,
+          "photo"
+        );
+
+      };
+
+
+    }else if(type === "video"){
+
+      const video =
+        document.createElement("video");
+
+      video.src =
+        file.download_url;
+
+      video.muted = true;
+
+      video.preload =
+        "metadata";
+
+      video.playsInline =
+        true;
+
+      video.controls =
+        false;
+
+
+      item.appendChild(video);
+
+
+      item.onclick = ()=>{
+
+        closeMainFolder();
+
+        openViewer(
+          items,
+          index,
+          "video"
+        );
+
+      };
+
+
+    }else{
+
+      item.className +=
+        " file-card";
+
+
+      item.innerHTML = `
+        <div class="file-icon"
+          style="
+            font-size:45px;
+            text-align:center;
+            margin-bottom:10px;
+          ">
+          📄
+        </div>
+
+        <div
+          class="file-name"
+          style="
+            text-align:center;
+            color:#e8edf8;
+            font-family:Arial,sans-serif;
+            font-size:13px;
+            word-break:break-word;
+          ">
+          ${escapeHTML(file.name)}
+        </div>
+      `;
+
+
+      item.onclick = ()=>{
+
+        window.open(
+          file.download_url,
+          "_blank"
+        );
+
+      };
+
+    }
+
+
+    gallery.appendChild(item);
+
+  });
+
+
+  container.appendChild(gallery);
 }
 
-let currentItems=[],
-currentIndex=0,
-currentType='',
-zoomLevel=1,
-currentPrivate=false;
 
-function openViewer(items,index,type,isPrivate=false){
-
-currentItems=items;
-currentIndex=index;
-currentType=type;
-currentPrivate=isPrivate;
-zoomLevel=1;
-
-document.getElementById('viewer').style.display='flex';
-
-showCurrentMedia()
-
-}
-
-function showCurrentMedia(){
-
-if(!currentItems.length)return;
-
-const f=currentItems[currentIndex];
-
-const im=document.getElementById('viewerImage');
-const v=document.getElementById('viewerVideo');
-
-im.style.display='none';
-v.style.display='none';
-
-if(currentType==='photo'){
-
-im.src=f.download_url;
-im.style.display='block';
-im.style.transform='scale('+zoomLevel+')';
-
-}else{
-
-v.src=f.download_url;
-v.style.display='block';
-v.style.transform='scale('+zoomLevel+')';
-v.load()
-
-}
-
-document.getElementById('viewerCounter').textContent=
-(currentIndex+1)+' / '+currentItems.length;
-
-updateFavorite()
-
-}
-
-function closeViewer(){
-
-document.getElementById('viewer').style.display='none';
-
-document.getElementById('viewerVideo').pause();
-
-document.getElementById('viewerVideo').removeAttribute('src')
-
-}
-
-function previousMedia(){
-
-if(!currentItems.length)return;
-
-currentIndex=
-(currentIndex-1+currentItems.length)%currentItems.length;
-
-zoomLevel=1;
-
-showCurrentMedia()
-
-}
-
-function nextMedia(){
-
-if(!currentItems.length)return;
-
-currentIndex=
-(currentIndex+1)%currentItems.length;
-
-zoomLevel=1;
-
-showCurrentMedia()
-
-}
-
-function zoomIn(){
-
-zoomLevel=
-Math.min(3,zoomLevel+.2);
-
-showCurrentMedia()
-
-}
-
-function zoomOut(){
-
-zoomLevel=
-Math.max(.5,zoomLevel-.2);
-
-showCurrentMedia()
-
-}
-
-function resetZoom(){
-
-zoomLevel=1;
-
-showCurrentMedia()
-
-}
-
-function downloadCurrent(){
-
-const f=currentItems[currentIndex];
-
-const a=document.createElement('a');
-
-a.href=f.download_url;
-a.download=f.name;
-a.target='_blank';
-
-document.body.appendChild(a);
-
-a.click();
-
-a.remove()
-
-}
-
-async function shareCurrent(){
-
-const f=currentItems[currentIndex];
-
-try{
-
-if(navigator.share)
-
-await navigator.share({
-title:f.name,
-url:f.download_url
-});
-
-else{
-
-await navigator.clipboard.writeText(
-f.download_url
-);
-
-alert('Link copied!')
-
-}
-
-}catch(e){}
-
-}
-
-function favKey(){
-
-return 'two-stars-fav-'+
-(currentPrivate?'private-':'')+
-currentType+'-'+
-(currentItems[currentIndex]?.name||'')
-
-}
-
-function updateFavorite(){
-
-const b=document.getElementById('favoriteBtn');
-
-if(!b)return;
-
-b.textContent=
-localStorage.getItem(favKey())==='1'
-?'♥ Favorited'
-:'♡ Favorite'
-
-}
-
-function toggleFavorite(){
-
-const k=favKey();
-
-if(localStorage.getItem(k)==='1')
-localStorage.removeItem(k);
-else
-localStorage.setItem(k,'1');
-
-updateFavorite()
-
-}
-
-let touchX=0;
-
-document.getElementById('viewer')
-.addEventListener(
-'touchstart',
-e=>touchX=e.changedTouches[0].screenX,
-{passive:true}
-);
-
-document.getElementById('viewer')
-.addEventListener(
-'touchend',
-e=>{
-
-const dx=
-e.changedTouches[0].screenX-touchX;
-
-if(Math.abs(dx)>60){
-
-dx<0
-?nextMedia()
-:previousMedia()
-
-}
-
-},
-{passive:true}
-);
+/* =========================================================
+   OPEN MAIN FOLDERS
+   ========================================================= */
 
 async function openMainFolder(type){
 
-document.getElementById(
-'mainFolderPopup'
-).style.display='flex';
+  const popup =
+    document.getElementById(
+      "mainFolderPopup"
+    );
 
-document.getElementById(
-'mainFolderContent'
-).innerHTML=
-'<div class="empty">Loading...</div>';
+  popup.style.display =
+    "flex";
 
-if(type==='photos'){
 
-if(!photoItems.length)
-await loadPhotos();
+  const content =
+    document.getElementById(
+      "mainFolderContent"
+    );
 
-renderMainFolder(
-'📸 PHOTO MEMORIES',
-photoItems,
-'photo'
-)
+  content.innerHTML = `
+    <div style="
+      text-align:center;
+      padding:45px;
+      color:#cbd5e9;
+      font-family:Arial,sans-serif;
+    ">
+      Loading memories... ✦
+    </div>
+  `;
 
-}else if(type==='videos'){
 
-if(!videoItems.length)
-await loadVideos();
+  if(type === "photos"){
 
-renderMainFolder(
-'🎬 VIDEO MEMORIES',
-videoItems,
-'video'
-)
+    await loadPhotos();
 
-}else{
+    renderMainFolder(
+      "📸 OUR PHOTOS",
+      photoItems,
+      "photo"
+    );
 
-if(!fileItems.length)
-await loadFiles();
+  }
 
-renderMainFolder(
-'📄 MY FILES',
-fileItems,
-'file'
-)
+
+  else if(type === "videos"){
+
+    await loadVideos();
+
+    renderMainFolder(
+      "🎬 OUR VIDEOS",
+      videoItems,
+      "video"
+    );
+
+  }
+
+
+  else if(type === "files"){
+
+    await loadFiles();
+
+    renderMainFolder(
+      "📄 OUR FILES",
+      fileItems,
+      "file"
+    );
+
+  }
 
 }
 
-}
 
 function closeMainFolder(){
 
-document.getElementById(
-'mainFolderPopup'
-).style.display='none'
+  document.getElementById(
+    "mainFolderPopup"
+  ).style.display = "none";
 
 }
 
-function openPrivateDashboard(){
 
-document.getElementById(
-'privateDashboard'
-).style.display='flex'
-
-}
+/* =========================================================
+   PRIVATE FOLDERS
+   ========================================================= */
 
 async function openPrivateMedia(type){
 
-const folder='private/'+type;
+  const popup =
+    document.getElementById(
+      "mainFolderPopup"
+    );
 
-const files=await getFolder(folder);
+  const title =
+    document.getElementById(
+      "mainFolderTitle"
+    );
 
-const items=files.filter(
-f=>f.type==='file'&&
-(
-type==='photos'
-?photoExtensions.includes(ext(f.name))
-:
-type==='videos'
-?videoExtensions.includes(ext(f.name))
-:
-fileExtensions.includes(ext(f.name))
-)
-);
+  const content =
+    document.getElementById(
+      "mainFolderContent"
+    );
 
-if(!items.length){
 
-alert(
-'इस private folder में अभी कोई file नहीं है।\n'+
-'GitHub में private/'+
-type+
-'/ folder में files डालें।'
-);
+  popup.style.display =
+    "flex";
 
-return
+
+  content.innerHTML = `
+    <div style="
+      text-align:center;
+      padding:45px;
+      color:#cbd5e9;
+      font-family:Arial,sans-serif;
+    ">
+      🔐 Loading private memories... ✦
+    </div>
+  `;
+
+
+  const folder =
+    "private/" + type;
+
+
+  const files =
+    await getFolder(folder);
+
+
+  let items = [];
+
+
+  if(type === "photos"){
+
+    items = files.filter(
+      f =>
+        photoExtensions.includes(
+          ext(f.name)
+        )
+    );
+
+  }
+
+
+  else if(type === "videos"){
+
+    items = files.filter(
+      f =>
+        videoExtensions.includes(
+          ext(f.name)
+        )
+    );
+
+  }
+
+
+  else if(type === "files"){
+
+    items = files.filter(
+      f =>
+        fileExtensions.includes(
+          ext(f.name)
+        )
+    );
+
+  }
+
+
+  if(!items.length){
+
+    title.innerHTML =
+      type === "photos"
+        ? "📸 PRIVATE PHOTOS"
+        : type === "videos"
+        ? "🎬 PRIVATE VIDEOS"
+        : "📄 PRIVATE FILES";
+
+
+    content.innerHTML = `
+      <div style="
+        text-align:center;
+        padding:45px 15px;
+        color:#b8c4dc;
+        font-family:Arial,sans-serif;
+        line-height:1.9;
+      ">
+
+        <div style="
+          font-size:45px;
+          margin-bottom:12px;
+        ">
+          ${
+            type === "photos"
+              ? "📸"
+              : type === "videos"
+              ? "🎬"
+              : "📄"
+          }
+        </div>
+
+        इस private folder में
+        अभी कोई file नहीं है।
+
+        <br>
+
+        GitHub में यहाँ file डालें:
+
+        <br><br>
+
+        <strong style="color:#f2d27b">
+          private/${type}/
+        </strong>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  if(type === "photos"){
+
+    renderMainFolder(
+      "🔐 PRIVATE PHOTOS",
+      items,
+      "photo"
+    );
+
+  }
+
+
+  else if(type === "videos"){
+
+    renderMainFolder(
+      "🔐 PRIVATE VIDEOS",
+      items,
+      "video"
+    );
+
+  }
+
+
+  else{
+
+    renderMainFolder(
+      "🔐 PRIVATE FILES",
+      items,
+      "file"
+    );
+
+  }
 
 }
 
-if(type==='files'){
 
-document.getElementById(
-'privateDashboard'
-).style.display='none';
+/* =========================================================
+   PRIVATE DASHBOARD
+   ========================================================= */
 
-renderMainFolder(
-'🔐 PRIVATE FILES',
-items,
-'file'
-);
+function openPrivateDashboard(){
 
-document.getElementById(
-'mainFolderPopup'
-).style.display='flex';
-
-return
+  document.getElementById(
+    "privateDashboard"
+  ).style.display = "flex";
 
 }
 
-document.getElementById(
-'privateDashboard'
-).style.display='none';
 
-openViewer(
-items,
-0,
-type==='photos'
-?'photo'
-:'video',
-true
-)
+function closePrivateDashboard(){
+
+  document.getElementById(
+    "privateDashboard"
+  ).style.display = "none";
 
 }
+
+
+/* =========================================================
+   FRIENDSHIP LETTER
+   ========================================================= */
 
 function openLetter(){
 
-document.getElementById(
-'privateDashboard'
-).style.display='none';
-
-document.getElementById(
-'letterModal'
-).style.display='flex'
+  document.getElementById(
+    "letterModal"
+  ).style.display = "flex";
 
 }
+
 
 function closeLetter(){
 
-document.getElementById(
-'letterModal'
-).style.display='none'
+  document.getElementById(
+    "letterModal"
+  ).style.display = "none";
 
 }
+
+
+/* =========================================================
+   SECRET UNLOCK
+   ========================================================= */
 
 function unlock(){
 
-const v=
-document.getElementById(
-'answer'
-).value
-.trim()
-.toLowerCase();
+  const answer =
+    document.getElementById(
+      "answer"
+    ).value
+    .trim()
+    .toLowerCase();
 
-const msg=
-document.getElementById('msg');
 
-if(
-v==='1'||
-v==='एक'||
-v==='ek'
+  const message =
+    document.getElementById(
+      "msg"
+    );
+
+
+  if(
+    answer === "1" ||
+    answer === "ek" ||
+    answer === "एक"
+  ){
+
+    message.textContent =
+      "❤️ Memory unlocked!";
+
+
+    message.style.color =
+      "#f3d37b";
+
+
+    openPrivateDashboard();
+
+  }
+
+  else{
+
+    message.textContent =
+      "गलत जवाब... फिर से कोशिश करो।";
+
+
+    message.style.color =
+      "#ff9b9b";
+
+  }
+
+}
+
+
+/* =========================================================
+   SURPRISE
+   ========================================================= */
+
+async function openSurprise(){
+
+  document.getElementById(
+    "surprise"
+  ).style.display = "flex";
+
+}
+
+
+function closeSurprise(){
+
+  document.getElementById(
+    "surprise"
+  ).style.display = "none";
+
+}
+
+
+/* =========================================================
+   MEDIA VIEWER
+   ========================================================= */
+
+let currentItems = [];
+let currentIndex = 0;
+let currentType = "";
+let zoomLevel = 1;
+let currentPrivate = false;
+
+
+function openViewer(
+  items,
+  index,
+  type,
+  isPrivate = false
 ){
 
-msg.textContent=
-'❤️ Memory unlocked!';
+  currentItems =
+    items || [];
 
-msg.style.color='#f3d37b';
+  currentIndex =
+    index || 0;
 
-document.getElementById(
-'privateDashboard'
-).style.display='flex';
+  currentType =
+    type || "photo";
 
-}else{
+  currentPrivate =
+    isPrivate;
 
-msg.textContent=
-'Answer is incorrect.';
 
-msg.style.color='#d9dce5';
+  zoomLevel = 1;
+
+
+  document.getElementById(
+    "viewer"
+  ).style.display = "flex";
+
+
+  showCurrentMedia();
 
 }
 
+
+/* =========================================================
+   SHOW CURRENT MEDIA
+   ========================================================= */
+
+function showCurrentMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+
+  const file =
+    currentItems[
+      currentIndex
+    ];
+
+
+  const image =
+    document.getElementById(
+      "viewerImage"
+    );
+
+  const video =
+    document.getElementById(
+      "viewerVideo"
+    );
+
+  const counter =
+    document.getElementById(
+      "viewerCounter"
+    );
+
+
+  image.style.display =
+    "none";
+
+  video.style.display =
+    "none";
+
+
+  image.style.transform =
+    "scale(1)";
+
+
+  video.style.transform =
+    "scale(1)";
+
+
+  if(currentType === "photo"){
+
+    image.src =
+      file.download_url;
+
+    image.alt =
+      file.name;
+
+    image.style.display =
+      "block";
+
+
+    image.style.transform =
+      `scale(${zoomLevel})`;
+
+  }
+
+
+  else{
+
+    video.src =
+      file.download_url;
+
+    video.style.display =
+      "block";
+
+    video.load();
+
+  }
+
+
+  counter.textContent =
+    `${currentIndex + 1} / ${currentItems.length}`;
+
 }
 
-document.getElementById(
-'answer'
-).addEventListener(
-'keydown',
-e=>{
-if(e.key==='Enter')unlock()
+
+/* =========================================================
+   CLOSE VIEWER
+   ========================================================= */
+
+function closeViewer(){
+
+  const viewer =
+    document.getElementById(
+      "viewer"
+    );
+
+  const video =
+    document.getElementById(
+      "viewerVideo"
+    );
+
+
+  try{
+    video.pause();
+  }catch(e){}
+
+
+  video.removeAttribute(
+    "src"
+  );
+
+  video.load();
+
+
+  viewer.style.display =
+    "none";
+
 }
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+   ========================================================= */
+
+function nextMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+
+  currentIndex =
+    (currentIndex + 1) %
+    currentItems.length;
+
+
+  zoomLevel = 1;
+
+  showCurrentMedia();
+
+}
+
+
+function prevMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+
+  currentIndex =
+    (
+      currentIndex -
+      1 +
+      currentItems.length
+    ) %
+    currentItems.length;
+
+
+  zoomLevel = 1;
+
+  showCurrentMedia();
+
+}
+
+
+/* =========================================================
+   ZOOM
+   ========================================================= */
+
+function zoomIn(){
+
+  if(currentType !== "photo"){
+    return;
+  }
+
+
+  zoomLevel =
+    Math.min(
+      zoomLevel + 0.2,
+      3
+    );
+
+
+  const image =
+    document.getElementById(
+      "viewerImage"
+    );
+
+
+  image.style.transform =
+    `scale(${zoomLevel})`;
+
+}
+
+
+function zoomOut(){
+
+  if(currentType !== "photo"){
+    return;
+  }
+
+
+  zoomLevel =
+    Math.max(
+      zoomLevel - 0.2,
+      0.5
+    );
+
+
+  const image =
+    document.getElementById(
+      "viewerImage"
+    );
+
+
+  image.style.transform =
+    `scale(${zoomLevel})`;
+
+}
+
+
+function resetZoom(){
+
+  zoomLevel = 1;
+
+
+  const image =
+    document.getElementById(
+      "viewerImage"
+    );
+
+
+  image.style.transform =
+    "scale(1)";
+
+}
+
+
+/* =========================================================
+   DOWNLOAD
+   ========================================================= */
+
+function downloadCurrent(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+
+  const file =
+    currentItems[
+      currentIndex
+    ];
+
+
+  if(!file.download_url){
+    return;
+  }
+
+
+  const link =
+    document.createElement(
+      "a"
+    );
+
+
+  link.href =
+    file.download_url;
+
+  link.download =
+    file.name || "memory";
+
+
+  link.target =
+    "_blank";
+
+
+  document.body.appendChild(
+    link
+  );
+
+  link.click();
+
+  link.remove();
+
+}
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
+
+async function shareCurrent(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+
+  const file =
+    currentItems[
+      currentIndex
+    ];
+
+
+  const url =
+    file.download_url;
+
+
+  if(
+    navigator.share
+  ){
+
+    try{
+
+      await navigator.share({
+
+        title:
+          file.name ||
+          "Friendship Memory",
+
+        text:
+          "SHAFAHAD & SHAMSHAD BHAI ❤️",
+
+        url:url
+
+      });
+
+    }catch(error){}
+
+  }
+
+  else{
+
+    try{
+
+      await navigator.clipboard.writeText(
+        url
+      );
+
+      alert(
+        "Link copied! ❤️"
+      );
+
+    }catch(error){
+
+      window.open(
+        url,
+        "_blank"
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   FAVORITE
+   ========================================================= */
+
+function toggleFavorite(){
+
+  const button =
+    event &&
+    event.currentTarget;
+
+
+  if(!button){
+    return;
+  }
+
+
+  if(
+    button.dataset.favorite === "yes"
+  ){
+
+    button.dataset.favorite =
+      "no";
+
+    button.textContent =
+      "⭐ FAVORITE";
+
+  }
+
+  else{
+
+    button.dataset.favorite =
+      "yes";
+
+    button.textContent =
+      "⭐ FAVORITED ❤️";
+
+  }
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    const viewer =
+      document.getElementById(
+        "viewer"
+      );
+
+
+    if(
+      viewer.style.display === "flex"
+    ){
+
+      if(event.key === "ArrowRight"){
+        nextMedia();
+      }
+
+      else if(event.key === "ArrowLeft"){
+        prevMedia();
+      }
+
+      else if(event.key === "Escape"){
+        closeViewer();
+      }
+
+      else if(event.key === "+"){
+        zoomIn();
+      }
+
+      else if(event.key === "-"){
+        zoomOut();
+      }
+
+    }
+
+  }
 );
 
-const c=
-document.getElementById('stars'),
-x=c.getContext('2d');
+
+/* =========================================================
+   TOUCH SWIPE
+   ========================================================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+
+const viewer =
+  document.getElementById(
+    "viewer"
+  );
+
+
+viewer.addEventListener(
+  "touchstart",
+  function(event){
+
+    if(
+      !event.touches ||
+      !event.touches.length
+    ){
+      return;
+    }
+
+
+    touchStartX =
+      event.touches[0].clientX;
+
+    touchStartY =
+      event.touches[0].clientY;
+
+  },
+  {passive:true}
+);
+
+
+viewer.addEventListener(
+  "touchend",
+  function(event){
+
+    if(
+      !event.changedTouches ||
+      !event.changedTouches.length
+    ){
+      return;
+    }
+
+
+    const endX =
+      event.changedTouches[0].clientX;
+
+    const endY =
+      event.changedTouches[0].clientY;
+
+
+    const diffX =
+      endX - touchStartX;
+
+    const diffY =
+      endY - touchStartY;
+
+
+    if(
+      Math.abs(diffX) > 60 &&
+      Math.abs(diffX) > Math.abs(diffY)
+    ){
+
+      if(diffX < 0){
+        nextMedia();
+      }
+
+      else{
+        prevMedia();
+      }
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   CLOSE POPUPS WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+document.getElementById(
+  "mainFolderPopup"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target === this
+    ){
+      closeMainFolder();
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "privateDashboard"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target === this
+    ){
+      closePrivateDashboard();
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "letterModal"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target === this
+    ){
+      closeLetter();
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "surprise"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target === this
+    ){
+      closeSurprise();
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SECRET ENTER KEY
+   ========================================================= */
+
+document.getElementById(
+  "answer"
+).addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key === "Enter"
+    ){
+
+      unlock();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BACKGROUND STARS
+   ========================================================= */
+
+const canvas =
+  document.getElementById(
+    "stars"
+  );
+
+const ctx =
+  canvas.getContext(
+    "2d"
+  );
+
+
+let starList = [];
+
+
+function resizeStars(){
+
+  canvas.width =
+    window.innerWidth;
+
+  canvas.height =
+    window.innerHeight;
+
+
+  createStars();
+
+}
+
+
+function createStars(){
+
+  starList = [];
+
+
+  const count =
+    Math.min(
+      180,
+      Math.floor(
+        (
+          window.innerWidth *
+          window.innerHeight
+        ) / 9000
+      )
+    );
+
+
+  for(
+    let i=0;
+    i<count;
+    i++
+  ){
+
+    starList.push({
+
+      x:
+        Math.random() *
+        canvas.width,
+
+      y:
+        Math.random() *
+        canvas.height,
+
+      r:
+        Math.random() *
+        1.5 +
+
+      function renderMainFolder(title,items,type){
+  const c=document.getElementById('mainFolderContent');
+  c.innerHTML='';
+  document.getElementById('mainFolderTitle').innerHTML=title;
+
+  if(!items.length){
+    c.innerHTML='<div class="empty">अभी कोई item नहीं है।</div>';
+    return;
+  }
+
+  const g=document.createElement('div');
+  g.className='gallery';
+
+  items.forEach((f,i)=>{
+    const d=document.createElement('div');
+    d.className='gallery-item';
+
+    if(type==='photo'){
+      const im=document.createElement('img');
+      im.src=f.download_url;
+      im.alt=f.name;
+      im.loading='lazy';
+      d.appendChild(im);
+
+      d.onclick=()=>{
+        closeMainFolder();
+        openViewer(items,i,'photo');
+      };
+
+    }else if(type==='video'){
+      const v=document.createElement('video');
+      v.src=f.download_url;
+      v.muted=true;
+      v.preload='metadata';
+      v.playsInline=true;
+      d.appendChild(v);
+
+      d.onclick=()=>{
+        closeMainFolder();
+        openViewer(items,i,'video');
+      };
+
+    }else{
+      d.className+=' file-card';
+      d.innerHTML=
+        '<div class="file-icon">📄</div>'+
+        '<div class="file-name">'+escapeHTML(f.name)+'</div>';
+
+      d.onclick=()=>{
+        window.open(f.download_url,'_blank');
+      };
+    }
+
+    g.appendChild(d);
+  });
+
+  c.appendChild(g);
+}
+
+
+async function openSurprise(){
+  document.getElementById('surprise').style.display='flex';
+}
+
+function closeSurprise(){
+  document.getElementById('surprise').style.display='none';
+}
+
+
+let currentItems=[];
+let currentIndex=0;
+let currentType='';
+let zoomLevel=1;
+let currentPrivate=false;
+
+
+function openViewer(items,index,type,isPrivate=false){
+  currentItems=items;
+  currentIndex=index;
+  currentType=type;
+  currentPrivate=isPrivate;
+  zoomLevel=1;
+
+  document.getElementById('viewer').style.display='flex';
+
+  showCurrentMedia();
+}
+
+
+function showCurrentMedia(){
+
+  if(!currentItems.length)return;
+
+  const f=currentItems[currentIndex];
+
+  const im=document.getElementById('viewerImage');
+  const v=document.getElementById('viewerVideo');
+
+  im.style.display='none';
+  v.style.display='none';
+
+  if(currentType==='photo'){
+
+    im.src=f.download_url;
+    im.style.display='block';
+    im.style.transform='scale('+zoomLevel+')';
+
+  }else{
+
+    v.src=f.download_url;
+    v.style.display='block';
+    v.style.transform='scale('+zoomLevel+')';
+    v.load();
+
+  }
+
+  document.getElementById('viewerCounter').textContent=
+    (currentIndex+1)+' / '+currentItems.length;
+
+  updateFavorite();
+}
+
+
+function closeViewer(){
+
+  document.getElementById('viewer').style.display='none';
+
+  const v=document.getElementById('viewerVideo');
+
+  v.pause();
+  v.removeAttribute('src');
+}
+
+
+function previousMedia(){
+
+  if(!currentItems.length)return;
+
+  currentIndex=
+    (currentIndex-1+currentItems.length)%currentItems.length;
+
+  zoomLevel=1;
+
+  showCurrentMedia();
+}
+
+
+function nextMedia(){
+
+  if(!currentItems.length)return;
+
+  currentIndex=
+    (currentIndex+1)%currentItems.length;
+
+  zoomLevel=1;
+
+  showCurrentMedia();
+}
+
+
+function zoomIn(){
+
+  zoomLevel=Math.min(3,zoomLevel+.2);
+
+  showCurrentMedia();
+}
+
+
+function zoomOut(){
+
+  zoomLevel=Math.max(.5,zoomLevel-.2);
+
+  showCurrentMedia();
+}
+
+
+function resetZoom(){
+
+  zoomLevel=1;
+
+  showCurrentMedia();
+}
+
+
+function downloadCurrent(){
+
+  const f=currentItems[currentIndex];
+
+  const a=document.createElement('a');
+
+  a.href=f.download_url;
+  a.download=f.name;
+  a.target='_blank';
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+}
+
+
+async function shareCurrent(){
+
+  const f=currentItems[currentIndex];
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+        title:f.name,
+        url:f.download_url
+      });
+
+    }else{
+
+      await navigator.clipboard.writeText(f.download_url);
+
+      alert('Link copied!');
+
+    }
+
+  }catch(e){}
+}
+
+
+function favKey(){
+
+  return 'two-stars-fav-'+
+    (currentPrivate?'private-':'')+
+    currentType+'-'+
+    (currentItems[currentIndex]?.name||'');
+
+}
+
+
+function updateFavorite(){
+
+  const b=document.getElementById('favoriteBtn');
+
+  if(!b)return;
+
+  b.textContent=
+    localStorage.getItem(favKey())==='1'
+      ?'♥ Favorited'
+      :'♡ Favorite';
+}
+
+
+function toggleFavorite(){
+
+  const k=favKey();
+
+  if(localStorage.getItem(k)==='1')
+    localStorage.removeItem(k);
+  else
+    localStorage.setItem(k,'1');
+
+  updateFavorite();
+}
+
+
+let touchX=0;
+
+
+document.getElementById('viewer').addEventListener(
+  'touchstart',
+  e=>{
+    touchX=e.changedTouches[0].screenX;
+  },
+  {passive:true}
+);
+
+
+document.getElementById('viewer').addEventListener(
+  'touchend',
+  e=>{
+
+    const dx=
+      e.changedTouches[0].screenX-touchX;
+
+    if(Math.abs(dx)>60){
+
+      dx<0
+        ?nextMedia()
+        :previousMedia();
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+async function openMainFolder(type){
+
+  document.getElementById('mainFolderPopup').style.display='flex';
+
+  document.getElementById('mainFolderContent').innerHTML=
+    '<div class="empty">Loading...</div>';
+
+  if(type==='photos'){
+
+    if(!photoItems.length)
+      await loadPhotos();
+
+    renderMainFolder(
+      '📸 PHOTO MEMORIES',
+      photoItems,
+      'photo'
+    );
+
+  }else if(type==='videos'){
+
+    if(!videoItems.length)
+      await loadVideos();
+
+    renderMainFolder(
+      '🎬 VIDEO MEMORIES',
+      videoItems,
+      'video'
+    );
+
+  }else{
+
+    if(!fileItems.length)
+      await loadFiles();
+
+    renderMainFolder(
+      '📄 MY FILES',
+      fileItems,
+      'file'
+    );
+
+  }
+}
+
+
+function closeMainFolder(){
+
+  document.getElementById('mainFolderPopup').style.display='none';
+
+}
+
+
+function openPrivateDashboard(){
+
+  document.getElementById('privateDashboard').style.display='flex';
+
+}
+
+
+async function openPrivateMedia(type){
+
+  const folder='private/'+type;
+
+  const files=await getFolder(folder);
+
+  const items=files.filter(
+    f=>f.type==='file' && (
+      type==='photos'
+        ?photoExtensions.includes(ext(f.name))
+        :type==='videos'
+          ?videoExtensions.includes(ext(f.name))
+          :fileExtensions.includes(ext(f.name))
+    )
+  );
+
+
+  if(!items.length){
+
+    alert(
+      'इस private folder में अभी कोई file नहीं है।\n'+
+      'GitHub में private/'+type+'/ folder में files डालें।'
+    );
+
+    return;
+  }
+
+
+  if(type==='files'){
+
+    document.getElementById('privateDashboard').style.display='none';
+
+    renderMainFolder(
+      '🔐 PRIVATE FILES',
+      items,
+      'file'
+    );
+
+    document.getElementById('mainFolderPopup').style.display='flex';
+
+    return;
+  }
+
+
+  document.getElementById('privateDashboard').style.display='none';
+
+  openViewer(
+    items,
+    0,
+    type==='photos'?'photo':'video',
+    true
+  );
+}
+
+
+function openLetter(){
+
+  document.getElementById('privateDashboard').style.display='none';
+
+  document.getElementById('letterModal').style.display='flex';
+
+}
+
+
+function closeLetter(){
+
+  document.getElementById('letterModal').style.display='none';
+
+}
+
+
+function closePrivate(){
+
+  document.getElementById('privateDashboard').style.display='none';
+
+}
+
+
+function unlock(){
+
+  const v=
+    document.getElementById('answer')
+      .value
+      .trim()
+      .toLowerCase();
+
+  const msg=document.getElementById('msg');
+
+
+  if(v==='1'||v==='एक'||v==='ek'){
+
+    msg.textContent='❤️ Memory unlocked!';
+
+    msg.style.color='#f3d37b';
+
+    document.getElementById('privateDashboard').style.display='flex';
+
+  }else{
+
+    msg.textContent='Answer is incorrect.';
+
+    msg.style.color='#d9dce5';
+
+  }
+
+}
+
+
+document.getElementById('answer').addEventListener(
+  'keydown',
+  e=>{
+    if(e.key==='Enter')unlock();
+  }
+);
+
+
+const c=document.getElementById('stars');
+const x=c.getContext('2d');
 
 let W,H,pts=[];
 
+
 function resize(){
 
-W=c.width=
-innerWidth*devicePixelRatio;
+  W=c.width=innerWidth*devicePixelRatio;
 
-H=c.height=
-innerHeight*devicePixelRatio;
+  H=c.height=innerHeight*devicePixelRatio;
 
-c.style.width=
-innerWidth+'px';
+  c.style.width=innerWidth+'px';
+  c.style.height=innerHeight+'px';
 
-c.style.height=
-innerHeight+'px';
 
-pts=Array.from(
-{
-length:
-Math.min(
-170,
-Math.floor(innerWidth/7)
-)
-},
-()=>({
+  pts=Array.from(
+    {
+      length:Math.min(
+        170,
+        Math.floor(innerWidth/7)
+      )
+    },
+    ()=>({
 
-x:Math.random()*W,
+      x:Math.random()*W,
 
-y:Math.random()*H,
+      y:Math.random()*H,
 
-r:
-(Math.random()*1.5+.25)*
-devicePixelRatio,
+      r:
+        (Math.random()*1.5+.25)*
+        devicePixelRatio,
 
-a:
-Math.random()*.65+.2,
+      a:
+        Math.random()*.65+.2,
 
-s:
-Math.random()*.018+.004,
+      s:
+        Math.random()*.018+.004,
 
-p:
-Math.random()*6.28
+      p:
+        Math.random()*6.28
 
-})
-);
+    })
+  );
 
 }
+
 
 function draw(t){
 
-x.clearRect(0,0,W,H);
+  x.clearRect(0,0,W,H);
 
-for(const p of pts){
+  for(const p of pts){
 
-p.p+=p.s;
+    p.p+=p.s;
 
-const a=
-p.a*
-(.55+.45*
-Math.sin(
-p.p+t*.001
-));
+    const a=
+      p.a*
+      (
+        .55+
+        .45*
+        Math.sin(p.p+t*.001)
+      );
 
-x.beginPath();
 
-x.arc(
-p.x,
-p.y,
-p.r,
-0,
-Math.PI*2
-);
+    x.beginPath();
 
-x.fillStyle=
-`rgba(220,232,255,${a})`;
+    x.arc(
+      p.x,
+      p.y,
+      p.r,
+      0,
+      Math.PI*2
+    );
 
-x.fill();
+    x.fillStyle=
+      `rgba(220,232,255,${a})`;
+
+    x.fill();
+
+  }
+
+  requestAnimationFrame(draw);
 
 }
 
-requestAnimationFrame(draw);
 
-}
-
-addEventListener(
-'resize',
-resize
-);
+addEventListener('resize',resize);
 
 resize();
 
