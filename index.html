@@ -1062,3 +1062,604 @@ id="favoriteBtn">
 </div>
 
 </div>
+<script>
+
+function renderMainFolder(title,items,type){
+const c=document.getElementById('mainFolderContent');
+c.innerHTML='';
+document.getElementById('mainFolderTitle').innerHTML=title;
+
+if(!items.length){
+c.innerHTML='<div class="empty">अभी कोई item नहीं है।</div>';
+return
+}
+
+const g=document.createElement('div');
+g.className='gallery';
+
+items.forEach((f,i)=>{
+const d=document.createElement('div');
+d.className='gallery-item';
+
+if(type==='photo'){
+const im=document.createElement('img');
+im.src=f.download_url;
+im.alt=f.name;
+im.loading='lazy';
+d.appendChild(im);
+
+d.onclick=()=>{
+closeMainFolder();
+openViewer(items,i,'photo')
+}
+
+}else if(type==='video'){
+
+const v=document.createElement('video');
+v.src=f.download_url;
+v.muted=true;
+v.preload='metadata';
+v.playsInline=true;
+d.appendChild(v);
+
+d.onclick=()=>{
+closeMainFolder();
+openViewer(items,i,'video')
+}
+
+}else{
+
+d.className+=' file-card';
+
+d.innerHTML=
+'<div class="file-icon">📄</div>'+
+'<div class="file-name">'+
+escapeHTML(f.name)+
+'</div>';
+
+d.onclick=()=>{
+window.open(f.download_url,'_blank')
+}
+
+}
+
+g.appendChild(d)
+
+});
+
+c.appendChild(g)
+
+}
+
+async function openSurprise(){
+document.getElementById('surprise').style.display='flex'
+}
+
+function closeSurprise(){
+document.getElementById('surprise').style.display='none'
+}
+
+let currentItems=[],
+currentIndex=0,
+currentType='',
+zoomLevel=1,
+currentPrivate=false;
+
+function openViewer(items,index,type,isPrivate=false){
+
+currentItems=items;
+currentIndex=index;
+currentType=type;
+currentPrivate=isPrivate;
+zoomLevel=1;
+
+document.getElementById('viewer').style.display='flex';
+
+showCurrentMedia()
+
+}
+
+function showCurrentMedia(){
+
+if(!currentItems.length)return;
+
+const f=currentItems[currentIndex];
+
+const im=document.getElementById('viewerImage');
+const v=document.getElementById('viewerVideo');
+
+im.style.display='none';
+v.style.display='none';
+
+if(currentType==='photo'){
+
+im.src=f.download_url;
+im.style.display='block';
+im.style.transform='scale('+zoomLevel+')';
+
+}else{
+
+v.src=f.download_url;
+v.style.display='block';
+v.style.transform='scale('+zoomLevel+')';
+v.load()
+
+}
+
+document.getElementById('viewerCounter').textContent=
+(currentIndex+1)+' / '+currentItems.length;
+
+updateFavorite()
+
+}
+
+function closeViewer(){
+
+document.getElementById('viewer').style.display='none';
+
+document.getElementById('viewerVideo').pause();
+
+document.getElementById('viewerVideo').removeAttribute('src')
+
+}
+
+function previousMedia(){
+
+if(!currentItems.length)return;
+
+currentIndex=
+(currentIndex-1+currentItems.length)%currentItems.length;
+
+zoomLevel=1;
+
+showCurrentMedia()
+
+}
+
+function nextMedia(){
+
+if(!currentItems.length)return;
+
+currentIndex=
+(currentIndex+1)%currentItems.length;
+
+zoomLevel=1;
+
+showCurrentMedia()
+
+}
+
+function zoomIn(){
+
+zoomLevel=
+Math.min(3,zoomLevel+.2);
+
+showCurrentMedia()
+
+}
+
+function zoomOut(){
+
+zoomLevel=
+Math.max(.5,zoomLevel-.2);
+
+showCurrentMedia()
+
+}
+
+function resetZoom(){
+
+zoomLevel=1;
+
+showCurrentMedia()
+
+}
+
+function downloadCurrent(){
+
+const f=currentItems[currentIndex];
+
+const a=document.createElement('a');
+
+a.href=f.download_url;
+a.download=f.name;
+a.target='_blank';
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove()
+
+}
+
+async function shareCurrent(){
+
+const f=currentItems[currentIndex];
+
+try{
+
+if(navigator.share)
+
+await navigator.share({
+title:f.name,
+url:f.download_url
+});
+
+else{
+
+await navigator.clipboard.writeText(
+f.download_url
+);
+
+alert('Link copied!')
+
+}
+
+}catch(e){}
+
+}
+
+function favKey(){
+
+return 'two-stars-fav-'+
+(currentPrivate?'private-':'')+
+currentType+'-'+
+(currentItems[currentIndex]?.name||'')
+
+}
+
+function updateFavorite(){
+
+const b=document.getElementById('favoriteBtn');
+
+if(!b)return;
+
+b.textContent=
+localStorage.getItem(favKey())==='1'
+?'♥ Favorited'
+:'♡ Favorite'
+
+}
+
+function toggleFavorite(){
+
+const k=favKey();
+
+if(localStorage.getItem(k)==='1')
+localStorage.removeItem(k);
+else
+localStorage.setItem(k,'1');
+
+updateFavorite()
+
+}
+
+let touchX=0;
+
+document.getElementById('viewer')
+.addEventListener(
+'touchstart',
+e=>touchX=e.changedTouches[0].screenX,
+{passive:true}
+);
+
+document.getElementById('viewer')
+.addEventListener(
+'touchend',
+e=>{
+
+const dx=
+e.changedTouches[0].screenX-touchX;
+
+if(Math.abs(dx)>60){
+
+dx<0
+?nextMedia()
+:previousMedia()
+
+}
+
+},
+{passive:true}
+);
+
+async function openMainFolder(type){
+
+document.getElementById(
+'mainFolderPopup'
+).style.display='flex';
+
+document.getElementById(
+'mainFolderContent'
+).innerHTML=
+'<div class="empty">Loading...</div>';
+
+if(type==='photos'){
+
+if(!photoItems.length)
+await loadPhotos();
+
+renderMainFolder(
+'📸 PHOTO MEMORIES',
+photoItems,
+'photo'
+)
+
+}else if(type==='videos'){
+
+if(!videoItems.length)
+await loadVideos();
+
+renderMainFolder(
+'🎬 VIDEO MEMORIES',
+videoItems,
+'video'
+)
+
+}else{
+
+if(!fileItems.length)
+await loadFiles();
+
+renderMainFolder(
+'📄 MY FILES',
+fileItems,
+'file'
+)
+
+}
+
+}
+
+function closeMainFolder(){
+
+document.getElementById(
+'mainFolderPopup'
+).style.display='none'
+
+}
+
+function openPrivateDashboard(){
+
+document.getElementById(
+'privateDashboard'
+).style.display='flex'
+
+}
+
+async function openPrivateMedia(type){
+
+const folder='private/'+type;
+
+const files=await getFolder(folder);
+
+const items=files.filter(
+f=>f.type==='file'&&
+(
+type==='photos'
+?photoExtensions.includes(ext(f.name))
+:
+type==='videos'
+?videoExtensions.includes(ext(f.name))
+:
+fileExtensions.includes(ext(f.name))
+)
+);
+
+if(!items.length){
+
+alert(
+'इस private folder में अभी कोई file नहीं है।\n'+
+'GitHub में private/'+
+type+
+'/ folder में files डालें।'
+);
+
+return
+
+}
+
+if(type==='files'){
+
+document.getElementById(
+'privateDashboard'
+).style.display='none';
+
+renderMainFolder(
+'🔐 PRIVATE FILES',
+items,
+'file'
+);
+
+document.getElementById(
+'mainFolderPopup'
+).style.display='flex';
+
+return
+
+}
+
+document.getElementById(
+'privateDashboard'
+).style.display='none';
+
+openViewer(
+items,
+0,
+type==='photos'
+?'photo'
+:'video',
+true
+)
+
+}
+
+function openLetter(){
+
+document.getElementById(
+'privateDashboard'
+).style.display='none';
+
+document.getElementById(
+'letterModal'
+).style.display='flex'
+
+}
+
+function closeLetter(){
+
+document.getElementById(
+'letterModal'
+).style.display='none'
+
+}
+
+function unlock(){
+
+const v=
+document.getElementById(
+'answer'
+).value
+.trim()
+.toLowerCase();
+
+const msg=
+document.getElementById('msg');
+
+if(
+v==='1'||
+v==='एक'||
+v==='ek'
+){
+
+msg.textContent=
+'❤️ Memory unlocked!';
+
+msg.style.color='#f3d37b';
+
+document.getElementById(
+'privateDashboard'
+).style.display='flex';
+
+}else{
+
+msg.textContent=
+'Answer is incorrect.';
+
+msg.style.color='#d9dce5';
+
+}
+
+}
+
+document.getElementById(
+'answer'
+).addEventListener(
+'keydown',
+e=>{
+if(e.key==='Enter')unlock()
+}
+);
+
+const c=
+document.getElementById('stars'),
+x=c.getContext('2d');
+
+let W,H,pts=[];
+
+function resize(){
+
+W=c.width=
+innerWidth*devicePixelRatio;
+
+H=c.height=
+innerHeight*devicePixelRatio;
+
+c.style.width=
+innerWidth+'px';
+
+c.style.height=
+innerHeight+'px';
+
+pts=Array.from(
+{
+length:
+Math.min(
+170,
+Math.floor(innerWidth/7)
+)
+},
+()=>({
+
+x:Math.random()*W,
+
+y:Math.random()*H,
+
+r:
+(Math.random()*1.5+.25)*
+devicePixelRatio,
+
+a:
+Math.random()*.65+.2,
+
+s:
+Math.random()*.018+.004,
+
+p:
+Math.random()*6.28
+
+})
+);
+
+}
+
+function draw(t){
+
+x.clearRect(0,0,W,H);
+
+for(const p of pts){
+
+p.p+=p.s;
+
+const a=
+p.a*
+(.55+.45*
+Math.sin(
+p.p+t*.001
+));
+
+x.beginPath();
+
+x.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
+);
+
+x.fillStyle=
+`rgba(220,232,255,${a})`;
+
+x.fill();
+
+}
+
+requestAnimationFrame(draw);
+
+}
+
+addEventListener(
+'resize',
+resize
+);
+
+resize();
+
+requestAnimationFrame(draw);
+
+</script>
+
+</body>
+</html>
