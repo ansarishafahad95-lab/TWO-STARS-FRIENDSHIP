@@ -1659,6 +1659,225 @@ resize();
 
 requestAnimationFrame(draw);
 
+  /* ================================
+   GOOGLE DRIVE CONNECTION
+   TWO STARS • ONE FRIENDSHIP
+================================ */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec";
+
+
+/* FILE TYPES */
+
+const photoExtensions = [
+"jpg",
+"jpeg",
+"png",
+"webp",
+"gif"
+];
+
+const videoExtensions = [
+"mp4",
+"webm",
+"mov",
+"m4v"
+];
+
+const fileExtensions = [
+"pdf",
+"doc",
+"docx",
+"txt",
+"xls",
+"xlsx"
+];
+
+
+/* MEMORY DATA */
+
+let photoItems = [];
+let videoItems = [];
+let fileItems = [];
+
+
+/* GET FILE EXTENSION */
+
+function ext(name){
+
+return name
+.split(".")
+.pop()
+.toLowerCase();
+
+}
+
+
+/* LOAD GOOGLE DRIVE FOLDER */
+
+async function getFolder(path){
+
+try{
+
+const response = await fetch(
+API_URL +
+"?path=" +
+encodeURIComponent(path)
+);
+
+const data = await response.json();
+
+if(!data.success){
+
+throw new Error(
+data.error ||
+"Google Drive folder could not be loaded."
+);
+
+}
+
+return data.files || [];
+
+}catch(error){
+
+console.error(
+"Drive Error:",
+error
+);
+
+return [];
+
+}
+
+}
+
+
+/* LOAD PHOTOS */
+
+async function loadPhotos(){
+
+const files =
+await getFolder("photos");
+
+photoItems =
+files.filter(
+file =>
+file.type === "file" &&
+photoExtensions.includes(
+ext(file.name)
+)
+);
+
+}
+
+
+/* LOAD VIDEOS */
+
+async function loadVideos(){
+
+const files =
+await getFolder("videos");
+
+videoItems =
+files.filter(
+file =>
+file.type === "file" &&
+videoExtensions.includes(
+ext(file.name)
+)
+);
+
+}
+
+
+/* LOAD FILES */
+
+async function loadFiles(){
+
+const files =
+await getFolder("files");
+
+fileItems =
+files.filter(
+file =>
+file.type === "file" &&
+fileExtensions.includes(
+ext(file.name)
+)
+);
+
+}
+
+
+/* SECURITY FOR FILE NAMES */
+
+function escapeHTML(str){
+
+return String(str).replace(
+/[&<>"']/g,
+function(m){
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[m];
+
+}
+);
+
+}
+
+
+/* ================================
+   LOAD DRIVE DATA
+================================ */
+
+(async function(){
+
+try{
+
+await Promise.all([
+loadPhotos(),
+loadVideos(),
+loadFiles()
+]);
+
+console.log(
+"TWO STARS Drive connected successfully."
+);
+
+console.log(
+"Photos:",
+photoItems.length
+);
+
+console.log(
+"Videos:",
+videoItems.length
+);
+
+console.log(
+"Files:",
+fileItems.length
+);
+
+}catch(error){
+
+console.error(
+"Drive loading error:",
+error
+);
+
+}
+
+})();
+
 </script>
 
 </body>
