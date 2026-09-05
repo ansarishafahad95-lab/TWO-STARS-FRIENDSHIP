@@ -1073,401 +1073,679 @@ id="favoriteBtn">
 <script>
 
 function renderMainFolder(title,items,type){
-const c=document.getElementById('mainFolderContent');
-c.innerHTML='';
-document.getElementById('mainFolderTitle').innerHTML=title;
 
-if(!items.length){
-c.innerHTML='<div class="empty">अभी कोई item नहीं है।</div>';
-return
+  const c=document.getElementById('mainFolderContent');
+
+  c.innerHTML='';
+
+  document.getElementById('mainFolderTitle').innerHTML=title;
+
+  if(!items.length){
+
+    c.innerHTML=
+      '<div class="empty">अभी कोई item नहीं है।</div>';
+
+    return;
+  }
+
+  const g=document.createElement('div');
+
+  g.className='gallery';
+
+  items.forEach((f,i)=>{
+
+    const d=document.createElement('div');
+
+    d.className='gallery-item';
+
+    /* PHOTO */
+
+    if(type==='photo'){
+
+      const im=document.createElement('img');
+
+      im.src=f.thumbnailUrl || f.downloadUrl;
+
+      im.alt=f.name;
+
+      im.loading='lazy';
+
+      d.appendChild(im);
+
+      d.onclick=()=>{
+
+        closeMainFolder();
+
+        openViewer(items,i,'photo');
+
+      };
+
+    }
+
+    /* VIDEO */
+
+    else if(type==='video'){
+
+      const v=document.createElement('video');
+
+      v.src=f.downloadUrl;
+
+      v.muted=true;
+
+      v.preload='metadata';
+
+      v.playsInline=true;
+
+      d.appendChild(v);
+
+      d.onclick=()=>{
+
+        closeMainFolder();
+
+        openViewer(items,i,'video');
+
+      };
+
+    }
+
+    /* FILE */
+
+    else{
+
+      d.className+=' file-card';
+
+      d.innerHTML=
+
+        '<div class="file-icon">📄</div>'+
+
+        '<div class="file-name">'+
+
+        escapeHTML(f.name)+
+
+        '</div>';
+
+      d.onclick=()=>{
+
+        window.open(
+
+          f.viewUrl || f.downloadUrl,
+
+          '_blank'
+
+        );
+
+      };
+
+    }
+
+    g.appendChild(d);
+
+  });
+
+  c.appendChild(g);
+
 }
 
-const g=document.createElement('div');
-g.className='gallery';
-
-items.forEach((f,i)=>{
-const d=document.createElement('div');
-d.className='gallery-item';
-
-if(type==='photo'){
-const im=document.createElement('img');
-im.src=f.downloadUrl;
-im.alt=f.name;
-im.loading='lazy';
-d.appendChild(im);
-
-d.onclick=()=>{
-closeMainFolder();
-openViewer(items,i,'photo')
-}
-
-}else if(type==='video'){
-
-const v=document.createElement('video');
-v.src=f.downloadUrl;
-v.muted=true;
-v.preload='metadata';
-v.playsInline=true;
-d.appendChild(v);
-
-d.onclick=()=>{
-closeMainFolder();
-openViewer(items,i,'video')
-}
-
-}else{
-
-d.className+=' file-card';
-
-d.innerHTML=
-'<div class="file-icon">📄</div>'+
-'<div class="file-name">'+
-escapeHTML(f.name)+
-'</div>';
-
-d.onclick=()=>{
-window.open(f.downloadUrl,'_blank')
-}
-
-}
-
-g.appendChild(d)
-
-});
-
-c.appendChild(g)
-
-}
 
 async function openSurprise(){
-document.getElementById('surprise').style.display='flex'
+
+  document.getElementById(
+    'surprise'
+  ).style.display='flex';
+
 }
+
 
 function closeSurprise(){
-document.getElementById('surprise').style.display='none'
-}
 
-let currentItems=[],
-currentIndex=0,
-currentType='',
-zoomLevel=1,
-currentPrivate=false;
-
-function openViewer(items,index,type,isPrivate=false){
-
-currentItems=items;
-currentIndex=index;
-currentType=type;
-currentPrivate=isPrivate;
-zoomLevel=1;
-
-document.getElementById('viewer').style.display='flex';
-
-showCurrentMedia()
+  document.getElementById(
+    'surprise'
+  ).style.display='none';
 
 }
+
+
+let currentItems=[];
+
+let currentIndex=0;
+
+let currentType='';
+
+let zoomLevel=1;
+
+let currentPrivate=false;
+
+
+function openViewer(
+  items,
+  index,
+  type,
+  isPrivate=false
+){
+
+  currentItems=items;
+
+  currentIndex=index;
+
+  currentType=type;
+
+  currentPrivate=isPrivate;
+
+  zoomLevel=1;
+
+  document.getElementById(
+    'viewer'
+  ).style.display='flex';
+
+  showCurrentMedia();
+
+}
+
 
 function showCurrentMedia(){
 
-if(!currentItems.length)return;
+  if(!currentItems.length)return;
 
-const f=currentItems[currentIndex];
+  const f=currentItems[currentIndex];
 
-const im=document.getElementById('viewerImage');
-const v=document.getElementById('viewerVideo');
+  const im=document.getElementById(
+    'viewerImage'
+  );
 
-im.style.display='none';
-v.style.display='none';
+  const v=document.getElementById(
+    'viewerVideo'
+  );
 
-if(currentType==='photo'){
+  im.style.display='none';
 
-im.src=f.downloadUrl;
-im.style.display='block';
-im.style.transform='scale('+zoomLevel+')';
+  v.style.display='none';
 
-}else{
+  /* PHOTO */
 
-v.src=f.downloadUrl;
-v.style.display='block';
-v.style.transform='scale('+zoomLevel+')';
-v.load()
+  if(currentType==='photo'){
+
+    im.src=
+      f.downloadUrl ||
+      f.thumbnailUrl;
+
+    im.style.display='block';
+
+    im.style.transform=
+      'scale('+zoomLevel+')';
+
+  }
+
+  /* VIDEO */
+
+  else{
+
+    v.src=f.downloadUrl;
+
+    v.style.display='block';
+
+    v.style.transform=
+      'scale('+zoomLevel+')';
+
+    v.load();
+
+  }
+
+  document.getElementById(
+    'viewerCounter'
+  ).textContent=
+    (currentIndex+1)+
+    ' / '+
+    currentItems.length;
+
+  updateFavorite();
 
 }
 
-document.getElementById('viewerCounter').textContent=
-(currentIndex+1)+' / '+currentItems.length;
-
-updateFavorite()
-
-}
 
 function closeViewer(){
 
-document.getElementById('viewer').style.display='none';
+  document.getElementById(
+    'viewer'
+  ).style.display='none';
 
-document.getElementById('viewerVideo').pause();
+  const v=document.getElementById(
+    'viewerVideo'
+  );
 
-document.getElementById('viewerVideo').removeAttribute('src')
+  v.pause();
+
+  v.removeAttribute('src');
 
 }
+
 
 function previousMedia(){
 
-if(!currentItems.length)return;
+  if(!currentItems.length)return;
 
-currentIndex=
-(currentIndex-1+currentItems.length)%currentItems.length;
+  currentIndex=
+    (currentIndex-1+currentItems.length)
+    %currentItems.length;
 
-zoomLevel=1;
+  zoomLevel=1;
 
-showCurrentMedia()
+  showCurrentMedia();
 
 }
+
 
 function nextMedia(){
 
-if(!currentItems.length)return;
+  if(!currentItems.length)return;
 
-currentIndex=
-(currentIndex+1)%currentItems.length;
+  currentIndex=
+    (currentIndex+1)
+    %currentItems.length;
 
-zoomLevel=1;
+  zoomLevel=1;
 
-showCurrentMedia()
+  showCurrentMedia();
 
 }
+
 
 function zoomIn(){
 
-zoomLevel=
-Math.min(3,zoomLevel+.2);
+  zoomLevel=
+    Math.min(
+      3,
+      zoomLevel+0.2
+    );
 
-showCurrentMedia()
+  showCurrentMedia();
 
 }
+
 
 function zoomOut(){
 
-zoomLevel=
-Math.max(.5,zoomLevel-.2);
+  zoomLevel=
+    Math.max(
+      0.5,
+      zoomLevel-0.2
+    );
 
-showCurrentMedia()
+  showCurrentMedia();
 
 }
+
 
 function resetZoom(){
 
-zoomLevel=1;
+  zoomLevel=1;
 
-showCurrentMedia()
+  showCurrentMedia();
 
 }
+
 
 function downloadCurrent(){
 
-const f=currentItems[currentIndex];
+  const f=
+    currentItems[currentIndex];
 
-const a=document.createElement('a');
+  const url=
+    f.downloadUrl ||
+    f.viewUrl;
 
-a.href=f.downloadUrl;
-a.download=f.name;
-a.target='_blank';
+  if(!url)return;
 
-document.body.appendChild(a);
+  const a=
+    document.createElement('a');
 
-a.click();
+  a.href=url;
 
-a.remove()
+  a.download=f.name;
+
+  /* IMPORTANT:
+     Do NOT use target="_blank"
+  */
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
 
 }
+
 
 async function shareCurrent(){
 
-const f=currentItems[currentIndex];
+  const f=
+    currentItems[currentIndex];
 
-try{
+  const url=
+    f.viewUrl ||
+    f.downloadUrl;
 
-if(navigator.share)
+  try{
 
-await navigator.share({
-title:f.name,
-url:f.downloadUrl
-});
+    if(navigator.share){
 
-else{
+      await navigator.share({
 
-await navigator.clipboard.writeText(
-f.downloadUrl
-);
+        title:f.name,
 
-alert('Link copied!')
+        url:url
+
+      });
+
+    }else{
+
+      await navigator.clipboard.writeText(url);
+
+      alert('Link copied!');
+
+    }
+
+  }catch(e){}
 
 }
 
-}catch(e){}
-
-}
 
 function favKey(){
 
-return 'two-stars-fav-'+
-(currentPrivate?'private-':'')+
-currentType+'-'+
-(currentItems[currentIndex]?.name||'')
+  return 'two-stars-fav-'+
+
+    (currentPrivate
+      ?'private-'
+      :'')+
+
+    currentType+
+
+    '-' +
+
+    (currentItems[
+      currentIndex
+    ]?.name || '');
 
 }
+
 
 function updateFavorite(){
 
-const b=document.getElementById('favoriteBtn');
+  const b=
+    document.getElementById(
+      'favoriteBtn'
+    );
 
-if(!b)return;
+  if(!b)return;
 
-b.textContent=
-localStorage.getItem(favKey())==='1'
-?'♥ Favorited'
-:'♡ Favorite'
+  b.textContent=
+
+    localStorage.getItem(
+      favKey()
+    )==='1'
+
+    ?'♥ Favorited'
+
+    :'♡ Favorite';
 
 }
+
 
 function toggleFavorite(){
 
-const k=favKey();
+  const k=favKey();
 
-if(localStorage.getItem(k)==='1')
-localStorage.removeItem(k);
-else
-localStorage.setItem(k,'1');
+  if(
+    localStorage.getItem(k)==='1'
+  ){
 
-updateFavorite()
+    localStorage.removeItem(k);
+
+  }else{
+
+    localStorage.setItem(
+      k,
+      '1'
+    );
+
+  }
+
+  updateFavorite();
 
 }
+
 
 let touchX=0;
 
-document.getElementById('viewer')
-.addEventListener(
-'touchstart',
-e=>touchX=e.changedTouches[0].screenX,
-{passive:true}
+
+document.getElementById(
+  'viewer'
+).addEventListener(
+
+  'touchstart',
+
+  e=>{
+
+    touchX=
+      e.changedTouches[0]
+      .screenX;
+
+  },
+
+  {passive:true}
+
 );
 
-document.getElementById('viewer')
-.addEventListener(
-'touchend',
-e=>{
 
-const dx=
-e.changedTouches[0].screenX-touchX;
+document.getElementById(
+  'viewer'
+).addEventListener(
 
-if(Math.abs(dx)>60){
+  'touchend',
 
-dx<0
-?nextMedia()
-:previousMedia()
+  e=>{
 
-}
+    const dx=
+      e.changedTouches[0]
+      .screenX-touchX;
 
-},
-{passive:true}
+    if(Math.abs(dx)>60){
+
+      dx<0
+        ?nextMedia()
+        :previousMedia();
+
+    }
+
+  },
+
+  {passive:true}
+
 );
+
 
 async function openMainFolder(type){
 
-document.getElementById(
-'mainFolderPopup'
-).style.display='flex';
+  document.getElementById(
+    'mainFolderPopup'
+  ).style.display='flex';
 
-document.getElementById(
-'mainFolderContent'
-).innerHTML=
-'<div class="empty">Loading...</div>';
+  document.getElementById(
+    'mainFolderContent'
+  ).innerHTML=
+    '<div class="empty">Loading...</div>';
 
-if(type==='photos'){
 
-if(!photoItems.length)
-await loadPhotos();
+  if(type==='photos'){
 
-renderMainFolder(
-'📸 PHOTO MEMORIES',
-photoItems,
-'photo'
-)
+    if(!photoItems.length){
 
-}else if(type==='videos'){
+      await loadPhotos();
 
-if(!videoItems.length)
-await loadVideos();
+    }
 
-renderMainFolder(
-'🎬 VIDEO MEMORIES',
-videoItems,
-'video'
-)
+    renderMainFolder(
+      '📸 PHOTO MEMORIES',
+      photoItems,
+      'photo'
+    );
 
-}else{
+  }
 
-if(!fileItems.length)
-await loadFiles();
+  else if(type==='videos'){
 
-renderMainFolder(
-'📄 MY FILES',
-fileItems,
-'file'
-)
+    if(!videoItems.length){
+
+      await loadVideos();
+
+    }
+
+    renderMainFolder(
+      '🎬 VIDEO MEMORIES',
+      videoItems,
+      'video'
+    );
+
+  }
+
+  else{
+
+    if(!fileItems.length){
+
+      await loadFiles();
+
+    }
+
+    renderMainFolder(
+      '📄 MY FILES',
+      fileItems,
+      'file'
+    );
+
+  }
 
 }
 
-}
 
 function closeMainFolder(){
 
-document.getElementById(
-'mainFolderPopup'
-).style.display='none'
+  document.getElementById(
+    'mainFolderPopup'
+  ).style.display='none';
 
 }
+
 
 function openPrivateDashboard(){
 
-document.getElementById(
-'privateDashboard'
-).style.display='flex'
+  document.getElementById(
+    'privateDashboard'
+  ).style.display='flex';
 
 }
+
 
 async function openPrivateMedia(type){
 
-const folder='private/'+type;
+  const folder=
+    'private/'+type;
 
-const files=await getFolder(folder);
+  const files=
+    await getFolder(folder);
 
-const items=files.filter(
-f=>f.type==='file'&&
-(
-type==='photos'
-?photoExtensions.includes(ext(f.name))
-:
-type==='videos'
-?videoExtensions.includes(ext(f.name))
-:
-fileExtensions.includes(ext(f.name))
-)
-);
 
-if(!items.length){
+  const items=
+    files.filter(
 
-alert(
-'इस private folder में अभी कोई file नहीं है।\n'+
-'GitHub में private/'+
-type+
-'/ folder में files डालें।'
-);
+      f=>{
 
-return
+        /* IMPORTANT:
+           Code.gs uses mediaType,
+           NOT type
+        */
 
-}
+        if(f.mediaType==='photo'){
 
+          return type==='photos';
+
+        }
+
+        if(f.mediaType==='video'){
+
+          return type==='videos';
+
+        }
+
+        if(f.mediaType==='file'){
+
+          return type==='files';
+
+        }
+
+        return false;
+
+      }
+
+    );
+
+
+  if(!items.length){
+
+    alert(
+
+      'इस private folder में अभी कोई file नहीं है।\n'+
+
+      'Google Drive में private/'+
+      type+
+      '/ folder में files डालें।'
+
+    );
+
+    return;
+
+  }
+
+
+  if(type==='files'){
+
+    document.getElementById(
+      'privateDashboard'
+    ).style.display='none';
+
+    renderMainFolder(
+      '🔐 PRIVATE FILES',
+      items,
+      'file'
+    );
+
+    document.getElementById(
+      'mainFolderPopup'
+    ).style.display='flex';
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    'privateDashboard'
+  ).style.display='none';
+
+
+  openViewer(
+
+    items,
+
+    0,
+
+    type==='photos'
+      ?'photo'
+      :'video',
+
+    true
+
+  );
+
+      }
 if(type==='files'){
 
 document.getElementById(
@@ -1765,17 +2043,19 @@ async function getFolder(path){
 
 async function loadPhotos(){
 
-const files =
-await getFolder("photos");
+  const files =
+    await getFolder("photos");
 
-photoItems =
-files.filter(
-file =>
-file.type === "file" &&
-photoExtensions.includes(
-ext(file.name)
-)
-);
+  photoItems =
+    files.filter(
+
+      file =>
+        file.mediaType === "photo" &&
+        photoExtensions.includes(
+          ext(file.name)
+        )
+
+    );
 
 }
 
@@ -1784,36 +2064,39 @@ ext(file.name)
 
 async function loadVideos(){
 
-const files =
-await getFolder("videos");
+  const files =
+    await getFolder("videos");
 
-videoItems =
-files.filter(
-file =>
-file.type === "file" &&
-videoExtensions.includes(
-ext(file.name)
-)
-);
+  videoItems =
+    files.filter(
+
+      file =>
+        file.mediaType === "video" &&
+        videoExtensions.includes(
+          ext(file.name)
+        )
+
+    );
 
 }
-
 
 /* LOAD FILES */
 
 async function loadFiles(){
 
-const files =
-await getFolder("files");
+  const files =
+    await getFolder("files");
 
-fileItems =
-files.filter(
-file =>
-file.type === "file" &&
-fileExtensions.includes(
-ext(file.name)
-)
-);
+  fileItems =
+    files.filter(
+
+      file =>
+        file.mediaType === "file" &&
+        fileExtensions.includes(
+          ext(file.name)
+        )
+
+    );
 
 }
 
