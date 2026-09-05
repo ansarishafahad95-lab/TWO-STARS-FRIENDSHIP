@@ -1726,37 +1726,37 @@ return name
 
 async function getFolder(path){
 
-try{
+  try{
 
-const response = await fetch(
-API_URL +
-"?path=" +
-encodeURIComponent(path)
-);
+    const response = await fetch(
+      API_URL +
+      "?path=" +
+      encodeURIComponent(path)
+    );
 
-const data = await response.json();
+    const data = await response.json();
 
-if(!data.success){
+    if(!data.ok){
 
-throw new Error(
-data.error ||
-"Google Drive folder could not be loaded."
-);
+      throw new Error(
+        data.error ||
+        "Google Drive folder could not be loaded."
+      );
 
-}
+    }
 
-return data.files || [];
+    return data.files || [];
 
-}catch(error){
+  }catch(error){
 
-console.error(
-"Drive Error:",
-error
-);
+    console.error(
+      "Drive Error:",
+      error
+    );
 
-return [];
+    return [];
 
-}
+  }
 
 }
 
