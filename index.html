@@ -1091,7 +1091,7 @@ d.className='gallery-item';
 
 if(type==='photo'){
 const im=document.createElement('img');
-im.src=f.download_url;
+im.src=f.downloadUrl;
 im.alt=f.name;
 im.loading='lazy';
 d.appendChild(im);
@@ -1104,7 +1104,7 @@ openViewer(items,i,'photo')
 }else if(type==='video'){
 
 const v=document.createElement('video');
-v.src=f.download_url;
+v.src=f.downloadUrl;
 v.muted=true;
 v.preload='metadata';
 v.playsInline=true;
@@ -1126,7 +1126,7 @@ escapeHTML(f.name)+
 '</div>';
 
 d.onclick=()=>{
-window.open(f.download_url,'_blank')
+window.open(f.downloadUrl,'_blank')
 }
 
 }
@@ -1181,13 +1181,13 @@ v.style.display='none';
 
 if(currentType==='photo'){
 
-im.src=f.download_url;
+im.src=f.downloadUrl;
 im.style.display='block';
 im.style.transform='scale('+zoomLevel+')';
 
 }else{
 
-v.src=f.download_url;
+v.src=f.downloadUrl;
 v.style.display='block';
 v.style.transform='scale('+zoomLevel+')';
 v.load()
@@ -1269,7 +1269,7 @@ const f=currentItems[currentIndex];
 
 const a=document.createElement('a');
 
-a.href=f.download_url;
+a.href=f.downloadUrl;
 a.download=f.name;
 a.target='_blank';
 
@@ -1291,13 +1291,13 @@ if(navigator.share)
 
 await navigator.share({
 title:f.name,
-url:f.download_url
+url:f.downloadUrl
 });
 
 else{
 
 await navigator.clipboard.writeText(
-f.download_url
+f.downloadUrl
 );
 
 alert('Link copied!')
