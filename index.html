@@ -775,6 +775,94 @@ border-radius:14px
 .gallery-item img{
 height:145px
 }
+
+   .gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:14px;
+  margin-top:8px;
+}
+
+.gallery-item{
+  position:relative;
+  min-height:150px;
+  overflow:hidden;
+  border-radius:16px;
+  background:#071126;
+  border:1px solid rgba(255,255,255,.12);
+  cursor:pointer;
+}
+
+.gallery-item img,
+.gallery-item video{
+  display:block;
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  background:#050b18;
+}
+
+.play-badge{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.68);
+  border:1px solid rgba(255,255,255,.3);
+  font-size:24px;
+  pointer-events:none;
+}
+
+.file-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:20px;
+  text-align:center;
+}
+
+.file-icon{
+  font-size:42px;
+}
+
+.file-name{
+  font:12px/1.5 Arial,sans-serif;
+  color:#dbe5f7;
+  word-break:break-word;
+}
+
+.empty{
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#aebbd3;
+  font:13px Arial,sans-serif;
+  padding:20px;
+}
+
+.memory-folder{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+@media(hover:none){
+  .card:hover{
+    transform:none;
+  }
+
+  .gallery-item:hover{
+    transform:none;
+  }
 }
 
 </style>
@@ -1300,1415 +1388,1839 @@ id="favoriteBtn"
 
 </div>
 
-<script>
-
+   <script>
 /* =========================================================
    TWO STARS • ONE FRIENDSHIP
-   FINAL DRIVE + FOLDER + PASSWORD SCRIPT
-========================================================= */
+   FIXED VERSION
+   - Folder opening fixed
+   - Password 1 / ek / एक fixed
+   - Google Drive connection restored
+   - Drive photo thumbnails fixed
+   - Drive video thumbnails fixed
+   - GitHub photo/video/file folders fixed
+   ========================================================= */
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec";
+const DRIVE_WEB_APP_URL =
+'https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
 
-const DRIVE_KEY = "TWO-STARS-2026";
+const DRIVE_UPLOAD_KEY = 'TWO-STARS-2026';
 
-const photoExtensions = [
-"jpg",
-"jpeg",
-"png",
-"webp",
-"gif"
+const GITHUB_USER = 'ansarishafahad95-lab';
+const GITHUB_REPO = 'TWO-STARS-FRIENDSHIP';
+const GITHUB_BRANCH = 'main';
+
+const PRIVATE_DRIVE = [
+  {
+    name:'Private Photo • Google Drive',
+    kind:'drive-photo',
+    id:'1Ax8am6ug5_EA0zpD5NgxtdbUn4jT8aus'
+  },
+  {
+    name:'Private Video • Google Drive',
+    kind:'drive-video',
+    id:'1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T'
+  }
 ];
 
-const videoExtensions = [
-"mp4",
-"webm",
-"mov",
-"m4v",
-"avi",
-"mkv"
-];
+const photoExtensions =
+['jpg','jpeg','png','webp','gif','bmp','heic','heif'];
 
-const fileExtensions = [
-"pdf",
-"doc",
-"docx",
-"txt",
-"xls",
-"xlsx",
-"ppt",
-"pptx",
-"zip"
-];
+const videoExtensions =
+['mp4','webm','mov','m4v','avi','mkv'];
+
+const fileExtensions =
+['pdf','doc','docx','txt','zip','rar','ppt','pptx','xls','xlsx','csv'];
 
 let photoItems = [];
 let videoItems = [];
 let fileItems = [];
 
 
-/* ---------- DRIVE URL HELPERS ---------- */
+/* =========================
+   BASIC HELPERS
+   ========================= */
 
-function fileIdOf(f){
-
-return f && (
-f.id ||
-f.file_id ||
-f.fileId ||
-f.ID ||
-""
-);
-
+function ext(name){
+  return String(name || '')
+    .split('.')
+    .pop()
+    .toLowerCase();
 }
 
-function downloadUrlOf(f){
-
-return f && (
-f.download_url ||
-f.downloadUrl ||
-f.download ||
-f.url ||
-f.webContentLink ||
-f.view_url ||
-f.viewUrl ||
-""
-);
-
-}
-
-function previewUrlOf(f){
-
-const id=fileIdOf(f);
-
-return f && (
-f.preview_url ||
-f.previewUrl ||
-(
-id
-?
-"https://drive.google.com/file/d/"+
-encodeURIComponent(id)+
-"/preview"
-:
-""
-)
-);
-
-}
-
-function thumbnailUrlOf(f){
-
-const id=fileIdOf(f);
-
-if(f){
-
-const t=
-f.thumbnail_url ||
-f.thumbnailUrl ||
-f.thumbnail ||
-f.thumb_url ||
-f.thumbUrl ||
-"";
-
-if(t)return t;
-
-}
-
-return id
-?
-"https://drive.google.com/thumbnail?id="+
-encodeURIComponent(id)+
-"&sz=w1000"
-:
-downloadUrlOf(f);
-
-}
-
-function driveFileUrl(f){
-
-return downloadUrlOf(f) ||
-previewUrlOf(f);
-
+function escapeHTML(value){
+  return String(value ?? '').replace(
+    /[&<>'"]/g,
+    function(c){
+      return {
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        "'":'&#39;',
+        '"':'&quot;'
+      }[c];
+    }
+  );
 }
 
 
-/* ---------- DRIVE FOLDER LOAD ---------- */
+/* =========================
+   GITHUB
+   ========================= */
+
+function apiURL(path){
+  return 'https://api.github.com/repos/' +
+    GITHUB_USER + '/' +
+    GITHUB_REPO +
+    '/contents/' +
+    path +
+    '?ref=' +
+    GITHUB_BRANCH +
+    '&_=' +
+    Date.now();
+}
 
 async function getFolder(path){
 
-const url=
-API_URL+
-"?action=list"+
-"&folder="+
-encodeURIComponent(path)+
-"&key="+
-encodeURIComponent(DRIVE_KEY)+
-"&_="+
-Date.now();
+  try{
 
-try{
+    const response = await fetch(
+      apiURL(path),
+      {
+        cache:'no-store',
+        headers:{
+          'Accept':'application/vnd.github+json'
+        }
+      }
+    );
 
-const response=await fetch(
-url,
-{
-method:"GET",
-cache:"no-store"
+    if(!response.ok){
+      console.error('GitHub folder error:',path,response.status);
+      return [];
+    }
+
+    const data = await response.json();
+
+    return Array.isArray(data) ? data : [];
+
+  }catch(error){
+
+    console.error('GitHub folder error:',path,error);
+    return [];
+
+  }
 }
-);
-
-if(!response.ok){
-
-throw new Error(
-"HTTP "+response.status
-);
-
-}
-
-const data=await response.json();
-
-if(!data.success){
-
-throw new Error(
-data.error ||
-"Google Drive folder could not be loaded."
-);
-
-}
-
-return Array.isArray(data.files)
-?data.files
-:[];
-
-}catch(error){
-
-console.error(
-"Google Drive Error:",
-path,
-error
-);
-
-return [];
-
-}
-
-}
-
-
-/* ---------- LOAD MAIN FOLDERS ---------- */
 
 async function loadPhotos(){
 
-const files=
-await getFolder("photos");
-
-photoItems=
-files.filter(
-file=>
-file &&
-file.type==="file" &&
-photoExtensions.includes(
-ext(file.name)
-)
-);
-
-return photoItems;
+  photoItems =
+    (await getFolder('photos'))
+    .filter(function(file){
+      return file &&
+             file.type === 'file' &&
+             photoExtensions.includes(ext(file.name));
+    });
 
 }
 
 async function loadVideos(){
 
-const files=
-await getFolder("videos");
-
-videoItems=
-files.filter(
-file=>
-file &&
-file.type==="file" &&
-videoExtensions.includes(
-ext(file.name)
-)
-);
-
-return videoItems;
+  videoItems =
+    (await getFolder('videos'))
+    .filter(function(file){
+      return file &&
+             file.type === 'file' &&
+             videoExtensions.includes(ext(file.name));
+    });
 
 }
 
 async function loadFiles(){
 
-const files=
-await getFolder("files");
-
-fileItems=
-files.filter(
-file=>
-file &&
-file.type==="file" &&
-fileExtensions.includes(
-ext(file.name)
-)
-);
-
-return fileItems;
+  fileItems =
+    (await getFolder('files'))
+    .filter(function(file){
+      return file &&
+             file.type === 'file' &&
+             fileExtensions.includes(ext(file.name));
+    });
 
 }
 
 
-/* ---------- SAFE HTML ---------- */
+/* =========================
+   GOOGLE DRIVE
+   ========================= */
 
-function escapeHTML(str){
+function driveConfigured(){
 
-return String(str || "").replace(
-/[&<>"']/g,
-function(m){
-
-return {
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[m];
-
-}
-);
+  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
+    .test(DRIVE_WEB_APP_URL);
 
 }
 
+function driveApiUrl(folder){
 
-/* ---------- MAIN FOLDER RENDER ---------- */
-
-function renderMainFolder(
-title,
-items,
-type
-){
-
-const c=
-document.getElementById(
-"mainFolderContent"
-);
-
-const titleBox=
-document.getElementById(
-"mainFolderTitle"
-);
-
-if(titleBox)
-titleBox.innerHTML=title;
-
-if(!c)return;
-
-c.innerHTML="";
-
-if(!items || !items.length){
-
-c.innerHTML=
-'<div class="drive-error">'+
-'अभी कोई item नहीं है।'+
-'</div>';
-
-return;
+  return DRIVE_WEB_APP_URL +
+    '?action=list' +
+    '&folder=' +
+    encodeURIComponent(folder) +
+    '&key=' +
+    encodeURIComponent(DRIVE_UPLOAD_KEY) +
+    '&_=' +
+    Date.now();
 
 }
 
-const g=
-document.createElement("div");
+function fileId(file){
 
-g.className="gallery";
-
-items.forEach(
-(f,i)=>{
-
-const d=
-document.createElement("div");
-
-d.className="gallery-item";
-
-
-if(type==="photo"){
-
-const im=
-document.createElement("img");
-
-im.src=
-thumbnailUrlOf(f);
-
-im.alt=
-f.name || "Photo";
-
-im.loading="lazy";
-
-im.onerror=function(){
-
-if(
-this.src!==downloadUrlOf(f) &&
-downloadUrlOf(f)
-){
-
-this.src=
-downloadUrlOf(f);
+  return file &&
+    (
+      file.id ||
+      file.file_id ||
+      file.fileId ||
+      ''
+    );
 
 }
 
-};
+function driveFileUrl(file){
 
-d.appendChild(im);
-
-d.onclick=()=>{
-
-closeMainFolder();
-
-openViewer(
-items,
-i,
-"photo"
-);
-
-};
-
-
-}else if(type==="video"){
-
-d.classList.add(
-"video-item"
-);
-
-
-/*
- Google Drive video ka direct poster
- reliable nahi hota.
- Isliye folder me Drive thumbnail
- image dikhaya ja raha hai.
- Tap karne par asli video viewer me
- open hoga.
-*/
-
-const im=
-document.createElement("img");
-
-im.src=
-thumbnailUrlOf(f);
-
-im.alt=
-f.name || "Video";
-
-im.loading="lazy";
-
-im.onerror=function(){
-
-const id=
-fileIdOf(f);
-
-if(id){
-
-this.src=
-"https://drive.google.com/thumbnail?id="+
-encodeURIComponent(id)+
-"&sz=w1000";
+  return file.downloadUrl ||
+    file.download_url ||
+    file.webContentLink ||
+    (
+      'https://drive.google.com/uc?export=download&id=' +
+      encodeURIComponent(fileId(file))
+    );
 
 }
 
-};
+function drivePreviewUrl(file){
 
-d.appendChild(im);
-
-d.onclick=()=>{
-
-closeMainFolder();
-
-openViewer(
-items,
-i,
-"video"
-);
-
-};
-
-
-}else{
-
-d.classList.add(
-"file-card"
-);
-
-d.innerHTML=
-'<div class="file-icon">📄</div>'+
-'<div class="file-name">'+
-escapeHTML(
-f.name || "File"
-)+
-'</div>';
-
-d.onclick=()=>{
-
-const url=
-driveFileUrl(f);
-
-if(url)
-window.open(
-url,
-"_blank"
-);
-
-};
+  return file.previewUrl ||
+    file.preview_url ||
+    (
+      'https://drive.google.com/file/d/' +
+      encodeURIComponent(fileId(file)) +
+      '/preview'
+    );
 
 }
 
-g.appendChild(d);
+function driveThumbUrl(file){
+
+  return file.thumbnailUrl ||
+    file.thumbnail_url ||
+    file.thumbnail ||
+    (
+      'https://drive.google.com/thumbnail?id=' +
+      encodeURIComponent(fileId(file)) +
+      '&sz=w1600'
+    );
 
 }
-);
 
-c.appendChild(g);
+async function listDrive(folder){
+
+  if(!driveConfigured()){
+    return [];
+  }
+
+  try{
+
+    const response = await fetch(
+      driveApiUrl(folder),
+      {cache:'no-store'}
+    );
+
+    if(!response.ok){
+      console.error(
+        'Google Drive error:',
+        response.status
+      );
+      return [];
+    }
+
+    const data = await response.json();
+
+    return Array.isArray(data.files)
+      ? data.files
+      : [];
+
+  }catch(error){
+
+    console.error(
+      'Google Drive list error:',
+      error
+    );
+
+    return [];
+
+  }
 
 }
 
 
-/* ---------- SURPRISE ---------- */
+/* =========================
+   FOLDER WINDOW
+   ========================= */
 
-async function openSurprise(){
+function showFolderLoading(title){
 
-document.getElementById(
-"surprise"
-).style.display="flex";
+  const popup =
+    document.getElementById('mainFolderPopup');
 
-}
+  const content =
+    document.getElementById('mainFolderContent');
 
-function closeSurprise(){
+  document.getElementById(
+    'mainFolderTitle'
+  ).textContent = title;
 
-document.getElementById(
-"surprise"
-).style.display="none";
+  content.innerHTML =
+    '<div class="empty">Loading…</div>';
 
-}
-
-
-/* ---------- MEDIA VIEWER ---------- */
-
-let currentItems=[];
-let currentIndex=0;
-let currentType="";
-let zoomLevel=1;
-let currentPrivate=false;
-
-function openViewer(
-items,
-index,
-type,
-isPrivate=false
-){
-
-currentItems=
-Array.isArray(items)
-?items
-:[];
-
-currentIndex=
-Number(index)||0;
-
-currentType=type;
-
-currentPrivate=
-isPrivate;
-
-zoomLevel=1;
-
-document.getElementById(
-"viewer"
-).style.display="flex";
-
-showCurrentMedia();
+  popup.style.display = 'flex';
 
 }
-
-
-function showCurrentMedia(){
-
-if(!currentItems.length)
-return;
-
-const f=
-currentItems[
-currentIndex
-];
-
-const im=
-document.getElementById(
-"viewerImage"
-);
-
-const v=
-document.getElementById(
-"viewerVideo"
-);
-
-if(!im || !v)
-return;
-
-im.style.display="none";
-v.style.display="none";
-
-try{
-
-v.pause();
-
-}catch(e){}
-
-v.removeAttribute("src");
-
-
-if(currentType==="photo"){
-
-im.src=
-downloadUrlOf(f) ||
-thumbnailUrlOf(f);
-
-im.style.display="block";
-
-im.style.transform=
-"scale("+zoomLevel+")";
-
-}else{
-
-v.src=
-downloadUrlOf(f);
-
-v.style.display="block";
-
-v.style.transform=
-"scale("+zoomLevel+")";
-
-if(v.src){
-
-try{
-
-v.load();
-
-}catch(e){}
-
-}
-
-}
-
-document.getElementById(
-"viewerCounter"
-).textContent=
-(currentIndex+1)+
-" / "+
-currentItems.length;
-
-updateFavorite();
-
-}
-
-
-function closeViewer(){
-
-document.getElementById(
-"viewer"
-).style.display="none";
-
-const v=
-document.getElementById(
-"viewerVideo"
-);
-
-if(v){
-
-try{
-
-v.pause();
-
-}catch(e){}
-
-v.removeAttribute("src");
-
-try{
-
-v.load();
-
-}catch(e){}
-
-}
-
-}
-
-
-function previousMedia(){
-
-if(!currentItems.length)
-return;
-
-currentIndex=
-(
-currentIndex-
-1+
-currentItems.length
-)%
-currentItems.length;
-
-zoomLevel=1;
-
-showCurrentMedia();
-
-}
-
-
-function nextMedia(){
-
-if(!currentItems.length)
-return;
-
-currentIndex=
-(
-currentIndex+
-1
-)%
-currentItems.length;
-
-zoomLevel=1;
-
-showCurrentMedia();
-
-}
-
-
-function zoomIn(){
-
-zoomLevel=
-Math.min(
-3,
-zoomLevel+.2
-);
-
-showCurrentMedia();
-
-}
-
-
-function zoomOut(){
-
-zoomLevel=
-Math.max(
-.5,
-zoomLevel-.2
-);
-
-showCurrentMedia();
-
-}
-
-
-function resetZoom(){
-
-zoomLevel=1;
-
-showCurrentMedia();
-
-}
-   function downloadCurrent(){
-
-const f=
-currentItems[
-currentIndex
-];
-
-if(!f)
-return;
-
-const url=
-downloadUrlOf(f);
-
-if(!url){
-
-alert(
-"Download link उपलब्ध नहीं है।"
-);
-
-return;
-
-}
-
-const a=
-document.createElement("a");
-
-a.href=url;
-
-a.download=
-f.name ||
-"memory";
-
-a.target="_blank";
-
-a.rel="noopener";
-
-document.body.appendChild(a);
-
-a.click();
-
-a.remove();
-
-}
-
-
-async function shareCurrent(){
-
-const f=
-currentItems[
-currentIndex
-];
-
-if(!f)
-return;
-
-const url=
-driveFileUrl(f);
-
-if(!url)
-return;
-
-try{
-
-if(navigator.share){
-
-await navigator.share({
-
-title:
-f.name ||
-"Memory",
-
-url:url
-
-});
-
-}else if(
-navigator.clipboard
-){
-
-await navigator.clipboard.writeText(
-url
-);
-
-alert(
-"Link copied!"
-);
-
-}else{
-
-window.prompt(
-"Copy this link:",
-url
-);
-
-}
-
-}catch(e){}
-
-}
-
-
-/* ---------- FAVORITE ---------- */
-
-function favKey(){
-
-const f=
-currentItems[
-currentIndex
-] || {};
-
-return "two-stars-fav-"+
-(
-currentPrivate
-?
-"private-"
-:
-""
-)+
-currentType+
-"-"+
-(
-f.name ||
-fileIdOf(f) ||
-""
-);
-
-}
-
-
-function updateFavorite(){
-
-const b=
-document.getElementById(
-"favoriteBtn"
-);
-
-if(!b)
-return;
-
-b.textContent=
-localStorage.getItem(
-favKey()
-)==="1"
-?
-"♥ Favorited"
-:
-"♡ Favorite";
-
-}
-
-
-function toggleFavorite(){
-
-const k=
-favKey();
-
-if(
-localStorage.getItem(k)==="1"
-){
-
-localStorage.removeItem(k);
-
-}else{
-
-localStorage.setItem(
-k,
-"1"
-);
-
-}
-
-updateFavorite();
-
-}
-
-
-/* ---------- SWIPE ---------- */
-
-let touchX=0;
-
-document.getElementById(
-"viewer"
-).addEventListener(
-"touchstart",
-e=>{
-
-if(
-e.changedTouches &&
-e.changedTouches[0]
-){
-
-touchX=
-e.changedTouches[0]
-.screenX;
-
-}
-
-},
-{
-passive:true
-}
-);
-
-
-document.getElementById(
-"viewer"
-).addEventListener(
-"touchend",
-e=>{
-
-if(
-!e.changedTouches ||
-!e.changedTouches[0]
-)
-return;
-
-const dx=
-e.changedTouches[0]
-.screenX-
-touchX;
-
-if(
-Math.abs(dx)>60
-){
-
-dx<0
-?
-nextMedia()
-:
-previousMedia();
-
-}
-
-},
-{
-passive:true
-}
-);
-
-
-/* ---------- MAIN FOLDER ---------- */
-
-async function openMainFolder(type){
-
-const popup=
-document.getElementById(
-"mainFolderPopup"
-);
-
-const content=
-document.getElementById(
-"mainFolderContent"
-);
-
-popup.style.display="flex";
-
-content.innerHTML=
-'<div class="drive-loading">'+
-"Loading..."+
-"</div>";
-
-
-try{
-
-if(type==="photos"){
-
-if(!photoItems.length)
-await loadPhotos();
-
-renderMainFolder(
-"📸 PHOTO MEMORIES",
-photoItems,
-"photo"
-);
-
-
-}else if(type==="videos"){
-
-if(!videoItems.length)
-await loadVideos();
-
-renderMainFolder(
-"🎬 VIDEO MEMORIES",
-videoItems,
-"video"
-);
-
-
-}else{
-
-if(!fileItems.length)
-await loadFiles();
-
-renderMainFolder(
-"📄 MY FILES",
-fileItems,
-"file"
-);
-
-}
-
-}catch(error){
-
-console.error(error);
-
-content.innerHTML=
-'<div class="drive-error">'+
-"Folder load नहीं हो पाया। कृपया थोड़ी देर बाद फिर कोशिश करें।"+
-"</div>";
-
-}
-
-}
-
 
 function closeMainFolder(){
 
-document.getElementById(
-"mainFolderPopup"
-).style.display="none";
+  document.getElementById(
+    'mainFolderPopup'
+  ).style.display = 'none';
 
 }
 
 
-/* ---------- PRIVATE DASHBOARD ---------- */
+/* =========================
+   RENDER FOLDERS
+   ========================= */
+
+function renderMainFolder(title,items,type){
+
+  const content =
+    document.getElementById('mainFolderContent');
+
+  document.getElementById(
+    'mainFolderTitle'
+  ).textContent = title;
+
+  content.innerHTML = '';
+
+  if(!items.length){
+
+    content.innerHTML =
+      '<div class="empty">' +
+      'अभी कोई item नहीं है।' +
+      '</div>';
+
+    return;
+  }
+
+  const gallery =
+    document.createElement('div');
+
+  gallery.className = 'gallery';
+
+
+  items.forEach(function(file,index){
+
+    const item =
+      document.createElement('div');
+
+    item.className =
+      'gallery-item';
+
+
+    /* ---------- DRIVE PHOTO ---------- */
+
+    if(
+      file.source === 'drive' &&
+      type === 'photo'
+    ){
+
+      const image =
+        document.createElement('img');
+
+      image.src =
+        driveThumbUrl(file);
+
+      image.alt =
+        file.name || 'Photo';
+
+      image.loading = 'lazy';
+
+      image.onerror = function(){
+
+        this.src =
+          'https://drive.google.com/thumbnail?id=' +
+          encodeURIComponent(fileId(file)) +
+          '&sz=w1000';
+
+      };
+
+      item.appendChild(image);
+
+      item.onclick = function(){
+
+        closeMainFolder();
+
+        openViewer(
+          items,
+          index,
+          'photo',
+          !!file.private
+        );
+
+      };
+
+    }
+
+
+    /* ---------- DRIVE VIDEO ---------- */
+
+    else if(
+      file.source === 'drive' &&
+      type === 'video'
+    ){
+
+      const image =
+        document.createElement('img');
+
+      image.src =
+        driveThumbUrl(file);
+
+      image.alt =
+        file.name || 'Video';
+
+      image.loading = 'lazy';
+
+      image.onerror = function(){
+        this.style.display = 'none';
+      };
+
+      item.appendChild(image);
+
+
+      const play =
+        document.createElement('div');
+
+      play.className =
+        'play-badge';
+
+      play.textContent = '▶';
+
+      item.appendChild(play);
+
+
+      item.onclick = function(){
+
+        closeMainFolder();
+
+        /*
+          Google Drive preview is opened directly.
+          It is not treated as an HTML5 video URL.
+        */
+
+        window.open(
+          drivePreviewUrl(file),
+          '_blank'
+        );
+
+      };
+
+    }
+
+
+    /* ---------- GITHUB PHOTO ---------- */
+
+    else if(type === 'photo'){
+
+      const image =
+        document.createElement('img');
+
+      image.src =
+        file.download_url ||
+        file.downloadUrl ||
+        file.html_url;
+
+      image.alt =
+        file.name || 'Photo';
+
+      image.loading = 'lazy';
+
+      item.appendChild(image);
+
+      item.onclick = function(){
+
+        closeMainFolder();
+
+        openViewer(
+          items,
+          index,
+          'photo',
+          !!file.private
+        );
+
+      };
+
+    }
+
+
+    /* ---------- GITHUB VIDEO ---------- */
+
+    else if(type === 'video'){
+
+      const video =
+        document.createElement('video');
+
+      video.src =
+        (
+          file.download_url ||
+          file.downloadUrl ||
+          ''
+        ) + '#t=0.1';
+
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+
+      video.addEventListener(
+        'loadeddata',
+        function(){
+
+          try{
+            video.currentTime = 0.1;
+          }catch(e){}
+
+        }
+      );
+
+      item.appendChild(video);
+
+
+      const play =
+        document.createElement('div');
+
+      play.className =
+        'play-badge';
+
+      play.textContent = '▶';
+
+      item.appendChild(play);
+
+
+      item.onclick = function(){
+
+        closeMainFolder();
+
+        openViewer(
+          items,
+          index,
+          'video',
+          !!file.private
+        );
+
+      };
+
+    }
+
+
+    /* ---------- FILE ---------- */
+
+    else{
+
+      item.className +=
+        ' file-card';
+
+      item.innerHTML =
+        '<div class="file-icon">📄</div>' +
+        '<div class="file-name">' +
+        escapeHTML(file.name) +
+        '</div>';
+
+      item.onclick = function(){
+
+        const url =
+          file.source === 'drive'
+            ? drivePreviewUrl(file)
+            : (
+                file.download_url ||
+                file.downloadUrl ||
+                file.html_url ||
+                '#'
+              );
+
+        window.open(url,'_blank');
+
+      };
+
+    }
+
+
+    gallery.appendChild(item);
+
+  });
+
+
+  content.appendChild(gallery);
+
+}
+
+
+/* =========================
+   PUBLIC FOLDERS
+   ========================= */
+
+async function openMainFolder(type){
+
+  const title =
+    type === 'photos'
+      ? '📸 PHOTO MEMORIES'
+      : type === 'videos'
+        ? '🎬 VIDEO MEMORIES'
+        : '📄 MY FILES';
+
+  showFolderLoading(title);
+
+
+  try{
+
+    if(type === 'photos'){
+
+      await loadPhotos();
+
+      renderMainFolder(
+        title,
+        photoItems,
+        'photo'
+      );
+
+    }
+
+    else if(type === 'videos'){
+
+      await loadVideos();
+
+      renderMainFolder(
+        title,
+        videoItems,
+        'video'
+      );
+
+    }
+
+    else{
+
+      await loadFiles();
+
+      renderMainFolder(
+        title,
+        fileItems,
+        'file'
+      );
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById(
+      'mainFolderContent'
+    ).innerHTML =
+      '<div class="empty">' +
+      'Folder खोलने में समस्या हुई।' +
+      '<br><br>दोबारा tap करें।' +
+      '</div>';
+
+  }
+
+}
+
+
+/* =========================
+   MEDIA VIEWER
+   ========================= */
+
+let currentItems = [];
+let currentIndex = 0;
+let currentType = '';
+let zoomLevel = 1;
+let currentPrivate = false;
+
+function openViewer(
+  items,
+  index,
+  type,
+  isPrivate=false
+){
+
+  currentItems = items;
+  currentIndex = index;
+  currentType = type;
+  currentPrivate = isPrivate;
+  zoomLevel = 1;
+
+  document.getElementById(
+    'viewer'
+  ).style.display = 'flex';
+
+  showCurrentMedia();
+
+}
+
+function showCurrentMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  const file =
+    currentItems[currentIndex];
+
+  const image =
+    document.getElementById(
+      'viewerImage'
+    );
+
+  const video =
+    document.getElementById(
+      'viewerVideo'
+    );
+
+  image.style.display = 'none';
+  video.style.display = 'none';
+
+  image.onclick = null;
+
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+
+
+  /* DRIVE PHOTO */
+
+  if(
+    file.source === 'drive' &&
+    currentType === 'photo'
+  ){
+
+    image.src =
+      driveThumbUrl(file);
+
+    image.style.display = 'block';
+
+    image.style.transform =
+      'scale(' + zoomLevel + ')';
+
+  }
+
+
+  /* DRIVE VIDEO */
+
+  else if(
+    file.source === 'drive' &&
+    currentType === 'video'
+  ){
+
+    window.open(
+      drivePreviewUrl(file),
+      '_blank'
+    );
+
+    closeViewer();
+
+    return;
+
+  }
+
+
+  /* GITHUB PHOTO */
+
+  else if(currentType === 'photo'){
+
+    image.src =
+      file.download_url ||
+      file.downloadUrl ||
+      file.html_url;
+
+    image.style.display = 'block';
+
+    image.style.transform =
+      'scale(' + zoomLevel + ')';
+
+  }
+
+
+  /* GITHUB VIDEO */
+
+  else{
+
+    video.src =
+      file.download_url ||
+      file.downloadUrl;
+
+    video.style.display = 'block';
+
+    video.style.transform =
+      'scale(' + zoomLevel + ')';
+
+    video.controls = true;
+
+    video.load();
+
+  }
+
+
+  document.getElementById(
+    'viewerCounter'
+  ).textContent =
+    (currentIndex + 1) +
+    ' / ' +
+    currentItems.length;
+
+  updateFavorite();
+
+}
+
+function closeViewer(){
+
+  document.getElementById(
+    'viewer'
+  ).style.display = 'none';
+
+  const video =
+    document.getElementById(
+      'viewerVideo'
+    );
+
+  video.pause();
+  video.removeAttribute('src');
+
+}
+
+function previousMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex =
+    (
+      currentIndex -
+      1 +
+      currentItems.length
+    ) %
+    currentItems.length;
+
+  zoomLevel = 1;
+
+  showCurrentMedia();
+
+}
+
+function nextMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex =
+    (
+      currentIndex + 1
+    ) %
+    currentItems.length;
+
+  zoomLevel = 1;
+
+  showCurrentMedia();
+
+}
+
+function zoomIn(){
+
+  zoomLevel =
+    Math.min(
+      3,
+      zoomLevel + 0.2
+    );
+
+  showCurrentMedia();
+
+}
+
+function zoomOut(){
+
+  zoomLevel =
+    Math.max(
+      0.5,
+      zoomLevel - 0.2
+    );
+
+  showCurrentMedia();
+
+}
+
+function resetZoom(){
+
+  zoomLevel = 1;
+
+  showCurrentMedia();
+
+}
+
+function downloadCurrent(){
+
+  const file =
+    currentItems[currentIndex];
+
+  const url =
+    file.source === 'drive'
+      ? driveFileUrl(file)
+      : (
+          file.download_url ||
+          file.downloadUrl ||
+          file.html_url
+        );
+
+  window.open(url,'_blank');
+
+}
+
+async function shareCurrent(){
+
+  const file =
+    currentItems[currentIndex];
+
+  const url =
+    file.source === 'drive'
+      ? drivePreviewUrl(file)
+      : (
+          file.download_url ||
+          file.downloadUrl ||
+          file.html_url
+        );
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+        title:file.name || 'Memory',
+        url:url
+      });
+
+    }else{
+
+      await navigator.clipboard.writeText(url);
+
+      alert('Link copied!');
+
+    }
+
+  }catch(error){}
+
+}
+
+
+/* =========================
+   FAVORITES
+   ========================= */
+
+function favKey(){
+
+  return (
+    'two-stars-fav-' +
+    (
+      currentPrivate
+        ? 'private-'
+        : ''
+    ) +
+    currentType +
+    '-' +
+    (
+      currentItems[
+        currentIndex
+      ]?.name || ''
+    )
+  );
+
+}
+
+function updateFavorite(){
+
+  const button =
+    document.getElementById(
+      'favoriteBtn'
+    );
+
+  if(!button){
+    return;
+  }
+
+  button.textContent =
+    localStorage.getItem(
+      favKey()
+    ) === '1'
+      ? '♥ Favorited'
+      : '♡ Favorite';
+
+}
+
+function toggleFavorite(){
+
+  const key = favKey();
+
+  if(
+    localStorage.getItem(key)
+    === '1'
+  ){
+
+    localStorage.removeItem(key);
+
+  }else{
+
+    localStorage.setItem(
+      key,
+      '1'
+    );
+
+  }
+
+  updateFavorite();
+
+}
+
+
+/* =========================
+   SWIPE
+   ========================= */
+
+let touchX = 0;
+
+document
+  .getElementById('viewer')
+  .addEventListener(
+    'touchstart',
+    function(e){
+      touchX =
+        e.changedTouches[0].screenX;
+    },
+    {passive:true}
+  );
+
+document
+  .getElementById('viewer')
+  .addEventListener(
+    'touchend',
+    function(e){
+
+      const dx =
+        e.changedTouches[0].screenX -
+        touchX;
+
+      if(Math.abs(dx) > 60){
+
+        if(dx < 0){
+          nextMedia();
+        }else{
+          previousMedia();
+        }
+
+      }
+
+    },
+    {passive:true}
+  );
+
+
+/* =========================
+   PRIVATE DASHBOARD
+   ========================= */
 
 function openPrivateDashboard(){
 
-document.getElementById(
-"privateDashboard"
-).style.display="flex";
+  const dashboard =
+    document.getElementById(
+      'privateDashboard'
+    );
+
+  dashboard.style.display = 'flex';
 
 }
-
 
 function closePrivate(){
 
-document.getElementById(
-"privateDashboard"
-).style.display="none";
+  document.getElementById(
+    'privateDashboard'
+  ).style.display = 'none';
 
 }
-
 
 async function openPrivateMedia(type){
 
-const folder=
-"private/"+type;
+  document.getElementById(
+    'privateDashboard'
+  ).style.display = 'none';
 
-const files=
-await getFolder(folder);
+  document.getElementById(
+    'mainFolderPopup'
+  ).style.display = 'flex';
 
-const items=
-files.filter(
-f=>
-f &&
-f.type==="file" &&
-(
-type==="photos"
-?
-photoExtensions.includes(
-ext(f.name)
-)
-:
-type==="videos"
-?
-videoExtensions.includes(
-ext(f.name)
-)
-:
-fileExtensions.includes(
-ext(f.name)
-)
-)
-);
+  document.getElementById(
+    'mainFolderContent'
+  ).innerHTML =
+    '<div class="empty">' +
+    'Loading Google Drive…' +
+    '</div>';
 
 
-if(!items.length){
+  const drive =
+    await listDrive(
+      'private/' + type
+    );
 
-alert(
-"इस private folder में अभी कोई file नहीं है।"
-);
 
-return;
+  const driveItems =
+    drive.map(function(file){
+
+      return Object.assign(
+        {},
+        file,
+        {
+          source:'drive',
+          private:true,
+          mediaType:
+            type === 'photos'
+              ? 'photo'
+              : type === 'videos'
+                ? 'video'
+                : 'file'
+        }
+      );
+
+    });
+
+
+  const supplied =
+    type === 'photos'
+      ? PRIVATE_DRIVE
+          .filter(
+            x =>
+              x.kind === 'drive-photo'
+          )
+          .map(function(x){
+
+            return {
+              name:x.name,
+              id:x.id,
+              source:'drive',
+              private:true,
+              mediaType:'photo'
+            };
+
+          })
+
+      : type === 'videos'
+        ? PRIVATE_DRIVE
+            .filter(
+              x =>
+                x.kind === 'drive-video'
+            )
+            .map(function(x){
+
+              return {
+                name:x.name,
+                id:x.id,
+                source:'drive',
+                private:true,
+                mediaType:'video'
+              };
+
+            })
+
+        : [];
+
+
+  const github =
+    await getFolder(
+      'private/' + type
+    );
+
+
+  const githubItems =
+    github
+      .filter(
+        file =>
+          file.type === 'file'
+      )
+      .map(function(file){
+
+        return Object.assign(
+          {},
+          file,
+          {
+            source:'github',
+            private:true,
+            mediaType:
+              type === 'photos'
+                ? 'photo'
+                : type === 'videos'
+                  ? 'video'
+                  : 'file'
+          }
+        );
+
+      });
+
+
+  const items = [
+    ...supplied,
+    ...driveItems,
+    ...githubItems
+  ];
+
+
+  if(!items.length){
+
+    document.getElementById(
+      'mainFolderContent'
+    ).innerHTML =
+      '<div class="empty">' +
+      'अभी इस private folder में कोई file नहीं है।' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  if(type === 'files'){
+
+    renderMainFolder(
+      '🔐 PRIVATE FILES',
+      items,
+      'file'
+    );
+
+  }else{
+
+    openViewer(
+      items,
+      0,
+      type === 'photos'
+        ? 'photo'
+        : 'video',
+      true
+    );
+
+  }
 
 }
 
 
-if(type==="files"){
-
-document.getElementById(
-"privateDashboard"
-).style.display="none";
-
-renderMainFolder(
-"🔐 PRIVATE FILES",
-items,
-"file"
-);
-
-document.getElementById(
-"mainFolderPopup"
-).style.display="flex";
-
-return;
-
-}
-
-
-document.getElementById(
-"privateDashboard"
-).style.display="none";
-
-openViewer(
-items,
-0,
-type==="photos"
-?
-"photo"
-:
-"video",
-true
-);
-
-}
-
-
-/* ---------- LETTER ---------- */
+/* =========================
+   LETTER
+   ========================= */
 
 function openLetter(){
 
-document.getElementById(
-"privateDashboard"
-).style.display="none";
+  document.getElementById(
+    'privateDashboard'
+  ).style.display = 'none';
 
-document.getElementById(
-"letterModal"
-).style.display="flex";
+  document.getElementById(
+    'letterModal'
+  ).style.display = 'flex';
 
 }
-
 
 function closeLetter(){
 
-document.getElementById(
-"letterModal"
-).style.display="none";
+  document.getElementById(
+    'letterModal'
+  ).style.display = 'none';
+
+}
+
+      
+/* =========================
+   GOOGLE DRIVE UPLOAD
+   ========================= */
+
+async function uploadToDrive(
+  file,
+  index,
+  total
+){
+
+  if(!driveConfigured()){
+
+    throw new Error(
+      'Google Drive Web App URL अभी set नहीं है।'
+    );
+
+  }
+
+  if(
+    file.size >
+    30 * 1024 * 1024
+  ){
+
+    throw new Error(
+      file.name +
+      ' 30 MB से बड़ा है'
+    );
+
+  }
+
+
+  const status =
+    document.getElementById(
+      'uploadStatus'
+    );
+
+  const bar =
+    document.getElementById(
+      'uploadProgress'
+    );
+
+  const fill =
+    bar.querySelector('span');
+
+
+  status.textContent =
+    'Preparing ' +
+    (index + 1) +
+    ' / ' +
+    total +
+    ' — ' +
+    file.name;
+
+  bar.style.display =
+    'block';
+
+
+  const bytes =
+    new Uint8Array(
+      await file.arrayBuffer()
+    );
+
+
+  let binary = '';
+
+  const chunk =
+    0x8000;
+
+
+  for(
+    let i = 0;
+    i < bytes.length;
+    i += chunk
+  ){
+
+    binary +=
+      String.fromCharCode(
+        ...bytes.subarray(
+          i,
+          Math.min(
+            i + chunk,
+            bytes.length
+          )
+        )
+      );
+
+  }
+
+
+  const body = {
+
+    key:DRIVE_UPLOAD_KEY,
+
+    name:file.name,
+
+    mimeType:
+      file.type ||
+      'application/octet-stream',
+
+    data:btoa(binary)
+
+  };
+
+
+  const response =
+    await fetch(
+      DRIVE_WEB_APP_URL,
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':
+            'text/plain;charset=utf-8'
+        },
+        body:JSON.stringify(body)
+      }
+    );
+
+
+  const data =
+    await response.json()
+      .catch(
+        () => ({
+          ok:false,
+          error:
+            'Invalid server response'
+        })
+      );
+
+
+  if(
+    !response.ok ||
+    !data.ok
+  ){
+
+    throw new Error(
+      data.error ||
+      'Upload failed'
+    );
+
+  }
+
+
+  fill.style.width =
+    Math.round(
+      (
+        (index + 1) /
+        total
+      ) * 100
+    ) +
+    '%';
+
+
+  status.textContent =
+    'Uploaded ' +
+    (index + 1) +
+    ' / ' +
+    total +
+    ' — ' +
+    file.name;
 
 }
 
 
-/* ---------- PASSWORD ---------- */
+async function handleUploads(files){
+
+  if(!files.length){
+    return;
+  }
+
+
+  const status =
+    document.getElementById(
+      'uploadStatus'
+    );
+
+  const bar =
+    document.getElementById(
+      'uploadProgress'
+    );
+
+  const fill =
+    bar.querySelector('span');
+
+
+  if(!driveConfigured()){
+
+    status.textContent =
+      'Google Drive Web App URL अभी set नहीं है।';
+
+    status.style.color =
+      '#f0b6b6';
+
+    return;
+
+  }
+
+
+  bar.style.display =
+    'block';
+
+  fill.style.width =
+    '0%';
+
+
+  let uploaded = 0;
+
+  const errors = [];
+
+
+  for(
+    let i = 0;
+    i < files.length;
+    i++
+  ){
+
+    try{
+
+      await uploadToDrive(
+        files[i],
+        i,
+        files.length
+      );
+
+      uploaded++;
+
+    }catch(error){
+
+      errors.push(
+        error.message
+      );
+
+    }
+
+  }
+
+
+  status.style.color =
+    errors.length
+      ? '#f0b6b6'
+      : '#d8f0d2';
+
+
+  status.textContent =
+    errors.length
+      ? (
+          'Done: ' +
+          uploaded +
+          ' uploaded. ' +
+          errors.join(' | ')
+        )
+      : (
+          '❤️ ' +
+          uploaded +
+          ' files Google Drive में सही folders में रख दिए गए।'
+        );
+
+}
+
+
+const uploadInput =
+  document.getElementById(
+    'memoryUpload'
+  );
+
+if(uploadInput){
+
+  uploadInput.addEventListener(
+    'change',
+    function(e){
+
+      handleUploads(
+        Array.from(
+          e.target.files
+        )
+      );
+
+      e.target.value = '';
+
+    }
+  );
+
+}
+
+
+/* =========================
+   SECRET PASSWORD
+   ========================= */
 
 function unlock(){
 
-const input=
-document.getElementById(
-"answer"
-);
+  const input =
+    document.getElementById(
+      'answer'
+    );
 
-const msg=
-document.getElementById(
-"msg"
-);
-
-const v=
-String(
-input.value || ""
-)
-.trim()
-.toLowerCase();
+  const message =
+    document.getElementById(
+      'msg'
+    );
 
 
-if(
-v==="1" ||
-v==="एक" ||
-v==="ek"
-){
-
-msg.textContent=
-"❤️ Memory unlocked!";
-
-msg.style.color=
-"#f3d37b";
-
-document.getElementById(
-"privateDashboard"
-).style.display="flex";
+  const value =
+    (
+      input.value || ''
+    )
+      .trim()
+      .toLowerCase();
 
 
-}else{
+  if(
+    value === '1' ||
+    value === 'एक' ||
+    value === 'ek'
+  ){
 
-msg.textContent=
-"Answer is incorrect.";
+    message.textContent =
+      '❤️ Memory unlocked!';
 
-msg.style.color=
-"#d9dce5";
-
-}
-
-}
+    message.style.color =
+      '#f3d37b';
 
 
-document.getElementById(
-"answer"
-).addEventListener(
-"keydown",
-e=>{
+    input.blur();
 
-if(e.key==="Enter")
-unlock();
+
+    document.getElementById(
+      'privateDashboard'
+    ).style.display = 'flex';
+
+
+  }else{
+
+    message.textContent =
+      'Answer is incorrect.';
+
+    message.style.color =
+      '#d9dce5';
+
+  }
 
 }
-);
 
 
-/* ---------- STAR SKY ANIMATION ---------- */
+/*
+  Make the functions global so the
+  HTML buttons can always call them.
+*/
 
-const c=
-document.getElementById(
-"stars"
-);
+window.unlock =
+  unlock;
 
-const x=
-c.getContext("2d");
+window.openMainFolder =
+  openMainFolder;
+
+window.closeMainFolder =
+  closeMainFolder;
+
+window.openPrivateDashboard =
+  openPrivateDashboard;
+
+window.openPrivateMedia =
+  openPrivateMedia;
+
+window.openLetter =
+  openLetter;
+
+window.closeLetter =
+  closeLetter;
+
+window.closePrivate =
+  closePrivate;
+
+window.closeViewer =
+  closeViewer;
+
+window.nextMedia =
+  nextMedia;
+
+window.previousMedia =
+  previousMedia;
+
+window.zoomIn =
+  zoomIn;
+
+window.zoomOut =
+  zoomOut;
+
+window.resetZoom =
+  resetZoom;
+
+window.downloadCurrent =
+  downloadCurrent;
+
+window.shareCurrent =
+  shareCurrent;
+
+window.toggleFavorite =
+  toggleFavorite;
+
+window.refreshDriveFolders =
+  refreshDriveFolders;
+
+
+/* Enter key for password */
+
+document
+  .getElementById('answer')
+  .addEventListener(
+    'keydown',
+    function(e){
+
+      if(e.key === 'Enter'){
+
+        e.preventDefault();
+
+        unlock();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   STAR BACKGROUND
+   ========================= */
+
+const canvas =
+  document.getElementById(
+    'stars'
+  );
+
+const ctx =
+  canvas.getContext('2d');
 
 let W,H,pts=[];
 
 
 function resize(){
 
-W=
-c.width=
-innerWidth*
-devicePixelRatio;
+  W =
+    canvas.width =
+      innerWidth *
+      devicePixelRatio;
 
-H=
-c.height=
-innerHeight*
-devicePixelRatio;
-
-c.style.width=
-innerWidth+"px";
-
-c.style.height=
-innerHeight+"px";
+  H =
+    canvas.height =
+      innerHeight *
+      devicePixelRatio;
 
 
-pts=
-Array.from(
-{
+  canvas.style.width =
+    innerWidth + 'px';
 
-length:
-Math.min(
-170,
-Math.floor(
-innerWidth/7
-)
-)
+  canvas.style.height =
+    innerHeight + 'px';
 
-},
-()=>({
 
-x:
-Math.random()*W,
+  pts =
+    Array.from(
+      {
+        length:
+          Math.min(
+            170,
+            Math.floor(
+              innerWidth / 7
+            )
+          )
+      },
+      function(){
 
-y:
-Math.random()*H,
+        return {
 
-r:
-(
-Math.random()*1.5+
-.25
-)*
-devicePixelRatio,
+          x:
+            Math.random() * W,
 
-a:
-Math.random()*.65+
-.2,
+          y:
+            Math.random() * H,
 
-s:
-Math.random()*.018+
-.004,
+          r:
+            (
+              Math.random() *
+              1.5 +
+              .25
+            ) *
+            devicePixelRatio,
 
-p:
-Math.random()*6.28
+          a:
+            Math.random() *
+            .65 +
+            .2,
 
-})
-);
+          s:
+            Math.random() *
+            .018 +
+            .004,
+
+          p:
+            Math.random() *
+            6.28
+
+        };
+
+      }
+    );
 
 }
 
 
 function draw(t){
 
-x.clearRect(
-0,
-0,
-W,
-H
-);
+  ctx.clearRect(
+    0,
+    0,
+    W,
+    H
+  );
 
-for(
-const p of pts
-){
 
-p.p+=p.s;
+  for(
+    const point of pts
+  ){
 
-const a=
-p.a*
-(
-.55+
-.45*
-Math.sin(
-p.p+
-t*.001
-)
-);
+    point.p += point.s;
 
-x.beginPath();
 
-x.arc(
-p.x,
-p.y,
-p.r,
-0,
-Math.PI*2
-);
+    const alpha =
+      point.a *
+      (
+        .55 +
+        .45 *
+        Math.sin(
+          point.p +
+          t * .001
+        )
+      );
 
-x.fillStyle=
-`rgba(220,232,255,${a})`;
 
-x.fill();
+    ctx.beginPath();
 
-}
+    ctx.arc(
+      point.x,
+      point.y,
+      point.r,
+      0,
+      Math.PI * 2
+    );
 
-requestAnimationFrame(
-draw
-);
+
+    ctx.fillStyle =
+      'rgba(220,232,255,' +
+      alpha +
+      ')';
+
+    ctx.fill();
+
+  }
+
+
+  requestAnimationFrame(draw);
 
 }
 
 
 addEventListener(
-"resize",
-resize
+  'resize',
+  resize
 );
 
 resize();
 
 requestAnimationFrame(
-draw
+  draw
 );
 
-
-/* ---------- INITIAL DRIVE PRELOAD ---------- */
-
-(async function(){
-
-try{
-
-await Promise.all([
-
-loadPhotos(),
-
-loadVideos(),
-
-loadFiles()
-
-]);
-
-
-console.log(
-"TWO STARS Drive connected successfully.",
-{
-
-photos:
-photoItems.length,
-
-videos:
-videoItems.length,
-
-files:
-fileItems.length
-
-}
-);
-
-
-}catch(error){
-
-console.error(
-"Drive loading error:",
-error
-);
-
-}
-
-})();
-
-</script>
-
+    </script>
 </body>
 </html>
