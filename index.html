@@ -1,99 +1,1052 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="4uoxJcl9wmErZYuEVLAHxD1VSVOFFquZTizdzjsjr9Q">
-<title>TWO STARS • ONE FRIENDSHIP</title>
+
+<title>TWO STARS • ONE FRIENDSHIP | Shafahad & Shamshad Bhai</title>
+
+<meta name="google-site-verification" content="4uoxJcl9wmErZYuEVLAHxD1VSVOFFquZTizdzjsjr9Q" />
+
+<meta name="description" content="Two Stars One Friendship — Shafahad aur Shamshad Bhai ki dosti, memories, photos, videos aur hamari beautiful friendship story.">
+
+<meta name="keywords" content="Two Stars One Friendship, Two Star One Friendship, Shafahad aur Shamshad Bhai, Shafahad Shamshad Bhai, Two Stars Friendship, friendship memories">
+
+<meta name="author" content="Shafahad">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Georgia,"Times New Roman",serif;background:#030817;color:#fff;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;background:radial-gradient(circle at 50% 20%,rgba(40,90,180,.16),transparent 35%)}
-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-nav{position:fixed;top:0;left:0;right:0;z-index:30;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(2,7,20,.48);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
-.logo{letter-spacing:4px;font-size:12px;font-weight:bold;color:#f7d88b}
-nav a{color:#dce4f8;text-decoration:none;font-size:10px;margin-left:20px;letter-spacing:1px}
-.hero{min-height:100vh;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:90px 18px 60px}
-.hero-card{width:min(1120px,94vw);padding:28px;border-radius:30px;background:rgba(7,14,34,.48);border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 100px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.08);backdrop-filter:blur(10px)}
-.kicker{text-align:center;color:#e8c875;font-size:11px;letter-spacing:5px;margin-bottom:12px}
-h1{text-align:center;font-size:clamp(38px,8vw,86px);line-height:.94;letter-spacing:3px;text-shadow:0 8px 35px #000;margin-bottom:25px}
-.subtitle{text-align:center;font-size:clamp(15px,2vw,20px);line-height:1.8;color:#f2f4fa;margin:0 auto 26px;max-width:700px}
-.photo-wrap{position:relative;overflow:hidden;border-radius:22px;border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 70px rgba(0,0,0,.65);background:#000}
-.photo-wrap img{display:block;width:100%;height:auto;max-height:72vh;object-fit:contain}
-.badge{position:absolute;left:18px;bottom:18px;padding:10px 14px;border-radius:999px;background:rgba(0,0,0,.48);border:1px solid rgba(255,255,255,.15);font:10px Arial,sans-serif;letter-spacing:2px;color:#fff;backdrop-filter:blur(8px)}
-section{position:relative;z-index:2;padding:100px 7%}
-.section-title{text-align:center;font-size:34px;margin-bottom:34px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1000px;margin:auto}
-.card{padding:28px;border-radius:22px;background:linear-gradient(145deg,rgba(20,31,63,.75),rgba(7,13,30,.7));border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 45px rgba(0,0,0,.3);transform:translateZ(0);transition:.3s}
-.card:hover{transform:translateY(-7px) scale(1.01)}
-.card h3{margin-bottom:10px;font-size:18px;color:#f5d987}
-.card p{font:13px/1.8 Arial,sans-serif;color:#cbd4e8}
-.secret{max-width:620px;margin:auto;text-align:center;padding:36px;border-radius:26px;background:rgba(13,22,46,.76);border:1px solid rgba(238,207,125,.22);box-shadow:0 25px 70px rgba(0,0,0,.45)}
-input{width:100%;margin-top:18px;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:#050a18;color:white;outline:none;text-align:center;font-size:16px}
-button{margin-top:12px;padding:12px 20px;border:1px solid #d8bb69;border-radius:10px;background:linear-gradient(145deg,#d8bb69,#8e6b22);color:#080b12;font-weight:bold;cursor:pointer}
-#msg{min-height:24px;margin-top:14px;font:12px Arial,sans-serif;color:#dbe5ff}
-.story{max-width:850px;margin:auto;text-align:center;color:#d7def0;font-size:16px;line-height:2}
-footer{position:relative;z-index:2;text-align:center;padding:45px 20px 70px;color:#8e9ab5;font:10px Arial,sans-serif;letter-spacing:2px}
-@media(max-width:600px){nav a{display:none}.hero-card{padding:15px}h1{font-size:42px}.photo-wrap{border-radius:16px}section{padding:70px 6%}}
 
-.memory-folder{font-family:inherit;text-align:left;cursor:pointer;margin:0;appearance:none;-webkit-appearance:none}
-.memory-folder:focus{outline:2px solid rgba(239,210,124,.5);outline-offset:2px}
-#mainFolderPopup,#privateDashboard,#letterModal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.86);backdrop-filter:blur(14px)}
-.main-folder-box,.private-box{width:min(1050px,95vw);max-height:90vh;overflow-y:auto;padding:25px;border-radius:28px;background:linear-gradient(145deg,rgba(18,29,58,.98),rgba(3,9,25,.99));border:1px solid rgba(240,210,120,.35);box-shadow:0 30px 120px rgba(0,0,0,.85),0 0 60px rgba(100,150,255,.12);animation:folderOpen .4s ease}
-.folder-title,.private-title{text-align:center;color:#f2d27b;font-size:clamp(24px,5vw,40px);margin-bottom:20px}
-.folder-content{min-height:120px}
-.folder-close,.private-close,.letter-close{display:block;margin:20px auto 0;background:transparent;color:#efd27c;border:1px solid rgba(239,210,124,.55);padding:10px 25px;border-radius:10px;cursor:pointer}
-@keyframes folderOpen{from{opacity:0;transform:scale(.82) translateY(25px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.private-box{width:min(1100px,96vw)}
-.private-head{text-align:center;margin-bottom:22px}
-.private-head h2{color:#f4d47d;font-size:clamp(25px,5vw,44px)}
-.private-head p{font-family:Arial,sans-serif;color:#b9c5dc;margin-top:8px}
-.private-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
-.private-tile{padding:25px 18px;border-radius:20px;background:linear-gradient(145deg,rgba(35,30,75,.9),rgba(6,12,30,.92));border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 45px rgba(0,0,0,.35);cursor:pointer;transition:.3s;text-align:center}
-.private-tile:hover{transform:translateY(-5px);border-color:rgba(239,210,124,.45)}
-.private-icon{font-size:40px;margin-bottom:10px}
-.private-tile h3{color:#f1d37c;margin-bottom:8px}
-.private-tile p{font-family:Arial,sans-serif;color:#bdc8dc;font-size:12px}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
-.letter-wrap{width:min(800px,94vw);max-height:92vh;overflow:auto;padding:22px}
-.letter-page{background:#f5ecd7;color:#382b1d;min-height:900px;padding:55px 50px;position:relative;box-shadow:0 30px 100px rgba(0,0,0,.8);border:10px solid #d1b46b;border-radius:5px;background-image:radial-gradient(circle at 20% 15%,rgba(200,160,70,.14),transparent 20%),radial-gradient(circle at 80% 85%,rgba(200,160,70,.12),transparent 22%)}
-.letter-page:before{content:"✦  ✧  ✦  ✧  ✦";position:absolute;top:18px;left:0;right:0;text-align:center;color:#9b762e;font-size:20px;letter-spacing:8px}
-.letter-page:after{content:"✦  ✧  ✦  ✧  ✦";position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#9b762e;font-size:20px;letter-spacing:8px}
-.letter-head{text-align:center;color:#87631e;font-size:30px;margin:18px 0 30px}
-.letter-page p{font-size:18px;line-height:2;margin-bottom:18px}
-.letter-sign{text-align:right;font-size:20px;color:#74521b;margin-top:35px}
+html{
+scroll-behavior:smooth
+}
 
-#surprise{display:none;position:fixed;inset:0;z-index:180;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.84);backdrop-filter:blur(12px)}
-.surprise-box{width:min(850px,94vw);max-height:90vh;overflow-y:auto;padding:28px;text-align:center;border-radius:28px;background:linear-gradient(145deg,rgba(18,29,58,.97),rgba(3,9,25,.98));border:1px solid rgba(240,210,120,.35);box-shadow:0 30px 120px rgba(0,0,0,.8),0 0 60px rgba(100,150,255,.12);animation:folderOpen .55s ease}
-.surprise-title{color:#f2d27b;font-size:clamp(24px,5vw,42px);letter-spacing:2px;margin-bottom:10px}
-.surprise-sub{color:#dce5f7;font-family:Arial,sans-serif;font-size:14px;line-height:1.8;margin-bottom:22px}
-.surprise-photo{width:100%;border-radius:20px;display:block;border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.65);margin-bottom:20px}
-.surprise-video{width:100%;height:450px;border:none;border-radius:18px;background:#000;margin-top:10px}
-.close-btn{margin-top:22px;background:transparent;color:#efd27c;border:1px solid rgba(239,210,124,.55);padding:10px 24px;border-radius:10px;cursor:pointer}
+body{
+font-family:Georgia,"Times New Roman",serif;
+background:#030817;
+color:#fff;
+overflow-x:hidden
+}
 
-#viewer{display:none;position:fixed;inset:0;z-index:250;background:rgba(0,0,0,.94);align-items:center;justify-content:center;padding:20px;touch-action:none}
-.viewer-content{width:min(1000px,96vw);height:min(88vh,900px);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-#viewerImage,#viewerVideo{max-width:100%;max-height:72vh;border-radius:16px;object-fit:contain;box-shadow:0 20px 100px rgba(0,0,0,.8)}
-.viewer-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:15px}
-.viewer-btn{margin:0;padding:9px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(20,28,50,.9);color:white;font-size:12px}
-.viewer-close{position:absolute;right:8px;top:8px;z-index:5;margin:0;width:42px;height:42px;padding:0;border-radius:50%;background:rgba(20,20,25,.85);color:white;border:1px solid rgba(255,255,255,.25);font-size:20px}
-.viewer-nav{position:absolute;top:50%;transform:translateY(-50%);margin:0;width:45px;height:55px;border-radius:14px;background:rgba(10,15,30,.85);color:white;border:1px solid rgba(255,255,255,.2);font-size:25px;z-index:5}
-.viewer-nav#prevBtn{left:5px}
-.viewer-nav#nextBtn{right:5px}
-#viewerCounter{color:#aebbd3;font-family:Arial,sans-serif;font-size:11px;margin-top:8px}
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:20;
+background:radial-gradient(
+circle at 50% 20%,
+rgba(40,90,180,.16),
+transparent 35%
+)
+}
 
-.upload-panel{margin-top:18px;padding:18px;border-radius:20px;background:rgba(4,10,25,.65);border:1px solid rgba(239,210,124,.18)}
-.upload-panel h3{text-align:center;color:#f1d37c;margin-bottom:8px}
-.upload-panel p{font:12px/1.7 Arial,sans-serif;color:#b9c5dc;text-align:center;margin-bottom:12px}
-.upload-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.upload-label{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:10px;border:1px solid rgba(239,210,124,.5);background:rgba(216,187,105,.1);color:#efd27c;cursor:pointer;font:bold 12px Arial,sans-serif}
-.upload-label input{display:none}
-.upload-status{text-align:center;min-height:22px;margin-top:10px;font:12px Arial,sans-serif;color:#dbe5ff}
-.upload-progress{width:100%;height:7px;border-radius:99px;background:#111a30;overflow:hidden;margin-top:10px;display:none}
-.upload-progress>span{display:block;height:100%;width:0%;background:#d8bb69;transition:width .2s}
-.drive-note{font:11px/1.6 Arial,sans-serif;color:#9eabc3;text-align:center;margin-top:10px}
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:30;
+height:62px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+background:rgba(2,7,20,.48);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,.08)
+}
+
+.logo{
+letter-spacing:4px;
+font-size:12px;
+font-weight:bold;
+color:#f7d88b
+}
+
+nav a{
+color:#dce4f8;
+text-decoration:none;
+font-size:10px;
+margin-left:20px;
+letter-spacing:1px
+}
+
+.hero{
+min-height:100vh;
+position:relative;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:90px 18px 60px
+}
+
+.hero-card{
+width:min(1120px,94vw);
+padding:28px;
+border-radius:30px;
+background:rgba(7,14,34,.48);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:
+0 30px 100px rgba(0,0,0,.55),
+inset 0 1px rgba(255,255,255,.08);
+backdrop-filter:blur(10px)
+}
+
+.kicker{
+text-align:center;
+color:#e8c875;
+font-size:11px;
+letter-spacing:5px;
+margin-bottom:12px
+}
+
+h1{
+text-align:center;
+font-size:clamp(38px,8vw,86px);
+line-height:.94;
+letter-spacing:3px;
+text-shadow:0 8px 35px #000;
+margin-bottom:25px
+}
+
+.subtitle{
+text-align:center;
+font-size:clamp(15px,2vw,20px);
+line-height:1.8;
+color:#f2f4fa;
+margin:0 auto 26px;
+max-width:700px
+}
+
+.photo-wrap{
+position:relative;
+overflow:hidden;
+border-radius:22px;
+border:1px solid rgba(255,255,255,.18);
+box-shadow:0 25px 70px rgba(0,0,0,.65);
+background:#000
+}
+
+.photo-wrap img{
+display:block;
+width:100%;
+height:auto;
+max-height:72vh;
+object-fit:contain
+}
+
+.badge{
+position:absolute;
+left:18px;
+bottom:18px;
+padding:10px 14px;
+border-radius:999px;
+background:rgba(0,0,0,.48);
+border:1px solid rgba(255,255,255,.15);
+font:10px Arial,sans-serif;
+letter-spacing:2px;
+color:#fff;
+backdrop-filter:blur(8px)
+}
+
+section{
+position:relative;
+z-index:2;
+padding:100px 7%
+}
+
+.section-title{
+text-align:center;
+font-size:34px;
+margin-bottom:34px
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+max-width:1000px;
+margin:auto
+}
+
+.card{
+padding:28px;
+border-radius:22px;
+background:
+linear-gradient(
+145deg,
+rgba(20,31,63,.75),
+rgba(7,13,30,.7)
+);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 18px 45px rgba(0,0,0,.3);
+transform:translateZ(0);
+transition:.3s
+}
+
+.card:hover{
+transform:translateY(-7px) scale(1.01)
+}
+
+.card h3{
+margin-bottom:10px;
+font-size:18px;
+color:#f5d987
+}
+
+.card p{
+font:13px/1.8 Arial,sans-serif;
+color:#cbd4e8
+}
+
+.secret{
+max-width:620px;
+margin:auto;
+text-align:center;
+padding:36px;
+border-radius:26px;
+background:rgba(13,22,46,.76);
+border:1px solid rgba(238,207,125,.22);
+box-shadow:0 25px 70px rgba(0,0,0,.45)
+}
+
+input{
+width:100%;
+margin-top:18px;
+padding:14px 16px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.16);
+background:#050a18;
+color:white;
+outline:none;
+text-align:center;
+font-size:16px
+}
+
+button{
+margin-top:12px;
+padding:12px 20px;
+border:1px solid #d8bb69;
+border-radius:10px;
+background:linear-gradient(145deg,#d8bb69,#8e6b22);
+color:#080b12;
+font-weight:bold;
+cursor:pointer
+}
+
+#msg{
+min-height:24px;
+margin-top:14px;
+font:12px Arial,sans-serif;
+color:#dbe5ff
+}
+
+.story{
+max-width:850px;
+margin:auto;
+text-align:center;
+color:#d7def0;
+font-size:16px;
+line-height:2
+}
+
+footer{
+position:relative;
+z-index:2;
+text-align:center;
+padding:45px 20px 70px;
+color:#8e9ab5;
+font:10px Arial,sans-serif;
+letter-spacing:2px
+}
+
+@media(max-width:600px){
+
+nav a{
+display:none
+}
+
+.hero-card{
+padding:15px
+}
+
+h1{
+font-size:42px
+}
+
+.photo-wrap{
+border-radius:16px
+}
+
+section{
+padding:70px 6%
+}
+
+}
+
+/* MAIN FOLDER + PRIVATE SPACE */
+
+.memory-folder{
+font-family:inherit;
+text-align:left;
+cursor:pointer;
+margin:0;
+appearance:none;
+-webkit-appearance:none
+}
+
+.memory-folder:focus{
+outline:2px solid rgba(239,210,124,.5);
+outline-offset:2px
+}
+
+#mainFolderPopup,
+#privateDashboard,
+#letterModal{
+
+display:none;
+position:fixed;
+inset:0;
+z-index:150;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.86);
+backdrop-filter:blur(14px)
+
+}
+
+.main-folder-box,
+.private-box{
+
+width:min(1050px,95vw);
+max-height:90vh;
+overflow-y:auto;
+padding:25px;
+border-radius:28px;
+
+background:
+linear-gradient(
+145deg,
+rgba(18,29,58,.98),
+rgba(3,9,25,.99)
+);
+
+border:1px solid rgba(240,210,120,.35);
+
+box-shadow:
+0 30px 120px rgba(0,0,0,.85),
+0 0 60px rgba(100,150,255,.12);
+
+animation:folderOpen .4s ease
+
+}
+
+.folder-title,
+.private-title{
+
+text-align:center;
+color:#f2d27b;
+font-size:clamp(24px,5vw,40px);
+margin-bottom:20px
+
+}
+
+.folder-content{
+min-height:120px
+}
+
+.folder-close,
+.private-close,
+.letter-close{
+
+display:block;
+margin:20px auto 0;
+background:transparent;
+color:#efd27c;
+border:1px solid rgba(239,210,124,.55);
+padding:10px 25px;
+border-radius:10px;
+cursor:pointer
+
+}
+
+@keyframes folderOpen{
+
+from{
+opacity:0;
+transform:scale(.82) translateY(25px)
+}
+
+to{
+opacity:1;
+transform:scale(1) translateY(0)
+}
+
+}
+
+.private-box{
+width:min(1100px,96vw)
+}
+
+.private-head{
+text-align:center;
+margin-bottom:22px
+}
+
+.private-head h2{
+color:#f4d47d;
+font-size:clamp(25px,5vw,44px)
+}
+
+.private-head p{
+font-family:Arial,sans-serif;
+color:#b9c5dc;
+margin-top:8px
+}
+
+.private-grid{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(190px,1fr));
+gap:15px
+
+}
+
+.private-tile{
+
+padding:25px 18px;
+border-radius:20px;
+
+background:
+linear-gradient(
+145deg,
+rgba(35,30,75,.9),
+rgba(6,12,30,.92)
+);
+
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 16px 45px rgba(0,0,0,.35);
+cursor:pointer;
+transition:.3s;
+text-align:center
+
+}
+
+.private-tile:hover{
+transform:translateY(-5px);
+border-color:rgba(239,210,124,.45)
+}
+
+.private-icon{
+font-size:40px;
+margin-bottom:10px
+}
+
+.private-tile h3{
+color:#f1d37c;
+margin-bottom:8px
+}
+
+.private-tile p{
+font-family:Arial,sans-serif;
+color:#bdc8dc;
+font-size:12px
+}
+
+/* LETTER */
+
+.letter-wrap{
+width:min(800px,94vw);
+max-height:92vh;
+overflow:auto;
+padding:22px
+}
+
+.letter-page{
+
+background:#f5ecd7;
+color:#382b1d;
+min-height:900px;
+padding:55px 50px;
+position:relative;
+
+box-shadow:0 30px 100px rgba(0,0,0,.8);
+
+border:10px solid #d1b46b;
+border-radius:5px;
+
+background-image:
+
+radial-gradient(
+circle at 20% 15%,
+rgba(200,160,70,.14),
+transparent 20%
+),
+
+radial-gradient(
+circle at 80% 85%,
+rgba(200,160,70,.12),
+transparent 22%
+)
+
+}
+
+.letter-page:before{
+
+content:"✦  ✧  ✦  ✧  ✦";
+position:absolute;
+top:18px;
+left:0;
+right:0;
+text-align:center;
+color:#9b762e;
+font-size:20px;
+letter-spacing:8px
+
+}
+
+.letter-page:after{
+
+content:"✦  ✧  ✦  ✧  ✦";
+position:absolute;
+bottom:18px;
+left:0;
+right:0;
+text-align:center;
+color:#9b762e;
+font-size:20px;
+letter-spacing:8px
+
+}
+
+.letter-head{
+text-align:center;
+color:#87631e;
+font-size:30px;
+margin:18px 0 30px
+}
+
+.letter-page p{
+font-size:18px;
+line-height:2;
+margin-bottom:18px
+}
+
+.letter-sign{
+text-align:right;
+font-size:20px;
+color:#74521b;
+margin-top:35px
+}
+
+/* SURPRISE */
+
+#surprise{
+
+display:none;
+position:fixed;
+inset:0;
+z-index:180;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.84);
+backdrop-filter:blur(12px)
+
+}
+
+.surprise-box{
+
+width:min(850px,94vw);
+max-height:90vh;
+overflow-y:auto;
+padding:28px;
+text-align:center;
+border-radius:28px;
+
+background:
+linear-gradient(
+145deg,
+rgba(18,29,58,.97),
+rgba(3,9,25,.98)
+);
+
+border:1px solid rgba(240,210,120,.35);
+
+box-shadow:
+0 30px 120px rgba(0,0,0,.8),
+0 0 60px rgba(100,150,255,.12);
+
+animation:folderOpen .55s ease
+
+}
+
+.surprise-title{
+color:#f2d27b;
+font-size:clamp(24px,5vw,42px);
+letter-spacing:2px;
+margin-bottom:10px
+}
+
+.surprise-sub{
+color:#dce5f7;
+font-family:Arial,sans-serif;
+font-size:14px;
+line-height:1.8;
+margin-bottom:22px
+}
+
+.surprise-photo{
+
+width:100%;
+border-radius:20px;
+display:block;
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 20px 60px rgba(0,0,0,.65);
+margin-bottom:20px
+
+}
+
+.surprise-video{
+
+width:100%;
+height:450px;
+border:none;
+border-radius:18px;
+background:#000;
+margin-top:10px
+
+}
+
+.close-btn{
+
+margin-top:22px;
+background:transparent;
+color:#efd27c;
+border:1px solid rgba(239,210,124,.55);
+padding:10px 24px;
+border-radius:10px;
+cursor:pointer
+
+}
+
+/* VIEWER */
+
+#viewer{
+
+display:none;
+position:fixed;
+inset:0;
+z-index:250;
+background:rgba(0,0,0,.94);
+align-items:center;
+justify-content:center;
+padding:20px;
+touch-action:none
+
+}
+
+.viewer-content{
+
+width:min(1000px,96vw);
+height:min(88vh,900px);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+position:relative
+
+}
+
+#viewerImage,
+#viewerVideo{
+
+max-width:100%;
+max-height:72vh;
+border-radius:16px;
+object-fit:contain;
+box-shadow:0 20px 100px rgba(0,0,0,.8)
+
+}
+
+.viewer-drive-frame{
+
+width:min(1000px,94vw);
+height:min(72vh,650px);
+border:0;
+border-radius:16px;
+background:#000;
+box-shadow:0 20px 100px rgba(0,0,0,.8)
+
+}
+
+.viewer-controls{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+margin-top:15px
+
+}
+
+.viewer-btn{
+
+margin:0;
+padding:9px 13px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(20,28,50,.9);
+color:white;
+font-size:12px
+
+}
+
+.viewer-close{
+
+position:absolute;
+right:8px;
+top:8px;
+z-index:5;
+margin:0;
+width:42px;
+height:42px;
+padding:0;
+border-radius:50%;
+background:rgba(20,20,25,.85);
+color:white;
+border:1px solid rgba(255,255,255,.25);
+font-size:20px
+
+}
+
+.viewer-nav{
+
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+margin:0;
+width:45px;
+height:55px;
+border-radius:14px;
+background:rgba(10,15,30,.85);
+color:white;
+border:1px solid rgba(255,255,255,.2);
+font-size:25px;
+z-index:5
+
+}
+
+.viewer-nav#prevBtn{
+left:5px
+}
+
+.viewer-nav#nextBtn{
+right:5px
+}
+
+#viewerCounter{
+color:#aebbd3;
+font-family:Arial,sans-serif;
+font-size:11px;
+margin-top:8px
+}
+
+/* GOOGLE DRIVE GALLERY FIX */
+
+.gallery{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fill,minmax(190px,1fr));
+gap:16px;
+width:100%
+
+}
+
+.gallery-item{
+
+position:relative;
+height:190px;
+border-radius:18px;
+overflow:hidden;
+cursor:pointer;
+
+background:
+linear-gradient(
+145deg,
+rgba(20,31,63,.95),
+rgba(4,9,24,.98)
+);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.45);
+
+transition:
+transform .25s ease,
+border-color .25s ease,
+box-shadow .25s ease
+
+}
+
+.gallery-item:hover{
+
+transform:translateY(-5px);
+
+border-color:
+rgba(239,210,124,.55);
+
+box-shadow:
+0 18px 45px rgba(0,0,0,.65)
+
+}
+
+.gallery-item img{
+
+width:100%;
+height:100%;
+display:block;
+object-fit:cover;
+background:#050b18
+
+}
+
+.gallery-item .drive-play{
+
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+
+width:58px;
+height:58px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(0,0,0,.70);
+border:1px solid rgba(255,255,255,.35);
+
+font-size:27px;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.6);
+
+pointer-events:none
+
+}
+
+.gallery-item .drive-name{
+
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+
+padding:28px 12px 11px;
+
+font:12px Arial,sans-serif;
+color:#fff;
+
+background:
+linear-gradient(
+transparent,
+rgba(0,0,0,.88)
+);
+
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
+
+}
+
+.file-card{
+
+height:150px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px
+
+}
+
+.file-icon{
+font-size:48px;
+margin-bottom:10px
+}
+
+.file-name{
+
+font:12px/1.5 Arial,sans-serif;
+color:#e3e8f4;
+word-break:break-word
+
+}
+
+.empty{
+
+min-height:120px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font:13px Arial,sans-serif;
+color:#aebbd3;
+padding:30px
+
+}
+
+/* UPLOAD */
+
+.upload-panel{
+
+margin-top:18px;
+padding:18px;
+border-radius:20px;
+background:rgba(4,10,25,.65);
+border:1px solid rgba(239,210,124,.18)
+
+}
+
+.upload-panel h3{
+
+text-align:center;
+color:#f1d37c;
+margin-bottom:8px
+
+}
+
+.upload-panel p{
+
+font:12px/1.7 Arial,sans-serif;
+color:#b9c5dc;
+text-align:center;
+margin-bottom:12px
+
+}
+
+.upload-row{
+
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center
+
+}
+
+.upload-label{
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:11px 16px;
+border-radius:10px;
+
+border:1px solid rgba(239,210,124,.5);
+background:rgba(216,187,105,.1);
+
+color:#efd27c;
+cursor:pointer;
+font:bold 12px Arial,sans-serif
+
+}
+
+.upload-label input{
+display:none
+}
+
+.upload-status{
+
+text-align:center;
+min-height:22px;
+margin-top:10px;
+font:12px Arial,sans-serif;
+color:#dbe5ff
+
+}
+
+.upload-progress{
+
+width:100%;
+height:7px;
+border-radius:99px;
+background:#111a30;
+overflow:hidden;
+margin-top:10px;
+display:none
+
+}
+
+.upload-progress>span{
+
+display:block;
+height:100%;
+width:0%;
+background:#d8bb69;
+transition:width .2s
+
+}
+
+.drive-note{
+
+font:11px/1.6 Arial,sans-serif;
+color:#9eabc3;
+text-align:center;
+margin-top:10px
+
+}
+
+@media(max-width:600px){
+
+.gallery{
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:10px
+}
+
+.gallery-item{
+height:155px;
+border-radius:14px
+}
+
+.gallery-item .drive-play{
+width:48px;
+height:48px;
+font-size:22px
+}
+
+.viewer-drive-frame{
+height:62vh
+}
+
+}
+
 </style>
 </head>
 
@@ -102,77 +1055,147 @@ footer{position:relative;z-index:2;text-align:center;padding:45px 20px 70px;colo
 <canvas id="stars"></canvas>
 
 <nav>
-<div class="logo">✦ TWO STARS</div>
+
+<div class="logo">
+✦ TWO STARS
+</div>
+
 <div>
+
 <a href="#home">HOME</a>
 <a href="#memories">MEMORIES</a>
 <a href="#secret">SECRET</a>
 <a href="#story">OUR STORY</a>
+
 </div>
+
 </nav>
 
 <main id="home" class="hero">
+
 <div class="hero-card">
 
-<div class="kicker">SHAFAHAD &amp; SHAMSHAD BHAI</div>
+<div class="kicker">
+SHAFAHAD &amp; SHAMSHAD BHAI
+</div>
 
-<h1>TWO STARS<br>ONE FRIENDSHIP</h1>
+<h1>
+TWO STARS<br>
+ONE FRIENDSHIP
+</h1>
 
 <div class="subtitle">
-दो सच्चे दोस्तों की दोस्ती, आसमान के दो चमकते तारों जैसी।<br>
+
+दो सच्चे दोस्तों की दोस्ती,
+आसमान के दो चमकते तारों जैसी।<br>
 दूर होकर भी, हमेशा साथ। ❤️
+
 </div>
 
 <div class="photo-wrap">
-<img src="surprise.jpg" alt="Two Stars Friendship">
-<div class="badge">✦ TWO STARS • ONE FRIENDSHIP</div>
+
+<img
+src="photo.jpg"
+alt="Our Friendship"
+style="width:100%;display:block"
+>
+
+<div class="badge">
+✦ TWO STARS • ONE FRIENDSHIP ✦
 </div>
 
 </div>
+
+</div>
+
 </main>
 
 <section id="memories">
 
-<h2 class="section-title">Our Memories</h2>
+<h2 class="section-title">
+Our Memories
+</h2>
 
 <div class="cards">
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('photos')">
+<button
+type="button"
+class="card memory-folder"
+onclick="openMainFolder('photos')"
+>
+
 <h3>📸 PHOTOS</h3>
-<p>हमारी खूबसूरत यादों के लिए एक खास जगह।</p>
+
+<p>
+हमारी खूबसूरत यादों के लिए एक खास जगह।
+</p>
+
 </button>
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('videos')">
+<button
+type="button"
+class="card memory-folder"
+onclick="openMainFolder('videos')"
+>
+
 <h3>🎬 VIDEOS</h3>
-<p>दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।</p>
+
+<p>
+दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।
+</p>
+
 </button>
 
-<button type="button" class="card memory-folder" onclick="openMainFolder('files')">
+<button
+type="button"
+class="card memory-folder"
+onclick="openMainFolder('files')"
+>
+
 <h3>📄 FILES</h3>
-<p>PDF और जरूरी documents एक जगह।</p>
+
+<p>
+PDF और जरूरी documents एक जगह।
+</p>
+
 </button>
 
 <div class="card">
+
 <h3>❤️ FRIENDSHIP</h3>
-<p>कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।</p>
+
+<p>
+कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।
+</p>
+
 </div>
 
 </div>
+
 </section>
 
 <section id="secret">
 
 <div class="secret">
 
-<h2>✦ OUR SECRET ✦</h2>
+<h2>
+✦ OUR SECRET ✦
+</h2>
 
 <p style="margin-top:12px;color:#cfd8eb">
 एक छोटा सा सवाल…
 </p>
 
-<input id="answer" type="password" autocomplete="off" placeholder="Answer">
+<input
+id="answer"
+type="password"
+autocomplete="off"
+placeholder="Answer"
+>
 
-<button onclick="unlock()">UNLOCK MEMORY ✦</button>
+<button onclick="unlock()">
+UNLOCK MEMORY ✦
+</button>
 
 <div id="msg"></div>
 
@@ -181,21 +1204,36 @@ footer{position:relative;z-index:2;text-align:center;padding:45px 20px 70px;colo
 </section>
 
 <div id="mainFolderPopup">
+
 <div class="main-folder-box">
 
-<div id="mainFolderTitle" class="folder-title">
+<div
+id="mainFolderTitle"
+class="folder-title"
+>
 📸 PHOTO MEMORIES
 </div>
 
-<div id="mainFolderContent" class="folder-content">
-<div class="empty">Loading...</div>
+<div
+id="mainFolderContent"
+class="folder-content"
+>
+
+<div class="empty">
+Loading...
 </div>
 
-<button class="folder-close" onclick="closeMainFolder()">
+</div>
+
+<button
+class="folder-close"
+onclick="closeMainFolder()"
+>
 CLOSE ✦
 </button>
 
 </div>
+
 </div>
 
 <div id="privateDashboard">
@@ -203,41 +1241,102 @@ CLOSE ✦
 <div class="private-box">
 
 <div class="private-head">
-<h2>WELCOME, SHAMSHAD BHAI ❤️</h2>
-<p>ये हमारी private memories हैं — सिर्फ हमारे लिए।</p>
+
+<h2>
+WELCOME, SHAMSHAD BHAI ❤️
+</h2>
+
+<p>
+ये हमारी private memories हैं — सिर्फ हमारे लिए।
+</p>
+
 </div>
 
 <div class="private-grid">
 
-<div class="private-tile" onclick="openPrivateMedia('photos')">
-<div class="private-icon">📸</div>
-<h3>PRIVATE PHOTOS</h3>
-<p>हमारी खास तस्वीरें</p>
+<div
+class="private-tile"
+onclick="openPrivateMedia('photos')"
+>
+
+<div class="private-icon">
+📸
 </div>
 
-<div class="private-tile" onclick="openPrivateMedia('videos')">
-<div class="private-icon">🎬</div>
-<h3>PRIVATE VIDEOS</h3>
-<p>हमारे खास वीडियो</p>
+<h3>
+PRIVATE PHOTOS
+</h3>
+
+<p>
+हमारी खास तस्वीरें
+</p>
+
 </div>
 
-<div class="private-tile" onclick="openPrivateMedia('files')">
-<div class="private-icon">📁</div>
-<h3>PRIVATE FILES</h3>
-<p>जरूरी private files</p>
+<div
+class="private-tile"
+onclick="openPrivateMedia('videos')"
+>
+
+<div class="private-icon">
+🎬
 </div>
 
-<div class="private-tile" onclick="openLetter()">
-<div class="private-icon">✒️</div>
-<h3>PREMIUM LETTER</h3>
-<p>हमारी दोस्ती की कुछ बातें</p>
+<h3>
+PRIVATE VIDEOS
+</h3>
+
+<p>
+हमारे खास वीडियो
+</p>
+
+</div>
+
+<div
+class="private-tile"
+onclick="openPrivateMedia('files')"
+>
+
+<div class="private-icon">
+📁
+</div>
+
+<h3>
+PRIVATE FILES
+</h3>
+
+<p>
+जरूरी private files
+</p>
+
+</div>
+
+<div
+class="private-tile"
+onclick="openLetter()"
+>
+
+<div class="private-icon">
+✒️
+</div>
+
+<h3>
+PREMIUM LETTER
+</h3>
+
+<p>
+हमारी दोस्ती की कुछ बातें
+</p>
+
 </div>
 
 </div>
 
 <div class="upload-panel">
 
-<h3>✦ ADD NEW MEMORY ✦</h3>
+<h3>
+✦ ADD NEW MEMORY ✦
+</h3>
 
 <p>
 फोन से फोटो, वीडियो या कोई file चुनो —
@@ -247,35 +1346,59 @@ Google Drive में अपने-आप सही folder में चला 
 <div class="upload-row">
 
 <label class="upload-label">
+
 📤 UPLOAD FILES
-<input id="memoryUpload" type="file" multiple accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip,.rar,.ppt,.pptx,.xls,.xlsx">
+
+<input
+id="memoryUpload"
+type="file"
+multiple
+accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip,.rar,.ppt,.pptx,.xls,.xlsx"
+>
+
 </label>
 
-<button type="button" class="viewer-btn" onclick="refreshDriveFolders()">
+<button
+type="button"
+class="viewer-btn"
+onclick="refreshDriveFolders()"
+>
 ↻ REFRESH
 </button>
 
 </div>
 
-<div id="uploadProgress" class="upload-progress">
+<div
+id="uploadProgress"
+class="upload-progress"
+>
 <span></span>
 </div>
 
-<div id="uploadStatus" class="upload-status"></div>
+<div
+id="uploadStatus"
+class="upload-status"
+></div>
 
 <div class="drive-note">
-PHOTO → Google Drive / photos &nbsp; • &nbsp;
-VIDEO → videos &nbsp; • &nbsp;
+PHOTO → Google Drive / photos
+&nbsp; • &nbsp;
+VIDEO → videos
+&nbsp; • &nbsp;
 OTHER → files
 </div>
 
 </div>
 
-<button class="private-close" onclick="closePrivate()">
+<button
+class="private-close"
+onclick="closePrivate()"
+>
 CLOSE PRIVATE SPACE ✦
 </button>
 
 </div>
+
 </div>
 
 <div id="letterModal">
@@ -288,7 +1411,9 @@ CLOSE PRIVATE SPACE ✦
 ✦ SHAFAHAD &amp; SHAMSHAD BHAI ✦
 </div>
 
-<p><b>मेरे प्यारे Shamshad Bhai,</b></p>
+<p>
+<b>मेरे प्यारे Shamshad Bhai,</b>
+</p>
 
 <p>
 कुछ रिश्ते ऐसे होते हैं जिन्हें किसी नाम की जरूरत नहीं होती।
@@ -313,393 +1438,787 @@ CLOSE PRIVATE SPACE ✦
 </p>
 
 <div class="letter-sign">
+
 हमेशा आपका दोस्त,<br>
 <b>SHAFAHAD</b>
-</div>
 
 </div>
 
-<button class="letter-close" onclick="closeLetter()">
+</div>
+
+<button
+class="letter-close"
+onclick="closeLetter()"
+>
 CLOSE LETTER ✦
 </button>
 
 </div>
+
 </div>
 
-  <script>
+<section id="story">
+
+<h2 class="section-title">
+Our Story
+</h2>
+
+<div class="story">
+
+कुछ दोस्तियाँ वक्त के साथ पुरानी नहीं होतीं—
+बल्कि हर याद के साथ और खूबसूरत बनती जाती हैं।
+
+<br><br>
+
+<b style="color:#f0d27f">
+SHAFAHAD &amp; SHAMSHAD BHAI
+</b>
+
+<br>
+
+दो सच्चे दोस्तों की दोस्ती,
+आसमान के दो चमकते तारों जैसी।
+
+<br>
+
+दूर होकर भी, हमेशा साथ। ❤️
+
+</div>
+
+</section>
+
+<footer>
+
+✦ TWO STARS • ONE FRIENDSHIP ✦
+
+<br><br>
+
+SHAFAHAD &amp; SHAMSHAD BHAI
+
+</footer>
+
+<div id="surprise">
+
+<div class="surprise-box">
+
+<div class="surprise-title">
+✦ FOR SHAMSHAD BHAI ✦
+</div>
+
+<div class="surprise-sub">
+
+कुछ रिश्ते सिर्फ दोस्ती नहीं होते...<br>
+वो जिंदगी की सबसे खूबसूरत याद बन जाते हैं। ❤️
+
+</div>
+
+<img
+class="surprise-photo"
+src="surprise.jpg"
+alt="A Special Memory"
+>
+
+<iframe
+class="surprise-video"
+src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+
+<div
+class="surprise-sub"
+style="margin-top:22px;margin-bottom:0"
+>
+
+SHAFAHAD ❤️ SHAMSHAD BHAI
+
+<br>
+
+दो सच्चे दोस्तों की दोस्ती हमेशा ऐसी ही रहे।
+
+</div>
+
+<button
+class="close-btn"
+onclick="closeSurprise()"
+>
+CLOSE ✦
+</button>
+
+</div>
+
+</div>
+
+<div id="viewer">
+
+<div class="viewer-content">
+
+<button
+class="viewer-close"
+onclick="closeViewer()"
+>
+×
+</button>
+
+<button
+id="prevBtn"
+class="viewer-nav"
+onclick="previousMedia()"
+>
+‹
+</button>
+
+<button
+id="nextBtn"
+class="viewer-nav"
+onclick="nextMedia()"
+>
+›
+</button>
+
+<img
+id="viewerImage"
+style="display:none"
+alt="Memory"
+>
+
+<iframe
+id="viewerVideo"
+class="viewer-drive-frame"
+style="display:none"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+
+<div class="viewer-controls">
+
+<button
+class="viewer-btn"
+onclick="zoomOut()"
+>
+− Zoom
+</button>
+
+<button
+class="viewer-btn"
+onclick="zoomIn()"
+>
++ Zoom
+</button>
+
+<button
+class="viewer-btn"
+onclick="resetZoom()"
+>
+↺ Reset
+</button>
+
+<button
+class="viewer-btn"
+onclick="downloadCurrent()"
+>
+⬇ Download
+</button>
+
+<button
+class="viewer-btn"
+onclick="shareCurrent()"
+>
+📤 Share
+</button>
+
+<button
+class="viewer-btn"
+onclick="toggleFavorite()"
+id="favoriteBtn"
+>
+♡ Favorite
+</button>
+
+</div>
+
+<div id="viewerCounter"></div>
+
+</div>
+
+</div>
+
+<script>
+
 /* =========================================================
-   TWO STARS • ONE FRIENDSHIP
-   GOOGLE DRIVE SYSTEM
+   GOOGLE DRIVE CONFIG
    ========================================================= */
 
-const DRIVE_WEB_APP_URL='https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
+const DRIVE_WEB_APP_URL =
+'https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
 
-const DRIVE_UPLOAD_KEY='TWO-STARS-2026';
+const DRIVE_UPLOAD_KEY =
+'TWO-STARS-2026';
 
-const GITHUB_USER='ansarishafahad95-lab';
-const GITHUB_REPO='TWO-STARS-FRIENDSHIP';
-const GITHUB_BRANCH='main';
 
-const PRIVATE_DRIVE=[
-  {
-    name:'Private Photo • Google Drive',
-    kind:'drive-photo',
-    id:'1Ax8am6ug5_EA0zpD5NgxtdbUn4jT8aus'
-  },
-  {
-    name:'Private Video • Google Drive',
-    kind:'drive-video',
-    id:'1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T'
-  }
+const GITHUB_USER =
+'ansarishafahad95-lab';
+
+const GITHUB_REPO =
+'TWO-STARS-FRIENDSHIP';
+
+const GITHUB_BRANCH =
+'main';
+
+
+/* YOUR SUPPLIED DRIVE FILES */
+
+const PRIVATE_DRIVE = [
+
+{
+name:'Private Photo • Google Drive',
+kind:'drive-photo',
+id:'1Ax8am6ug5_EA0zpD5NgxtdbUn4jT8aus'
+},
+
+{
+name:'Private Video • Google Drive',
+kind:'drive-video',
+id:'1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T'
+}
+
 ];
 
-const photoExtensions=[
-  'jpg','jpeg','png','webp','gif','bmp','heic','heif'
+
+const photoExtensions = [
+'jpg',
+'jpeg',
+'png',
+'webp',
+'gif',
+'bmp',
+'heic',
+'heif'
 ];
 
-const videoExtensions=[
-  'mp4','webm','mov','m4v','avi','mkv'
+const videoExtensions = [
+'mp4',
+'webm',
+'mov',
+'m4v',
+'avi',
+'mkv'
 ];
 
-const fileExtensions=[
-  'pdf','doc','docx','txt','zip','rar',
-  'ppt','pptx','xls','xlsx','csv'
+const fileExtensions = [
+'pdf',
+'doc',
+'docx',
+'txt',
+'zip',
+'rar',
+'ppt',
+'pptx',
+'xls',
+'xlsx',
+'csv'
 ];
+
 
 let photoItems=[];
 let videoItems=[];
 let fileItems=[];
 
+
 function ext(name){
-  return (String(name).split('.').pop()||'').toLowerCase();
+
+return (
+name.split('.').pop() || ''
+).toLowerCase();
+
 }
+
 
 function escapeHTML(v){
-  return String(v).replace(/[&<>'"]/g,function(c){
-    return {
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      "'":'&#39;',
-      '"':'&quot;'
-    }[c];
-  });
+
+return String(v).replace(
+/[&<>'"]/g,
+c=>({
+
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+"'":'&#39;',
+'"':'&quot;'
+
+}[c])
+);
+
 }
 
-/* =========================
-   GOOGLE DRIVE
-   ========================= */
+
+/* =========================================================
+   DRIVE URL HELPERS
+   ========================================================= */
 
 function driveConfigured(){
-  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
-    .test(DRIVE_WEB_APP_URL);
+
+return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
+.test(DRIVE_WEB_APP_URL);
+
 }
+
 
 function driveApiUrl(folder){
-  return DRIVE_WEB_APP_URL+
-    '?action=list'+
-    '&folder='+encodeURIComponent(folder)+
-    '&key='+encodeURIComponent(DRIVE_UPLOAD_KEY)+
-    '&_='+Date.now();
+
+return DRIVE_WEB_APP_URL+
+'?action=list'+
+'&folder='+
+encodeURIComponent(folder)+
+'&key='+
+encodeURIComponent(DRIVE_UPLOAD_KEY)+
+'&_='+
+Date.now();
+
 }
+
 
 function driveFileUrl(f){
-  return f.downloadUrl ||
-    ('https://drive.google.com/uc?export=download&id='+
-    encodeURIComponent(f.id));
+
+return f.downloadUrl ||
+f.download_url ||
+(
+'https://drive.google.com/uc?export=download&id='+
+encodeURIComponent(f.id)
+);
+
 }
+
 
 function drivePreviewUrl(f){
-  return f.previewUrl ||
-    ('https://drive.google.com/file/d/'+
-    encodeURIComponent(f.id)+'/preview');
+
+return f.previewUrl ||
+f.preview_url ||
+(
+'https://drive.google.com/file/d/'+
+encodeURIComponent(f.id)+
+'/preview'
+);
+
 }
 
+
 function driveThumbUrl(f){
-  return f.thumbnailUrl ||
-    ('https://drive.google.com/thumbnail?id='+
-    encodeURIComponent(f.id)+'&sz=w1600');
+
+return f.thumbnailUrl ||
+f.thumbnail_url ||
+(
+'https://drive.google.com/thumbnail?id='+
+encodeURIComponent(f.id)+
+'&sz=w1600'
+);
+
 }
+
+
+/* =========================================================
+   GOOGLE DRIVE LIST
+   ========================================================= */
 
 async function listDrive(folder){
 
-  if(!driveConfigured()){
-    return [];
-  }
-
-  try{
-
-    const r=await fetch(
-      driveApiUrl(folder),
-      {
-        cache:'no-store'
-      }
-    );
-
-    if(!r.ok){
-      return [];
-    }
-
-    const j=await r.json();
-
-    return Array.isArray(j.files) ? j.files : [];
-
-  }catch(e){
-
-    console.error('Drive list error:',e);
-    return [];
-
-  }
+if(!driveConfigured()){
+return [];
 }
 
-/* =========================
-   PUBLIC FOLDERS
-   ========================= */
+try{
+
+const r=await fetch(
+driveApiUrl(folder),
+{
+cache:'no-store'
+}
+);
+
+if(!r.ok){
+return [];
+}
+
+const j=await r.json();
+
+return Array.isArray(j.files)
+? j.files
+: [];
+
+}catch(e){
+
+console.error('Drive list error:',e);
+
+return [];
+
+}
+
+}
+
+
+/* =========================================================
+   LOAD FOLDERS
+   ========================================================= */
 
 async function loadPhotos(){
 
-  photoItems=(await listDrive('photos'))
-    .filter(function(f){
-      return f.mediaType==='photo';
-    })
-    .map(function(f){
-      return Object.assign({},f,{
-        source:'drive'
-      });
-    });
+photoItems =
+(await listDrive('photos'))
+.filter(f=>
+f.mediaType==='photo' ||
+f.media_type==='photo' ||
+f.mimeType?.startsWith('image/')
+)
+.map(f=>Object.assign(
+{},
+f,
+{
+source:'drive',
+mediaType:'photo'
+}
+));
 
 }
+
 
 async function loadVideos(){
 
-  videoItems=(await listDrive('videos'))
-    .filter(function(f){
-      return f.mediaType==='video';
-    })
-    .map(function(f){
-      return Object.assign({},f,{
-        source:'drive'
-      });
-    });
+videoItems =
+(await listDrive('videos'))
+.filter(f=>
+f.mediaType==='video' ||
+f.media_type==='video' ||
+f.mimeType?.startsWith('video/')
+)
+.map(f=>Object.assign(
+{},
+f,
+{
+source:'drive',
+mediaType:'video'
+}
+));
 
 }
+
 
 async function loadFiles(){
 
-  fileItems=(await listDrive('files'))
-    .filter(function(f){
-      return f.mediaType==='file';
-    })
-    .map(function(f){
-      return Object.assign({},f,{
-        source:'drive'
-      });
-    });
+fileItems =
+(await listDrive('files'))
+.filter(f=>
+f.mediaType==='file' ||
+f.media_type==='file' ||
+(
+f.mimeType &&
+!f.mimeType.startsWith('image/') &&
+!f.mimeType.startsWith('video/')
+)
+)
+.map(f=>Object.assign(
+{},
+f,
+{
+source:'drive',
+mediaType:'file'
+}
+));
 
 }
 
-/* =========================
-   FOLDER DISPLAY
-   ========================= */
+
+/* =========================================================
+   GALLERY RENDER — FIXED
+   ========================================================= */
 
 function renderMainFolder(title,items,type){
 
-  const c=document.getElementById('mainFolderContent');
+const c =
+document.getElementById(
+'mainFolderContent'
+);
 
-  c.innerHTML='';
+c.innerHTML='';
 
-  document.getElementById('mainFolderTitle').textContent=title;
+document.getElementById(
+'mainFolderTitle'
+).textContent=title;
 
-  if(!items.length){
 
-    c.innerHTML=
-      '<div class="empty">अभी इस folder में कोई item नहीं है।</div>';
+if(!items.length){
 
-    return;
-  }
+c.innerHTML =
+'<div class="empty">अभी कोई item नहीं है।</div>';
 
-  const g=document.createElement('div');
-
-  g.style.display='grid';
-  g.style.gridTemplateColumns=
-    'repeat(auto-fit,minmax(180px,1fr))';
-  g.style.gap='15px';
-
-  items.forEach(function(f,i){
-
-    const d=document.createElement('div');
-
-    d.style.minHeight='150px';
-    d.style.borderRadius='18px';
-    d.style.overflow='hidden';
-    d.style.background='rgba(10,18,40,.8)';
-    d.style.border='1px solid rgba(255,255,255,.12)';
-    d.style.cursor='pointer';
-    d.style.display='flex';
-    d.style.flexDirection='column';
-    d.style.alignItems='center';
-    d.style.justifyContent='center';
-    d.style.padding='10px';
-
-    if(f.mediaType==='photo'){
-
-      const im=document.createElement('img');
-
-      im.src=driveThumbUrl(f);
-      im.alt=f.name;
-      im.loading='lazy';
-
-      im.style.width='100%';
-      im.style.height='150px';
-      im.style.objectFit='cover';
-      im.style.borderRadius='12px';
-
-      d.appendChild(im);
-
-      d.onclick=function(){
-
-        closeMainFolder();
-
-        openViewer(
-          items,
-          i,
-          'photo',
-          !!f.private
-        );
-
-      };
-
-    }else if(f.mediaType==='video'){
-
-      const box=document.createElement('div');
-
-      box.style.height='150px';
-      box.style.width='100%';
-      box.style.display='flex';
-      box.style.alignItems='center';
-      box.style.justifyContent='center';
-      box.style.fontSize='55px';
-      box.style.background=
-        'linear-gradient(145deg,#111a35,#050914)';
-
-      box.textContent='▶️';
-
-      d.appendChild(box);
-
-      const name=document.createElement('div');
-
-      name.textContent=f.name;
-
-      name.style.color='#dce5f7';
-      name.style.font='11px Arial';
-      name.style.textAlign='center';
-      name.style.marginTop='8px';
-      name.style.wordBreak='break-word';
-
-      d.appendChild(name);
-
-      d.onclick=function(){
-
-        closeMainFolder();
-
-        openViewer(
-          items,
-          i,
-          'video',
-          !!f.private
-        );
-
-      };
-
-    }else{
-
-      d.innerHTML=
-        '<div style="font-size:48px">📄</div>'+
-        '<div style="color:#dce5f7;font:12px Arial;text-align:center;word-break:break-word">'+
-        escapeHTML(f.name)+
-        '</div>';
-
-      d.onclick=function(){
-
-        window.open(
-          drivePreviewUrl(f),
-          '_blank'
-        );
-
-      };
-
-    }
-
-    g.appendChild(d);
-
-  });
-
-  c.appendChild(g);
+return;
 
 }
 
-/* =========================
-   PUBLIC FOLDER OPEN
-   ========================= */
+
+const g =
+document.createElement('div');
+
+g.className='gallery';
+
+
+items.forEach((f,i)=>{
+
+const d =
+document.createElement('div');
+
+d.className='gallery-item';
+
+
+/* PHOTO */
+
+if(type==='photo'){
+
+const im =
+document.createElement('img');
+
+im.src =
+f.source==='drive'
+? driveThumbUrl(f)
+: f.download_url;
+
+im.alt=f.name || 'Photo';
+
+im.loading='lazy';
+
+im.onerror=function(){
+
+this.onerror=null;
+
+this.src =
+'https://drive.google.com/thumbnail?id='+
+encodeURIComponent(f.id)+
+'&sz=w1000';
+
+};
+
+d.appendChild(im);
+
+
+const name =
+document.createElement('div');
+
+name.className='drive-name';
+
+name.textContent =
+f.name || 'Photo';
+
+d.appendChild(name);
+
+
+d.onclick=()=>{
+
+closeMainFolder();
+
+openViewer(
+items,
+i,
+'photo',
+!!f.private
+);
+
+};
+
+}
+
+
+/* VIDEO */
+
+else if(type==='video'){
+
+const im =
+document.createElement('img');
+
+im.src =
+driveThumbUrl(f);
+
+im.alt=f.name || 'Video';
+
+im.loading='lazy';
+
+im.onerror=function(){
+
+this.onerror=null;
+
+this.src =
+'https://drive.google.com/thumbnail?id='+
+encodeURIComponent(f.id)+
+'&sz=w1000';
+
+};
+
+d.appendChild(im);
+
+
+const play =
+document.createElement('div');
+
+play.className='drive-play';
+
+play.textContent='▶';
+
+d.appendChild(play);
+
+
+const name =
+document.createElement('div');
+
+name.className='drive-name';
+
+name.textContent =
+f.name || 'Video';
+
+d.appendChild(name);
+
+
+d.onclick=()=>{
+
+closeMainFolder();
+
+openViewer(
+items,
+i,
+'video',
+!!f.private
+);
+
+};
+
+}
+
+
+/* FILE */
+
+else{
+
+d.className +=
+' file-card';
+
+d.innerHTML =
+'<div class="file-icon">📄</div>'+
+'<div class="file-name">'+
+escapeHTML(f.name || 'File')+
+'</div>';
+
+d.onclick=()=>{
+
+window.open(
+drivePreviewUrl(f),
+'_blank'
+);
+
+};
+
+}
+
+
+g.appendChild(d);
+
+});
+
+
+c.appendChild(g);
+
+}
+
+
+/* =========================================================
+   MAIN FOLDERS
+   ========================================================= */
 
 async function openMainFolder(type){
 
-  document.getElementById('mainFolderPopup').style.display='flex';
+document.getElementById(
+'mainFolderPopup'
+).style.display='flex';
 
-  document.getElementById('mainFolderContent').innerHTML=
-    '<div class="empty">Loading Google Drive...</div>';
 
-  if(!driveConfigured()){
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Loading Google Drive...</div>';
 
-    document.getElementById('mainFolderContent').innerHTML=
-      '<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
 
-    return;
-  }
+if(!driveConfigured()){
 
-  if(type==='photos'){
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
 
-    await loadPhotos();
-
-    renderMainFolder(
-      '📸 PHOTO MEMORIES',
-      photoItems,
-      'photo'
-    );
-
-  }else if(type==='videos'){
-
-    await loadVideos();
-
-    renderMainFolder(
-      '🎬 VIDEO MEMORIES',
-      videoItems,
-      'video'
-    );
-
-  }else{
-
-    await loadFiles();
-
-    renderMainFolder(
-      '📄 MY FILES',
-      fileItems,
-      'file'
-    );
-
-  }
+return;
 
 }
+
+
+try{
+
+if(type==='photos'){
+
+await loadPhotos();
+
+renderMainFolder(
+'📸 PHOTO MEMORIES',
+photoItems,
+'photo'
+);
+
+}
+
+else if(type==='videos'){
+
+await loadVideos();
+
+renderMainFolder(
+'🎬 VIDEO MEMORIES',
+videoItems,
+'video'
+);
+
+}
+
+else{
+
+await loadFiles();
+
+renderMainFolder(
+'📄 MY FILES',
+fileItems,
+'file'
+);
+
+}
+
+}catch(e){
+
+console.error(e);
+
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Google Drive से files load नहीं हो पाईं।</div>';
+
+}
+
+}
+
 
 function closeMainFolder(){
 
-  document.getElementById('mainFolderPopup').style.display='none';
+document.getElementById(
+'mainFolderPopup'
+).style.display='none';
 
 }
 
-/* =========================
-   MEDIA VIEWER
-   ========================= */
+
+/* =========================================================
+   VIEWER
+   ========================================================= */
 
 let currentItems=[];
 let currentIndex=0;
@@ -707,907 +2226,1232 @@ let currentType='';
 let zoomLevel=1;
 let currentPrivate=false;
 
-function openViewer(items,index,type,isPrivate){
 
-  currentItems=items;
-  currentIndex=index;
-  currentType=type;
-  currentPrivate=isPrivate||false;
-  zoomLevel=1;
+function openViewer(
+items,
+index,
+type,
+isPrivate=false
+){
 
-  document.getElementById('viewer').style.display='flex';
+currentItems=items;
+currentIndex=index;
+currentType=type;
+currentPrivate=isPrivate;
+zoomLevel=1;
 
-  showCurrentMedia();
+document.getElementById(
+'viewer'
+).style.display='flex';
+
+showCurrentMedia();
 
 }
+
 
 function showCurrentMedia(){
 
-  if(!currentItems.length){
-    return;
-  }
+if(!currentItems.length){
+return;
+}
 
-  const f=currentItems[currentIndex];
 
-  const im=document.getElementById('viewerImage');
+const f =
+currentItems[currentIndex];
 
-  const v=document.getElementById('viewerVideo');
+const im =
+document.getElementById(
+'viewerImage'
+);
 
-  im.style.display='none';
-  v.style.display='none';
+const v =
+document.getElementById(
+'viewerVideo'
+);
 
-  im.onclick=null;
-  v.onclick=null;
 
-  if(f.source==='drive' && f.mediaType==='photo'){
+im.style.display='none';
 
-    im.src=driveThumbUrl(f);
+v.style.display='none';
 
-    im.style.display='block';
+im.src='';
 
-    im.style.transform=
-      'scale('+zoomLevel+')';
+v.src='';
 
-  }else if(f.source==='drive' && f.mediaType==='video'){
 
-    v.style.display='block';
+/* PHOTO */
 
-    v.removeAttribute('controls');
+if(
+f.source==='drive' &&
+(
+f.mediaType==='photo' ||
+f.mimeType?.startsWith('image/')
+)
+){
 
-    v.poster=driveThumbUrl(f);
+im.src =
+driveThumbUrl(f);
 
-    v.src=drivePreviewUrl(f);
+im.style.display='block';
 
-    v.onclick=function(){
-
-      window.open(
-        drivePreviewUrl(f),
-        '_blank'
-      );
-
-    };
-
-  }else if(currentType==='photo'){
-
-    im.src=f.download_url;
-
-    im.style.display='block';
-
-    im.style.transform=
-      'scale('+zoomLevel+')';
-
-  }else{
-
-    v.src=f.download_url;
-
-    v.style.display='block';
-
-    v.controls=true;
-
-    v.load();
-
-  }
-
-  document.getElementById('viewerCounter').textContent=
-    (currentIndex+1)+' / '+currentItems.length;
-
-  updateFavorite();
+im.style.transform =
+'scale('+zoomLevel+')';
 
 }
+
+
+/* DRIVE VIDEO */
+
+else if(
+f.source==='drive' &&
+(
+f.mediaType==='video' ||
+f.mimeType?.startsWith('video/')
+)
+){
+
+v.src =
+drivePreviewUrl(f);
+
+v.style.display='block';
+
+}
+
+
+/* GITHUB PHOTO */
+
+else if(currentType==='photo'){
+
+im.src=f.download_url;
+
+im.style.display='block';
+
+im.style.transform =
+'scale('+zoomLevel+')';
+
+}
+
+
+/* OTHER VIDEO */
+
+else{
+
+v.src =
+f.download_url ||
+f.preview_url ||
+'';
+
+v.style.display='block';
+
+}
+
+
+document.getElementById(
+'viewerCounter'
+).textContent =
+(currentIndex+1)+
+' / '+
+currentItems.length;
+
+
+updateFavorite();
+
+}
+
 
 function closeViewer(){
 
-  document.getElementById('viewer').style.display='none';
+document.getElementById(
+'viewer'
+).style.display='none';
 
-  const v=document.getElementById('viewerVideo');
+const v =
+document.getElementById(
+'viewerVideo'
+);
 
-  v.pause();
-
-  v.removeAttribute('src');
+v.src='';
 
 }
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+   ========================================================= */
 
 function previousMedia(){
 
-  if(!currentItems.length)return;
+if(!currentItems.length){
+return;
+}
 
-  currentIndex=
-    (currentIndex-1+currentItems.length)%
-    currentItems.length;
+currentIndex =
+(
+currentIndex-1+
+currentItems.length
+)%currentItems.length;
 
-  zoomLevel=1;
+zoomLevel=1;
 
-  showCurrentMedia();
+showCurrentMedia();
 
 }
+
 
 function nextMedia(){
 
-  if(!currentItems.length)return;
+if(!currentItems.length){
+return;
+}
 
-  currentIndex=
-    (currentIndex+1)%
-    currentItems.length;
+currentIndex =
+(
+currentIndex+1
+)%currentItems.length;
 
-  zoomLevel=1;
+zoomLevel=1;
 
-  showCurrentMedia();
+showCurrentMedia();
 
 }
+
+
+/* =========================================================
+   ZOOM
+   ========================================================= */
 
 function zoomIn(){
 
-  zoomLevel=Math.min(
-    3,
-    zoomLevel+.2
-  );
+zoomLevel =
+Math.min(
+3,
+zoomLevel+.2
+);
 
-  showCurrentMedia();
+showCurrentMedia();
 
 }
+
 
 function zoomOut(){
 
-  zoomLevel=Math.max(
-    .5,
-    zoomLevel-.2
-  );
+zoomLevel =
+Math.max(
+.5,
+zoomLevel-.2
+);
 
-  showCurrentMedia();
+showCurrentMedia();
 
 }
+
 
 function resetZoom(){
 
-  zoomLevel=1;
+zoomLevel=1;
 
-  showCurrentMedia();
+showCurrentMedia();
 
 }
+
+
+/* =========================================================
+   DOWNLOAD
+   ========================================================= */
 
 function downloadCurrent(){
 
-  if(!currentItems.length)return;
+const f =
+currentItems[currentIndex];
 
-  const f=currentItems[currentIndex];
+if(f.source==='drive'){
 
-  window.open(
-    f.source==='drive'
-      ? driveFileUrl(f)
-      : f.download_url,
-    '_blank'
-  );
+window.open(
+driveFileUrl(f),
+'_blank'
+);
+
+}else{
+
+const a =
+document.createElement('a');
+
+a.href=f.download_url;
+
+a.download=f.name;
+
+a.target='_blank';
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
 
 }
+
+}
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
 
 async function shareCurrent(){
 
-  if(!currentItems.length)return;
+const f =
+currentItems[currentIndex];
 
-  const f=currentItems[currentIndex];
+const url =
+f.source==='drive'
+? drivePreviewUrl(f)
+: f.download_url;
 
-  const url=
-    f.source==='drive'
-      ? drivePreviewUrl(f)
-      : f.download_url;
+try{
 
-  try{
+if(navigator.share){
 
-    if(navigator.share){
+await navigator.share({
 
-      await navigator.share({
-        title:f.name,
-        url:url
-      });
+title:f.name,
+url:url
 
-    }else{
+});
 
-      await navigator.clipboard.writeText(url);
+}else{
 
-      alert('Link copied!');
+await navigator.clipboard.writeText(url);
 
-    }
-
-  }catch(e){}
+alert('Link copied!');
 
 }
 
-/* =========================
+}catch(e){}
+
+}
+
+
+/* =========================================================
    FAVORITE
-   ========================= */
+   ========================================================= */
 
 function favKey(){
 
-  const f=currentItems[currentIndex];
-
-  return 'two-stars-fav-'+
-    (currentPrivate?'private-':'')+
-    currentType+'-'+
-    (f ? f.name : '');
+return 'two-stars-fav-'+
+(currentPrivate?'private-':'')+
+currentType+'-'+
+(currentItems[currentIndex]?.name||'');
 
 }
+
 
 function updateFavorite(){
 
-  const b=document.getElementById('favoriteBtn');
+const b =
+document.getElementById(
+'favoriteBtn'
+);
 
-  if(!b)return;
+if(!b){
+return;
+}
 
-  b.textContent=
-    localStorage.getItem(favKey())==='1'
-      ? '♥ Favorited'
-      : '♡ Favorite';
+b.textContent =
+localStorage.getItem(
+favKey()
+)==='1'
+? '♥ Favorited'
+: '♡ Favorite';
 
 }
+
 
 function toggleFavorite(){
 
-  const k=favKey();
+const k=favKey();
 
-  if(localStorage.getItem(k)==='1'){
+if(
+localStorage.getItem(k)==='1'
+){
 
-    localStorage.removeItem(k);
+localStorage.removeItem(k);
 
-  }else{
+}else{
 
-    localStorage.setItem(k,'1');
-
-  }
-
-  updateFavorite();
+localStorage.setItem(k,'1');
 
 }
 
-/* =========================
+updateFavorite();
+
+}
+
+
+/* =========================================================
    SWIPE
-   ========================= */
+   ========================================================= */
 
 let touchX=0;
 
-document.getElementById('viewer')
+document
+.getElementById('viewer')
 .addEventListener(
-  'touchstart',
-  function(e){
-
-    touchX=e.changedTouches[0].screenX;
-
-  },
-  {passive:true}
+'touchstart',
+e=>{
+touchX =
+e.changedTouches[0].screenX;
+},
+{
+passive:true
+}
 );
 
-document.getElementById('viewer')
+
+document
+.getElementById('viewer')
 .addEventListener(
-  'touchend',
-  function(e){
+'touchend',
+e=>{
 
-    const dx=
-      e.changedTouches[0].screenX-touchX;
+const dx =
+e.changedTouches[0].screenX-
+touchX;
 
-    if(Math.abs(dx)>60){
+if(Math.abs(dx)>60){
 
-      if(dx<0){
+dx<0
+? nextMedia()
+: previousMedia();
 
-        nextMedia();
+}
 
-      }else{
-
-        previousMedia();
-
-      }
-
-    }
-
-  },
-  {passive:true}
+},
+{
+passive:true
+}
 );
 
-/* =========================
-   PRIVATE AREA
-   ========================= */
+  /* =========================================================
+   PRIVATE DASHBOARD
+   ========================================================= */
 
 function openPrivateDashboard(){
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display='flex';
+document.getElementById(
+'privateDashboard'
+).style.display='flex';
 
 }
+
 
 function closePrivate(){
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display='none';
+document.getElementById(
+'privateDashboard'
+).style.display='none';
 
 }
+
+
+/* =========================================================
+   PRIVATE MEDIA
+   ========================================================= */
 
 async function openPrivateMedia(type){
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display='none';
+document.getElementById(
+'privateDashboard'
+).style.display='none';
 
-  document.getElementById(
-    'mainFolderPopup'
-  ).style.display='flex';
 
-  document.getElementById(
-    'mainFolderContent'
-  ).innerHTML=
-    '<div class="empty">Loading Google Drive...</div>';
+document.getElementById(
+'mainFolderPopup'
+).style.display='flex';
 
-  if(!driveConfigured()){
 
-    document.getElementById(
-      'mainFolderContent'
-    ).innerHTML=
-      '<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Loading Google Drive...</div>';
 
-    return;
 
-  }
+if(!driveConfigured()){
 
-  const drive=
-    await listDrive('private/'+type);
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
 
-  const driveItems=
-    drive
-      .filter(function(f){
-
-        if(type==='photos'){
-          return f.mediaType==='photo';
-        }
-
-        if(type==='videos'){
-          return f.mediaType==='video';
-        }
-
-        return f.mediaType==='file';
-
-      })
-      .map(function(f){
-
-        return Object.assign({},f,{
-          source:'drive',
-          private:true
-        });
-
-      });
-
-  const supplied=
-    type==='photos'
-
-      ? PRIVATE_DRIVE
-          .filter(function(x){
-            return x.kind==='drive-photo';
-          })
-          .map(function(x){
-            return {
-              name:x.name,
-              id:x.id,
-              source:'drive',
-              private:true,
-              mediaType:'photo'
-            };
-          })
-
-      : type==='videos'
-
-        ? PRIVATE_DRIVE
-            .filter(function(x){
-              return x.kind==='drive-video';
-            })
-            .map(function(x){
-              return {
-                name:x.name,
-                id:x.id,
-                source:'drive',
-                private:true,
-                mediaType:'video'
-              };
-            })
-
-        : [];
-
-  const items=[
-    ...supplied,
-    ...driveItems
-  ];
-
-  if(!items.length){
-
-    document.getElementById(
-      'mainFolderContent'
-    ).innerHTML=
-      '<div class="empty">अभी इस private folder में कोई file नहीं है।</div>';
-
-    return;
-
-  }
-
-  if(type==='files'){
-
-    renderMainFolder(
-      '🔐 PRIVATE FILES',
-      items,
-      'file'
-    );
-
-  }else{
-
-    openViewer(
-      items,
-      0,
-      type==='photos'
-        ? 'photo'
-        : 'video',
-      true
-    );
-
-  }
+return;
 
 }
 
-/* =========================
+
+try{
+
+const drive =
+await listDrive(
+'private/'+type
+);
+
+
+const driveItems =
+drive
+.filter(f=>
+
+type==='photos'
+? (
+f.mediaType==='photo' ||
+f.media_type==='photo' ||
+f.mimeType?.startsWith('image/')
+)
+
+:
+
+type==='videos'
+? (
+f.mediaType==='video' ||
+f.media_type==='video' ||
+f.mimeType?.startsWith('video/')
+)
+
+:
+
+true
+
+)
+.map(f=>Object.assign(
+{},
+f,
+{
+source:'drive',
+private:true
+}
+));
+
+
+const supplied =
+type==='photos'
+
+?
+
+PRIVATE_DRIVE
+.filter(
+x=>x.kind==='drive-photo'
+)
+.map(x=>({
+
+name:x.name,
+id:x.id,
+source:'drive',
+private:true,
+mediaType:'photo'
+
+}))
+
+:
+
+type==='videos'
+
+?
+
+PRIVATE_DRIVE
+.filter(
+x=>x.kind==='drive-video'
+)
+.map(x=>({
+
+name:x.name,
+id:x.id,
+source:'drive',
+private:true,
+mediaType:'video'
+
+}))
+
+:
+
+[];
+
+
+const items =
+[
+...supplied,
+...driveItems
+];
+
+
+if(!items.length){
+
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">अभी इस private folder में कोई file नहीं है।</div>';
+
+return;
+
+}
+
+
+if(type==='files'){
+
+renderMainFolder(
+'🔐 PRIVATE FILES',
+items,
+'file'
+);
+
+}else{
+
+openViewer(
+items,
+0,
+type==='photos'
+? 'photo'
+: 'video',
+true
+);
+
+}
+
+}catch(e){
+
+console.error(e);
+
+document.getElementById(
+'mainFolderContent'
+).innerHTML =
+'<div class="empty">Private Google Drive files load नहीं हो पाईं।</div>';
+
+}
+
+}
+
+
+/* =========================================================
    LETTER
-   ========================= */
+   ========================================================= */
 
 function openLetter(){
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display='none';
+document.getElementById(
+'privateDashboard'
+).style.display='none';
 
-  document.getElementById(
-    'letterModal'
-  ).style.display='flex';
+document.getElementById(
+'letterModal'
+).style.display='flex';
 
 }
+
 
 function closeLetter(){
 
-  document.getElementById(
-    'letterModal'
-  ).style.display='none';
-
-}
-
-/* =========================
-   PASSWORD
-   ========================= */
-
-function unlock(){
-
-  const v=
-    document.getElementById(
-      'answer'
-    ).value.trim().toLowerCase();
-
-  const msg=
-    document.getElementById('msg');
-
-  if(
-    v==='1' ||
-    v==='एक' ||
-    v==='ek'
-  ){
-
-    msg.textContent=
-      '❤️ Memory unlocked!';
-
-    msg.style.color='#f3d37b';
-
-    openPrivateDashboard();
-
-  }else{
-
-    msg.textContent=
-      'Answer is incorrect.';
-
-    msg.style.color='#d9dce5';
-
-  }
-
-}
-
 document.getElementById(
-  'answer'
-).addEventListener(
-  'keydown',
-  function(e){
+'letterModal'
+).style.display='none';
 
-    if(e.key==='Enter'){
-      unlock();
-    }
+}
 
-  }
-);
 
-/* =========================
-   UPLOAD TO GOOGLE DRIVE
-   ========================= */
+/* =========================================================
+   GOOGLE DRIVE UPLOAD
+   ========================================================= */
 
 async function uploadToDrive(
-  file,
-  index,
-  total
+file,
+index,
+total
 ){
 
-  if(!driveConfigured()){
+if(!driveConfigured()){
 
-    throw new Error(
-      'Google Drive Web App URL अभी set नहीं है।'
-    );
-
-  }
-
-  if(file.size>30*1024*1024){
-
-    throw new Error(
-      file.name+' 30 MB से बड़ा है'
-    );
-
-  }
-
-  const status=
-    document.getElementById(
-      'uploadStatus'
-    );
-
-  const bar=
-    document.getElementById(
-      'uploadProgress'
-    );
-
-  const fill=
-    bar.querySelector('span');
-
-  status.textContent=
-    'Preparing '+(index+1)+
-    ' / '+total+
-    ' — '+file.name;
-
-  bar.style.display='block';
-
-  const bytes=
-    new Uint8Array(
-      await file.arrayBuffer()
-    );
-
-  let binary='';
-
-  const chunk=0x8000;
-
-  for(
-    let i=0;
-    i<bytes.length;
-    i+=chunk
-  ){
-
-    binary+=String.fromCharCode(
-      ...bytes.subarray(
-        i,
-        Math.min(
-          i+chunk,
-          bytes.length
-        )
-      )
-    );
-
-  }
-
-  const body={
-    key:DRIVE_UPLOAD_KEY,
-    name:file.name,
-    mimeType:
-      file.type ||
-      'application/octet-stream',
-    data:btoa(binary)
-  };
-
-  const r=
-    await fetch(
-      DRIVE_WEB_APP_URL,
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':
-            'text/plain;charset=utf-8'
-        },
-        body:JSON.stringify(body)
-      }
-    );
-
-  const j=
-    await r.json().catch(function(){
-      return {
-        ok:false,
-        error:'Invalid server response'
-      };
-    });
-
-  if(!r.ok || !j.ok){
-
-    throw new Error(
-      j.error || 'Upload failed'
-    );
-
-  }
-
-  fill.style.width=
-    Math.round(
-      ((index+1)/total)*100
-    )+'%';
-
-  status.textContent=
-    'Uploaded '+(index+1)+
-    ' / '+total+
-    ' — '+file.name;
+throw new Error(
+'Google Drive Web App URL अभी set नहीं है।'
+);
 
 }
 
-/* =========================
-   HANDLE UPLOADS
-   ========================= */
+
+if(file.size >
+30*1024*1024){
+
+throw new Error(
+file.name+
+' 30 MB से बड़ा है'
+);
+
+}
+
+
+const status =
+document.getElementById(
+'uploadStatus'
+);
+
+const bar =
+document.getElementById(
+'uploadProgress'
+);
+
+const fill =
+bar.querySelector('span');
+
+
+status.textContent =
+'Preparing '+
+(index+1)+
+' / '+
+total+
+' — '+
+file.name;
+
+
+bar.style.display='block';
+
+
+const bytes =
+new Uint8Array(
+await file.arrayBuffer()
+);
+
+
+let binary='';
+
+const chunk=0x8000;
+
+
+for(
+let i=0;
+i<bytes.length;
+i+=chunk
+){
+
+binary +=
+String.fromCharCode(
+...bytes.subarray(
+i,
+Math.min(
+i+chunk,
+bytes.length
+)
+)
+);
+
+}
+
+
+const body={
+
+key:DRIVE_UPLOAD_KEY,
+
+name:file.name,
+
+mimeType:
+file.type ||
+'application/octet-stream',
+
+data:btoa(binary)
+
+};
+
+
+const r =
+await fetch(
+DRIVE_WEB_APP_URL,
+{
+
+method:'POST',
+
+headers:{
+'Content-Type':
+'text/plain;charset=utf-8'
+},
+
+body:JSON.stringify(body)
+
+}
+);
+
+
+const j =
+await r.json()
+.catch(
+()=>({
+ok:false,
+error:
+'Invalid server response'
+})
+);
+
+
+if(!r.ok || !j.ok){
+
+throw new Error(
+j.error ||
+'Upload failed'
+);
+
+}
+
+
+fill.style.width =
+Math.round(
+((index+1)/total)*100
+)+'%';
+
+
+status.textContent =
+'Uploaded '+
+(index+1)+
+' / '+
+total+
+' — '+
+file.name;
+
+}
+
+
+/* =========================================================
+   UPLOAD MULTIPLE FILES
+   ========================================================= */
 
 async function handleUploads(files){
 
-  if(!files.length)return;
+if(!files.length){
+return;
+}
 
-  const status=
-    document.getElementById(
-      'uploadStatus'
-    );
 
-  const bar=
-    document.getElementById(
-      'uploadProgress'
-    );
+const status =
+document.getElementById(
+'uploadStatus'
+);
 
-  const fill=
-    bar.querySelector('span');
+const bar =
+document.getElementById(
+'uploadProgress'
+);
 
-  if(!driveConfigured()){
+const fill =
+bar.querySelector('span');
 
-    status.textContent=
-      'Google Drive Web App URL set नहीं है।';
 
-    status.style.color='#f0b6b6';
+if(!driveConfigured()){
 
-    return;
+status.textContent =
+'पहले Google Apps Script Web App URL डालें।';
 
-  }
+status.style.color='#f0b6b6';
 
-  bar.style.display='block';
-
-  fill.style.width='0%';
-
-  let ok=0;
-
-  let errors=[];
-
-  for(
-    let i=0;
-    i<files.length;
-    i++
-  ){
-
-    try{
-
-      await uploadToDrive(
-        files[i],
-        i,
-        files.length
-      );
-
-      ok++;
-
-    }catch(e){
-
-      errors.push(e.message);
-
-    }
-
-  }
-
-  status.style.color=
-    errors.length
-      ? '#f0b6b6'
-      : '#d8f0d2';
-
-  if(errors.length){
-
-    status.textContent=
-      'Done: '+ok+
-      ' uploaded. '+
-      errors.join(' | ');
-
-  }else{
-
-    status.textContent=
-      '❤️ '+ok+
-      ' files Google Drive में सही folders में रख दिए गए।';
-
-  }
+return;
 
 }
 
-const uploadInput=
-  document.getElementById(
-    'memoryUpload'
-  );
+
+bar.style.display='block';
+
+fill.style.width='0%';
+
+
+let ok=0;
+
+let errors=[];
+
+
+for(
+let i=0;
+i<files.length;
+i++
+){
+
+try{
+
+await uploadToDrive(
+files[i],
+i,
+files.length
+);
+
+ok++;
+
+}catch(e){
+
+errors.push(
+e.message
+);
+
+}
+
+}
+
+
+status.style.color =
+errors.length
+? '#f0b6b6'
+: '#d8f0d2';
+
+
+if(errors.length){
+
+status.textContent =
+'Done: '+
+ok+
+' uploaded. '+
+errors.join(' | ');
+
+}else{
+
+status.textContent =
+'❤️ '+
+ok+
+' files Google Drive में सही folders में रख दिए गए।';
+
+}
+
+}
+
+
+/* =========================================================
+   UPLOAD INPUT
+   ========================================================= */
+
+const uploadInput =
+document.getElementById(
+'memoryUpload'
+);
+
 
 if(uploadInput){
 
-  uploadInput.addEventListener(
-    'change',
-    function(e){
+uploadInput.addEventListener(
+'change',
+e=>{
 
-      handleUploads(
-        Array.from(
-          e.target.files
-        )
-      );
+handleUploads(
+Array.from(
+e.target.files
+)
+);
 
-      e.target.value='';
+e.target.value='';
 
-    }
-  );
+}
+);
 
 }
 
-/* =========================
+
+/* =========================================================
    REFRESH
-   ========================= */
+   ========================================================= */
 
 async function refreshDriveFolders(){
 
-  photoItems=[];
-  videoItems=[];
-  fileItems=[];
+const status =
+document.getElementById(
+'uploadStatus'
+);
 
-  const status=
-    document.getElementById(
-      'uploadStatus'
-    );
+if(status){
 
-  if(status){
+status.style.color='#dbe5ff';
 
-    status.textContent=
-      '↻ Google Drive folders refreshed.';
-
-    status.style.color='#dbe5ff';
-
-  }
+status.textContent =
+'Google Drive folders refresh हो रहे हैं...';
 
 }
 
-/* =========================
-   CLOSE SURPRISE
-   ========================= */
+
+try{
+
+await Promise.all([
+loadPhotos(),
+loadVideos(),
+loadFiles()
+]);
+
+
+if(status){
+
+status.style.color='#d8f0d2';
+
+status.textContent =
+'✓ Google Drive folders refreshed.';
+
+}
+
+}catch(e){
+
+if(status){
+
+status.style.color='#f0b6b6';
+
+status.textContent =
+'Drive refresh failed.';
+
+}
+
+}
+
+}
+
+
+/* =========================================================
+   SECRET UNLOCK
+   ========================================================= */
+
+function unlock(){
+
+const v =
+document.getElementById(
+'answer'
+).value
+.trim()
+.toLowerCase();
+
+
+const msg =
+document.getElementById(
+'msg'
+);
+
+
+if(
+v==='1' ||
+v==='एक' ||
+v==='ek'
+){
+
+msg.textContent =
+'❤️ Memory unlocked!';
+
+msg.style.color =
+'#f3d37b';
+
+
+openPrivateDashboard();
+
+}else{
+
+msg.textContent =
+'Answer is incorrect.';
+
+msg.style.color =
+'#d9dce5';
+
+}
+
+}
+
+
+document
+.getElementById('answer')
+.addEventListener(
+'keydown',
+e=>{
+
+if(e.key==='Enter'){
+unlock();
+}
+
+}
+);
+
+
+/* =========================================================
+   STARS ANIMATION
+   ========================================================= */
+
+const c =
+document.getElementById(
+'stars'
+);
+
+const x =
+c.getContext('2d');
+
+
+let W,H,pts=[];
+
+
+function resize(){
+
+W =
+c.width =
+innerWidth*
+devicePixelRatio;
+
+
+H =
+c.height =
+innerHeight*
+devicePixelRatio;
+
+
+c.style.width =
+innerWidth+'px';
+
+c.style.height =
+innerHeight+'px';
+
+
+pts =
+Array.from(
+{
+length:
+Math.min(
+170,
+Math.floor(
+innerWidth/7
+)
+}
+),
+
+()=>({
+
+x:Math.random()*W,
+
+y:Math.random()*H,
+
+r:
+(
+Math.random()*1.5+
+.25
+)*
+devicePixelRatio,
+
+a:
+Math.random()*.65+.2,
+
+s:
+Math.random()*.018+.004,
+
+p:
+Math.random()*6.28
+
+})
+
+);
+
+}
+
+
+function draw(t){
+
+x.clearRect(
+0,
+0,
+W,
+H
+);
+
+
+for(
+const p of pts
+){
+
+p.p += p.s;
+
+
+const a =
+p.a*
+(
+.55+
+.45*
+Math.sin(
+p.p+
+t*.001
+)
+);
+
+
+x.beginPath();
+
+x.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
+);
+
+x.fillStyle =
+`rgba(
+220,
+232,
+255,
+${a}
+)`;
+
+
+x.fill();
+
+}
+
+
+requestAnimationFrame(draw);
+
+}
+
+
+addEventListener(
+'resize',
+resize
+);
+
+
+resize();
+
+requestAnimationFrame(draw);
+
+
+/* =========================================================
+   SURPRISE
+   ========================================================= */
+
+function openSurprise(){
+
+document.getElementById(
+'surprise'
+).style.display='flex';
+
+}
+
 
 function closeSurprise(){
 
-  document.getElementById(
-    'surprise'
-  ).style.display='none';
+document.getElementById(
+'surprise'
+).style.display='none';
 
 }
 
-/* =========================
-   STAR BACKGROUND
-   ========================= */
 
-const canvas=
-  document.getElementById('stars');
+/* =========================================================
+   ESC KEY
+   ========================================================= */
 
-const ctx=
-  canvas.getContext('2d');
+document.addEventListener(
+'keydown',
+e=>{
 
-let W,H,stars=[];
+if(e.key==='Escape'){
 
-function resizeStars(){
+closeViewer();
 
-  W=
-    canvas.width=
-    innerWidth*devicePixelRatio;
+closeMainFolder();
 
-  H=
-    canvas.height=
-    innerHeight*devicePixelRatio;
+closePrivate();
 
-  canvas.style.width=
-    innerWidth+'px';
+closeLetter();
 
-  canvas.style.height=
-    innerHeight+'px';
-
-  stars=
-    Array.from(
-      {
-        length:
-          Math.min(
-            170,
-            Math.floor(innerWidth/7)
-          )
-      },
-      function(){
-
-        return {
-          x:Math.random()*W,
-          y:Math.random()*H,
-          r:
-            (Math.random()*1.5+.25)*
-            devicePixelRatio,
-          a:
-            Math.random()*.65+.2,
-          s:
-            Math.random()*.018+.004,
-          p:
-            Math.random()*6.28
-        };
-
-      }
-    );
+closeSurprise();
 
 }
 
-function drawStars(t){
-
-  ctx.clearRect(
-    0,
-    0,
-    W,
-    H
-  );
-
-  stars.forEach(function(p){
-
-    p.p+=p.s;
-
-    const a=
-      p.a*
-      (
-        .55+
-        .45*
-        Math.sin(
-          p.p+t*.001
-        )
-      );
-
-    ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.r,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fillStyle=
-      'rgba(220,232,255,'+
-      a+
-      ')';
-
-    ctx.fill();
-
-  });
-
-  requestAnimationFrame(drawStars);
-
 }
-
-window.addEventListener(
-  'resize',
-  resizeStars
 );
-
-resizeStars();
-
-request animation frame(
-  DrawStars
-  );
 
 </script>
 
