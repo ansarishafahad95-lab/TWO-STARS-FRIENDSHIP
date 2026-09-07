@@ -865,6 +865,135 @@ height:145px
   }
 }
 
+   /* PREMIUM MEMORY FOLDER */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;
+  width:100%;
+  margin-top:18px;
+}
+
+.gallery-item{
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:20px;
+  cursor:pointer;
+  background:linear-gradient(145deg,#11182a,#070b15);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.gallery-item:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+}
+
+.gallery-item img,
+.gallery-item video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-item::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.55),
+    transparent 55%
+  );
+  pointer-events:none;
+}
+
+.memory-video-badge{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.14);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.35);
+  font-size:25px;
+  z-index:2;
+}
+
+.memory-file-icon{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:
+    radial-gradient(circle at 50% 20%,
+    rgba(255,255,255,.12),
+    transparent 45%);
+}
+
+.memory-file-icon span{
+  font-size:52px;
+}
+
+.memory-file-name{
+  max-width:90%;
+  text-align:center;
+  font-size:12px;
+  color:#e8edf7;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.folder-loading{
+  min-height:220px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:#bfc9dc;
+}
+
+.loading-icon{
+  font-size:38px;
+  animation:folderPulse 1.3s infinite ease-in-out;
+}
+
+@keyframes folderPulse{
+  0%,100%{transform:scale(.9);opacity:.5}
+  50%{transform:scale(1.1);opacity:1}
+}
+
+@media(max-width:600px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+  }
+
+  .gallery-item{
+    border-radius:16px;
+  }
+}
+
 </style>
 </head>
 
@@ -1407,18 +1536,7 @@ const GITHUB_USER = 'ansarishafahad95-lab';
 const GITHUB_REPO = 'TWO-STARS-FRIENDSHIP';
 const GITHUB_BRANCH = 'main';
 
-const PRIVATE_DRIVE = [
-  {
-    name:'Private Photo • Google Drive',
-    kind:'drive-photo',
-    id:'1Ax8am6ug5_EA0zpD5NgxtdbUn4jT8aus'
-  },
-  {
-    name:'Private Video • Google Drive',
-    kind:'drive-video',
-    id:'1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T'
-  }
-];
+const PRIVATE_DRIVE=[];
 
 const photoExtensions =
 ['jpg','jpeg','png','webp','gif','bmp','heic','heif'];
@@ -1730,138 +1848,200 @@ function closeMainFolder(){
 
 function renderMainFolder(title,items,type){
 
-  const content =
-    document.getElementById('mainFolderContent');
+  const c=document.getElementById('mainFolderContent');
 
-  document.getElementById(
-    'mainFolderTitle'
-  ).textContent = title;
+  c.innerHTML='';
 
-  content.innerHTML = '';
+  document.getElementById('mainFolderTitle').textContent=title;
 
   if(!items.length){
 
-    content.innerHTML =
-      '<div class="empty">' +
-      'अभी कोई item नहीं है।' +
-      '</div>';
+    c.innerHTML=
+      '<div class="empty">अभी कोई item नहीं है।</div>';
 
     return;
   }
 
-  const gallery =
-    document.createElement('div');
+  const g=document.createElement('div');
 
-  gallery.className = 'gallery';
+  g.className='gallery';
 
+  items.forEach((f,i)=>{
 
-  items.forEach(function(file,index){
+    const d=document.createElement('div');
 
-    const item =
-      document.createElement('div');
+    d.className='gallery-item';
 
-    item.className =
-      'gallery-item';
+    if(f.source==='drive'){
 
+      if(f.mediaType==='photo'){
 
-    /* ---------- DRIVE PHOTO ---------- */
+        const im=document.createElement('img');
 
-    if(
-      file.source === 'drive' &&
-      type === 'photo'
-    ){
+        im.src=driveThumbUrl(f);
+        im.alt=f.name;
+        im.loading='lazy';
 
-      const image =
-        document.createElement('img');
+        d.appendChild(im);
 
-      image.src =
-        driveThumbUrl(file);
+        d.onclick=()=>{
 
-      image.alt =
-        file.name || 'Photo';
+          closeMainFolder();
 
-      image.loading = 'lazy';
+          openViewer(
+            items,
+            i,
+            'photo',
+            !!f.private
+          );
 
-      image.onerror = function(){
+        };
 
-        this.src =
-          'https://drive.google.com/thumbnail?id=' +
-          encodeURIComponent(fileId(file)) +
-          '&sz=w1000';
+      }
 
-      };
+      else if(f.mediaType==='video'){
 
-      item.appendChild(image);
+        const im=document.createElement('img');
 
-      item.onclick = function(){
+        im.src=driveThumbUrl(f);
+        im.alt=f.name;
+        im.loading='lazy';
+
+        d.appendChild(im);
+
+        const badge=document.createElement('div');
+
+        badge.className='memory-video-badge';
+
+        badge.textContent='▶';
+
+        d.appendChild(badge);
+
+        d.onclick=()=>{
+
+          closeMainFolder();
+
+          openViewer(
+            items,
+            i,
+            'video',
+            !!f.private
+          );
+
+        };
+
+      }
+
+      else{
+
+        d.innerHTML=
+          '<div class="memory-file-icon">'+
+          '<span>📄</span>'+
+          '<div class="memory-file-name">'+
+          escapeHTML(f.name)+
+          '</div>'+
+          '</div>';
+
+        d.onclick=()=>{
+
+          window.open(
+            drivePreviewUrl(f),
+            '_blank'
+          );
+
+        };
+
+      }
+
+    }
+
+    else if(type==='photo'){
+
+      const im=document.createElement('img');
+
+      im.src=f.download_url;
+      im.alt=f.name;
+      im.loading='lazy';
+
+      d.appendChild(im);
+
+      d.onclick=()=>{
 
         closeMainFolder();
 
         openViewer(
           items,
-          index,
+          i,
           'photo',
-          !!file.private
+          !!f.private
         );
 
       };
 
     }
 
+    else if(type==='video'){
 
-    /* ---------- DRIVE VIDEO ---------- */
+      const im=document.createElement('img');
 
-    else if(
-      file.source === 'drive' &&
-      type === 'video'
-    ){
+      im.src=f.download_url;
+      im.alt=f.name;
+      im.loading='lazy';
 
-      const image =
-        document.createElement('img');
+      d.appendChild(im);
 
-      image.src =
-        driveThumbUrl(file);
+      const badge=document.createElement('div');
 
-      image.alt =
-        file.name || 'Video';
+      badge.className='memory-video-badge';
 
-      image.loading = 'lazy';
+      badge.textContent='▶';
 
-      image.onerror = function(){
-        this.style.display = 'none';
-      };
+      d.appendChild(badge);
 
-      item.appendChild(image);
-
-
-      const play =
-        document.createElement('div');
-
-      play.className =
-        'play-badge';
-
-      play.textContent = '▶';
-
-      item.appendChild(play);
-
-
-      item.onclick = function(){
+      d.onclick=()=>{
 
         closeMainFolder();
 
-        /*
-          Google Drive preview is opened directly.
-          It is not treated as an HTML5 video URL.
-        */
+        openViewer(
+          items,
+          i,
+          'video',
+          !!f.private
+        );
+
+      };
+
+    }
+
+    else{
+
+      d.innerHTML=
+        '<div class="memory-file-icon">'+
+        '<span>📄</span>'+
+        '<div class="memory-file-name">'+
+        escapeHTML(f.name)+
+        '</div>'+
+        '</div>';
+
+      d.onclick=()=>{
 
         window.open(
-          drivePreviewUrl(file),
+          f.download_url,
           '_blank'
         );
 
       };
 
     }
+
+    g.appendChild(d);
+
+  });
+
+  c.appendChild(g);
+}
+
+
 
 
     /* ---------- GITHUB PHOTO ---------- */
@@ -2003,27 +2183,66 @@ function renderMainFolder(title,items,type){
 /* =========================
    PUBLIC FOLDERS
    ========================= */
+async function openPrivateMedia(type){
 
-async function openMainFolder(type){
+  document.getElementById('privateDashboard').style.display='none';
   document.getElementById('mainFolderPopup').style.display='flex';
-  document.getElementById('mainFolderContent').innerHTML='<div class="empty">Loading Google Drive...</div>';
-  if(!driveConfigured()){
-    document.getElementById('mainFolderContent').innerHTML='<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
+
+  const content=document.getElementById('mainFolderContent');
+
+  content.innerHTML=
+    '<div class="folder-loading">'+
+    '<div class="loading-icon">✦</div>'+
+    '<div>Loading your private memories...</div>'+
+    '</div>';
+
+  const drive=await listDrive('private/'+type);
+
+  const items=drive
+    .filter(f=>
+      type==='photos'
+        ? f.mediaType==='photo'
+        : type==='videos'
+          ? f.mediaType==='video'
+          : f.mediaType==='file'
+    )
+    .map(f=>Object.assign({},f,{
+      source:'drive',
+      private:true
+    }));
+
+  if(!items.length){
+
+    content.innerHTML=
+      '<div class="empty">'+
+      'इस private folder में अभी कोई item नहीं है।'+
+      '</div>';
+
+    document.getElementById('mainFolderTitle').textContent=
+      type==='photos'
+        ? '🔐 PRIVATE PHOTOS'
+        : type==='videos'
+          ? '🔐 PRIVATE VIDEOS'
+          : '🔐 PRIVATE FILES';
+
     return;
   }
 
-  if(type==='photos'){
-    await loadPhotos();
-    renderMainFolder('📸 PHOTO MEMORIES',photoItems,'photo');
-  }else if(type==='videos'){
-    await loadVideos();
-    renderMainFolder('🎬 VIDEO MEMORIES',videoItems,'video');
-  }else{
-    await loadFiles();
-    renderMainFolder('📄 MY FILES',fileItems,'file');
-  }
+  renderMainFolder(
+    type==='photos'
+      ? '🔐 PRIVATE PHOTOS'
+      : type==='videos'
+        ? '🔐 PRIVATE VIDEOS'
+        : '🔐 PRIVATE FILES',
+    items,
+    type==='photos'
+      ? 'photo'
+      : type==='videos'
+        ? 'video'
+        : 'file'
+  );
 }
-
+      
 /* =========================
    MEDIA VIEWER
    ========================= */
