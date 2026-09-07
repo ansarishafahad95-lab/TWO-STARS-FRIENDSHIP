@@ -2,1441 +2,1194 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TWO STARS • ONE FRIENDSHIP | Shafahad & Shamshad Bhai</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
-<meta name="google-site-verification" content="4uoxJcl9wmErZYuEVLAHxD1VSVOFFquZTizdzjsjr9Q" />
+<title>SHAFAHAD & SHAMSHAD BHAI | TWO STARS</title>
 
-<meta name="description" content="Two Stars One Friendship — Shafahad aur Shamshad Bhai ki dosti, memories, photos, videos aur hamari beautiful friendship story.">
-
-<meta name="keywords" content="Two Stars One Friendship, Two Star One Friendship, Shafahad aur Shamshad Bhai, Shafahad Shamshad Bhai, Two Stars Friendship, friendship memories">
-
-<meta name="author" content="Shafahad">
+<meta name="description" content="SHAFAHAD & SHAMSHAD BHAI — TWO STARS ONE FRIENDSHIP">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-font-family:Georgia,"Times New Roman",serif;
-background:#030817;
-color:#fff;
-overflow-x:hidden
+  background:
+    radial-gradient(circle at 50% 0%,#101d3d 0%,#050b1c 45%,#020611 100%);
+  color:#fff;
+  font-family:Georgia,"Times New Roman",serif;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
 body:before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:20;
-background:radial-gradient(
-circle at 50% 20%,
-rgba(40,90,180,.16),
-transparent 35%
-)
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.35;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);
+  background-size:85px 85px;
+  z-index:-1;
 }
 
-canvas{
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
-z-index:0;
-pointer-events:none
-}
+/* ---------- NAVBAR ---------- */
 
-nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-z-index:30;
-height:62px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 6%;
-background:rgba(2,7,20,.48);
-backdrop-filter:blur(16px);
-border-bottom:1px solid rgba(255,255,255,.08)
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  background:rgba(3,8,22,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-letter-spacing:4px;
-font-size:12px;
-font-weight:bold;
-color:#f7d88b
+  color:#e7c76a;
+  font-size:10px;
+  letter-spacing:3px;
+  white-space:nowrap;
 }
 
-nav a{
-color:#dce4f8;
-text-decoration:none;
-font-size:10px;
-margin-left:20px;
-letter-spacing:1px
+.nav-links{
+  display:flex;
+  gap:18px;
 }
+
+.nav-links a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:8px;
+  letter-spacing:1px;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  color:#e7c76a;
+}
+
+/* ---------- HERO ---------- */
 
 .hero{
-min-height:100vh;
-position:relative;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:90px 18px 60px
+  min-height:100vh;
+  padding:105px 15px 60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .hero-card{
-width:min(1120px,94vw);
-padding:28px;
-border-radius:30px;
-background:rgba(7,14,34,.48);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:
-0 30px 100px rgba(0,0,0,.55),
-inset 0 1px rgba(255,255,255,.08);
-backdrop-filter:blur(10px)
+  width:min(900px,100%);
+  text-align:center;
+  padding:30px 12px 24px;
+  border:1px solid rgba(231,199,106,.16);
+  border-radius:18px;
+  background:linear-gradient(
+    145deg,
+    rgba(13,25,55,.82),
+    rgba(4,10,25,.75)
+  );
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
 }
 
-.kicker{
-text-align:center;
-color:#e8c875;
-font-size:11px;
-letter-spacing:5px;
-margin-bottom:12px
+.eyebrow{
+  color:#e7c76a;
+  font-size:8px;
+  letter-spacing:4px;
+  margin-bottom:10px;
 }
 
-h1{
-text-align:center;
-font-size:clamp(38px,8vw,86px);
-line-height:.94;
-letter-spacing:3px;
-text-shadow:0 8px 35px #000;
-margin-bottom:25px
+.hero h1{
+  font-size:clamp(34px,8vw,72px);
+  line-height:.94;
+  letter-spacing:1px;
+  font-weight:700;
 }
 
-.subtitle{
-text-align:center;
-font-size:clamp(15px,2vw,20px);
-line-height:1.8;
-color:#f2f4fa;
-margin:0 auto 26px;
-max-width:700px
+.hero-title{
+  color:#e7c76a;
+  font-size:clamp(11px,2vw,17px);
+  letter-spacing:5px;
+  margin-top:15px;
+}
+
+.shayari{
+  max-width:650px;
+  margin:18px auto 25px;
+  color:#eee;
+  font-size:14px;
+  line-height:2;
 }
 
 .photo-wrap{
-position:relative;
-overflow:hidden;
-border-radius:22px;
-border:1px solid rgba(255,255,255,.18);
-box-shadow:0 25px 70px rgba(0,0,0,.65);
-background:#000
+  width:100%;
+  max-width:820px;
+  margin:auto;
+  padding:7px;
+  border-radius:14px;
+  background:linear-gradient(
+    135deg,
+    rgba(231,199,106,.28),
+    rgba(255,255,255,.04),
+    rgba(231,199,106,.18)
+  );
 }
 
 .photo-wrap img{
-display:block;
-width:100%;
-height:auto;
-max-height:72vh;
-object-fit:contain
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:72vh;
+  object-fit:contain;
+  border-radius:10px;
+  background:#020611;
 }
 
-.badge{
-position:absolute;
-left:18px;
-bottom:18px;
-padding:10px 14px;
-border-radius:999px;
-background:rgba(0,0,0,.48);
-border:1px solid rgba(255,255,255,.15);
-font:10px Arial,sans-serif;
-letter-spacing:2px;
-color:#fff;
-backdrop-filter:blur(8px)
-}
+/* ---------- SECTIONS ---------- */
 
 section{
-position:relative;
-z-index:2;
-padding:100px 7%
+  padding:80px 16px;
 }
 
 .section-title{
-text-align:center;
-font-size:34px;
-margin-bottom:34px
+  text-align:center;
+  font-size:25px;
+  margin-bottom:28px;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-max-width:1000px;
-margin:auto
+.section-subtitle{
+  text-align:center;
+  color:#aaa;
+  font-size:12px;
+  margin:-15px auto 30px;
+  line-height:1.8;
 }
 
-.card{
-padding:28px;
-border-radius:22px;
-background:
-linear-gradient(
-145deg,
-rgba(20,31,63,.75),
-rgba(7,13,30,.7)
-);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 45px rgba(0,0,0,.3);
-transform:translateZ(0);
-transition:.3s
+/* ---------- MEMORY CARDS ---------- */
+
+.memory-grid{
+  width:min(1000px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
 
-.card:hover{
-transform:translateY(-7px) scale(1.01)
+.memory-card{
+  min-height:150px;
+  padding:20px 15px;
+  cursor:pointer;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(
+    145deg,
+    rgba(17,31,67,.9),
+    rgba(7,14,33,.9)
+  );
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+  transition:.3s;
 }
 
-.card h3{
-margin-bottom:10px;
-font-size:18px;
-color:#f5d987
+.memory-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(231,199,106,.45);
+  box-shadow:0 20px 55px rgba(0,0,0,.4);
 }
 
-.card p{
-font:13px/1.8 Arial,sans-serif;
-color:#cbd4e8
+.memory-icon{
+  font-size:25px;
+  margin-bottom:12px;
 }
 
-.secret{
-max-width:620px;
-margin:auto;
-text-align:center;
-padding:36px;
-border-radius:26px;
-background:rgba(13,22,46,.76);
-border:1px solid rgba(238,207,125,.22);
-box-shadow:0 25px 70px rgba(0,0,0,.45)
+.memory-card h3{
+  color:#e7c76a;
+  font-size:14px;
+  margin-bottom:9px;
+  letter-spacing:1px;
 }
 
-input{
-width:100%;
-margin-top:18px;
-padding:14px 16px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.16);
-background:#050a18;
-color:white;
-outline:none;
-text-align:center;
-font-size:16px
+.memory-card p{
+  color:#bbb;
+  font-size:10px;
+  line-height:1.7;
 }
 
-button{
-margin-top:12px;
-padding:12px 20px;
-border:1px solid #d8bb69;
-border-radius:10px;
-background:linear-gradient(145deg,#d8bb69,#8e6b22);
-color:#080b12;
-font-weight:bold;
-cursor:pointer
+/* ---------- SECRET ---------- */
+
+.secret-box{
+  width:min(500px,100%);
+  margin:auto;
+  padding:28px 20px;
+  text-align:center;
+  border-radius:16px;
+  border:1px solid rgba(231,199,106,.18);
+  background:rgba(10,20,45,.8);
 }
 
-#msg{
-min-height:24px;
-margin-top:14px;
-font:12px Arial,sans-serif;
-color:#dbe5ff
+.secret-box h2{
+  color:#e7c76a;
+  font-size:18px;
+  margin-bottom:10px;
 }
 
-.story{
-max-width:850px;
-margin:auto;
-text-align:center;
-color:#d7def0;
-font-size:16px;
-line-height:2
+.secret-box p{
+  color:#aaa;
+  font-size:11px;
+  margin-bottom:18px;
 }
 
-footer{
-position:relative;
-z-index:2;
-text-align:center;
-padding:45px 20px 70px;
-color:#8e9ab5;
-font:10px Arial,sans-serif;
-letter-spacing:2px
+.password-input{
+  width:100%;
+  height:43px;
+  padding:0 14px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;
+  outline:none;
+  background:#020817;
+  color:white;
+  text-align:center;
+  font-size:14px;
 }
 
-@media(max-width:600px){
-nav a{display:none}
-.hero-card{padding:15px}
-h1{font-size:42px}
-.photo-wrap{border-radius:16px}
-section{padding:70px 6%}
+.gold-btn{
+  margin-top:12px;
+  border:0;
+  border-radius:7px;
+  padding:11px 22px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#f1d77b,#b68b28);
+  color:#17100a;
+  font-weight:bold;
+  font-size:10px;
 }
 
-/* MAIN FOLDER + PRIVATE SPACE */
-
-.memory-folder{
-font-family:inherit;
-text-align:left;
-cursor:pointer;
-margin:0;
-appearance:none;
--webkit-appearance:none
+.gold-btn:hover{
+  filter:brightness(1.1);
 }
 
-.memory-folder:focus{
-outline:2px solid rgba(239,210,124,.5);
-outline-offset:2px
+.error{
+  color:#ff8d8d;
+  font-size:10px;
+  margin-top:10px;
+  min-height:14px;
 }
 
-#mainFolderPopup,
-#privateDashboard,
-#letterModal{
-display:none;
-position:fixed;
-inset:0;
-z-index:150;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.86);
-backdrop-filter:blur(14px)
+/* ---------- PRIVATE DASHBOARD ---------- */
+
+.private-dashboard{
+  display:none;
+  width:min(1000px,100%);
+  margin:25px auto 0;
 }
 
-.main-folder-box,
-.private-box{
-width:min(1050px,95vw);
-max-height:90vh;
-overflow-y:auto;
-padding:25px;
-border-radius:28px;
-background:
-linear-gradient(
-145deg,
-rgba(18,29,58,.98),
-rgba(3,9,25,.99)
-);
-border:1px solid rgba(240,210,120,.35);
-box-shadow:
-0 30px 120px rgba(0,0,0,.85),
-0 0 60px rgba(100,150,255,.12);
-animation:folderOpen .4s ease
-}
-
-.folder-title,
 .private-title{
-text-align:center;
-color:#f2d27b;
-font-size:clamp(24px,5vw,40px);
-margin-bottom:20px
-}
-
-.folder-content{
-min-height:120px
-}
-
-.folder-close,
-.private-close,
-.letter-close{
-display:block;
-margin:20px auto 0;
-background:transparent;
-color:#efd27c;
-border:1px solid rgba(239,210,124,.55);
-padding:10px 25px;
-border-radius:10px;
-cursor:pointer
-}
-
-@keyframes folderOpen{
-from{
-opacity:0;
-transform:scale(.82) translateY(25px)
-}
-to{
-opacity:1;
-transform:scale(1) translateY(0)
-}
-}
-
-.private-box{
-width:min(1100px,96vw)
-}
-
-.private-head{
-text-align:center;
-margin-bottom:22px
-}
-
-.private-head h2{
-color:#f4d47d;
-font-size:clamp(25px,5vw,44px)
-}
-
-.private-head p{
-font-family:Arial,sans-serif;
-color:#b9c5dc;
-margin-top:8px
+  text-align:center;
+  color:#e7c76a;
+  font-size:22px;
+  margin-bottom:25px;
 }
 
 .private-grid{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(190px,1fr));
-gap:15px
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
 
-.private-tile{
-padding:25px 18px;
-border-radius:20px;
-background:
-linear-gradient(
-145deg,
-rgba(35,30,75,.9),
-rgba(6,12,30,.92)
-);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 16px 45px rgba(0,0,0,.35);
-cursor:pointer;
-transition:.3s;
-text-align:center
+.private-card{
+  cursor:pointer;
+  text-align:center;
+  padding:25px 15px;
+  border-radius:14px;
+  border:1px solid rgba(231,199,106,.15);
+  background:linear-gradient(145deg,#101e40,#060d20);
+  transition:.3s;
 }
 
-.private-tile:hover{
-transform:translateY(-5px);
-border-color:rgba(239,210,124,.45)
+.private-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(231,199,106,.5);
 }
 
-.private-icon{
-font-size:40px;
-margin-bottom:10px
+.private-card .big{
+  font-size:32px;
+  margin-bottom:10px;
 }
 
-.private-tile h3{
-color:#f1d37c;
-margin-bottom:8px
+.private-card h3{
+  color:#e7c76a;
+  font-size:13px;
 }
 
-.private-tile p{
-font-family:Arial,sans-serif;
-color:#bdc8dc;
-font-size:12px
+.private-card p{
+  color:#999;
+  font-size:9px;
+  margin-top:6px;
 }
 
-.letter-wrap{
-width:min(800px,94vw);
-max-height:92vh;
-overflow:auto;
-padding:22px
+/* ---------- STORY ---------- */
+
+.story{
+  width:min(800px,100%);
+  margin:auto;
+  text-align:center;
 }
 
-.letter-page{
-background:#f5ecd7;
-color:#382b1d;
-min-height:900px;
-padding:55px 50px;
-position:relative;
-box-shadow:0 30px 100px rgba(0,0,0,.8);
-border:10px solid #d1b46b;
-border-radius:5px;
-background-image:
-radial-gradient(
-circle at 20% 15%,
-rgba(200,160,70,.14),
-transparent 20%
-),
-radial-gradient(
-circle at 80% 85%,
-rgba(200,160,70,.12),
-transparent 22%
-)
+.story p{
+  color:#bbb;
+  font-size:12px;
+  line-height:2;
 }
 
-.letter-page:before{
-content:"✦  ✧  ✦  ✧  ✦";
-position:absolute;
-top:18px;
-left:0;
-right:0;
-text-align:center;
-color:#9b762e;
-font-size:20px;
-letter-spacing:8px
+.names{
+  color:#e7c76a!important;
+  margin-top:25px;
+  font-weight:bold;
 }
 
-.letter-page:after{
-content:"✦  ✧  ✦  ✧  ✦";
-position:absolute;
-bottom:18px;
-left:0;
-right:0;
-text-align:center;
-color:#9b762e;
-font-size:20px;
-letter-spacing:8px
+/* ---------- POPUPS ---------- */
+
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(12px);
+  align-items:center;
+  justify-content:center;
+  padding:18px;
 }
 
-.letter-head{
-text-align:center;
-color:#87631e;
-font-size:30px;
-margin:18px 0 30px
+.popup-box{
+  width:min(1050px,100%);
+  max-height:92vh;
+  overflow:auto;
+  border-radius:17px;
+  border:1px solid rgba(231,199,106,.22);
+  background:linear-gradient(145deg,#0b1732,#030917);
+  box-shadow:0 30px 100px rgba(0,0,0,.65);
 }
 
-.letter-page p{
-font-size:18px;
-line-height:2;
-margin-bottom:18px
+.popup-header{
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 18px;
+  background:rgba(5,12,29,.95);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.letter-sign{
-text-align:right;
-font-size:20px;
-color:#74521b;
-margin-top:35px
-}
-
-/* SURPRISE + MEDIA VIEWER */
-
-#surprise{
-display:none;
-position:fixed;
-inset:0;
-z-index:180;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.84);
-backdrop-filter:blur(12px)
-}
-
-.surprise-box{
-width:min(850px,94vw);
-max-height:90vh;
-overflow-y:auto;
-padding:28px;
-text-align:center;
-border-radius:28px;
-background:
-linear-gradient(
-145deg,
-rgba(18,29,58,.97),
-rgba(3,9,25,.98)
-);
-border:1px solid rgba(240,210,120,.35);
-box-shadow:
-0 30px 120px rgba(0,0,0,.8),
-0 0 60px rgba(100,150,255,.12);
-animation:folderOpen .55s ease
-}
-
-.surprise-title{
-color:#f2d27b;
-font-size:clamp(24px,5vw,42px);
-letter-spacing:2px;
-margin-bottom:10px
-}
-
-.surprise-sub{
-color:#dce5f7;
-font-family:Arial,sans-serif;
-font-size:14px;
-line-height:1.8;
-margin-bottom:22px
-}
-
-.surprise-photo{
-width:100%;
-border-radius:20px;
-display:block;
-border:1px solid rgba(255,255,255,.15);
-box-shadow:0 20px 60px rgba(0,0,0,.65);
-margin-bottom:20px
-}
-
-.surprise-video{
-width:100%;
-height:450px;
-border:none;
-border-radius:18px;
-background:#000;
-margin-top:10px
+.popup-header h2{
+  color:#e7c76a;
+  font-size:15px;
 }
 
 .close-btn{
-margin-top:22px;
-background:transparent;
-color:#efd27c;
-border:1px solid rgba(239,210,124,.55);
-padding:10px 24px;
-border-radius:10px;
-cursor:pointer
+  width:34px;
+  height:34px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+  background:#101b35;
+  color:white;
+  cursor:pointer;
+  font-size:18px;
 }
 
-#viewer{
-display:none;
-position:fixed;
-inset:0;
-z-index:250;
-background:rgba(0,0,0,.94);
-align-items:center;
-justify-content:center;
-padding:20px;
-touch-action:none
-}
-
-.viewer-content{
-width:min(1000px,96vw);
-height:min(88vh,900px);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-position:relative
-}
-
-#viewerImage,
-#viewerVideo{
-max-width:100%;
-max-height:72vh;
-border-radius:16px;
-object-fit:contain;
-box-shadow:0 20px 100px rgba(0,0,0,.8)
-}
-
-.viewer-controls{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-margin-top:15px
-}
-
-.viewer-btn{
-margin:0;
-padding:9px 13px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.25);
-background:rgba(20,28,50,.9);
-color:white;
-font-size:12px
-}
-
-.viewer-close{
-position:absolute;
-right:8px;
-top:8px;
-z-index:5;
-margin:0;
-width:42px;
-height:42px;
-padding:0;
-border-radius:50%;
-background:rgba(20,20,25,.85);
-color:white;
-border:1px solid rgba(255,255,255,.25);
-font-size:20px
-}
-
-.viewer-nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-margin:0;
-width:45px;
-height:55px;
-border-radius:14px;
-background:rgba(10,15,30,.85);
-color:white;
-border:1px solid rgba(255,255,255,.2);
-font-size:25px;
-z-index:5
-}
-
-.viewer-nav#prevBtn{
-left:5px
-}
-
-.viewer-nav#nextBtn{
-right:5px
-}
-
-#viewerCounter{
-color:#aebbd3;
-font-family:Arial,sans-serif;
-font-size:11px;
-margin-top:8px
-}
-
-/* DRIVE MEMORY GALLERY */
+/* ---------- GALLERY ---------- */
 
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-gap:15px;
-width:100%
-}
-
-.gallery-item{
-position:relative;
-min-height:180px;
-overflow:hidden;
-border-radius:18px;
-background:rgba(7,13,30,.92);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 12px 35px rgba(0,0,0,.35);
-cursor:pointer;
-transition:.25s ease
-}
-
-.gallery-item:hover{
-transform:translateY(-4px);
-border-color:rgba(239,210,124,.45)
-}
-
-.gallery-item img{
-display:block;
-width:100%;
-height:180px;
-object-fit:cover;
-background:#050914
-}
-
-.gallery-item.video-item:after{
-content:"▶";
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:52px;
-height:52px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-background:rgba(0,0,0,.68);
-border:1px solid rgba(255,255,255,.35);
-color:#fff;
-font:18px Arial,sans-serif;
-padding-left:3px;
-pointer-events:none
-}
-
-.file-card{
-min-height:180px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:20px;
-text-align:center
-}
-
-.file-icon{
-font-size:54px;
-margin-bottom:12px
-}
-
-.file-name{
-width:100%;
-color:#dfe7f7;
-font:13px/1.5 Arial,sans-serif;
-overflow-wrap:anywhere
-}
-
-.drive-loading{
-text-align:center;
-padding:35px 15px;
-color:#bfcbe1;
-font:13px Arial,sans-serif
-}
-
-.drive-error{
-text-align:center;
-padding:30px 15px;
-color:#e5d8ad;
-font:13px/1.7 Arial,sans-serif
-}
-
-@media(max-width:600px){
-.gallery{
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:10px
-}
-
-.gallery-item{
-min-height:145px;
-border-radius:14px
-}
-
-.gallery-item img{
-height:145px
-}
-
-   .gallery{
+  padding:18px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:14px;
-  margin-top:8px;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
 }
 
 .gallery-item{
   position:relative;
-  min-height:150px;
+  aspect-ratio:1/1;
   overflow:hidden;
-  border-radius:16px;
-  background:#071126;
-  border:1px solid rgba(255,255,255,.12);
   cursor:pointer;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.09);
+  background:#050b19;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  transition:.3s;
+}
+
+.gallery-item:hover{
+  transform:translateY(-4px);
+  border-color:rgba(231,199,106,.5);
 }
 
 .gallery-item img,
 .gallery-item video{
-  display:block;
   width:100%;
-  height:180px;
+  height:100%;
+  display:block;
   object-fit:cover;
-  background:#050b18;
 }
 
-.play-badge{
+.memory-video-badge{
   position:absolute;
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:54px;
-  height:54px;
+  width:52px;
+  height:52px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.68);
-  border:1px solid rgba(255,255,255,.3);
-  font-size:24px;
-  pointer-events:none;
+  background:rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:22px;
 }
 
-.file-card{
+.memory-file-icon{
+  height:100%;
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  padding:20px;
-  text-align:center;
-}
-
-.file-icon{
+  flex-direction:column;
+  gap:8px;
   font-size:42px;
 }
 
-.file-name{
-  font:12px/1.5 Arial,sans-serif;
-  color:#dbe5f7;
+.memory-file-name{
+  max-width:90%;
+  color:#ddd;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  text-align:center;
   word-break:break-word;
 }
 
+.folder-loading,
 .empty{
-  min-height:120px;
+  padding:55px 20px;
+  text-align:center;
+  color:#aaa;
+  font-size:12px;
+}
+
+/* ---------- VIEWER ---------- */
+
+.viewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:800;
+  background:rgba(0,0,0,.96);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.viewer-media{
+  width:min(95vw,1100px);
+  height:min(75vh,750px);
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.viewer-media img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  transition:transform .2s;
+}
+
+.viewer-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:8px;
+  background:#000;
+}
+
+.viewer-top{
+  position:absolute;
+  top:15px;
+  left:15px;
+  right:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.viewer-name{
+  color:#ddd;
+  font-size:11px;
+  max-width:65%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.viewer-close{
+  width:38px;
+  height:38px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:50%;
+  background:#111827;
+  color:white;
+  cursor:pointer;
+  font-size:19px;
+}
+
+.viewer-controls{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+  margin-top:14px;
+  padding:0 10px;
+}
+
+.viewer-controls button{
+  min-width:42px;
+  height:38px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;
+  background:#111a30;
+  color:white;
+  cursor:pointer;
+}
+
+.viewer-controls button:hover{
+  border-color:#e7c76a;
+  color:#e7c76a;
+}
+
+/* ---------- LETTER ---------- */
+
+.letter{
+  display:none;
+  width:min(800px,100%);
+  margin:25px auto;
+  padding:42px 35px;
+  color:#242424;
+  background:#f5f0df;
+  border-radius:5px;
+  box-shadow:0 20px 70px rgba(0,0,0,.5);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.letter h2{
   text-align:center;
-  color:#aebbd3;
-  font:13px Arial,sans-serif;
-  padding:20px;
+  color:#745c22;
+  margin-bottom:25px;
 }
 
-.memory-folder{
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
+.letter p{
+  font-size:14px;
+  line-height:2;
+  margin-bottom:14px;
 }
 
-@media(hover:none){
-  .card:hover{
-    transform:none;
+/* ---------- SURPRISE ---------- */
+
+.surprise-content{
+  text-align:center;
+  padding:25px;
+}
+
+.surprise-content h2{
+  color:#e7c76a;
+  margin-bottom:20px;
+}
+
+.surprise-photo{
+  width:min(600px,100%);
+  max-height:55vh;
+  object-fit:contain;
+  border-radius:12px;
+  display:block;
+  margin:0 auto 18px;
+}
+
+.surprise-video{
+  width:min(700px,100%);
+  height:390px;
+  border:0;
+  border-radius:12px;
+  background:#000;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:700px){
+
+  .navbar{
+    padding:0 10px;
   }
 
-  .gallery-item:hover{
-    transform:none;
+  .logo{
+    font-size:7px;
+    letter-spacing:2px;
+  }
+
+  .nav-links{
+    gap:9px;
+  }
+
+  .nav-links a{
+    font-size:6px;
+  }
+
+  .hero{
+    padding-top:85px;
+  }
+
+  .hero-card{
+    padding:25px 9px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero-title{
+    font-size:9px;
+    letter-spacing:3px;
+  }
+
+  .shayari{
+    font-size:10px;
+    line-height:1.9;
+  }
+
+  section{
+    padding:65px 10px;
+  }
+
+  .memory-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+  }
+
+  .memory-card{
+    min-height:135px;
+    padding:15px 10px;
+  }
+
+  .memory-card h3{
+    font-size:10px;
+  }
+
+  .memory-card p{
+    font-size:8px;
+  }
+
+  .private-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    padding:12px;
+  }
+
+  .surprise-video{
+    height:240px;
+  }
+
+  .letter{
+    padding:25px 18px;
   }
 }
 
+@media(min-width:701px) and (max-width:950px){
+  .memory-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="logo">✦ TWO STARS</div>
 
-<nav>
-<div class="logo">✦ TWO STARS</div>
-
-<div>
-<a href="#home">HOME</a>
-<a href="#memories">MEMORIES</a>
-<a href="#secret">SECRET</a>
-<a href="#story">OUR STORY</a>
-</div>
+  <div class="nav-links">
+    <a href="#home">HOME</a>
+    <a href="#memories">MEMORIES</a>
+    <a href="#secret">SECRET</a>
+    <a href="#story">OUR STORY</a>
+  </div>
 </nav>
 
-<main id="home" class="hero">
 
-<div class="hero-card">
+<!-- HOME -->
+<section class="hero" id="home">
 
-<div class="kicker">
-SHAFAHAD &amp; SHAMSHAD BHAI
-</div>
+  <div class="hero-card">
 
-<h1>
-TWO STARS<br>
-ONE FRIENDSHIP
-</h1>
+    <div class="eyebrow">
+      SHAFAHAD & SHAMSHAD BHAI
+    </div>
 
-<div class="subtitle">
-दो सच्चे दोस्तों की दोस्ती,
-आसमान के दो चमकते तारों जैसी।<br>
-दूर होकर भी, हमेशा साथ। ❤️
-</div>
+    <h1>
+      TWO STARS<br>
+      ONE FRIENDSHIP
+    </h1>
 
-<div class="photo-wrap">
+    <div class="hero-title">
+      TWO STARS • ONE BOND • FOREVER
+    </div>
 
-<img
-src="photo.jpg"
-alt="Our Friendship"
-style="width:100%;display:block"
->
+    <div class="shayari">
+      दो सच्चे दोस्तों की दोस्ती, आसमान के दो चमकते तारों जैसी।<br>
+      दूर होकर भी, हमेशा साथ। ❤️
+    </div>
 
-<div class="badge">
-✦ TWO STARS • ONE FRIENDSHIP ✦
-</div>
+    <div class="photo-wrap">
+      <img
+        src="photo.jpg"
+        alt="SHAFAHAD & SHAMSHAD BHAI - Original Memory"
+      >
+    </div>
 
-</div>
+  </div>
 
-</div>
-</main>
+</section>
 
+
+<!-- MEMORIES -->
 <section id="memories">
 
-<h2 class="section-title">
-Our Memories
-</h2>
+  <h2 class="section-title">
+    Our Memories
+  </h2>
 
-<div class="cards">
+  <div class="section-subtitle">
+    हमारी खूबसूरत यादों का छोटा सा संसार
+  </div>
 
-<button
-type="button"
-class="card memory-folder"
-onclick="openMainFolder('photos')"
->
+  <div class="memory-grid">
 
-<h3>📸 PHOTOS</h3>
+    <div class="memory-card" onclick="openMainFolder('photos')">
+      <div class="memory-icon">📸</div>
+      <h3>PHOTOS</h3>
+      <p>
+        हमारी खूबसूरत यादों के लिए एक खास जगह।
+      </p>
+    </div>
 
-<p>
-हमारी खूबसूरत यादों के लिए एक खास जगह।
-</p>
+    <div class="memory-card" onclick="openMainFolder('videos')">
+      <div class="memory-icon">🎬</div>
+      <h3>VIDEOS</h3>
+      <p>
+        दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।
+      </p>
+    </div>
 
-</button>
+    <div class="memory-card" onclick="openMainFolder('files')">
+      <div class="memory-icon">📄</div>
+      <h3>FILES</h3>
+      <p>
+        PDF और जरूरी documents एक जगह।
+      </p>
+    </div>
 
-<button
-type="button"
-class="card memory-folder"
-onclick="openMainFolder('videos')"
->
+    <div class="memory-card" onclick="showFriendship()">
+      <div class="memory-icon">🤝</div>
+      <h3>FRIENDSHIP</h3>
+      <p>
+        कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।
+      </p>
+    </div>
 
-<h3>🎬 VIDEOS</h3>
+  </div>
 
-<p>
-दोस्ती के यादगार पलों को हमेशा संभालकर रखने के लिए।
-</p>
-
-</button>
-
-<button
-type="button"
-class="card memory-folder"
-onclick="openMainFolder('files')"
->
-
-<h3>📄 FILES</h3>
-
-<p>
-PDF और जरूरी documents एक जगह।
-</p>
-
-</button>
-
-<div class="card">
-
-<h3>❤️ FRIENDSHIP</h3>
-
-<p>
-कुछ रिश्ते नाम से नहीं, दिल से खास होते हैं।
-</p>
-
-</div>
-
-</div>
 </section>
 
+
+<!-- SECRET -->
 <section id="secret">
 
-<div class="secret">
+  <div class="secret-box">
 
-<h2>
-✦ OUR SECRET ✦
-</h2>
+    <h2>
+      🔐 OUR SECRET 🔐
+    </h2>
 
-<p
-style="margin-top:12px;color:#cfd8eb"
->
-एक छोटा सा सवाल…
-</p>
+    <p>
+      सिर्फ हमारे लिए एक छोटी सी private जगह।
+    </p>
 
-<input
-id="answer"
-type="password"
-autocomplete="off"
-placeholder="Answer"
->
+    <input
+      id="secretPassword"
+      class="password-input"
+      type="password"
+      autocomplete="off"
+      placeholder=""
+    >
 
-<button onclick="unlock()">
-UNLOCK MEMORY ✦
-</button>
+    <button class="gold-btn" onclick="unlockSecret()">
+      OPEN MEMORY VAULT
+    </button>
 
-<div id="msg"></div>
+    <div id="secretError" class="error"></div>
 
-</div>
+  </div>
+
+
+  <!-- PRIVATE DASHBOARD -->
+
+  <div id="privateDashboard" class="private-dashboard">
+
+    <div class="private-title">
+      ✦ PRIVATE MEMORY VAULT ✦
+    </div>
+
+    <div class="private-grid">
+
+      <div
+        class="private-card"
+        onclick="openPrivateMedia('photos')"
+      >
+        <div class="big">🔐📸</div>
+        <h3>PRIVATE PHOTOS</h3>
+        <p>प्राइवेट फोटो memories</p>
+      </div>
+
+      <div
+        class="private-card"
+        onclick="openPrivateMedia('videos')"
+      >
+        <div class="big">🔐🎬</div>
+        <h3>PRIVATE VIDEOS</h3>
+        <p>प्राइवेट वीडियो memories</p>
+      </div>
+
+      <div
+        class="private-card"
+        onclick="openPrivateMedia('files')"
+      >
+        <div class="big">🔐📄</div>
+        <h3>PRIVATE FILES</h3>
+        <p>प्राइवेट files और documents</p>
+      </div>
+
+      <div
+        class="private-card"
+        onclick="showLetter()"
+      >
+        <div class="big">💌</div>
+        <h3>FRIENDSHIP LETTER</h3>
+        <p>एक खास letter</p>
+      </div>
+
+    </div>
+
+
+    <!-- LETTER -->
+
+    <div id="friendshipLetter" class="letter">
+
+      <h2>
+        ✦ SHAFAHAD & SHAMSHAD BHAI ✦
+      </h2>
+
+      <p>
+        मेरे प्यारे Shamshad Bhai,
+      </p>
+
+      <p>
+        कुछ रिश्ते ऐसे होते हैं जिन्हें किसी नाम की जरूरत नहीं होती।
+        बस एक-दूसरे को समझना और मुश्किल समय में साथ खड़े रहना ही काफी होता है।
+      </p>
+
+      <p>
+        हमारी दोस्ती भी मेरे लिए ऐसी ही एक खूबसूरत याद है।
+        वक्त कितना भी बदल जाए, हमारी साथ बिताई हुई यादें हमेशा खास रहेंगी।
+      </p>
+
+      <p>
+        दूर होकर भी कुछ लोग दिल के बहुत करीब रहते हैं।
+        यही हमारी दोस्ती की सबसे खूबसूरत बात है।
+      </p>
+
+      <p>
+        हमेशा खुश रहना और हमारी इस दोस्ती को हमेशा याद रखना। ❤️
+      </p>
+
+      <p>
+        — SHAFAHAD
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<div id="mainFolderPopup">
 
-<div class="main-folder-box">
-
-<div
-id="mainFolderTitle"
-class="folder-title"
->
-📸 PHOTO MEMORIES
-</div>
-
-<div
-id="mainFolderContent"
-class="folder-content"
->
-<div class="empty">
-Loading...
-</div>
-</div>
-
-<button
-class="folder-close"
-onclick="closeMainFolder()"
->
-CLOSE ✦
-</button>
-
-</div>
-
-</div>
-
-<div id="privateDashboard">
-
-<div class="private-box">
-
-<div class="private-head">
-
-<h2>
-WELCOME, SHAMSHAD BHAI ❤️
-</h2>
-
-<p>
-ये हमारी private memories हैं — सिर्फ हमारे लिए।
-</p>
-
-</div>
-
-<div class="private-grid">
-
-<div
-class="private-tile"
-onclick="openPrivateMedia('photos')"
->
-
-<div class="private-icon">
-📸
-</div>
-
-<h3>
-PRIVATE PHOTOS
-</h3>
-
-<p>
-हमारी खास तस्वीरें
-</p>
-
-</div>
-
-<div
-class="private-tile"
-onclick="openPrivateMedia('videos')"
->
-
-<div class="private-icon">
-🎬
-</div>
-
-<h3>
-PRIVATE VIDEOS
-</h3>
-
-<p>
-हमारे खास वीडियो
-</p>
-
-</div>
-
-<div
-class="private-tile"
-onclick="openPrivateMedia('files')"
->
-
-<div class="private-icon">
-📁
-</div>
-
-<h3>
-PRIVATE FILES
-</h3>
-
-<p>
-जरूरी private files
-</p>
-
-</div>
-
-<div
-class="private-tile"
-onclick="openLetter()"
->
-
-<div class="private-icon">
-✒️
-</div>
-
-<h3>
-PREMIUM LETTER
-</h3>
-
-<p>
-हमारी दोस्ती की कुछ बातें
-</p>
-
-</div>
-
-</div>
-
-<button
-class="private-close"
-onclick="closePrivate()"
->
-CLOSE PRIVATE SPACE ✦
-</button>
-
-</div>
-
-</div>
-
-<div id="letterModal">
-
-<div class="letter-wrap">
-
-<div class="letter-page">
-
-<div class="letter-head">
-✦ SHAFAHAD &amp; SHAMSHAD BHAI ✦
-</div>
-
-<p>
-<b>मेरे प्यारे Shamshad Bhai,</b>
-</p>
-
-<p>
-कुछ रिश्ते ऐसे होते हैं जिन्हें किसी नाम की जरूरत नहीं होती।
-वक्त कितना भी बदल जाए, दूरी कितनी भी बढ़ जाए,
-सच्ची दोस्ती दिल में अपनी जगह बनाए रखती है।
-</p>
-
-<p>
-हमारी दोस्ती मेरे लिए उन दो चमकते तारों जैसी है—
-जो आसमान में दूर होकर भी एक ही कहानी का हिस्सा लगते हैं।
-</p>
-
-<p>
-जो यादें हमने साथ बनाई हैं, वो मेरे लिए हमेशा खास रहेंगी।
-हँसी हो, मुश्किल वक्त हो या बस एक छोटी सी बात—
-दोस्ती की यही छोटी-छोटी चीजें सबसे बड़ी याद बन जाती हैं।
-</p>
-
-<p>
-बस यही दुआ है कि हमारी दोस्ती हमेशा इज्जत,
-भरोसे और खुशियों के साथ बनी रहे। ❤️
-</p>
-
-<div class="letter-sign">
-हमेशा आपका दोस्त,<br>
-<b>SHAFAHAD</b>
-</div>
-
-</div>
-
-<button
-class="letter-close"
-onclick="closeLetter()"
->
-CLOSE LETTER ✦
-</button>
-
-</div>
-
-</div>
+<!-- OUR STORY -->
 <section id="story">
 
-<h2 class="section-title">
-Our Story
-</h2>
+  <h2 class="section-title">
+    Our Story
+  </h2>
 
-<div class="story">
+  <div class="story">
 
-कुछ दोस्तियाँ वक्त के साथ पुरानी नहीं होतीं—
-बल्कि हर याद के साथ और खूबसूरत बनती जाती हैं।
+    <p>
+      दोस्ती सिर्फ साथ रहने का नाम नहीं है।
+      दोस्ती वह रिश्ता है जिसमें दूरी भी दिलों के बीच जगह नहीं बना पाती।
+    </p>
 
-<br><br>
+    <p class="names">
+      SHAFAHAD & SHAMSHAD BHAI
+    </p>
 
-<b style="color:#f0d27f">
-SHAFAHAD &amp; SHAMSHAD BHAI
-</b>
+    <p>
+      दो अलग रास्ते, दो अलग सितारे,
+      लेकिन एक खूबसूरत दोस्ती।
+    </p>
 
-<br>
-
-दो सच्चे दोस्तों की दोस्ती,
-आसमान के दो चमकते तारों जैसी।
-
-<br>
-
-दूर होकर भी, हमेशा साथ। ❤️
-
-</div>
+  </div>
 
 </section>
 
-<footer>
 
-✦ TWO STARS • ONE FRIENDSHIP ✦
+<!-- MAIN FOLDER POPUP -->
 
-<br><br>
+<div id="mainFolderPopup" class="popup">
 
-SHAFAHAD &amp; SHAMSHAD BHAI
+  <div class="popup-box">
 
-</footer>
+    <div class="popup-header">
 
-<div id="surprise">
+      <h2 id="mainFolderTitle">
+        MEMORY FOLDER
+      </h2>
 
-<div class="surprise-box">
+      <button
+        class="close-btn"
+        onclick="closeMainFolder()"
+      >
+        ×
+      </button>
 
-<div class="surprise-title">
-✦ FOR SHAMSHAD BHAI ✦
-</div>
+    </div>
 
-<div class="surprise-sub">
+    <div id="mainFolderContent">
+      <div class="folder-loading">
+        Loading...
+      </div>
+    </div>
 
-कुछ रिश्ते सिर्फ दोस्ती नहीं होते...<br>
-वो जिंदगी की सबसे खूबसूरत याद बन जाते हैं। ❤️
-
-</div>
-
-<img
-class="surprise-photo"
-src="surprise.jpg"
-alt="A Special Memory"
->
-
-<iframe
-class="surprise-video"
-src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
-allow="autoplay; fullscreen"
-allowfullscreen>
-</iframe>
-
-<div
-class="surprise-sub"
-style="margin-top:22px;margin-bottom:0"
->
-
-SHAFAHAD ❤️ SHAMSHAD BHAI
-
-<br>
-
-दो सच्चे दोस्तों की दोस्ती हमेशा ऐसी ही रहे।
+  </div>
 
 </div>
 
-<button
-class="close-btn"
-onclick="closeSurprise()"
->
-CLOSE ✦
-</button>
+
+<!-- VIEWER -->
+
+<div id="viewer" class="viewer">
+
+  <div class="viewer-top">
+
+    <div id="viewerName" class="viewer-name"></div>
+
+    <button
+      class="viewer-close"
+      onclick="closeViewer()"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div
+    id="viewerMedia"
+    class="viewer-media"
+  ></div>
+
+  <div class="viewer-controls">
+
+    <button onclick="previousMedia()">‹</button>
+
+    <button onclick="nextMedia()">›</button>
+
+    <button onclick="zoomOut()">−</button>
+
+    <button onclick="zoomIn()">+</button>
+
+    <button onclick="resetZoom()">⟳</button>
+
+    <button onclick="downloadCurrent()">⬇</button>
+
+    <button onclick="shareCurrent()">↗</button>
+
+  </div>
 
 </div>
 
-</div>
 
-<div id="viewer">
+<!-- FRIENDSHIP POPUP -->
 
-<div class="viewer-content">
+<div id="friendshipPopup" class="popup">
 
-<button
-class="viewer-close"
-onclick="closeViewer()"
->
-×
-</button>
+  <div class="popup-box">
 
-<button
-id="prevBtn"
-class="viewer-nav"
-onclick="previousMedia()"
->
-‹
-</button>
+    <div class="popup-header">
 
-<button
-id="nextBtn"
-class="viewer-nav"
-onclick="nextMedia()"
->
-›
-</button>
+      <h2>🤝 OUR FRIENDSHIP</h2>
 
-<img
-id="viewerImage"
-style="display:none"
-alt="Memory"
->
+      <button
+        class="close-btn"
+        onclick="closeFriendship()"
+      >
+        ×
+      </button>
 
-<video
-id="viewerVideo"
-style="display:none"
-controls
-playsinline>
-</video>
+    </div>
 
-<div class="viewer-controls">
+    <div class="surprise-content">
 
-<button
-class="viewer-btn"
-onclick="zoomOut()"
->
-− Zoom
-</button>
+      <h2>
+        SHAFAHAD & SHAMSHAD BHAI
+      </h2>
 
-<button
-class="viewer-btn"
-onclick="zoomIn()"
->
-+ Zoom
-</button>
+      <p style="color:#aaa;line-height:2;font-size:12px;">
+        कुछ रिश्ते नाम से नहीं,<br>
+        दिल से खास होते हैं। ❤️
+      </p>
 
-<button
-class="viewer-btn"
-onclick="resetZoom()"
->
-↺ Reset
-</button>
+    </div>
 
-<button
-class="viewer-btn"
-onclick="downloadCurrent()"
->
-⬇ Download
-</button>
-
-<button
-class="viewer-btn"
-onclick="shareCurrent()"
->
-📤 Share
-</button>
-
-<button
-class="viewer-btn"
-onclick="toggleFavorite()"
-id="favoriteBtn"
->
-♡ Favorite
-</button>
+  </div>
 
 </div>
 
-<div id="viewerCounter"></div>
+
+<!-- SURPRISE POPUP -->
+
+<div id="surprisePopup" class="popup">
+
+  <div class="popup-box">
+
+    <div class="popup-header">
+
+      <h2>✦ FOR SHAMSHAD BHAI ✦</h2>
+
+      <button
+        class="close-btn"
+        onclick="closeSurprise()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="surprise-content">
+
+      <img
+        class="surprise-photo"
+        src="surprise.jpg"
+        alt="Surprise"
+      >
+
+      <iframe
+        class="surprise-video"
+        src="https://drive.google.com/file/d/1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T/preview"
+        allow="autoplay"
+        allowfullscreen
+      ></iframe>
+
+    </div>
+
+  </div>
 
 </div>
 
-</div>
 
-   <script>
-/* =========================================================
-   TWO STARS • ONE FRIENDSHIP
-   FIXED VERSION
-   - Folder opening fixed
-   - Password 1 / ek / एक fixed
-   - Google Drive connection restored
-   - Drive photo thumbnails fixed
-   - Drive video thumbnails fixed
-   - GitHub photo/video/file folders fixed
-   ========================================================= */
+<script>
 
-const DRIVE_WEB_APP_URL='https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
-const DRIVE_UPLOAD_KEY='TWO-STARS-2026';
+/* =====================================================
+   TWO STARS ONE FRIENDSHIP
+   GOOGLE DRIVE SYSTEM
+   ===================================================== */
 
-const GITHUB_USER = 'ansarishafahad95-lab';
-const GITHUB_REPO = 'TWO-STARS-FRIENDSHIP';
-const GITHUB_BRANCH = 'main';
+const DRIVE_WEB_APP_URL =
+'https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
 
-const PRIVATE_DRIVE = [
-  {
-    name:'Private Photo • Google Drive',
-    kind:'drive-photo',
-    id:'1Ax8am6ug5_EA0zpD5NgxtdbUn4jT8aus'
-  },
-  {
-    name:'Private Video • Google Drive',
-    kind:'drive-video',
-    id:'1wVfBRAdnkC0ki9BkRa20G7hU5ET-Cs3T'
-  }
-];
+const DRIVE_UPLOAD_KEY = 'TWO-STARS-2026';
 
-const photoExtensions =
-['jpg','jpeg','png','webp','gif','bmp','heic','heif'];
 
-const videoExtensions =
-['mp4','webm','mov','m4v','avi','mkv'];
-
-const fileExtensions =
-['pdf','doc','docx','txt','zip','rar','ppt','pptx','xls','xlsx','csv'];
+/* =====================================================
+   DATA
+   ===================================================== */
 
 let photoItems = [];
 let videoItems = [];
 let fileItems = [];
 
+let currentItems = [];
+let currentIndex = 0;
+let currentType = '';
+let currentZoom = 1;
 
-/* =========================
-   BASIC HELPERS
-   ========================= */
+
+/* =====================================================
+   FILE TYPES
+   ===================================================== */
+
+const photoExtensions = [
+  'jpg','jpeg','png','webp','gif','bmp'
+];
+
+const videoExtensions = [
+  'mp4','webm','mov','m4v','avi'
+];
+
+const fileExtensions = [
+  'pdf','doc','docx','txt','xls','xlsx',
+  'ppt','pptx','zip','rar'
+];
+
+
+/* =====================================================
+   HELPERS
+   ===================================================== */
+
+function escapeHTML(value){
+  return String(value || '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
+
 
 function ext(name){
   return String(name || '')
@@ -1445,234 +1198,70 @@ function ext(name){
     .toLowerCase();
 }
 
-function escapeHTML(value){
-  return String(value ?? '').replace(
-    /[&<>'"]/g,
-    function(c){
-      return {
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        "'":'&#39;',
-        '"':'&quot;'
-      }[c];
-    }
-  );
-}
-
-
-/* =========================
-   GITHUB
-   ========================= */
-
-function apiURL(path){
-  return 'https://api.github.com/repos/' +
-    GITHUB_USER + '/' +
-    GITHUB_REPO +
-    '/contents/' +
-    path +
-    '?ref=' +
-    GITHUB_BRANCH +
-    '&_=' +
-    Date.now();
-}
-
-async function getFolder(path){
-
-  try{
-
-    const response = await fetch(
-      apiURL(path),
-      {
-        cache:'no-store',
-        headers:{
-          'Accept':'application/vnd.github+json'
-        }
-      }
-    );
-
-    if(!response.ok){
-      console.error('GitHub folder error:',path,response.status);
-      return [];
-    }
-
-    const data = await response.json();
-
-    return Array.isArray(data) ? data : [];
-
-  }catch(error){
-
-    console.error('GitHub folder error:',path,error);
-    return [];
-
-  }
-}
-
-async function loadPhotos(){
-  const [drive,github]=await Promise.all([
-    listDrive('photos'),
-    getFolder('photos')
-  ]);
-
-  const driveItems=drive.map(f=>({
-    ...f,
-    source:'drive',
-    mediaType:'photo'
-  }));
-
-  const githubItems=github
-    .filter(f=>f.type==='file'&&photoExtensions.includes(ext(f.name)))
-    .map(f=>({
-      ...f,
-      source:'github',
-      mediaType:'photo'
-    }));
-
-  photoItems=[...driveItems,...githubItems];
-}
-
-async function loadVideos(){
-  const [drive,github]=await Promise.all([
-    listDrive('videos'),
-    getFolder('videos')
-  ]);
-
-  const driveItems=drive.map(f=>({
-    ...f,
-    source:'drive',
-    mediaType:'video'
-  }));
-
-  const githubItems=github
-    .filter(f=>f.type==='file'&&videoExtensions.includes(ext(f.name)))
-    .map(f=>({
-      ...f,
-      source:'github',
-      mediaType:'video'
-    }));
-
-  videoItems=[...driveItems,...githubItems];
-}
-
-async function loadFiles(){
-  const [drive,github]=await Promise.all([
-    listDrive('files'),
-    getFolder('files')
-  ]);
-
-  const driveItems=drive.map(f=>({
-    ...f,
-    source:'drive',
-    mediaType:'file'
-  }));
-
-  const githubItems=github
-    .filter(f=>f.type==='file'&&fileExtensions.includes(ext(f.name)))
-    .map(f=>({
-      ...f,
-      source:'github',
-      mediaType:'file'
-    }));
-
-  fileItems=[...driveItems,...githubItems];
-}
-
-
-/* =========================
-   GOOGLE DRIVE
-   ========================= */
-
-function driveConfigured(){
-
-  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
-    .test(DRIVE_WEB_APP_URL);
-
-}
-
-function driveApiUrl(folder){
-
-  return DRIVE_WEB_APP_URL +
-    '?action=list' +
-    '&folder=' +
-    encodeURIComponent(folder) +
-    '&key=' +
-    encodeURIComponent(DRIVE_UPLOAD_KEY) +
-    '&_=' +
-    Date.now();
-
-}
-
-function fileId(file){
-
-  return file &&
-    (
-      file.id ||
-      file.file_id ||
-      file.fileId ||
-      ''
-    );
-
-}
-
-function driveFileUrl(file){
-
-  return file.downloadUrl ||
-    file.download_url ||
-    file.webContentLink ||
-    (
-      'https://drive.google.com/uc?export=download&id=' +
-      encodeURIComponent(fileId(file))
-    );
-
-}
-
-function drivePreviewUrl(file){
-
-  return file.previewUrl ||
-    file.preview_url ||
-    (
-      'https://drive.google.com/file/d/' +
-      encodeURIComponent(fileId(file)) +
-      '/preview'
-    );
-
-}
 
 function driveThumbUrl(file){
 
-  return file.thumbnailUrl ||
-    file.thumbnail_url ||
-    file.thumbnail ||
-    (
-      'https://drive.google.com/thumbnail?id=' +
-      encodeURIComponent(fileId(file)) +
-      '&sz=w1600'
-    );
+  if(file.thumbnailUrl){
+    return file.thumbnailUrl;
+  }
 
+  return 'https://drive.google.com/thumbnail?id='
+    + encodeURIComponent(file.id)
+    + '&sz=w1600';
 }
+
+
+function drivePreviewUrl(file){
+
+  if(file.previewUrl){
+    return file.previewUrl;
+  }
+
+  return 'https://drive.google.com/file/d/'
+    + encodeURIComponent(file.id)
+    + '/preview';
+}
+
+
+function driveDownloadUrl(file){
+
+  if(file.downloadUrl){
+    return file.downloadUrl;
+  }
+
+  return 'https://drive.google.com/uc?export=download&id='
+    + encodeURIComponent(file.id);
+}
+
+
+/* =====================================================
+   GOOGLE DRIVE API
+   ===================================================== */
 
 async function listDrive(folder){
 
-  if(!driveConfigured()){
-    return [];
-  }
+  const url =
+    DRIVE_WEB_APP_URL +
+    '?action=list' +
+    '&folder=' + encodeURIComponent(folder) +
+    '&key=' + encodeURIComponent(DRIVE_UPLOAD_KEY);
 
   try{
 
-    const response = await fetch(
-      driveApiUrl(folder),
-      {cache:'no-store'}
-    );
+    const response = await fetch(url,{
+      method:'GET',
+      cache:'no-store'
+    });
 
     if(!response.ok){
-      console.error(
-        'Google Drive error:',
-        response.status
-      );
-      return [];
+      throw new Error('Google Drive request failed');
     }
 
     const data = await response.json();
+
+    if(!data.ok){
+      throw new Error(data.error || 'Drive error');
+    }
 
     return Array.isArray(data.files)
       ? data.files
@@ -1680,23 +1269,98 @@ async function listDrive(folder){
 
   }catch(error){
 
-    console.error(
-      'Google Drive list error:',
-      error
-    );
+    console.error('Drive list error:',error);
 
     return [];
-
   }
-
 }
 
 
-/* =========================
-   FOLDER WINDOW
-   ========================= */
+/* =====================================================
+   PUBLIC FOLDERS
+   ===================================================== */
 
-function showFolderLoading(title){
+async function loadPhotos(){
+
+  const drive = await listDrive('photos');
+
+  photoItems = drive
+    .filter(function(file){
+
+      return file.mediaType === 'photo' ||
+             photoExtensions.includes(ext(file.name)) ||
+             String(file.mimeType || '').startsWith('image/');
+
+    })
+    .map(function(file){
+
+      return Object.assign({},file,{
+        source:'drive',
+        private:false,
+        mediaType:'photo'
+      });
+
+    });
+
+  return photoItems;
+}
+
+
+async function loadVideos(){
+
+  const drive = await listDrive('videos');
+
+  videoItems = drive
+    .filter(function(file){
+
+      return file.mediaType === 'video' ||
+             videoExtensions.includes(ext(file.name)) ||
+             String(file.mimeType || '').startsWith('video/');
+
+    })
+    .map(function(file){
+
+      return Object.assign({},file,{
+        source:'drive',
+        private:false,
+        mediaType:'video'
+      });
+
+    });
+
+  return videoItems;
+}
+
+
+async function loadFiles(){
+
+  const drive = await listDrive('files');
+
+  fileItems = drive
+    .filter(function(file){
+
+      return file.mediaType === 'file';
+
+    })
+    .map(function(file){
+
+      return Object.assign({},file,{
+        source:'drive',
+        private:false,
+        mediaType:'file'
+      });
+
+    });
+
+  return fileItems;
+}
+
+
+/* =====================================================
+   MAIN FOLDER
+   ===================================================== */
+
+async function openMainFolder(type){
 
   const popup =
     document.getElementById('mainFolderPopup');
@@ -1704,16 +1368,54 @@ function showFolderLoading(title){
   const content =
     document.getElementById('mainFolderContent');
 
-  document.getElementById(
-    'mainFolderTitle'
-  ).textContent = title;
-
-  content.innerHTML =
-    '<div class="empty">Loading…</div>';
-
   popup.style.display = 'flex';
 
+  content.innerHTML =
+    '<div class="folder-loading">'
+    + '✦ यादें लोड हो रही हैं...'
+    + '</div>';
+
+
+  if(type === 'photos'){
+
+    await loadPhotos();
+
+    renderMainFolder(
+      '📸 PHOTO MEMORIES',
+      photoItems,
+      'photo'
+    );
+
+  }
+
+
+  else if(type === 'videos'){
+
+    await loadVideos();
+
+    renderMainFolder(
+      '🎬 VIDEO MEMORIES',
+      videoItems,
+      'video'
+    );
+
+  }
+
+
+  else if(type === 'files'){
+
+    await loadFiles();
+
+    renderMainFolder(
+      '📄 MY FILES',
+      fileItems,
+      'file'
+    );
+
+  }
+
 }
+
 
 function closeMainFolder(){
 
@@ -1724,30 +1426,33 @@ function closeMainFolder(){
 }
 
 
-/* =========================
-   RENDER FOLDERS
-   ========================= */
+/* =====================================================
+   PREMIUM THUMBNAIL GRID
+   ===================================================== */
 
 function renderMainFolder(title,items,type){
 
   const content =
     document.getElementById('mainFolderContent');
 
-  document.getElementById(
-    'mainFolderTitle'
-  ).textContent = title;
+  const titleElement =
+    document.getElementById('mainFolderTitle');
+
+  titleElement.textContent = title;
 
   content.innerHTML = '';
 
-  if(!items.length){
+
+  if(!items || !items.length){
 
     content.innerHTML =
-      '<div class="empty">' +
-      'अभी कोई item नहीं है।' +
-      '</div>';
+      '<div class="empty">'
+      + 'अभी इस folder में कोई item नहीं है।'
+      + '</div>';
 
     return;
   }
+
 
   const gallery =
     document.createElement('div');
@@ -1760,38 +1465,24 @@ function renderMainFolder(title,items,type){
     const item =
       document.createElement('div');
 
-    item.className =
-      'gallery-item';
+    item.className = 'gallery-item';
 
 
-    /* ---------- DRIVE PHOTO ---------- */
+    /* ---------- PHOTO ---------- */
 
-    if(
-      file.source === 'drive' &&
-      type === 'photo'
-    ){
+    if(type === 'photo'){
 
       const image =
         document.createElement('img');
 
-      image.src =
-        driveThumbUrl(file);
+      image.src = driveThumbUrl(file);
 
-      image.alt =
-        file.name || 'Photo';
+      image.alt = file.name || 'Photo';
 
       image.loading = 'lazy';
 
-      image.onerror = function(){
-
-        this.src =
-          'https://drive.google.com/thumbnail?id=' +
-          encodeURIComponent(fileId(file)) +
-          '&sz=w1000';
-
-      };
-
       item.appendChild(image);
+
 
       item.onclick = function(){
 
@@ -1809,137 +1500,31 @@ function renderMainFolder(title,items,type){
     }
 
 
-    /* ---------- DRIVE VIDEO ---------- */
-
-    else if(
-      file.source === 'drive' &&
-      type === 'video'
-    ){
-
-      const image =
-        document.createElement('img');
-
-      image.src =
-        driveThumbUrl(file);
-
-      image.alt =
-        file.name || 'Video';
-
-      image.loading = 'lazy';
-
-      image.onerror = function(){
-        this.style.display = 'none';
-      };
-
-      item.appendChild(image);
-
-
-      const play =
-        document.createElement('div');
-
-      play.className =
-        'play-badge';
-
-      play.textContent = '▶';
-
-      item.appendChild(play);
-
-
-      item.onclick = function(){
-
-        closeMainFolder();
-
-        /*
-          Google Drive preview is opened directly.
-          It is not treated as an HTML5 video URL.
-        */
-
-        window.open(
-          drivePreviewUrl(file),
-          '_blank'
-        );
-
-      };
-
-    }
-
-
-    /* ---------- GITHUB PHOTO ---------- */
-
-    else if(type === 'photo'){
-
-      const image =
-        document.createElement('img');
-
-      image.src =
-        file.download_url ||
-        file.downloadUrl ||
-        file.html_url;
-
-      image.alt =
-        file.name || 'Photo';
-
-      image.loading = 'lazy';
-
-      item.appendChild(image);
-
-      item.onclick = function(){
-
-        closeMainFolder();
-
-        openViewer(
-          items,
-          index,
-          'photo',
-          !!file.private
-        );
-
-      };
-
-    }
-
-
-    /* ---------- GITHUB VIDEO ---------- */
+    /* ---------- VIDEO ---------- */
 
     else if(type === 'video'){
 
-      const video =
-        document.createElement('video');
+      const image =
+        document.createElement('img');
 
-      video.src =
-        (
-          file.download_url ||
-          file.downloadUrl ||
-          ''
-        ) + '#t=0.1';
+      image.src = driveThumbUrl(file);
 
-      video.muted = true;
-      video.playsInline = true;
-      video.preload = 'metadata';
+      image.alt = file.name || 'Video';
 
-      video.addEventListener(
-        'loadeddata',
-        function(){
+      image.loading = 'lazy';
 
-          try{
-            video.currentTime = 0.1;
-          }catch(e){}
-
-        }
-      );
-
-      item.appendChild(video);
+      item.appendChild(image);
 
 
-      const play =
+      const badge =
         document.createElement('div');
 
-      play.className =
-        'play-badge';
+      badge.className =
+        'memory-video-badge';
 
-      play.textContent = '▶';
+      badge.innerHTML = '▶';
 
-      item.appendChild(play);
+      item.appendChild(badge);
 
 
       item.onclick = function(){
@@ -1962,28 +1547,23 @@ function renderMainFolder(title,items,type){
 
     else{
 
-      item.className +=
-        ' file-card';
+      item.classList.add('file-card');
 
       item.innerHTML =
-        '<div class="file-icon">📄</div>' +
-        '<div class="file-name">' +
-        escapeHTML(file.name) +
-        '</div>';
+        '<div class="memory-file-icon">'
+        + '📄'
+        + '<div class="memory-file-name">'
+        + escapeHTML(file.name)
+        + '</div>'
+        + '</div>';
+
 
       item.onclick = function(){
 
-        const url =
-          file.source === 'drive'
-            ? drivePreviewUrl(file)
-            : (
-                file.download_url ||
-                file.downloadUrl ||
-                file.html_url ||
-                '#'
-              );
-
-        window.open(url,'_blank');
+        window.open(
+          drivePreviewUrl(file),
+          '_blank'
+        );
 
       };
 
@@ -2000,466 +1580,121 @@ function renderMainFolder(title,items,type){
 }
 
 
-/* =========================
-   PUBLIC FOLDERS
-   ========================= */
+/* =====================================================
+   PRIVATE PASSWORD
+   ===================================================== */
 
-async function openMainFolder(type){
-  document.getElementById('mainFolderPopup').style.display='flex';
-  document.getElementById('mainFolderContent').innerHTML='<div class="empty">Loading Google Drive...</div>';
-  if(!driveConfigured()){
-    document.getElementById('mainFolderContent').innerHTML='<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
-    return;
-  }
+function unlockSecret(){
 
-  if(type==='photos'){
-    await loadPhotos();
-    renderMainFolder('📸 PHOTO MEMORIES',photoItems,'photo');
-  }else if(type==='videos'){
-    await loadVideos();
-    renderMainFolder('🎬 VIDEO MEMORIES',videoItems,'video');
-  }else{
-    await loadFiles();
-    renderMainFolder('📄 MY FILES',fileItems,'file');
-  }
-}
+  const input =
+    document.getElementById('secretPassword');
 
-/* =========================
-   MEDIA VIEWER
-   ========================= */
+  const error =
+    document.getElementById('secretError');
 
-let currentItems = [];
-let currentIndex = 0;
-let currentType = '';
-let zoomLevel = 1;
-let currentPrivate = false;
+  const value =
+    String(input.value || '')
+      .trim()
+      .toLowerCase();
 
-function openViewer(
-  items,
-  index,
-  type,
-  isPrivate=false
-){
-
-  currentItems = items;
-  currentIndex = index;
-  currentType = type;
-  currentPrivate = isPrivate;
-  zoomLevel = 1;
-
-  document.getElementById(
-    'viewer'
-  ).style.display = 'flex';
-
-  showCurrentMedia();
-
-}
-
-function showCurrentMedia(){
-
-  if(!currentItems.length){
-    return;
-  }
-
-  const file =
-    currentItems[currentIndex];
-
-  const image =
-    document.getElementById(
-      'viewerImage'
-    );
-
-  const video =
-    document.getElementById(
-      'viewerVideo'
-    );
-
-  image.style.display = 'none';
-  video.style.display = 'none';
-
-  image.onclick = null;
-
-  video.pause();
-  video.removeAttribute('src');
-  video.load();
-
-
-  /* DRIVE PHOTO */
 
   if(
-    file.source === 'drive' &&
-    currentType === 'photo'
+    value === '1' ||
+    value === 'ek' ||
+    value === 'एक'
   ){
 
-    image.src =
-      driveThumbUrl(file);
+    error.textContent = '';
 
-    image.style.display = 'block';
-
-    image.style.transform =
-      'scale(' + zoomLevel + ')';
-
-  }
+    document.getElementById(
+      'privateDashboard'
+    ).style.display = 'block';
 
 
-  /* DRIVE VIDEO */
+    document.getElementById(
+      'secretPassword'
+    ).value = '';
 
-  else if(
-    file.source === 'drive' &&
-    currentType === 'video'
-  ){
 
-    window.open(
-      drivePreviewUrl(file),
-      '_blank'
-    );
-
-    closeViewer();
-
-    return;
+    document.getElementById(
+      'privateDashboard'
+    ).scrollIntoView({
+      behavior:'smooth',
+      block:'center'
+    });
 
   }
-
-
-  /* GITHUB PHOTO */
-
-  else if(currentType === 'photo'){
-
-    image.src =
-      file.download_url ||
-      file.downloadUrl ||
-      file.html_url;
-
-    image.style.display = 'block';
-
-    image.style.transform =
-      'scale(' + zoomLevel + ')';
-
-  }
-
-
-  /* GITHUB VIDEO */
 
   else{
 
-    video.src =
-      file.download_url ||
-      file.downloadUrl;
+    error.textContent =
+      'Password सही नहीं है।';
 
-    video.style.display = 'block';
-
-    video.style.transform =
-      'scale(' + zoomLevel + ')';
-
-    video.controls = true;
-
-    video.load();
+    input.value = '';
 
   }
 
-
-  document.getElementById(
-    'viewerCounter'
-  ).textContent =
-    (currentIndex + 1) +
-    ' / ' +
-    currentItems.length;
-
-  updateFavorite();
-
 }
 
-function closeViewer(){
 
-  document.getElementById(
-    'viewer'
-  ).style.display = 'none';
+document
+  .getElementById('secretPassword')
+  .addEventListener('keydown',function(event){
 
-  const video =
-    document.getElementById(
-      'viewerVideo'
-    );
-
-  video.pause();
-  video.removeAttribute('src');
-
-}
-
-function previousMedia(){
-
-  if(!currentItems.length){
-    return;
-  }
-
-  currentIndex =
-    (
-      currentIndex -
-      1 +
-      currentItems.length
-    ) %
-    currentItems.length;
-
-  zoomLevel = 1;
-
-  showCurrentMedia();
-
-}
-
-function nextMedia(){
-
-  if(!currentItems.length){
-    return;
-  }
-
-  currentIndex =
-    (
-      currentIndex + 1
-    ) %
-    currentItems.length;
-
-  zoomLevel = 1;
-
-  showCurrentMedia();
-
-}
-
-function zoomIn(){
-
-  zoomLevel =
-    Math.min(
-      3,
-      zoomLevel + 0.2
-    );
-
-  showCurrentMedia();
-
-}
-
-function zoomOut(){
-
-  zoomLevel =
-    Math.max(
-      0.5,
-      zoomLevel - 0.2
-    );
-
-  showCurrentMedia();
-
-}
-
-function resetZoom(){
-
-  zoomLevel = 1;
-
-  showCurrentMedia();
-
-}
-
-function downloadCurrent(){
-
-  const file =
-    currentItems[currentIndex];
-
-  const url =
-    file.source === 'drive'
-      ? driveFileUrl(file)
-      : (
-          file.download_url ||
-          file.downloadUrl ||
-          file.html_url
-        );
-
-  window.open(url,'_blank');
-
-}
-
-async function shareCurrent(){
-
-  const file =
-    currentItems[currentIndex];
-
-  const url =
-    file.source === 'drive'
-      ? drivePreviewUrl(file)
-      : (
-          file.download_url ||
-          file.downloadUrl ||
-          file.html_url
-        );
-
-  try{
-
-    if(navigator.share){
-
-      await navigator.share({
-        title:file.name || 'Memory',
-        url:url
-      });
-
-    }else{
-
-      await navigator.clipboard.writeText(url);
-
-      alert('Link copied!');
-
+    if(event.key === 'Enter'){
+      unlockSecret();
     }
 
-  }catch(error){}
-
-}
+  });
 
 
-/* =========================
-   FAVORITES
-   ========================= */
+/* =====================================================
+   PRIVATE MEDIA
+   ===================================================== */
 
-function favKey(){
-
-  return (
-    'two-stars-fav-' +
-    (
-      currentPrivate
-        ? 'private-'
-        : ''
-    ) +
-    currentType +
-    '-' +
-    (
-      currentItems[
-        currentIndex
-      ]?.name || ''
-    )
-  );
-
-}
-
-function updateFavorite(){
-
-  const button =
-    document.getElementById(
-      'favoriteBtn'
-    );
-
-  if(!button){
-    return;
-  }
-
-  button.textContent =
-    localStorage.getItem(
-      favKey()
-    ) === '1'
-      ? '♥ Favorited'
-      : '♡ Favorite';
-
-}
-
-function toggleFavorite(){
-
-  const key = favKey();
-
-  if(
-    localStorage.getItem(key)
-    === '1'
-  ){
-
-    localStorage.removeItem(key);
-
-  }else{
-
-    localStorage.setItem(
-      key,
-      '1'
-    );
-
-  }
-
-  updateFavorite();
-
-}
-
-
-/* =========================
-   SWIPE
-   ========================= */
-
-let touchX = 0;
-
-document
-  .getElementById('viewer')
-  .addEventListener(
-    'touchstart',
-    function(e){
-      touchX =
-        e.changedTouches[0].screenX;
-    },
-    {passive:true}
-  );
-
-document
-  .getElementById('viewer')
-  .addEventListener(
-    'touchend',
-    function(e){
-
-      const dx =
-        e.changedTouches[0].screenX -
-        touchX;
-
-      if(Math.abs(dx) > 60){
-
-        if(dx < 0){
-          nextMedia();
-        }else{
-          previousMedia();
-        }
-
-      }
-
-    },
-    {passive:true}
-  );
-
-
-/* =========================
-   PRIVATE DASHBOARD
-   ========================= */
-
-function openPrivateDashboard(){
+async function openPrivateMedia(type){
 
   const dashboard =
     document.getElementById(
       'privateDashboard'
     );
 
-  dashboard.style.display = 'flex';
+  dashboard.style.display = 'none';
 
-}
 
-function closePrivate(){
+  const popup =
+    document.getElementById(
+      'mainFolderPopup'
+    );
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display = 'none';
+  const content =
+    document.getElementById(
+      'mainFolderContent'
+    );
 
-}
 
-async function openPrivateMedia(type){
+  popup.style.display = 'flex';
 
-  document.getElementById(
-    'privateDashboard'
-  ).style.display = 'none';
+  content.innerHTML =
+    '<div class="folder-loading">'
+    + '🔐 Private memories लोड हो रही हैं...'
+    + '</div>';
 
-  document.getElementById(
-    'mainFolderPopup'
-  ).style.display = 'flex';
 
-  document.getElementById(
-    'mainFolderContent'
-  ).innerHTML =
-    '<div class="empty">' +
-    'Loading Google Drive…' +
-    '</div>';
+  /*
+    IMPORTANT:
+    यहाँ केवल Google Drive का
+    corresponding private folder पढ़ा जाएगा।
 
+    private/photos
+      → प्राइवेट फोटो
+
+    private/videos
+      → प्राइवेट वीडियो
+
+    private/files
+      → प्राइवेट फाइल
+  */
 
   const drive =
     await listDrive(
@@ -2467,121 +1702,62 @@ async function openPrivateMedia(type){
     );
 
 
-  const driveItems =
-    drive.map(function(file){
+  const items =
+    drive
+      .filter(function(file){
 
-      return Object.assign(
-        {},
-        file,
-        {
-          source:'drive',
-          private:true,
-          mediaType:
-            type === 'photos'
-              ? 'photo'
-              : type === 'videos'
-                ? 'video'
-                : 'file'
+        if(type === 'photos'){
+
+          return file.mediaType === 'photo' ||
+                 photoExtensions.includes(
+                   ext(file.name)
+                 );
+
         }
-      );
 
-    });
+        if(type === 'videos'){
 
+          return file.mediaType === 'video' ||
+                 videoExtensions.includes(
+                   ext(file.name)
+                 );
 
-  const supplied =
-    type === 'photos'
-      ? PRIVATE_DRIVE
-          .filter(
-            x =>
-              x.kind === 'drive-photo'
-          )
-          .map(function(x){
+        }
 
-            return {
-              name:x.name,
-              id:x.id,
-              source:'drive',
-              private:true,
-              mediaType:'photo'
-            };
+        return file.mediaType === 'file';
 
-          })
-
-      : type === 'videos'
-        ? PRIVATE_DRIVE
-            .filter(
-              x =>
-                x.kind === 'drive-video'
-            )
-            .map(function(x){
-
-              return {
-                name:x.name,
-                id:x.id,
-                source:'drive',
-                private:true,
-                mediaType:'video'
-              };
-
-            })
-
-        : [];
-
-
-  const github =
-    await getFolder(
-      'private/' + type
-    );
-
-
-  const githubItems =
-    github
-      .filter(
-        file =>
-          file.type === 'file'
-      )
+      })
       .map(function(file){
 
-        return Object.assign(
-          {},
-          file,
-          {
-            source:'github',
-            private:true,
-            mediaType:
-              type === 'photos'
-                ? 'photo'
-                : type === 'videos'
-                  ? 'video'
-                  : 'file'
-          }
-        );
+        return Object.assign({},file,{
+          source:'drive',
+          private:true
+        });
 
       });
 
 
-  const items = [
-    ...supplied,
-    ...driveItems,
-    ...githubItems
-  ];
+  if(type === 'photos'){
 
-
-  if(!items.length){
-
-    document.getElementById(
-      'mainFolderContent'
-    ).innerHTML =
-      '<div class="empty">' +
-      'अभी इस private folder में कोई file नहीं है।' +
-      '</div>';
-
-    return;
+    renderMainFolder(
+      '🔐 PRIVATE PHOTOS',
+      items,
+      'photo'
+    );
 
   }
 
+  else if(type === 'videos'){
 
-  if(type === 'files'){
+    renderMainFolder(
+      '🔐 PRIVATE VIDEOS',
+      items,
+      'video'
+    );
+
+  }
+
+  else{
 
     renderMainFolder(
       '🔐 PRIVATE FILES',
@@ -2589,622 +1765,605 @@ async function openPrivateMedia(type){
       'file'
     );
 
-  }else{
-
-    openViewer(
-      items,
-      0,
-      type === 'photos'
-        ? 'photo'
-        : 'video',
-      true
-    );
-
   }
 
 }
 
 
-/* =========================
-   LETTER
-   ========================= */
+/* =====================================================
+   VIEWER
+   ===================================================== */
 
-function openLetter(){
-
-  document.getElementById(
-    'privateDashboard'
-  ).style.display = 'none';
-
-  document.getElementById(
-    'letterModal'
-  ).style.display = 'flex';
-
-}
-
-function closeLetter(){
-
-  document.getElementById(
-    'letterModal'
-  ).style.display = 'none';
-
-}
-
-      
-/* =========================
-   GOOGLE DRIVE UPLOAD
-   ========================= */
-
-async function uploadToDrive(
-  file,
+function openViewer(
+  items,
   index,
-  total
+  type,
+  isPrivate
 ){
 
-  if(!driveConfigured()){
+  currentItems = items || [];
 
-    throw new Error(
-      'Google Drive Web App URL अभी set नहीं है।'
-    );
+  currentIndex = index || 0;
 
-  }
+  currentType = type;
 
-  if(
-    file.size >
-    30 * 1024 * 1024
-  ){
-
-    throw new Error(
-      file.name +
-      ' 30 MB से बड़ा है'
-    );
-
-  }
+  currentZoom = 1;
 
 
-  const status =
-    document.getElementById(
-      'uploadStatus'
-    );
-
-  const bar =
-    document.getElementById(
-      'uploadProgress'
-    );
-
-  const fill =
-    bar.querySelector('span');
+  document.getElementById(
+    'viewer'
+  ).style.display = 'flex';
 
 
-  status.textContent =
-    'Preparing ' +
-    (index + 1) +
-    ' / ' +
-    total +
-    ' — ' +
-    file.name;
-
-  bar.style.display =
-    'block';
-
-
-  const bytes =
-    new Uint8Array(
-      await file.arrayBuffer()
-    );
-
-
-  let binary = '';
-
-  const chunk =
-    0x8000;
-
-
-  for(
-    let i = 0;
-    i < bytes.length;
-    i += chunk
-  ){
-
-    binary +=
-      String.fromCharCode(
-        ...bytes.subarray(
-          i,
-          Math.min(
-            i + chunk,
-            bytes.length
-          )
-        )
-      );
-
-  }
-
-
-  const body = {
-
-    key:DRIVE_UPLOAD_KEY,
-
-    name:file.name,
-
-    mimeType:
-      file.type ||
-      'application/octet-stream',
-
-    data:btoa(binary)
-
-  };
-
-
-  const response =
-    await fetch(
-      DRIVE_WEB_APP_URL,
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':
-            'text/plain;charset=utf-8'
-        },
-        body:JSON.stringify(body)
-      }
-    );
-
-
-  const data =
-    await response.json()
-      .catch(
-        () => ({
-          ok:false,
-          error:
-            'Invalid server response'
-        })
-      );
-
-
-  if(
-    !response.ok ||
-    !data.ok
-  ){
-
-    throw new Error(
-      data.error ||
-      'Upload failed'
-    );
-
-  }
-
-
-  fill.style.width =
-    Math.round(
-      (
-        (index + 1) /
-        total
-      ) * 100
-    ) +
-    '%';
-
-
-  status.textContent =
-    'Uploaded ' +
-    (index + 1) +
-    ' / ' +
-    total +
-    ' — ' +
-    file.name;
+  showCurrentMedia();
 
 }
 
 
-async function handleUploads(files){
+function closeViewer(){
 
-  if(!files.length){
+  const viewer =
+    document.getElementById('viewer');
+
+  const media =
+    document.getElementById('viewerMedia');
+
+  viewer.style.display = 'none';
+
+  media.innerHTML = '';
+
+  currentItems = [];
+
+  currentIndex = 0;
+
+  currentType = '';
+
+  currentZoom = 1;
+
+}
+
+
+/* =====================================================
+   SHOW CURRENT MEDIA
+   ===================================================== */
+
+function showCurrentMedia(){
+
+  const container =
+    document.getElementById(
+      'viewerMedia'
+    );
+
+  const name =
+    document.getElementById(
+      'viewerName'
+    );
+
+
+  container.innerHTML = '';
+
+  currentZoom = 1;
+
+
+  const file =
+    currentItems[currentIndex];
+
+
+  if(!file){
     return;
   }
 
 
-  const status =
-    document.getElementById(
-      'uploadStatus'
-    );
-
-  const bar =
-    document.getElementById(
-      'uploadProgress'
-    );
-
-  const fill =
-    bar.querySelector('span');
+  name.textContent =
+    file.name || 'Memory';
 
 
-  if(!driveConfigured()){
+  /* ---------- DRIVE PHOTO ---------- */
 
-    status.textContent =
-      'Google Drive Web App URL अभी set नहीं है।';
+  if(
+    file.source === 'drive' &&
+    currentType === 'photo'
+  ){
 
-    status.style.color =
-      '#f0b6b6';
+    const image =
+      document.createElement('img');
+
+    image.src =
+      driveThumbUrl(file);
+
+    image.alt =
+      file.name || 'Photo';
+
+    image.id =
+      'viewerImage';
+
+    container.appendChild(image);
 
     return;
-
   }
 
 
-  bar.style.display =
-    'block';
+  /* ---------- DRIVE VIDEO ---------- */
 
-  fill.style.width =
-    '0%';
+  if(
+    file.source === 'drive' &&
+    currentType === 'video'
+  ){
+
+    const frame =
+      document.createElement('iframe');
+
+    frame.className =
+      'viewer-frame';
+
+    frame.src =
+      drivePreviewUrl(file);
+
+    frame.allow =
+      'autoplay; fullscreen';
+
+    frame.allowFullscreen = true;
+
+    container.appendChild(frame);
+
+    return;
+  }
 
 
-  let uploaded = 0;
+  /* ---------- FALLBACK IMAGE ---------- */
 
-  const errors = [];
+  if(currentType === 'photo'){
+
+    const image =
+      document.createElement('img');
+
+    image.src =
+      file.download_url ||
+      file.downloadUrl ||
+      '';
+
+    image.alt =
+      file.name || 'Photo';
+
+    image.id =
+      'viewerImage';
+
+    container.appendChild(image);
+
+  }
+
+}
 
 
-  for(
-    let i = 0;
-    i < files.length;
-    i++
+/* =====================================================
+   NEXT / PREVIOUS
+   ===================================================== */
+
+function nextMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex++;
+
+  if(currentIndex >= currentItems.length){
+    currentIndex = 0;
+  }
+
+  showCurrentMedia();
+
+}
+
+
+function previousMedia(){
+
+  if(!currentItems.length){
+    return;
+  }
+
+  currentIndex--;
+
+  if(currentIndex < 0){
+    currentIndex =
+      currentItems.length - 1;
+  }
+
+  showCurrentMedia();
+
+}
+
+
+/* =====================================================
+   ZOOM
+   ===================================================== */
+
+function applyZoom(){
+
+  const image =
+    document.getElementById(
+      'viewerImage'
+    );
+
+  if(image){
+
+    image.style.transform =
+      'scale(' + currentZoom + ')';
+
+  }
+
+}
+
+
+function zoomIn(){
+
+  if(currentType !== 'photo'){
+    return;
+  }
+
+  currentZoom =
+    Math.min(
+      currentZoom + .25,
+      4
+    );
+
+  applyZoom();
+
+}
+
+
+function zoomOut(){
+
+  if(currentType !== 'photo'){
+    return;
+  }
+
+  currentZoom =
+    Math.max(
+      currentZoom - .25,
+      .5
+    );
+
+  applyZoom();
+
+}
+
+
+function resetZoom(){
+
+  currentZoom = 1;
+
+  applyZoom();
+
+}
+
+
+/* =====================================================
+   DOWNLOAD
+   ===================================================== */
+
+function downloadCurrent(){
+
+  const file =
+    currentItems[currentIndex];
+
+  if(!file){
+    return;
+  }
+
+
+  const url =
+    driveDownloadUrl(file);
+
+
+  const link =
+    document.createElement('a');
+
+  link.href = url;
+
+  link.target = '_blank';
+
+  link.rel = 'noopener';
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+}
+
+
+/* =====================================================
+   SHARE
+   ===================================================== */
+
+async function shareCurrent(){
+
+  const file =
+    currentItems[currentIndex];
+
+  if(!file){
+    return;
+  }
+
+
+  const url =
+    drivePreviewUrl(file);
+
+
+  if(
+    navigator.share
   ){
 
     try{
 
-      await uploadToDrive(
-        files[i],
-        i,
-        files.length
-      );
-
-      uploaded++;
+      await navigator.share({
+        title:
+          file.name || 'Memory',
+        text:
+          'Our friendship memory ❤️',
+        url:url
+      });
 
     }catch(error){
 
-      errors.push(
-        error.message
+      console.log(
+        'Share cancelled'
       );
 
     }
 
   }
 
+  else{
 
-  status.style.color =
-    errors.length
-      ? '#f0b6b6'
-      : '#d8f0d2';
+    try{
 
+      await navigator.clipboard.writeText(
+        url
+      );
 
-  status.textContent =
-    errors.length
-      ? (
-          'Done: ' +
-          uploaded +
-          ' uploaded. ' +
-          errors.join(' | ')
-        )
-      : (
-          '❤️ ' +
-          uploaded +
-          ' files Google Drive में सही folders में रख दिए गए।'
-        );
+      alert(
+        'Link copy हो गया ❤️'
+      );
+
+    }catch(error){
+
+      window.open(
+        url,
+        '_blank'
+      );
+
+    }
+
+  }
 
 }
 
 
-const uploadInput =
+/* =====================================================
+   SWIPE SUPPORT
+   ===================================================== */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+
+const viewer =
+  document.getElementById('viewer');
+
+
+viewer.addEventListener(
+  'touchstart',
+  function(event){
+
+    if(
+      !event.touches ||
+      !event.touches.length
+    ){
+      return;
+    }
+
+    touchStartX =
+      event.touches[0].clientX;
+
+    touchStartY =
+      event.touches[0].clientY;
+
+  },
+  {passive:true}
+);
+
+
+viewer.addEventListener(
+  'touchend',
+  function(event){
+
+    if(
+      !event.changedTouches ||
+      !event.changedTouches.length
+    ){
+      return;
+    }
+
+    const endX =
+      event.changedTouches[0].clientX;
+
+    const endY =
+      event.changedTouches[0].clientY;
+
+
+    const diffX =
+      endX - touchStartX;
+
+    const diffY =
+      endY - touchStartY;
+
+
+    if(
+      Math.abs(diffX) > 60 &&
+      Math.abs(diffX) > Math.abs(diffY)
+    ){
+
+      if(diffX < 0){
+        nextMedia();
+      }
+      else{
+        previousMedia();
+      }
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* =====================================================
+   KEYBOARD
+   ===================================================== */
+
+document.addEventListener(
+  'keydown',
+  function(event){
+
+    const viewerVisible =
+      document.getElementById(
+        'viewer'
+      ).style.display === 'flex';
+
+
+    if(!viewerVisible){
+      return;
+    }
+
+
+    if(event.key === 'ArrowRight'){
+      nextMedia();
+    }
+
+    if(event.key === 'ArrowLeft'){
+      previousMedia();
+    }
+
+    if(event.key === 'Escape'){
+      closeViewer();
+    }
+
+    if(event.key === '+'){
+      zoomIn();
+    }
+
+    if(event.key === '-'){
+      zoomOut();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   FRIENDSHIP POPUP
+   ===================================================== */
+
+function showFriendship(){
+
   document.getElementById(
-    'memoryUpload'
-  );
-
-if(uploadInput){
-
-  uploadInput.addEventListener(
-    'change',
-    function(e){
-
-      handleUploads(
-        Array.from(
-          e.target.files
-        )
-      );
-
-      e.target.value = '';
-
-    }
-  );
+    'friendshipPopup'
+  ).style.display = 'flex';
 
 }
 
 
-/* =========================
-   SECRET PASSWORD
-   ========================= */
+function closeFriendship(){
 
-function unlock(){
-
-  const input =
-    document.getElementById(
-      'answer'
-    );
-
-  const message =
-    document.getElementById(
-      'msg'
-    );
-
-
-  const value =
-    (
-      input.value || ''
-    )
-      .trim()
-      .toLowerCase();
-
-
-  if(
-    value === '1' ||
-    value === 'एक' ||
-    value === 'ek'
-  ){
-
-    message.textContent =
-      '❤️ Memory unlocked!';
-
-    message.style.color =
-      '#f3d37b';
-
-
-    input.blur();
-
-
-    document.getElementById(
-      'privateDashboard'
-    ).style.display = 'flex';
-
-
-  }else{
-
-    message.textContent =
-      'Answer is incorrect.';
-
-    message.style.color =
-      '#d9dce5';
-
-  }
+  document.getElementById(
+    'friendshipPopup'
+  ).style.display = 'none';
 
 }
 
 
-/*
-  Make the functions global so the
-  HTML buttons can always call them.
-*/
+/* =====================================================
+   LETTER
+   ===================================================== */
 
-window.unlock =
-  unlock;
+function showLetter(){
 
-window.openMainFolder =
-  openMainFolder;
-
-window.closeMainFolder =
-  closeMainFolder;
-
-window.openPrivateDashboard =
-  openPrivateDashboard;
-
-window.openPrivateMedia =
-  openPrivateMedia;
-
-window.openLetter =
-  openLetter;
-
-window.closeLetter =
-  closeLetter;
-
-window.closePrivate =
-  closePrivate;
-
-window.closeViewer =
-  closeViewer;
-
-window.nextMedia =
-  nextMedia;
-
-window.previousMedia =
-  previousMedia;
-
-window.zoomIn =
-  zoomIn;
-
-window.zoomOut =
-  zoomOut;
-
-window.resetZoom =
-  resetZoom;
-
-window.downloadCurrent =
-  downloadCurrent;
-
-window.shareCurrent =
-  shareCurrent;
-
-window.toggleFavorite =
-  toggleFavorite;
-
-window.refreshDriveFolders =
-  refreshDriveFolders;
+  const letter =
+    document.getElementById(
+      'friendshipLetter'
+    );
 
 
-/* Enter key for password */
+  letter.style.display = 'block';
 
-document
-  .getElementById('answer')
-  .addEventListener(
-    'keydown',
-    function(e){
 
-      if(e.key === 'Enter'){
+  letter.scrollIntoView({
+    behavior:'smooth',
+    block:'center'
+  });
 
-        e.preventDefault();
+}
 
-        unlock();
+
+/* =====================================================
+   SURPRISE
+   ===================================================== */
+
+function closeSurprise(){
+
+  document.getElementById(
+    'surprisePopup'
+  ).style.display = 'none';
+
+}
+
+
+function openSurprise(){
+
+  document.getElementById(
+    'surprisePopup'
+  ).style.display = 'flex';
+
+}
+
+
+/* =====================================================
+   POPUP BACKGROUND CLOSE
+   ===================================================== */
+
+document.querySelectorAll(
+  '.popup'
+).forEach(function(popup){
+
+  popup.addEventListener(
+    'click',
+    function(event){
+
+      if(event.target === popup){
+
+        popup.style.display =
+          'none';
 
       }
 
     }
   );
 
-
-/* =========================
-   STAR BACKGROUND
-   ========================= */
-
-const canvas =
-  document.getElementById(
-    'stars'
-  );
-
-const ctx =
-  canvas.getContext('2d');
-
-let W,H,pts=[];
+});
 
 
-function resize(){
+/* =====================================================
+   PAGE START
+   ===================================================== */
 
-  W =
-    canvas.width =
-      innerWidth *
-      devicePixelRatio;
-
-  H =
-    canvas.height =
-      innerHeight *
-      devicePixelRatio;
-
-
-  canvas.style.width =
-    innerWidth + 'px';
-
-  canvas.style.height =
-    innerHeight + 'px';
-
-
-  pts =
-    Array.from(
-      {
-        length:
-          Math.min(
-            170,
-            Math.floor(
-              innerWidth / 7
-            )
-          )
-      },
-      function(){
-
-        return {
-
-          x:
-            Math.random() * W,
-
-          y:
-            Math.random() * H,
-
-          r:
-            (
-              Math.random() *
-              1.5 +
-              .25
-            ) *
-            devicePixelRatio,
-
-          a:
-            Math.random() *
-            .65 +
-            .2,
-
-          s:
-            Math.random() *
-            .018 +
-            .004,
-
-          p:
-            Math.random() *
-            6.28
-
-        };
-
-      }
-    );
-
-}
-
-
-function draw(t){
-
-  ctx.clearRect(
-    0,
-    0,
-    W,
-    H
-  );
-
-
-  for(
-    const point of pts
-  ){
-
-    point.p += point.s;
-
-
-    const alpha =
-      point.a *
-      (
-        .55 +
-        .45 *
-        Math.sin(
-          point.p +
-          t * .001
-        )
-      );
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-      point.x,
-      point.y,
-      point.r,
-      0,
-      Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-      'rgba(220,232,255,' +
-      alpha +
-      ')';
-
-    ctx.fill();
-
-  }
-
-
-  requestAnimationFrame(draw);
-
-}
-
-
-addEventListener(
-  'resize',
-  resize
+console.log(
+  '✦ TWO STARS ONE FRIENDSHIP loaded successfully ✦'
 );
 
-resize();
+     </script>
 
-requestAnimationFrame(
-  draw
-);
-
-    </script>
 </body>
 </html>
