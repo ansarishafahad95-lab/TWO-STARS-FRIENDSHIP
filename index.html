@@ -1400,10 +1400,8 @@ id="favoriteBtn"
    - GitHub photo/video/file folders fixed
    ========================================================= */
 
-const DRIVE_WEB_APP_URL =
-'https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
-
-const DRIVE_UPLOAD_KEY = 'TWO-STARS-2026';
+const DRIVE_WEB_APP_URL='https://script.google.com/macros/s/AKfycby_5pIfNrtDR4jOHDLJvBHnWRy3a_dtsA_xxPSp5iUoOO25LuUTnHEX9Za8Q9joHGQp/exec';
+const DRIVE_UPLOAD_KEY='TWO-STARS-2026';
 
 const GITHUB_USER = 'ansarishafahad95-lab';
 const GITHUB_REPO = 'TWO-STARS-FRIENDSHIP';
@@ -1511,39 +1509,72 @@ async function getFolder(path){
 }
 
 async function loadPhotos(){
+  const [drive,github]=await Promise.all([
+    listDrive('photos'),
+    getFolder('photos')
+  ]);
 
-  photoItems =
-    (await getFolder('photos'))
-    .filter(function(file){
-      return file &&
-             file.type === 'file' &&
-             photoExtensions.includes(ext(file.name));
-    });
+  const driveItems=drive.map(f=>({
+    ...f,
+    source:'drive',
+    mediaType:'photo'
+  }));
 
+  const githubItems=github
+    .filter(f=>f.type==='file'&&photoExtensions.includes(ext(f.name)))
+    .map(f=>({
+      ...f,
+      source:'github',
+      mediaType:'photo'
+    }));
+
+  photoItems=[...driveItems,...githubItems];
 }
 
 async function loadVideos(){
+  const [drive,github]=await Promise.all([
+    listDrive('videos'),
+    getFolder('videos')
+  ]);
 
-  videoItems =
-    (await getFolder('videos'))
-    .filter(function(file){
-      return file &&
-             file.type === 'file' &&
-             videoExtensions.includes(ext(file.name));
-    });
+  const driveItems=drive.map(f=>({
+    ...f,
+    source:'drive',
+    mediaType:'video'
+  }));
 
+  const githubItems=github
+    .filter(f=>f.type==='file'&&videoExtensions.includes(ext(f.name)))
+    .map(f=>({
+      ...f,
+      source:'github',
+      mediaType:'video'
+    }));
+
+  videoItems=[...driveItems,...githubItems];
 }
 
 async function loadFiles(){
+  const [drive,github]=await Promise.all([
+    listDrive('files'),
+    getFolder('files')
+  ]);
 
-  fileItems =
-    (await getFolder('files'))
-    .filter(function(file){
-      return file &&
-             file.type === 'file' &&
-             fileExtensions.includes(ext(file.name));
-    });
+  const driveItems=drive.map(f=>({
+    ...f,
+    source:'drive',
+    mediaType:'file'
+  }));
 
+  const githubItems=github
+    .filter(f=>f.type==='file'&&fileExtensions.includes(ext(f.name)))
+    .map(f=>({
+      ...f,
+      source:'github',
+      mediaType:'file'
+    }));
+
+  fileItems=[...driveItems,...githubItems];
 }
 
 
@@ -1974,71 +2005,24 @@ function renderMainFolder(title,items,type){
    ========================= */
 
 async function openMainFolder(type){
-
-  const title =
-    type === 'photos'
-      ? '📸 PHOTO MEMORIES'
-      : type === 'videos'
-        ? '🎬 VIDEO MEMORIES'
-        : '📄 MY FILES';
-
-  showFolderLoading(title);
-
-
-  try{
-
-    if(type === 'photos'){
-
-      await loadPhotos();
-
-      renderMainFolder(
-        title,
-        photoItems,
-        'photo'
-      );
-
-    }
-
-    else if(type === 'videos'){
-
-      await loadVideos();
-
-      renderMainFolder(
-        title,
-        videoItems,
-        'video'
-      );
-
-    }
-
-    else{
-
-      await loadFiles();
-
-      renderMainFolder(
-        title,
-        fileItems,
-        'file'
-      );
-
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById(
-      'mainFolderContent'
-    ).innerHTML =
-      '<div class="empty">' +
-      'Folder खोलने में समस्या हुई।' +
-      '<br><br>दोबारा tap करें।' +
-      '</div>';
-
+  document.getElementById('mainFolderPopup').style.display='flex';
+  document.getElementById('mainFolderContent').innerHTML='<div class="empty">Loading Google Drive...</div>';
+  if(!driveConfigured()){
+    document.getElementById('mainFolderContent').innerHTML='<div class="empty">Google Drive Web App URL सेट नहीं है।</div>';
+    return;
   }
 
+  if(type==='photos'){
+    await loadPhotos();
+    renderMainFolder('📸 PHOTO MEMORIES',photoItems,'photo');
+  }else if(type==='videos'){
+    await loadVideos();
+    renderMainFolder('🎬 VIDEO MEMORIES',videoItems,'video');
+  }else{
+    await loadFiles();
+    renderMainFolder('📄 MY FILES',fileItems,'file');
+  }
 }
-
 
 /* =========================
    MEDIA VIEWER
