@@ -978,6 +978,52 @@ section{
 
 </section>
 
+  <!-- GOOGLE DRIVE UPLOAD -->
+
+<div class="upload-panel">
+
+  <h3>✦ ADD NEW MEMORIES ✦</h3>
+
+  <p>
+    अपनी Photo, Video या File चुनें।
+    यह अपने-आप सही Google Drive folder में जाएगी।
+  </p>
+
+  <div class="upload-row">
+
+    <label class="upload-label">
+      📤 SELECT FILES
+      <input
+        id="memoryUpload"
+        type="file"
+        multiple
+        accept="image/*,video/*,.pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
+      >
+    </label>
+
+  </div>
+
+  <div
+    id="uploadStatus"
+    class="upload-status"
+  ></div>
+
+  <div
+    id="uploadProgress"
+    class="upload-progress"
+  >
+    <span></span>
+  </div>
+
+  <div class="drive-note">
+    📸 फोटो → <b>प्राइवेट फोटो</b>
+    &nbsp; • &nbsp;
+    🎬 वीडियो → <b>प्राइवेट वीडियो</b>
+    &nbsp; • &nbsp;
+    📄 बाकी → <b>प्राइवेट फाइल</b>
+  </div>
+
+</div>
 
 <!-- MAIN FOLDER POPUP -->
 
@@ -2363,6 +2409,368 @@ console.log(
   '✦ TWO STARS ONE FRIENDSHIP loaded successfully ✦'
 );
 
+
+  /* =====================================================
+   GOOGLE DRIVE UPLOAD
+   ===================================================== */
+
+function driveConfigured(){
+
+  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
+    .test(DRIVE_WEB_APP_URL);
+
+}
+
+
+/* =====================================================
+   UPLOAD ONE FILE
+   ===================================================== */
+
+async function uploadToDrive(
+  file,
+  index,
+  total
+){
+
+  if(!driveConfigured()){
+
+    throw new Error(
+      'Google Drive Web App URL सही नहीं है।'
+    );
+
+  }
+
+
+  /* 30 MB LIMIT */
+
+  if(file.size > 30 * 1024 * 1024){
+
+    throw new Error(
+      file.name + ' 30 MB से बड़ी है।'
+    );
+
+  }
+
+
+  const status =
+    document.getElementById(
+      'uploadStatus'
+    );
+
+  const progress =
+    document.getElementById(
+      'uploadProgress'
+    );
+
+  const fill =
+    progress.querySelector('span');
+
+
+  status.style.color = '#dbe5ff';
+
+  status.textContent =
+    '⏳ तैयार हो रहा है... ' +
+    (index + 1) +
+    ' / ' +
+    total +
+    ' — ' +
+    file.name;
+
+  progress.style.display = 'block';
+
+
+  /* FILE → BASE64 */
+
+  const bytes =
+    new Uint8Array(
+      await file.arrayBuffer()
+    );
+
+
+  let binary = '';
+
+  const chunk = 0x8000;
+
+
+  for(
+    let i = 0;
+    i < bytes.length;
+    i += chunk
+  ){
+
+    binary += String.fromCharCode(
+      ...bytes.subarray(
+        i,
+        Math.min(
+          i + chunk,
+          bytes.length
+        )
+      )
+    );
+
+  }
+
+
+  const body = {
+
+    key: DRIVE_UPLOAD_KEY,
+
+    name: file.name,
+
+    mimeType:
+      file.type ||
+      'application/octet-stream',
+
+    data: btoa(binary)
+
+  };
+
+
+  /* SEND TO GOOGLE APPS SCRIPT */
+
+  const response =
+    await fetch(
+      DRIVE_WEB_APP_URL,
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'text/plain;charset=utf-8'
+        },
+
+        body:JSON.stringify(body)
+
+      }
+    );
+
+
+  const result =
+    await response
+      .json()
+      .catch(function(){
+
+        return {
+          ok:false,
+          error:'Invalid server response'
+        };
+
+      });
+
+
+  if(
+    !response.ok ||
+    !result.ok
+  ){
+
+    throw new Error(
+      result.error ||
+      'Upload failed'
+    );
+
+  }
+
+
+  /* PROGRESS */
+
+  fill.style.width =
+    Math.round(
+      ((index + 1) / total) * 100
+    ) + '%';
+
+
+  status.textContent =
+    '✅ Uploaded ' +
+    (index + 1) +
+    ' / ' +
+    total +
+    ' — ' +
+    file.name;
+
+}
+
+
+/* =====================================================
+   MULTIPLE FILE UPLOAD
+   ===================================================== */
+
+async function handleUploads(files){
+
+  if(!files || !files.length){
+    return;
+  }
+
+
+  const status =
+    document.getElementById(
+      'uploadStatus'
+    );
+
+  const progress =
+    document.getElementById(
+      'uploadProgress'
+    );
+
+  const fill =
+    progress.querySelector('span');
+
+
+  if(!driveConfigured()){
+
+    status.style.color =
+      '#ffaaaa';
+
+    status.textContent =
+      'Google Drive connection तैयार नहीं है।';
+
+    return;
+
+  }
+
+
+  progress.style.display =
+    'block';
+
+  fill.style.width =
+    '0%';
+
+
+  let uploaded = 0;
+
+  const errors = [];
+
+
+  for(
+    let i = 0;
+    i < files.length;
+    i++
+  ){
+
+    try{
+
+      await uploadToDrive(
+        files[i],
+        i,
+        files.length
+      );
+
+      uploaded++;
+
+    }
+
+    catch(error){
+
+      console.error(
+        error
+      );
+
+      errors.push(
+        error.message ||
+        files[i].name
+      );
+
+    }
+
+  }
+
+
+  /* FINAL STATUS */
+
+  if(errors.length){
+
+    status.style.color =
+      '#ffaaaa';
+
+    status.textContent =
+      '⚠️ ' +
+      uploaded +
+      ' file upload हुई। ' +
+      errors.join(' | ');
+
+  }
+
+  else{
+
+    status.style.color =
+      '#d8f0d2';
+
+    status.textContent =
+      '❤️ ' +
+      uploaded +
+      ' memories Google Drive में सही folders में रख दी गईं।';
+
+  }
+
+
+  /* REFRESH FOLDERS */
+
+  photoItems = [];
+
+  videoItems = [];
+
+  fileItems = [];
+
+}
+
+
+/* =====================================================
+   FILE SELECT BUTTON
+   ===================================================== */
+
+const uploadInput =
+  document.getElementById(
+    'memoryUpload'
+  );
+
+
+if(uploadInput){
+
+  uploadInput.addEventListener(
+    'change',
+    function(event){
+
+      const selectedFiles =
+        Array.from(
+          event.target.files || []
+        );
+
+
+      handleUploads(
+        selectedFiles
+      );
+
+
+      /* SAME FILE AGAIN SELECT
+         करने की सुविधा */
+
+      event.target.value = '';
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   AUTO HIDE UPLOAD STATUS
+   ===================================================== */
+
+setTimeout(
+  function(){
+
+    const status =
+      document.getElementById(
+        'uploadStatus'
+      );
+
+    if(status){
+      status.textContent = '';
+    }
+
+  },
+  5000
+);
+  
      </script>
 
 </body>
